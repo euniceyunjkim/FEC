@@ -1,9 +1,21 @@
 import React, {useState, useEffect, useContext} from 'react';
+import Overview from './Overview/index.jsx';
+import QA from './QA/index.jsx';
+import Related from './Related/index.jsx';
+import Reviews from './Reviews/index.jsx';
 
-const App = (props) => (
+const App = ({}) => {
+
+
+
+  return (
   <div>
-    <h1>Hello World</h1>
+    <Overview />
+    <Related />
+    <Reviews />
+    <QA />
   </div>
-);
+  )
+};
 
 export default App;
