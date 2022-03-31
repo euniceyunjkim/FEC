@@ -6,7 +6,7 @@ const Related = ({}) => {
   const {currentProd} = useContext(currentProducts);
 
   return (
-    <div>{currentProd.name}</div>
+    <div>Related</div>
   )
 }
 
