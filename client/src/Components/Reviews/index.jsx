@@ -1,4 +1,4 @@
-import React fom 'react';
+import React from 'react';
 
 let Reviews = ({}) => {
 

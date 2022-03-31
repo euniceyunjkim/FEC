@@ -6,14 +6,13 @@ import Reviews from './Reviews/index.jsx';
 
 const App = ({}) => {
 
-hereis useless code that wont run
 
   return (
   <div>
-          <Overview />
+    <Overview />
     <Related />
-      <Reviews />
-    <QA />;
+    <Reviews />
+    <QA />
   </div>
   )
 };
