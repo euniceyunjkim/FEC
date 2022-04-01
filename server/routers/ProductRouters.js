@@ -2,21 +2,37 @@ const ProductRouters = require('express').Router();
 const axios = require('axios');
 const config = require('../../config.js');
 
-const headers = { headers: { Authorization: config.TOKEN } };
-
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products';
+let path = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products';
 
 ProductRouters.get('/', (req, res) => {
-  axios.get(`${url}`, headers)
+  axios.get(path, { headers: { Authorization: config.TOKEN } })
     .then((data) => res.send(data.data))
-    .catch((err) => console.log('err 1st get', err));
+    .catch((err) => res.send(err));
+});
+
+ProductRouters.get('/:product_id/related', (req, res) => {
+  axios.get(`${path}/${req.params.product_id}/related`, { headers: { Authorization: config.TOKEN } })
+    .then((data) => {
+      return Promise.all(
+        data.data.map((id) => {
+          return axios.get(`${path}/${id}`, { headers: { Authorization: config.TOKEN } }).then((response) => response.data)
+        })
+      )
+    })
+    .then((prodArr) => res.send(prodArr))
+    .catch((err) => res.send(err));
 });
 
 ProductRouters.get('/:product_id/styles', (req, res) => {
-  // console.log(req.query.product_id);
-  axios.get(`${url}/${req.query.product_id}/styles`, headers)
-    .then((styles) => res.send(styles.data))
-    .catch((err) => console.log('err from router', err));
+  axios.get(`${path}/${req.params.product_id}/styles`, { headers: { Authorization: config.TOKEN } })
+    .then((data) => res.send(data.data))
+    .catch((err) => res.send(err));
+});
+
+ProductRouters.get('/:product_id', (req, res) => {
+  axios.get(`${path}/${req.params.product_id}`, { headers: { Authorization: config.TOKEN } })
+    .then((data) => res.send(data.data))
+    .catch((err) => res.send(err));
 });
 
 module.exports = ProductRouters;
