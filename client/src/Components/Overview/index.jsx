@@ -4,9 +4,11 @@ import Styles from './Styles.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import ProductGallery from './ProductGallery.jsx';
 import LogoCart from './LogoCart.jsx';
+import Selection from './Selection.jsx';
 
 import Socials from './Socials.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
+import currentStyle from '../../Contexts/CurStyleContext.js';
 import styled from 'styled-components';
 
 const StyleContainer = styled.div`
@@ -38,19 +40,29 @@ padding-top: 100px;
 function Overview() {
   const { currentProd } = useContext(currentProducts);
   const [styles, setStyles] = useState([]);
-  const [photos, setPhotos] = useState([]);
+  const [curStyle, setCurStyle] = useState({});
 
   let id = currentProd.id;
 
   function getStyles() {
     // console.log(id);
     axios.get('products/:product_id/styles', { params: { product_id: id } })
-      .then((res) => setStyles(res.data.results))
+      .then((res) => {
+        setStyles(res.data.results);
+        defaultGrabber(res.data.results);})
       // console.log(res.data))
       // eslint-disable-next-line no-console
       .catch((err) => console.error('err fetching styles', err));
   }
 
+  function defaultGrabber(items) {
+    for (var i = 0; i < items.length; i++) {
+      if (items[i]['default?'] === true) {
+        setCurStyle(items[i]);
+        return;
+      }
+    }
+  }
   // const [loaded, setLoad] = useState(false);
 
   useEffect(() => {
@@ -58,30 +70,33 @@ function Overview() {
   }, [currentProd]);
 
   return (
-    <div id="overview">
-      <Header><LogoCart /></Header>
-      <Space />
-      <SpaceII />
-      <Product>
-        <div id="product details">
-          <div id="review-summ">Review Summary</div>
-          <div id="product-category">
-            <b>Category:&nbsp;</b>
-            {currentProd.category}
+    <currentStyle.Provider value={{ curStyle, setCurStyle }}>
+      <div id="overview">
+        <Header><LogoCart /></Header>
+        <Space />
+        <SpaceII />
+        <Product>
+          <div id="product details">
+            <div id="review-summ">Review Summary</div>
+            <div id="product-category">
+              <b>Category:&nbsp;</b>
+              {currentProd.category}
+            </div>
+            <h3>{currentProd.name}</h3>
+            <div><ProductGallery /></div>
+            <div>Styles > Selected Style</div>
+            <br />
+            <StyleContainer>
+              {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle}/>)}
+            </StyleContainer>
+            <Selection />
           </div>
-          <h3>{currentProd.name}</h3>
-          <div><ProductGallery setPhotos={setPhotos} photos={photos} /></div>
-          <div>Styles > Selected Style</div>
-          <br />
-          <StyleContainer>
-            {styles.map((style) => <Styles key={style.style_id} style={style} />)}
-          </StyleContainer>
-        </div>
-      </Product>
-      <div id="product-overview"><ProductOverview /></div>
-      <br />
-      <div id="share-socials"><Socials /></div>
-    </div>
+        </Product>
+        <div id="product-overview"><ProductOverview /></div>
+        <br />
+        <div id="share-socials"><Socials /></div>
+      </div>
+    </currentStyle.Provider>
   );
 }
 

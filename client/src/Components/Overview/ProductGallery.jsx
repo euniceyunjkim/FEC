@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-function ProductGallery({ photos, setPhotos }) {
+function ProductGallery({ }) {
   return (
     <div>
-      {photos.map((photo) => <img alt="" src={photo.thumbnail_url}/>)}
+      Product Gallery
     </div>
   );
 }
