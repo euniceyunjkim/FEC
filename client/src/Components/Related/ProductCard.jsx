@@ -9,7 +9,7 @@ let ProductCard = ({className, product, styles}) => {
       return (
         <div className={className}>
           <CardImage src={styles.photos[0].thumbnail_url} />
-          <ButtonIcon onClick={() => {console.log('GEEEEEENE')}}>Hi</ButtonIcon>
+          <ButtonIcon>Hi</ButtonIcon>
           <div>{product.category}</div>
           <div>{styles.name} {product.name}</div>
           <div>{styles.original_price}</div>
