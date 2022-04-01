@@ -23,4 +23,10 @@ ProductRouters.get('/:product_id/related', (req, res) => {
   .catch((err) => res.send(err))
 })
 
+ProductRouters.get('/:product_id/styles', (req, res) => {
+  axios.get(`${path}/${req.params.product_id}/styles`, {headers: {Authorization: config.TOKEN}})
+  .then((data) => res.send(data.data))
+  .catch((err) => res.send(err))
+})
+
 module.exports = ProductRouters;

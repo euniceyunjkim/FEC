@@ -1,9 +1,27 @@
 import React from 'react';
+import { CardImage } from './StyledComps/ImageStyle.js';
+import { ButtonIcon } from './StyledComps/ButtonStyle.js';
 
-let ProductCard = ({product}) => {
+let ProductCard = ({className, product, styles}) => {
+
+  let router = () => {
+    if (styles) {
+      return (
+        <div className={className}>
+          <CardImage src={styles.photos[0].thumbnail_url} />
+          <ButtonIcon onClick={() => {console.log('GEEEEEENE')}}>Hi</ButtonIcon>
+          <div>{product.category}</div>
+          <div>{styles.name} {product.name}</div>
+          <div>{styles.original_price}</div>
+        </div>
+      )
+    }
+  }
 
   return (
-    <div>{product.name}</div>
+    <>
+    {router()}
+    </>
   )
 
 
