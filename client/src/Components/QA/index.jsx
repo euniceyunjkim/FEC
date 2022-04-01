@@ -1,11 +1,19 @@
 import React from 'react';
+import Search from './Components/Search.jsx';
+import QAList from './Components/QAList.jsx';
+import MoreQuestions from './Components/MoreQuestions.jsx';
+import AddQuestion from './Components/AddQuestion.jsx';
 
-let QA = ({}) => {
-
-
+function QA({}) {
   return (
-    <div>QA</div>
-  )
+    <div>
+      QUESTIONS & ANSWERS
+      <Search />
+      <QAList />
+      <MoreQuestions />
+      <AddQuestion />
+    </div>
+  );
 }
 
 export default QA;
