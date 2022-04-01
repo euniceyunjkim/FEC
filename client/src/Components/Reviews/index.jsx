@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-let Reviews = ({}) => {
+const Reviews = function () {
   const Container = styled.div`
   display: flex;
   background: lime
@@ -17,8 +17,8 @@ let Reviews = ({}) => {
   border: 2px solid palevioletred;
   color: palevioletred;
   `;
-//display: 'inline-flex';
-//flexDirection: 'row';
+  //display: 'inline-flex';
+  //flexDirection: 'row';
 
   return (
     <div>Reviews
@@ -45,12 +45,10 @@ let Reviews = ({}) => {
           <p>Container for each review</p>
         </InnerCol>
 
-
     <InnerCol>
       <button onClick={() => alert('shtoop it its not ready yet')}>more reviews</button>
       <button onClick={() => alert('shtoop it its not ready yet')}>add reviews +</button>
     </InnerCol>
-
 
     </InnerCol>
       </Container>
