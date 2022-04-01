@@ -370,6 +370,38 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./client/src/Components/Related/AxiosHelper.js":
+/*!******************************************************!*\
+  !*** ./client/src/Components/Related/AxiosHelper.js ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar getRelated = function getRelated(prodID) {\n  return axios.get(\"/products/\".concat(prodID, \"/related\"));\n};\n\nmodule.exports = {\n  getRelated: getRelated\n};\n\n//# sourceURL=webpack://fec/./client/src/Components/Related/AxiosHelper.js?");
+
+/***/ }),
+
+/***/ "./client/src/Components/Related/ProductCard.jsx":
+/*!*******************************************************!*\
+  !*** ./client/src/Components/Related/ProductCard.jsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nvar ProductCard = function ProductCard(_ref) {\n  var product = _ref.product;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, product.name);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductCard);\n\n//# sourceURL=webpack://fec/./client/src/Components/Related/ProductCard.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/Components/Related/RelatedList.jsx":
+/*!*******************************************************!*\
+  !*** ./client/src/Components/Related/RelatedList.jsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ProductCard_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductCard.jsx */ \"./client/src/Components/Related/ProductCard.jsx\");\n\n\n\nvar RelatedList = function RelatedList(_ref) {\n  var related = _ref.related;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, related.map(function (product, index) {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductCard_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n      key: index,\n      product: product\n    });\n  }));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RelatedList);\n\n//# sourceURL=webpack://fec/./client/src/Components/Related/RelatedList.jsx?");
+
+/***/ }),
+
 /***/ "./client/src/Components/Related/index.jsx":
 /*!*************************************************!*\
   !*** ./client/src/Components/Related/index.jsx ***!
@@ -377,7 +409,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Contexts_CurProdContext_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Contexts/CurProdContext.js */ \"./client/src/Contexts/CurProdContext.js\");\nfunction _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError(\"Cannot destructure undefined\"); }\n\n\n\n\nvar Related = function Related(_ref) {\n  _objectDestructuringEmpty(_ref);\n\n  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_Contexts_CurProdContext_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]),\n      currentProd = _useContext.currentProd;\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, currentProd.name);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Related);\n\n//# sourceURL=webpack://fec/./client/src/Components/Related/index.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Contexts_CurProdContext_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Contexts/CurProdContext.js */ \"./client/src/Contexts/CurProdContext.js\");\n/* harmony import */ var _RelatedList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RelatedList.jsx */ \"./client/src/Components/Related/RelatedList.jsx\");\nfunction _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }\n\nfunction _nonIterableRest() { throw new TypeError(\"Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\n\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\n\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }\n\nfunction _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== \"undefined\" && arr[Symbol.iterator] || arr[\"@@iterator\"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i[\"return\"] != null) _i[\"return\"](); } finally { if (_d) throw _e; } } return _arr; }\n\nfunction _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }\n\nfunction _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError(\"Cannot destructure undefined\"); }\n\n\n\n\n\nvar AxiosHelper = __webpack_require__(/*! ./AxiosHelper */ \"./client/src/Components/Related/AxiosHelper.js\");\n\nvar Related = function Related(_ref) {\n  _objectDestructuringEmpty(_ref);\n\n  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_Contexts_CurProdContext_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]),\n      currentProd = _useContext.currentProd;\n\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),\n      _useState2 = _slicedToArray(_useState, 2),\n      related = _useState2[0],\n      setRelated = _useState2[1];\n\n  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {\n    if (currentProd.id) {\n      AxiosHelper.getRelated(currentProd.id).then(function (data) {\n        return setRelated(data.data);\n      })[\"catch\"](function (err) {\n        return console.error(err);\n      });\n    }\n  }, [currentProd]);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RelatedList_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    related: related\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Related);\n\n//# sourceURL=webpack://fec/./client/src/Components/Related/index.jsx?");
 
 /***/ }),
 
