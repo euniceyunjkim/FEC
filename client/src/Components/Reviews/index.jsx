@@ -1,32 +1,33 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useContext } from 'react';
+import currentProducts from '../../Contexts/CurProdContext';
+import Box from './css/container';
+import RaitingSum from './ratingSum.jsx';
 
-const Reviews = function () {
-  const Container = styled.div`
-  display: flex;
-  background: lime
-`;
-  const InnerCol = styled.div`
-  flexDirection: column;
 
-  `;
-  const ReviewSum = styled.h1`
-  flex-grow: 1;
-  height: 100px;
-  margin: 1em;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  `;
-  //display: 'inline-flex';
-  //flexDirection: 'row';
+// const AxiosHelper = require('./AxiosHelper');
+
+const Reviews = function Reviews() {
+//   const {currentProd} = useContext(currentProducts);
+//   let [related, setRelated] = useState([]);
+//   useEffect(() => {
+//     if (currentProd.id) {
+//       AxiosHelper.getRelated(currentProd.id)
+//       .then((data) => setRelated(data.data))
+//       .catch((err) => console.error(err));
+//     }
+//   }, [currentProd]);
+  // display: 'inline-flex';
+  // flexDirection: 'row';
 
   return (
-    <div>Reviews
-      <Container>
-        <InnerCol>
-          <ReviewSum>review summary
-            <p>*****</p>
-          </ReviewSum>
+    <div>
+      {console.log(currentProducts)}
+      Reviews
+      <Box.Container>
+        <Box.InnerCol>
+          <Box.ReviewSum>
+            <RaitingSum />
+          </Box.ReviewSum>
           <p>some other thing</p>
           <ul>
             <ol>5stars</ol>
@@ -36,26 +37,25 @@ const Reviews = function () {
             <ol>1stars</ol>
           </ul>
           <h3>characteristics</h3>
-        </InnerCol>
-    <InnerCol>
-    <h2>amount of reviews and how you want to sort</h2>
-        <InnerCol>
-          <h1>big boi box for reviews</h1>
-          <p>Container for each review</p>
-          <p>Container for each review</p>
-        </InnerCol>
+        </Box.InnerCol>
+        <Box.InnerCol>
+          <h2>amount of reviews and how you want to sort</h2>
+          <Box.InnerCol>
+            <h1>big boi box for reviews</h1>
+            <p>Container for each review</p>
+            <p>Container for each review</p>
+          </Box.InnerCol>
 
-    <InnerCol>
-      <button onClick={() => alert('shtoop it its not ready yet')}>more reviews</button>
-      <button onClick={() => alert('shtoop it its not ready yet')}>add reviews +</button>
-    </InnerCol>
+          <Box.InnerCol>
+            <button onClick={() => alert('shtoop it its not ready yet')}>more reviews</button>
+            <button onClick={() => alert('shtoop it its not ready yet')}>add reviews +</button>
+          </Box.InnerCol>
 
-    </InnerCol>
-      </Container>
+        </Box.InnerCol>
+      </Box.Container>
     </div>
 
-  )
-
-}
+  );
+};
 
 export default Reviews;

@@ -19,7 +19,7 @@ const App = ({}) => {
   return (
   <currentProducts.Provider value={{currentProd, setCurrentProd}}>
     <Overview />
-    <Related />
+    {/*<Related />*/}
     <QA />
     <Reviews />
   </currentProducts.Provider>
