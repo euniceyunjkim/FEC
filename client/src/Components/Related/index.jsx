@@ -3,6 +3,7 @@ import currentProducts from '../../Contexts/CurProdContext.js';
 import RelatedList from './RelatedList.jsx';
 import OutfitList from './OutfitList.jsx';
 const AxiosHelper = require('./AxiosHelper');
+import { RelatedRectangle } from './StyledComps/RelatedStyle.js';
 
 const Related = ({}) => {
 
@@ -16,10 +17,10 @@ const Related = ({}) => {
     }
   }, [currentProd])
   return (
-    <>
-    <RelatedList related={related} />
-    <OutfitList />
-    </>
+    <RelatedRectangle>
+      <RelatedList related={related} />
+      {/* <OutfitList /> */}
+    </RelatedRectangle>
   )
 }
 

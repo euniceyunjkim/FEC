@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductCard from './ProductCard.jsx';
 import { Card } from './StyledComps/CardStyle.js';
 import { List } from './StyledComps/ListStyle.js';
 
 let OutfitList = ({}) => {
 
-  return <div>Here goes my outfits</div>
+  let [outfits, setOutfits] = useState([]);
+
+  return (
+    <List>
+      <Card styles={{name: 'Add Outfit'}}/>
+    {outfits.map((product, index) => {
+      return <Card key={index} product={product} styles={relatedStyles[index]}/>
+    })}
+    </List>
+  )
 
 }
 
