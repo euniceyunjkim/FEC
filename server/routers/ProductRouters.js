@@ -7,7 +7,7 @@ let path = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products';
 ProductRouters.get('/', (req, res) => {
   axios.get(path, { headers: { Authorization: config.TOKEN } })
     .then((data) => res.send(data.data))
-    .catch((err) => res.send(err));
+    .catch((err) => console.log('err 1st fetch', err));
 });
 
 ProductRouters.get('/:product_id/related', (req, res) => {
@@ -24,15 +24,15 @@ ProductRouters.get('/:product_id/related', (req, res) => {
 });
 
 ProductRouters.get('/:product_id/styles', (req, res) => {
-  axios.get(`${path}/${req.params.product_id}/styles`, { headers: { Authorization: config.TOKEN } })
+  axios.get(`${path}/${req.query.product_id}/styles`, { headers: { Authorization: config.TOKEN } })
     .then((data) => res.send(data.data))
-    .catch((err) => res.send(err));
+    .catch((err) => console.log('err fetching styles', err));
 });
 
 ProductRouters.get('/:product_id', (req, res) => {
   axios.get(`${path}/${req.params.product_id}`, { headers: { Authorization: config.TOKEN } })
     .then((data) => res.send(data.data))
-    .catch((err) => res.send(err));
+    .catch((err) => console.log('err fetching itemdeets', err));
 });
 
 module.exports = ProductRouters;
