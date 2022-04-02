@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import currentStyle from '../../Contexts/CurStyleContext.js';
 
-function Selection({}) {
+function Selection({ }) {
   const [photos, setPhotos] = useState([]);
-  const [skus, setSkus] = useState([]);
+  const [skus, setSkus] = useState({});
   const { curStyle } = useContext(currentStyle);
 
   return (

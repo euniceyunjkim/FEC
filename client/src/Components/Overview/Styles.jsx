@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
 
 const StyleIcon = styled.div`
 width:50px;
