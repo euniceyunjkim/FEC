@@ -9,7 +9,7 @@ let OutfitList = ({}) => {
 
   return (
     <List>
-      <Card styles={{name: 'Add Outfit'}}/>
+      <Card newOutfit={'newOutfit'}/>
     {outfits.map((product, index) => {
       return <Card key={index} product={product} styles={relatedStyles[index]}/>
     })}

@@ -16,10 +16,11 @@ const Related = ({}) => {
       .catch((err) => console.error(err));
     }
   }, [currentProd])
+
   return (
     <RelatedRectangle>
       <RelatedList related={related} />
-      {/* <OutfitList /> */}
+      <OutfitList />
     </RelatedRectangle>
   )
 }
