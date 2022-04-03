@@ -22,7 +22,7 @@ let RelatedList = ({related}) => {
   return (
     <List>
     {related.map((product, index) => {
-      return <Card key={index} product={product} styles={relatedStyles[index]}/>
+      return <Card key={index} action={'Compare'}product={product} styles={relatedStyles[index]}/>
     })}
     </List>
   )
