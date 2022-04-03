@@ -4,6 +4,7 @@ import { ButtonIcon } from './StyledComps/ButtonStyle.js';
 import { Category } from './StyledComps/CategoryStyle.js';
 import { Price } from './StyledComps/PriceStyle.js';
 import { ProdName } from './StyledComps/NameStyle.js';
+import { SalePrice } from './StyledComps/SalePriceStyle.js';
 
 let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id, handleClick}) => {
 
@@ -24,7 +25,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
           <ButtonIcon onClick={() => handleClick(id)}>{action}</ButtonIcon>
           <Category><i>{product.category}</i></Category>
           <ProdName>{styles.name} {product.name}</ProdName>
-          <Price>{styles.original_price}</Price>
+          <Price><SalePrice>{styles.sale_price}</SalePrice>  ${styles.original_price}</Price>
         </div>
       )
     }
