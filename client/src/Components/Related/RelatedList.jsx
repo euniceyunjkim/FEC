@@ -9,7 +9,11 @@ let RelatedList = ({related}) => {
   let [relatedStyles, setRelatedStyles] = useState([]);
   useEffect(() => {
     Promise.all(
-      related.map((relProd) => AxiosHelper.getStyle(relProd.id).then(data => data.data.results[0]))
+      related.map((relProd) => {
+        if (relProd.id) {
+          return AxiosHelper.getStyle(relProd.id).then(data => data.data.results[0])
+        }
+      })
     )
     .then((data) => setRelatedStyles(data))
     .catch((err) => console.error(err))
