@@ -16,9 +16,14 @@ let getOutfits = () => {
   return axios.get('/newoutfit');
 }
 
+let removeOutfit = (id) => {
+  return axios.delete(`/newoutfit/${id}`)
+}
+
 module.exports = {
   getRelated,
   getStyle,
   postOutfit,
-  getOutfits
+  getOutfits,
+  removeOutfit
 }

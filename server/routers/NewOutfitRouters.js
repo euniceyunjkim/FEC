@@ -8,8 +8,12 @@ NewOutfitRouters.post('/', (req, res) => {
 })
 
 NewOutfitRouters.get('/', (req, res) => {
-  console.log(outfits)
   res.send(outfits);
+})
+
+NewOutfitRouters.delete('/:id', (req, res) => {
+  delete outfits[req.params.id];
+  res.status(202).send()
 })
 
 module.exports = NewOutfitRouters;

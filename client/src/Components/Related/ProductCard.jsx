@@ -1,24 +1,13 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { CardImage } from './StyledComps/ImageStyle.js';
 import { ButtonIcon } from './StyledComps/ButtonStyle.js';
 import { Category } from './StyledComps/CategoryStyle.js';
 import { Price } from './StyledComps/PriceStyle.js';
 import { ProdName } from './StyledComps/NameStyle.js';
-import currentProducts from '../../Contexts/CurProdContext.js';
-import currentStyle from '../../Contexts/CurStyleContext.js';
-const AxiosHelper = require('./AxiosHelper');
 
-let ProductCard = ({className, product, styles, newOutfit, action, setOutfits}) => {
+let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id, handleClick}) => {
 
-  const {currentProd} = useContext(currentProducts);
-  const {curStyle} = useContext(currentStyle);
 
-  let addOutfit = () => {
-    AxiosHelper.postOutfit([`${currentProd.id}${curStyle.style_id}`, currentProd, curStyle])
-    .then(() => AxiosHelper.getOutfits())
-    .then((data) => setOutfits(data.data))
-    .catch((err) => console.log(err));
-  }
 
   let router = () => {
     if (newOutfit === 'newOutfit') {
@@ -32,7 +21,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, setOutfits}) 
       return (
         <div className={className}>
           <CardImage src={styles.photos[0].thumbnail_url || 'Images/PurpleStar.png'} />
-          <ButtonIcon>{action || 'Compare'}</ButtonIcon>
+          <ButtonIcon onClick={() => handleClick(id)}>{action}</ButtonIcon>
           <Category><i>{product.category}</i></Category>
           <ProdName>{styles.name} {product.name}</ProdName>
           <Price>{styles.original_price}</Price>
