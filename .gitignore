@@ -6,6 +6,8 @@
 config.js
 
 # User-specific files
+client/dist/bundle.js
+config.js
 *.rsuser
 *.suo
 *.user
