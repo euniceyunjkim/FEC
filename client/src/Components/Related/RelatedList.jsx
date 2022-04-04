@@ -1,12 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ProductCard from './ProductCard.jsx';
 import { Card } from './StyledComps/CardStyle.js';
 import { List } from './StyledComps/ListStyle.js';
+import currentProducts from '../../Contexts/CurProdContext.js';
 const AxiosHelper = require('./AxiosHelper');
 
 let RelatedList = ({related}) => {
 
   let [relatedStyles, setRelatedStyles] = useState([]);
+  const {currentProd} = useContext(currentProducts);
+
+  let showCompare = (product) => {
+    Promise.all([
+      AxiosHelper.getInfo(currentProd.id).then((data) => data.data.features),
+      AxiosHelper.getInfo(product.id).then((data) => data.data.features)
+    ])
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err))
+  }
+
   useEffect(() => {
     Promise.all(
       related.map((relProd) => {
@@ -22,7 +34,7 @@ let RelatedList = ({related}) => {
   return (
     <List>
     {related.map((product, index) => {
-      return <Card key={index} action={'Compare'}product={product} styles={relatedStyles[index]}/>
+      return <Card key={index} action={'Compare'} handleClick={() => showCompare(product)} product={product} styles={relatedStyles[index]}/>
     })}
     </List>
   )

@@ -17,7 +17,11 @@ let getOutfits = () => {
 }
 
 let removeOutfit = (id) => {
-  return axios.delete(`/newoutfit/${id}`)
+  return axios.delete(`/newoutfit/${id}`);
+}
+
+let getInfo = (id) => {
+  return axios.get(`/products/${id}`);
 }
 
 module.exports = {
@@ -25,5 +29,6 @@ module.exports = {
   getStyle,
   postOutfit,
   getOutfits,
-  removeOutfit
+  removeOutfit,
+  getInfo
 }

@@ -8,6 +8,7 @@ import { RelatedRectangle } from './StyledComps/RelatedStyle.js';
 const Related = ({ }) => {
 
   const {currentProd} = useContext(currentProducts);
+
   let [related, setRelated] = useState([]);
   useEffect(() => {
     if (currentProd.id) {
