@@ -3,7 +3,6 @@ import currentProducts from '../../Contexts/CurProdContext';
 import Box from './css/container';
 import RaitingSum from './ratingSum.jsx';
 
-
 // const AxiosHelper = require('./AxiosHelper');
 
 const Reviews = function Reviews() {
@@ -26,7 +25,7 @@ const Reviews = function Reviews() {
       <Box.Container>
         <Box.InnerCol>
           <Box.ReviewSum>
-            <RaitingSum />
+            <RaitingSum loadRatings="1" />
           </Box.ReviewSum>
           <p>some other thing</p>
           <ul>

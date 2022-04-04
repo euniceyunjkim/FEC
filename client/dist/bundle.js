@@ -4,7 +4,7 @@
  * It uses "eval()" calls to create a separate source file in the browser devtools.
  * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
  * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/)
  */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
@@ -442,7 +442,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Contexts_CurProdContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Contexts/CurProdContext */ \"./client/src/Contexts/CurProdContext.js\");\n/* harmony import */ var _css_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/container */ \"./client/src/Components/Reviews/css/container.js\");\n/* harmony import */ var _ratingSum_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ratingSum.jsx */ \"./client/src/Components/Reviews/ratingSum.jsx\");\n\n\n\n // const AxiosHelper = require('./AxiosHelper');\n\nvar Reviews = function Reviews() {\n  //   const {currentProd} = useContext(currentProducts);\n  //   let [related, setRelated] = useState([]);\n  //   useEffect(() => {\n  //     if (currentProd.id) {\n  //       AxiosHelper.getRelated(currentProd.id)\n  //       .then((data) => setRelated(data.data))\n  //       .catch((err) => console.error(err));\n  //     }\n  //   }, [currentProd]);\n  // display: 'inline-flex';\n  // flexDirection: 'row';\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, console.log(_Contexts_CurProdContext__WEBPACK_IMPORTED_MODULE_1__[\"default\"]), \"Reviews\", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].InnerCol, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].ReviewSum, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ratingSum_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"some other thing\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ul\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"5stars\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"4stars\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"3stars\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"2stars\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"1stars\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h3\", null, \"characteristics\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].InnerCol, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h2\", null, \"amount of reviews and how you want to sort\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].InnerCol, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"big boi box for reviews\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"Container for each review\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"Container for each review\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].InnerCol, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"button\", {\n    onClick: function onClick() {\n      return alert('shtoop it its not ready yet');\n    }\n  }, \"more reviews\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"button\", {\n    onClick: function onClick() {\n      return alert('shtoop it its not ready yet');\n    }\n  }, \"add reviews +\")))));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);\n\n//# sourceURL=webpack://fec/./client/src/Components/Reviews/index.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Contexts_CurProdContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Contexts/CurProdContext */ \"./client/src/Contexts/CurProdContext.js\");\n/* harmony import */ var _css_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/container */ \"./client/src/Components/Reviews/css/container.js\");\n/* harmony import */ var _ratingSum_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ratingSum.jsx */ \"./client/src/Components/Reviews/ratingSum.jsx\");\n\n\n\n // const AxiosHelper = require('./AxiosHelper');\n\nvar Reviews = function Reviews() {\n  //   const {currentProd} = useContext(currentProducts);\n  //   let [related, setRelated] = useState([]);\n  //   useEffect(() => {\n  //     if (currentProd.id) {\n  //       AxiosHelper.getRelated(currentProd.id)\n  //       .then((data) => setRelated(data.data))\n  //       .catch((err) => console.error(err));\n  //     }\n  //   }, [currentProd]);\n  // display: 'inline-flex';\n  // flexDirection: 'row';\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, console.log(_Contexts_CurProdContext__WEBPACK_IMPORTED_MODULE_1__[\"default\"]), \"Reviews\", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].InnerCol, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].ReviewSum, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ratingSum_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    loadRatings: \"1\"\n  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"some other thing\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ul\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"5stars\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"4stars\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"3stars\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"2stars\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ol\", null, \"1stars\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h3\", null, \"characteristics\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].InnerCol, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h2\", null, \"amount of reviews and how you want to sort\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].InnerCol, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"big boi box for reviews\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"Container for each review\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"Container for each review\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_css_container__WEBPACK_IMPORTED_MODULE_2__[\"default\"].InnerCol, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"button\", {\n    onClick: function onClick() {\n      return alert('shtoop it its not ready yet');\n    }\n  }, \"more reviews\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"button\", {\n    onClick: function onClick() {\n      return alert('shtoop it its not ready yet');\n    }\n  }, \"add reviews +\")))));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);\n\n//# sourceURL=webpack://fec/./client/src/Components/Reviews/index.jsx?");
 
 /***/ }),
 
@@ -453,7 +453,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Contexts_CurProdContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Contexts/CurProdContext */ \"./client/src/Contexts/CurProdContext.js\");\n\n\n\nvar axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar RaitingSum = function rating() {\n  var avreageRating = function sum() {\n    axios.get(\"http://localhost:3000/reviews/meta?product_id=40344\").then(function (res) {\n      console.log(res.data);\n    })[\"catch\"](function () {\n      return console.log('error in axios');\n    });\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", {\n    onClick: function onClick() {\n      return avreageRating();\n    }\n  }, \"hello from raitingSum\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RaitingSum);\n\n//# sourceURL=webpack://fec/./client/src/Components/Reviews/ratingSum.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Contexts_CurProdContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Contexts/CurProdContext */ \"./client/src/Contexts/CurProdContext.js\");\n/* harmony import */ var _stars_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stars.jsx */ \"./client/src/Components/Reviews/stars.jsx\");\nfunction _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }\n\nfunction _nonIterableRest() { throw new TypeError(\"Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\n\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\n\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }\n\nfunction _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== \"undefined\" && arr[Symbol.iterator] || arr[\"@@iterator\"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i[\"return\"] != null) _i[\"return\"](); } finally { if (_d) throw _e; } } return _arr; }\n\nfunction _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }\n\n\n\n\n\nvar axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar RaitingSum = function RaitingSum(_ref) {\n  var loadRatings = _ref.loadRatings;\n  console.log(loadRatings);\n\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),\n      _useState2 = _slicedToArray(_useState, 2),\n      rating = _useState2[0],\n      setRating = _useState2[1];\n\n  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_Contexts_CurProdContext__WEBPACK_IMPORTED_MODULE_1__[\"default\"]),\n      currentProd = _useContext.currentProd; // calculate ratings of givin id data\n\n\n  var avreageRating = function sum(ratings) {\n    var totalVotes = 0;\n    var totalStarts = 0;\n\n    for (var i = 1; i < 6; i += 1) {\n      // had to include a multiply by 1 to make value at as an int and not a string\n      totalVotes += ratings[i] * 1;\n      totalStarts += ratings[i] * i;\n    } // this is async\n\n\n    setRating(Math.round(totalStarts / totalVotes * 2) / 2);\n  }; // a function to get the and create the ratings of any given ID\n\n\n  var getRatings = function getRatings(id) {\n    axios.get(\"http://localhost:3000/reviews/meta?product_id=\".concat(id)).then(function (res) {\n      avreageRating(res.data.ratings);\n    })[\"catch\"](function () {\n      return console.log('error in axios');\n    });\n  }; // loads in and get the rating of the first product\n\n\n  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {\n    console.log(currentProd);\n\n    if (currentProd.id) {\n      getRatings(currentProd.id);\n    }\n  }, [currentProd]); // renders the rating in number form if a value is passed in for loadRating\n\n  var renderNum = function renderNum() {\n    if (loadRatings) {\n      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, rating);\n    }\n  }; // a function to render the stars from another file.\n\n\n  var renderStars = function renderStars() {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"*\");\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, renderNum(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_stars_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    rating: rating\n  }));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RaitingSum);\n\n//# sourceURL=webpack://fec/./client/src/Components/Reviews/ratingSum.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/Components/Reviews/stars.jsx":
+/*!*************************************************!*\
+  !*** ./client/src/Components/Reviews/stars.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Contexts_CurProdContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Contexts/CurProdContext */ \"./client/src/Contexts/CurProdContext.js\");\n\n // import fullStar from './assets/fullStar.png';\n// import halfStar from './assets/halfStar.png';\n// import emptyStar from './assets/emptyStar.png';\n\nvar Star = function bob(_ref) {\n  var rating = _ref.rating;\n\n  var renderStars = function renderStars() {\n    for (var i = 0; i < 5; i += 1) {\n      if (i < rating) {// pausing here\n      }\n    }\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"img\", {\n    src: './assets/fullStar.png'\n  }), renderStars());\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Star);\n\n//# sourceURL=webpack://fec/./client/src/Components/Reviews/stars.jsx?");
 
 /***/ }),
 
@@ -658,7 +669,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -672,14 +683,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -692,7 +703,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -704,12 +715,12 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -720,13 +731,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./client/src/index.jsx");
-/******/ 	
+/******/
 /******/ })()
 ;
