@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import currentProducts from '../../Contexts/CurProdContext';
+// import currentProducts from '../../Contexts/CurProdContext';
+import Box from './css/container';
+
 // import fullStar from './assets/fullStar.png';
 // import halfStar from './assets/halfStar.png';
 // import emptyStar from './assets/emptyStar.png';
@@ -7,11 +9,11 @@ import currentProducts from '../../Contexts/CurProdContext';
 const Star = function bob({ rating }) {
   const renderStars = function (i) {
     if (i <= rating) {
-      return <img src="./assets/fullStar.png" alt="full star" />;
+      return <Box.Star src="./assets/fullStar.png" alt="full star" />;
     } else if (i % rating === 0.5) {
-      return <img src="./assets/halfStar.png" alt="half star" />;
+      return <Box.Star src="./assets/halfStar.png" alt="half star" />;
     } else {
-      return <img src="./assets/emptyStar.png" alt="empty star" />;
+      return <Box.Star src="./assets/emptyStar.png" alt="empty star" />;
     }
   };
   return (

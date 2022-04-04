@@ -3,9 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-#added my user
-/client/dist/bundle.js
-.env
+config.js
+
 # User-specific files
 *.rsuser
 *.suo
