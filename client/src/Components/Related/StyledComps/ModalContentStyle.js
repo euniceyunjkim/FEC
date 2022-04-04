@@ -4,7 +4,7 @@ export const ModalContent = styled.div`
 	position: fixed;
 	background: white;
 	width: 50%;
-	height: auto;
+	height: 75vh;
 	top: 50%;
 	left: 50%;
 	padding: 2rem;

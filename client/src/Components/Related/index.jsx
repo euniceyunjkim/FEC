@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import currentProducts from '../../Contexts/CurProdContext.js';
 import RelatedList from './RelatedList.jsx';
 import OutfitList from './OutfitList.jsx';
-const AxiosHelper = require('./AxiosHelper');
 import { RelatedRectangle } from './StyledComps/RelatedStyle.js';
+const AxiosHelper = require('./AxiosHelper');
 
 const Related = ({ }) => {
 
