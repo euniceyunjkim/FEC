@@ -4,7 +4,7 @@ import Star from './stars.jsx';
 
 const axios = require('axios');
 
-const RaitingSum = function ({ loadRatings }) {
+const RaitingSum = function ({ loadRatings, prodID }) {
   console.log(loadRatings);
   const [rating, setRating] = useState(0);
   const { currentProd } = useContext(currentProducts);

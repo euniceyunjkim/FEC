@@ -5,17 +5,22 @@ import currentProducts from '../../Contexts/CurProdContext';
 // import emptyStar from './assets/emptyStar.png';
 
 const Star = function bob({ rating }) {
-  const renderStars = function () {
-    for (let i = 0; i < 5; i += 1) {
-      if (i < rating) {
-        // pausing here
-      }
+  const renderStars = function (i) {
+    if (i <= rating) {
+      return <img src="./assets/fullStar.png" alt="full star" />;
+    } else if (i % rating === 0.5) {
+      return <img src="./assets/halfStar.png" alt="half star" />;
+    } else {
+      return <img src="./assets/emptyStar.png" alt="empty star" />;
     }
   };
   return (
     <div>
-      <img src={'./assets/fullStar.png'} />
-      {renderStars()}
+      {renderStars(1)}
+      {renderStars(2)}
+      {renderStars(3)}
+      {renderStars(4)}
+      {renderStars(5)}
     </div>
   );
 };
