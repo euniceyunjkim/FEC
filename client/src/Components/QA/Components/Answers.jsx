@@ -1,12 +1,10 @@
 import React from 'react';
 
-function Answers({}) {
+function Answers({ answer }) {
   return (
     <div>
-      <ul>
-        <li>This is an answer</li>
-        <li>This is an answer</li>
-      </ul>
+      <div>A: {answer.body}</div>
+      <div>by user, data | Helpful? Yes (2) | Report</div>
     </div>
   );
 }

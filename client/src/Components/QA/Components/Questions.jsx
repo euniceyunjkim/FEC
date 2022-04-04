@@ -1,9 +1,12 @@
 import React from 'react';
 
-function Questions({}) {
+function Questions({ question }) {
   return (
     <div>
-      This is a question
+      <span>Q: {question.question_body}</span>
+      <span>Helpful?</span>
+      <span>Yes ({question.question_helpfulness}) |</span>
+      <span> Add Answer</span>
     </div>
   );
 }
