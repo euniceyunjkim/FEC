@@ -5,9 +5,9 @@ import { Category } from './StyledComps/CategoryStyle.js';
 import { Price } from './StyledComps/PriceStyle.js';
 import { ProdName } from './StyledComps/NameStyle.js';
 import { SalePrice } from './StyledComps/SalePriceStyle.js';
+import Modal from './Modal.jsx';
 
-let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id, handleClick}) => {
-
+let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id, handleClick, showModal, setShowModal, compareData}) => {
 
 
   let router = () => {
@@ -23,6 +23,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
         <div className={className}>
           <CardImage src={styles.photos[0].thumbnail_url || 'Images/PurpleStar.png'} />
           <ButtonIcon onClick={() => handleClick(id)}>{action}</ButtonIcon>
+
           <Category><i>{product.category}</i></Category>
           <ProdName>{styles.name} {product.name}</ProdName>
           <Price><SalePrice>{styles.sale_price}</SalePrice>  ${styles.original_price}</Price>
@@ -34,6 +35,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
   return (
     <>
     {router()}
+    {compareData ? <Modal showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
     </>
   )
 

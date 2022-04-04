@@ -20,7 +20,9 @@ const Related = ({ }) => {
 
   return (
     <RelatedRectangle>
+      <h2>Customers Also Liked:</h2>
       <RelatedList related={related} />
+      <h2>Your Outfit</h2>
       <OutfitList />
     </RelatedRectangle>
   )
