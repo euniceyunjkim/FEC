@@ -8,7 +8,6 @@ function Selection({ }) {
 
   return (
     <div>
-      {console.log(curStyle)}
       <form>
         <div id="size">
           <select>
