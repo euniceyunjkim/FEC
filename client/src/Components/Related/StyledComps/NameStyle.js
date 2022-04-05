@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonIcon = styled.button`
+export const ProdName = styled.div`
+  min-height: 50px;
   margin: 5px;
 `;

@@ -13,7 +13,6 @@ ReviewRouters.get('/', (req, res) => {
 })
 
 ReviewRouters.get('/meta', (req, res) => {
-  // console.log(`${path}/meta/` + req.query.product_id);
   axios.get(`${path}/meta`, { headers: { Authorization: config.TOKEN }, params: {product_id: req.query.product_id}})
     .then((data) => res.send(data.data))
     .catch((err) => res.send(err));
