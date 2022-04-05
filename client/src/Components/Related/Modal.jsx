@@ -34,7 +34,7 @@ const Modal = ({ setShowModal, showModal, compareData}) => {
             </thead>
             <tbody>
               <tr>
-                <td><CardImage src={styles.photos[0].thumbnail_url} /></td>
+                <td><CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} /></td>
                 <td></td>
                 <td><CardImage src={curStyle.photos[0].thumbnail_url} /></td>
               </tr>

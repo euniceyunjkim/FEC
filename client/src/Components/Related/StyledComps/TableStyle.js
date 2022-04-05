@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const ModalTable = styled.table`
 
   overflow-wrap: normal;
+  overflow-x: auto;
   text-align: center;
+  height: 60vh;
   & td {
     padding: 10px;
     margin: 5px;
@@ -20,5 +22,9 @@ export const ModalTable = styled.table`
   & th {
     font-size: 1.25em;
     margin: 25px;
+  }
+  & tr:nth-child(2n) {
+    background: rgba(235, 183, 204, 0.25);
+
   }
 `;
