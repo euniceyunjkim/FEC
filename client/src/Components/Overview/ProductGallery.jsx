@@ -1,29 +1,28 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
+import CarouselItem from './CarouselItem.jsx';
 
 const Carouselcontainer = styled.div`
-  width: 100%;
-  display: flex;
-  flexDirection: column;
-`
-const Carouselwrapper = styled.div`
-  display: flex;
-  width: 100%;
-  position: relative;
-`
-const Carouselcontwrap = styled.div`
   overflow: hidden;
-  width: 100%;
-  height: 100%;
-`
-const Carouselconten = styled.div`
-  display: flex;
-`
+`;
+const Carouselinner = styled.div`
+  white-space: nowrap;
+  transition: transform 0.3s;
+`;
+const Carouselitem = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  background-color: green;
+  color: #fff;
+`;
 
 function ProductGallery({ }) {
   const [photos, setPhotos] = useState([]);
   const { curStyle } = useContext(currentStyle);
+  const [activeIndex, setIndex] = useState(0);
 
   useEffect(() => {
     if (curStyle.style_id) {
@@ -33,16 +32,11 @@ function ProductGallery({ }) {
 
   return (
     <Carouselcontainer>
-      <Carouselwrapper>
-        <Carouselcontwrap>
-          <Carouselconten>
-            <div style={{ maxWidth: 1200, marginLeft: 'auto' }}>
-              {/* {console.log(photos)} */}
-              {photos.map((photo) => <img key={photo.url} alt="" src={photo.url} />)}
-            </div>
-          </Carouselconten>
-        </Carouselcontwrap>
-      </Carouselwrapper>
+      <Carouselinner>
+        <Carouselitem style={{transform: `translateX(-${activeIndex * 100}%)` }}>
+          {photos.map((photo) => <CarouselItem key={photo.url} photo={photo} width="100%" />)}
+        </Carouselitem>
+      </Carouselinner>
     </Carouselcontainer>
   );
 }

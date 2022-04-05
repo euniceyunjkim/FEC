@@ -23,13 +23,7 @@ function Selection({ }) {
   }, [curStyle]);
 
   function quantityArr(num) {
-    const result = [];
-    let count = 1;
-    while (count <= num) {
-      result.push(count);
-      count += 1;
-    }
-    return result;
+    return Array.from({ length: num }, (_, i) => i + 1);
   }
 
   function sizeSelect(e) {
