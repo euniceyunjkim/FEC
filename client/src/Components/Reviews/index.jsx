@@ -8,16 +8,6 @@ import RenderLeft from './renderLeft.jsx';
 
 const Reviews = function Reviews() {
   const { currentProd } = useContext(currentProducts);
-//   let [related, setRelated] = useState([]);
-//   useEffect(() => {
-//     if (currentProd.id) {
-//       AxiosHelper.getRelated(currentProd.id)
-//       .then((data) => setRelated(data.data))
-//       .catch((err) => console.error(err));
-//     }
-//   }, [currentProd]);
-  // display: 'inline-flex';
-  // flexDirection: 'row';
 
   return (
     <div>

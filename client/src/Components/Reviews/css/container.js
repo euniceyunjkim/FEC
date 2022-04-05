@@ -25,6 +25,22 @@ const Box = {
   padding-right: 10px;
   color: rgb(75, 21, 163);
   `,
+  Bar: styled.div`
+  width: 210px;
+  background-image: url(./assets/bar.png);
+  background-repeat: no-repeat;
+  `,
+  Triangle: styled.img`
+  height: 15px;
+  width: 15px
+  `,
+  CharText: styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+  padding-bottom: 15px;
+  margin: 0px;
+  `,
 };
 
 export default Box;
