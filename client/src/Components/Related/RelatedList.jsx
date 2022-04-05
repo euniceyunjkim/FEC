@@ -11,6 +11,8 @@ let RelatedList = ({related}) => {
   let [relatedStyles, setRelatedStyles] = useState([]);
   let [showModal, setShowModal] = useState(false);
   let [compareData, setCompareData] = useState([]);
+  let [current, setCurrent] = useState(0);
+  var length = related.length;
 
   const {currentProd} = useContext(currentProducts);
 
@@ -32,17 +34,33 @@ let RelatedList = ({related}) => {
         }
       })
     )
-    .then((data) => setRelatedStyles(data))
+    .then((data) => {
+      setRelatedStyles(data)
+    })
+    .then(() => setCurrent(0))
     .catch((err) => console.error(err))
   }, [related])
 
+  let next = () => {
+    setCurrent(current === length - 3 ? 0 : current + 1);
+  };
+
+  let previous = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  }
+
+
   return (
     <List>
+      {current === 0 ? null : <button onClick={previous}>Previous</button>}
     {related.map((product, index) => {
-      return <Card key={index} action={'Compare'} compareData={compareData} showModal={showModal}
-      setShowModal={setShowModal} handleClick={() => showCompare(product, relatedStyles[index])}
-      product={product} styles={relatedStyles[index]}/>
+      if (index < current + 3 && index > current - 1) {
+        return <Card key={index} action={'Compare'} compareData={compareData} showModal={showModal}
+        setShowModal={setShowModal} handleClick={() => showCompare(product, relatedStyles[index])}
+        product={product} styles={relatedStyles[index]}/>
+      }
     })}
+      {current < length - 3 ? <button onClick={next}>Next</button> : null}
     </List>
   )
 }

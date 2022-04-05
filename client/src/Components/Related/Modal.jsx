@@ -44,7 +44,7 @@ const Modal = ({ setShowModal, showModal, compareData}) => {
               })}
             </tbody>
           </ModalTable>
-          <ModalIcon onClick={() => setShowModal()} src={'assets/PurpleX.png'}/>
+          <ModalIcon onClick={() => setShowModal()} src={'assets/RedX.png'}/>
         </ModalContent>
       </ModalStyle>)
       : null}

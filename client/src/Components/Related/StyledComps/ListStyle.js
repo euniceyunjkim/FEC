@@ -6,6 +6,7 @@ export const List = styled.div`
   margin: 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-self: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 `;
