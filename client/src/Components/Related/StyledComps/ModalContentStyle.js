@@ -9,4 +9,7 @@ export const ModalContent = styled.div`
 	left: 50%;
 	padding: 2rem;
 	transform: translate(-50%, -50%);
+	/* display: flex;
+	flex-direction: column; */
+	/* text-align: center; */
 `;

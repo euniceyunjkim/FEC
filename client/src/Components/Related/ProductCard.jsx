@@ -6,6 +6,7 @@ import { Price } from './StyledComps/PriceStyle.js';
 import { ProdName } from './StyledComps/NameStyle.js';
 import { SalePrice } from './StyledComps/SalePriceStyle.js';
 import Modal from './Modal.jsx';
+import RenderRating from '../renderRating.jsx';
 
 let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id, handleClick, showModal, setShowModal, compareData}) => {
 
@@ -26,6 +27,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
           <Category><i>{product.category}</i></Category>
           <ProdName>{styles.name} {product.name}</ProdName>
           <Price><SalePrice>{styles.sale_price}</SalePrice>  ${styles.original_price}</Price>
+          <RenderRating prodID={product.id} />
         </div>
       )
     }
