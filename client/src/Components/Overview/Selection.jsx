@@ -52,7 +52,6 @@ function Selection({ }) {
         </DropdownContainer>
         <SubmitContainer>
           <input type="button" value="Add to bag" />
-          <button type="button">Star</button>
         </SubmitContainer>
       </form>
     </div>

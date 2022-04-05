@@ -1,42 +1,60 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
-import CarouselItem from './CarouselItem.jsx';
 
 const Carouselcontainer = styled.div`
   overflow: hidden;
+  width: 55%;
+  height: 850px;
+  background-color: green;
 `;
 const Carouselinner = styled.div`
-  white-space: nowrap;
-  transition: transform 0.3s;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-image: ${({ src }) => `url(${src})`};
 `;
-const Carouselitem = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  background-color: green;
-  color: #fff;
+
+const InnerLeft = styled.div`
+flex: 10%;
+height: 100%;
+background-color: rgb(0,0,0,0.6);
+`;
+
+const InnerRight = styled.div`
+flex: 10%;
+height: 100%;
+background-color: rgb(0,0,0,0.6);
+`;
+
+const InnerCenter = styled.div`
+flex: 80%;
+height: 100%;
 `;
 
 function ProductGallery({ }) {
   const [photos, setPhotos] = useState([]);
   const { curStyle } = useContext(currentStyle);
-  const [activeIndex, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (curStyle.style_id) {
+    if (curStyle.photos) {
       setPhotos(curStyle.photos);
     }
   }, [curStyle]);
 
   return (
     <Carouselcontainer>
-      <Carouselinner>
-        <Carouselitem style={{transform: `translateX(-${activeIndex * 100}%)` }}>
-          {photos.map((photo) => <CarouselItem key={photo.url} photo={photo} width="100%" />)}
-        </Carouselitem>
-      </Carouselinner>
+      {photos.length > 0 && (
+        <Carouselinner src={photos[index].thumbnail_url}>
+          <InnerLeft />
+          <InnerCenter />
+          <InnerRight />
+        </Carouselinner>
+      )}
     </Carouselcontainer>
   );
 }

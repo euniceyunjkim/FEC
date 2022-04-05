@@ -59,6 +59,7 @@ function Overview({styles, setCurStyle}) {
             <div>
               <ProductGallery />
             </div>
+            <br/>
             <div>Styles > Selected Style</div>
             <br />
             <StyleContainer>
