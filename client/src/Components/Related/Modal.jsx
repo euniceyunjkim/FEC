@@ -6,6 +6,7 @@ import currentStyle from '../../Contexts/CurStyleContext.js';
 import ModalTableEntry from './ModalTableEntry.jsx';
 import { ModalTable } from './StyledComps/TableStyle.js';
 import { CardImage } from './StyledComps/ImageStyle.js';
+import { ModalIcon } from './StyledComps/NoFeatureIconStyle.js';
 
 const Modal = ({ setShowModal, showModal, compareData}) => {
   let allFeatures = [];
@@ -43,7 +44,7 @@ const Modal = ({ setShowModal, showModal, compareData}) => {
               })}
             </tbody>
           </ModalTable>
-          <button onClick={() => setShowModal()}>Close</button>
+          <ModalIcon onClick={() => setShowModal()} src={'assets/PurpleX.png'}/>
         </ModalContent>
       </ModalStyle>)
       : null}
