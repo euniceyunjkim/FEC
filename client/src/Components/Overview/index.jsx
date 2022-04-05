@@ -5,6 +5,7 @@ import ProductOverview from './ProductOverview.jsx';
 import ProductGallery from './ProductGallery.jsx';
 import LogoCart from './LogoCart.jsx';
 import Selection from './Selection.jsx';
+import RenderRating from '../renderRating.jsx';
 
 import Socials from './Socials.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
@@ -47,13 +48,17 @@ function Overview({styles, setCurStyle}) {
         <SpaceII />
         <Product>
           <div id="product details">
-            <div id="review-summ">Review Summary</div>
+            <div id="review-summ">
+              <RenderRating prodID={currentProd.id} />
+              </div>
             <div id="product-category">
               <b>Category:&nbsp;</b>
               {currentProd.category}
             </div>
             <h3>{currentProd.name}</h3>
-            <div><ProductGallery /></div>
+            <div>
+              <ProductGallery />
+            </div>
             <div>Styles > Selected Style</div>
             <br />
             <StyleContainer>

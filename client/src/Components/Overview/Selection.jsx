@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-import currentStyle from '../../Contexts/CurStyleContext.js';
 import styled from 'styled-components';
+import currentStyle from '../../Contexts/CurStyleContext.js';
 
 const DropdownContainer = styled.div`
 display: flex;
@@ -23,11 +23,11 @@ function Selection({ }) {
   }, [curStyle]);
 
   function quantityArr(num) {
-    let result = [];
+    const result = [];
     let count = 1;
     while (count <= num) {
       result.push(count);
-      count++;
+      count += 1;
     }
     return result;
   }
@@ -47,8 +47,7 @@ function Selection({ }) {
           <div id="size">
             <select onChange={(e) => sizeSelect(e)}>
               <option value="Select Size">Select Size</option>
-              {skuKeys.map((sku) =>
-                <option key={sku} value={sku}>{skus[sku].size}</option>)}
+              {skuKeys.map((sku) => <option key={sku} value={sku}>{skus[sku].size}</option>)}
             </select>
           </div>
           <div id="quantity">
