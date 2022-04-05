@@ -14,12 +14,12 @@ let RelatedList = ({related}) => {
 
   const {currentProd} = useContext(currentProducts);
 
-  let showCompare = (product) => {
+  let showCompare = (product, style) => {
     Promise.all([
       AxiosHelper.getInfo(currentProd.id).then((data) => data.data.features),
       AxiosHelper.getInfo(product.id).then((data) => data.data.features)
     ])
-    .then((data) => setCompareData(data))
+    .then((data) => setCompareData([...data, product, style]))
     .then(() => setShowModal(previous => !previous))
     .catch((err) => console.log(err))
   }
@@ -40,7 +40,7 @@ let RelatedList = ({related}) => {
     <List>
     {related.map((product, index) => {
       return <Card key={index} action={'Compare'} compareData={compareData} showModal={showModal}
-      setShowModal={setShowModal} handleClick={() => showCompare(product)}
+      setShowModal={setShowModal} handleClick={() => showCompare(product, relatedStyles[index])}
       product={product} styles={relatedStyles[index]}/>
     })}
     </List>

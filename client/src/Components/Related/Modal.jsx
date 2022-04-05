@@ -5,16 +5,18 @@ import currentProducts from '../../Contexts/CurProdContext.js';
 import currentStyle from '../../Contexts/CurStyleContext.js';
 import ModalTableEntry from './ModalTableEntry.jsx';
 import { ModalTable } from './StyledComps/TableStyle.js';
+import { CardImage } from './StyledComps/ImageStyle.js';
 
-const Modal = ({ setShowModal, showModal, compareData, styles, product }) => {
+const Modal = ({ setShowModal, showModal, compareData}) => {
   let allFeatures = [];
-
-  compareData.forEach((product) => {
-    let features = Object.values(product);
+  let product = compareData[2];
+  let styles = compareData[3];
+  for (let i = 0; i < 2; i++) {
+    let features = Object.values(compareData[i]);
     features.forEach((feature) => {
       allFeatures = allFeatures.concat(feature['feature']);
     })
-  })
+  }
   const {currentProd} = useContext(currentProducts);
   const {curStyle} = useContext(currentStyle);
 
@@ -31,6 +33,11 @@ const Modal = ({ setShowModal, showModal, compareData, styles, product }) => {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td><CardImage src={styles.photos[0].thumbnail_url} /></td>
+                <td></td>
+                <td><CardImage src={curStyle.photos[0].thumbnail_url} /></td>
+              </tr>
               {allFeatures.map((feature, index) => {
                 return <ModalTableEntry feature={feature} key={index} compareData={compareData} />
               })}

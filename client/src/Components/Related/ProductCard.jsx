@@ -24,6 +24,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
         <div className={className}>
           <CardImage src={styles.photos[0].thumbnail_url || 'Images/PurpleStar.png'} />
           <ButtonIcon onClick={() => handleClick(id)}>{action}</ButtonIcon>
+          {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>
           <ProdName>{styles.name} {product.name}</ProdName>
           <Price><SalePrice>{styles.sale_price}</SalePrice>  ${styles.original_price}</Price>
@@ -36,7 +37,6 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
   return (
     <>
     {router()}
-    {compareData ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
     </>
   )
 
