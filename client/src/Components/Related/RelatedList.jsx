@@ -4,6 +4,7 @@ import { Card } from './StyledComps/CardStyle.js';
 import { List } from './StyledComps/ListStyle.js';
 import currentProducts from '../../Contexts/CurProdContext.js';
 import { Modal } from './StyledComps/ModalStyle.js';
+import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle.js';
 const AxiosHelper = require('./AxiosHelper');
 
 let RelatedList = ({related}) => {
@@ -52,7 +53,7 @@ let RelatedList = ({related}) => {
 
   return (
     <List>
-      {current === 0 ? null : <button onClick={previous}>Previous</button>}
+      {current === 0 ? null : <PreviousIcon src="assets/PurpleX.png" onClick={previous} />}
     {related.map((product, index) => {
       if (index < current + 3 && index > current - 1) {
         return <Card key={index} action={'Compare'} compareData={compareData} showModal={showModal}
@@ -60,7 +61,7 @@ let RelatedList = ({related}) => {
         product={product} styles={relatedStyles[index]}/>
       }
     })}
-      {current < length - 3 ? <button onClick={next}>Next</button> : null}
+      {current < length - 3 ? <NextIcon src="assets/RedX.png" onClick={next} /> : null}
     </List>
   )
 }

@@ -4,6 +4,7 @@ import { Card } from './StyledComps/CardStyle.js';
 import { List } from './StyledComps/ListStyle.js';
 import currentProducts from '../../Contexts/CurProdContext.js';
 import currentStyle from '../../Contexts/CurStyleContext.js';
+import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle.js';
 const AxiosHelper = require('./AxiosHelper');
 
 
@@ -48,14 +49,14 @@ let OutfitList = ({}) => {
 
   return (
     <List>
-      {current === 0 ? null : <button onClick={previous}>Previous</button>}
+      {current === 0 ? null : <PreviousIcon src="assets/PurpleX.png" onClick={previous} />}
       <Card newOutfit={'newOutfit'} addOutfit={addOutfit} />
     {Object.keys(outfits).map((key, index) => {
       if (index < current + 2 && index > current - 1) {
         return <Card key={index} action={'Remove'} handleClick={removeOutfit} id={key} product={outfits[key][0]} styles={outfits[key][1]}/>
       }
     })}
-      {current < length - 2 ? <button onClick={next}>Next</button> : null}
+      {current < length - 2 ? <NextIcon src="assets/RedX.png" onClick={next} /> : null}
     </List>
   )
 

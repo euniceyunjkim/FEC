@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const List = styled.div`
-  width: 80%;
+  width: 90%;
   padding: 5px;
   margin: 5px;
   display: flex;
