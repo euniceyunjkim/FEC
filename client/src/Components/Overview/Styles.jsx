@@ -18,7 +18,6 @@ function Styles({ style, setCurStyle }) {
 
   return (
     <div>
-      {console.log(style)}
       <StyleIcon src={style.photos[0].thumbnail_url} onClick={() => handleClick(style)} />
     </div>
   );

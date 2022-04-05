@@ -53,7 +53,7 @@ function Selection({ }) {
           </div>
           <div id="quantity">
             <select>
-              {quant.map((num) => <option value="quant">{num}</option>)}
+              {quant.map((num) => <option key={num} value="quant">{num}</option>)}
             </select>
           </div>
         </DropdownContainer>
