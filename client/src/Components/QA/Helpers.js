@@ -4,6 +4,10 @@ function getQuestions(prodId) {
   return axios.get('qa/questions', { params: { product_id: prodId } });
 }
 
+// function postQuestion(data) {
+
+// }
+
 module.exports = {
   getQuestions,
 };
