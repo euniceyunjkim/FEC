@@ -8,9 +8,10 @@ const axios = require('axios');
 const RenderRight = function () {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState([]);
+  const [count, setCount] = useState(2);
   const { currentProd } = useContext(currentProducts);
-  const getReviews = function (sortMethod) {
-    axios.get(`http://localhost:3000/reviews?product_id=${currentProd.id}&sort=${sortMethod}&count=2`)
+  const getReviews = function () {
+    axios.get(`http://localhost:3000/reviews?product_id=${currentProd.id}&sort=${sort}&count=${count}`)
       .then((res) => {
         setReviews(res.data.results);
       })
@@ -18,20 +19,16 @@ const RenderRight = function () {
   };
   useEffect(() => {
     if (currentProd.id) {
-      getReviews(currentProd.id);
+      getReviews();
     }
-  }, [currentProd]);
-  const newSort = function (e) {
-    setSort(e.target.value);
-    getReviews(e.target.value);
-  };
+  }, [currentProd, sort, count]);
 
   return (
     <Box.InnerCol>
-      <form onSubmit={(e) => newSort(e)}>
+      <form onSubmit={(e) => setSort(e.target.value)}>
         <label>
           Sort reviews by:
-          <select value={sort} onChange={(e) => newSort(e)}>
+          <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>
             <option value="newest">Newest</option>
@@ -45,7 +42,7 @@ const RenderRight = function () {
       </div>
 
       <div>
-        <button onClick={() => alert('shtoop it its not ready yet')}>more reviews</button>
+        <button onClick={() => setCount(count + 2)}>more reviews</button>
         <button onClick={() => alert('shtoop it its not ready yet')}>add reviews +</button>
       </div>
 
