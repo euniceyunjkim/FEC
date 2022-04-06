@@ -2,18 +2,20 @@ const ReviewRouters = require('express').Router();
 const axios = require('axios');
 const config = require('../../config.js')
 
-let path = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews';
+const path = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews';
 
 ReviewRouters.get('/', (req, res) => {
-  axios.get(path, {headers: {Authorization: config.TOKEN}, params: {product_id: req.query.product_id}})
-  .then((data) => res.send(data.data))
-  .catch((err) => res.send(err))
+  axios.get(path, {headers: {Authorization: config.TOKEN},
+  params: {product_id: req.query.product_id}
+})
+    .then((data) => res.send(data.data))
+    .catch((err) => res.send(err))
 })
 
 ReviewRouters.get('/meta', (req, res) => {
-  axios.get(`${path}/meta`, {headers: {Authorization: config.TOKEN}, params: {product_id: req.query.product_id}})
-  .then((data) => res.send(data.data))
-  .catch((err) => res.send(err))
+  axios.get(`${path}/meta`, { headers: { Authorization: config.TOKEN }, params: {product_id: req.query.product_id}})
+    .then((data) => res.send(data.data))
+    .catch((err) => res.send(err));
 })
 
 ReviewRouters.put('/:review_id/helpful', (req, res) => {
