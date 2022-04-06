@@ -16,14 +16,19 @@ text-align: center;
 `;
 
 const Cart = styled.div`
-
+background-size: contain;
+width: 90px;
+height: 90px;
+background-image: ${({ src }) => `url(${src})`};
+background-repeat: no-repeat;
+text-align: center;
 `;
 
 function LogoCart() {
   return (
     <Container>
-      <Logo src="https://i.ibb.co/sshCn2y/IMG-0640.png" />
-      {/* <Cart src=""> */}
+      <Logo src="overview_imgs/DarkLogo.png" />
+      <Cart src="overview_imgs/DarkCart.png" />
     </Container>
   );
 }

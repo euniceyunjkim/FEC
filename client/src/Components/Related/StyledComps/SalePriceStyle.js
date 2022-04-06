@@ -5,4 +5,5 @@ export const SalePrice = styled.i`
   text-decoration: line-through;
   color: red;
   opacity: 0.7;
+  z-index: -1;
 `;

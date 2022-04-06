@@ -3,12 +3,13 @@ import styled from 'styled-components';
 export const ModalContent = styled.div`
 	position: fixed;
 	background: white;
-	width: 50%;
+	width: 50vw;
 	height: 75vh;
 	top: 50%;
 	left: 50%;
-	padding: 2rem;
 	transform: translate(-50%, -50%);
+	border-radius: 1%;
+	z-index: 100;
 	/* display: flex;
 	flex-direction: column; */
 	/* text-align: center; */
