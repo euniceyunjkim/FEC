@@ -6,9 +6,9 @@ const CartRouters = require('./routers/CartRouters');
 const InteractionRouters = require('./routers/InteractionRouters');
 const NewOutfitRouters = require('./routers/NewOutfitRouters');
 const path = require('path');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 app.use(express.json());
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use('/products', ProductRouters);

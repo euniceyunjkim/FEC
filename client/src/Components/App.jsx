@@ -36,7 +36,7 @@ function App({}) {
             setStyles(res.data.results);
             defaultGrabber(res.data.results);
           })
-          .catch((err) => console.log('err fetching styles', err));s
+          .catch((err) => console.log('err fetching styles', err));
       })
       .catch((err) => console.error(err));
   }, [prodID]);
