@@ -46,7 +46,6 @@ let OutfitList = ({}) => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   }
 
-
   return (
     <List>
       {current === 0 ? null : <PreviousIcon src="overview_imgs/DarkLArrow.png" onClick={previous} />}
