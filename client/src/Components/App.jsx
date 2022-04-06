@@ -37,12 +37,14 @@ function App({ }) {
   }, []);
 
   useEffect(() => {
-    axios.get(`products/:product_id/styles`, { params: { product_id: currentProd.id } })
-      .then((res) => {
-        setStyles(res.data.results);
-        defaultGrabber(res.data.results);
-      })
-      .catch((err) => console.log('err fetching styles', err));
+    if (currentProd.id) {
+      axios.get(`products/:product_id/styles`, { params: { product_id: currentProd.id } })
+        .then((res) => {
+          setStyles(res.data.results);
+          defaultGrabber(res.data.results);
+        })
+        .catch((err) => console.log('err fetching styles', err));
+    }
   }, [currentProd]);
 
   return (
