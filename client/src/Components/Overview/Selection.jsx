@@ -10,6 +10,14 @@ const SubmitContainer = styled.div`
 display: flex;
 `;
 
+const SizeDrop = styled.select`
+
+`;
+
+const QuantDrop = styled.select`
+
+`;
+
 function Selection({ }) {
   const [skus, setSkus] = useState({});
   const { curStyle } = useContext(currentStyle);
@@ -39,15 +47,15 @@ function Selection({ }) {
       <form>
         <DropdownContainer>
           <div id="size">
-            <select onChange={(e) => sizeSelect(e)}>
+            <SizeDrop onChange={(e) => sizeSelect(e)}>
               <option value="Select Size">Select Size</option>
               {skuKeys.map((sku) => <option key={sku} value={sku}>{skus[sku].size}</option>)}
-            </select>
+            </SizeDrop>
           </div>
           <div id="quantity">
-            <select>
+            <QuantDrop>
               {quant.map((num) => <option key={num} value="quant">{num}</option>)}
-            </select>
+            </QuantDrop>
           </div>
         </DropdownContainer>
         <SubmitContainer>

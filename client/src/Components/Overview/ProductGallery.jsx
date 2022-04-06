@@ -4,8 +4,8 @@ import currentStyle from '../../Contexts/CurStyleContext.js';
 
 const Carouselcontainer = styled.div`
   overflow: hidden;
-  width: 55%;
-  height: 850px;
+  width: 600px;
+  height: 725px;
   background-color: green;
 `;
 const Carouselinner = styled.div`
@@ -19,19 +19,26 @@ const Carouselinner = styled.div`
 `;
 
 const InnerLeft = styled.div`
-flex: 10%;
+flex: 5%;
 height: 100%;
-background-color: rgb(0,0,0,0.6);
+&:hover { background-color: rgb(75,21,163,0.6);}
+display: grid;
+place-items: center;
+cursor: pointer;
 `;
 
 const InnerRight = styled.div`
-flex: 10%;
+flex: 5%;
 height: 100%;
-background-color: rgb(0,0,0,0.6);
+&:hover { background-color: rgb(75,21,163,0.6);
+  }
+display: grid;
+place-items: center;
+cursor: pointer;
 `;
 
 const InnerCenter = styled.div`
-flex: 80%;
+flex: 90%;
 height: 100%;
 `;
 
@@ -43,16 +50,37 @@ function ProductGallery({ }) {
   useEffect(() => {
     if (curStyle.photos) {
       setPhotos(curStyle.photos);
+      setIndex(0);
     }
   }, [curStyle]);
+
+  function flipper(num) {
+    if (num > 0) {
+      if (index < (photos.length - 1)) {
+        setIndex(index + num);
+      } else if (index === (photos.length - 1)) {
+        setIndex(photos.length - 1);
+      }
+    } else if (num < 0) {
+      if (index > 0) {
+        setIndex(index + num);
+      } else if (index === 0) {
+        setIndex(0);
+      }
+    }
+  }
 
   return (
     <Carouselcontainer>
       {photos.length > 0 && (
         <Carouselinner src={photos[index].thumbnail_url}>
-          <InnerLeft />
+          <InnerLeft onClick={() => flipper(-1)}>
+            <img alt="" src="overview_imgs/LightLArrow.png" />
+          </InnerLeft>
           <InnerCenter />
-          <InnerRight />
+          <InnerRight onClick={() => flipper(1)}>
+            <img alt="" src="overview_imgs/LightRArrow.png" />
+          </InnerRight>
         </Carouselinner>
       )}
     </Carouselcontainer>

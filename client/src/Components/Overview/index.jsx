@@ -9,14 +9,17 @@ import RenderRating from '../renderRating.jsx';
 
 import Socials from './Socials.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
+import currentStyle from '../../Contexts/CurStyleContext.js';
 
 import styled from 'styled-components';
 
 const StyleContainer = styled.div`
 display: grid;
 grid-template-columns: repeat(4, 1fr);
-width: 300px;
-height: 150px;
+width: 600px;
+height: 250px;
+padding-bottom: 50px;
+padding-top: 50px;
 `
 const Header = styled.div`
 width: 100%;
@@ -36,42 +39,85 @@ const Space = styled.div`
 `
 const Product = styled.div`
 padding-top: 100px;
+display: flex;
+justify-content: space-evenly;
+width: 90%;
+`
+const Left = styled.div`
+width: auto;
 `
 
-function Overview({styles, setCurStyle}) {
+const Right = styled.div`
+width: auto;
+`
+const ReviewSumm = styled.div`
+padding-bottom: 20px;
+justify-content: left;
+`
+
+const Bottom = styled.div`
+width: 90%
+padding-top: 100px;
+padding-bottom: 100px;
+text-align: center;
+display: grid;
+gird-template: 1fr/ 1fr;
+place-items: center;
+`
+const POverview = styled.div`
+z-index: 2;
+`
+const Social = styled.div`
+padding-top: 25px;
+z-index: 1;
+`
+
+function Overview({ styles, setCurStyle }) {
   const { currentProd } = useContext(currentProducts);
+  const { curStyle } = useContext(currentStyle);
 
   return (
-      <div id="overview">
-        <Header><LogoCart /></Header>
-        <Space />
-        <SpaceII />
-        <Product>
+    <div id="overview">
+      <Header><LogoCart /></Header>
+      <Space />
+      <SpaceII />
+      <Product>
+        <Left>
+          <div>
+            <ProductGallery />
+          </div>
+        </Left>
+        <Right>
           <div id="product details">
-            <div id="review-summ">
-              <RenderRating prodID={currentProd.id} />
-              </div>
             <div id="product-category">
               <b>Category:&nbsp;</b>
               {currentProd.category}
             </div>
             <h3>{currentProd.name}</h3>
-            <div>
-              <ProductGallery />
+            <ReviewSumm>
+              <RenderRating prodID={currentProd.id} />
+            </ReviewSumm>
+            <div>Styles > Selected Style >&nbsp;
+              <b>{curStyle.name}</b>
             </div>
-            <br/>
-            <div>Styles > Selected Style</div>
-            <br />
             <StyleContainer>
-              {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle}/>)}
+              {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle} />)}
             </StyleContainer>
             <Selection />
           </div>
-        </Product>
-        <div id="product-overview"><ProductOverview /></div>
-        <br />
-        <div id="share-socials"><Socials /></div>
-      </div>
+        </Right>
+      </Product>
+      <br/>
+      <Bottom>
+        <POverview>
+          <ProductOverview />
+        </POverview>
+        <br/>
+        <Social>
+          <Socials />
+        </Social>
+      </Bottom>
+    </div >
   );
 }
 
