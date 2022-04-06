@@ -2,6 +2,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
 
+const SelectionContainer = styled.div`
+width: 500px;
+`;
 const DropdownContainer = styled.div`
 display: flex;
 `;
@@ -44,6 +47,7 @@ function Selection({ }) {
 
   return (
     <div>
+      <SelectionContainer>
       <form>
         <DropdownContainer>
           <div id="size">
@@ -62,6 +66,7 @@ function Selection({ }) {
           <input type="button" value="Add to bag" />
         </SubmitContainer>
       </form>
+      </SelectionContainer>
     </div>
   );
 }

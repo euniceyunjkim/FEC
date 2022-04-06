@@ -16,7 +16,7 @@ import styled from 'styled-components';
 const StyleContainer = styled.div`
 display: grid;
 grid-template-columns: repeat(4, 1fr);
-width: 600px;
+width: 500px;
 height: 250px;
 padding-bottom: 50px;
 padding-top: 50px;
