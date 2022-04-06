@@ -26,7 +26,7 @@ function App({ }) {
     axios.get('/products')
       .then((data) => {
         setCurrentProd(data.data[0]);
-        axios.get(`products/:product_id/styles`, { params: { product_id: data.data[0].id }})
+        axios.get(`products/:product_id/styles`, { params: { product_id: data.data[0].id } })
           .then((res) => {
             setStyles(res.data.results);
             defaultGrabber(res.data.results);
@@ -35,6 +35,17 @@ function App({ }) {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  useEffect(() => {
+    if (currentProd.id) {
+      axios.get(`products/:product_id/styles`, { params: { product_id: currentProd.id } })
+        .then((res) => {
+          setStyles(res.data.results);
+          defaultGrabber(res.data.results);
+        })
+        .catch((err) => console.log('err fetching styles', err));
+    }
+  }, [currentProd]);
 
   return (
     <currentProducts.Provider value={{ currentProd, setCurrentProd }}>

@@ -17,14 +17,14 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
     if (newOutfit === 'newOutfit') {
       return (
         <div className={className} onClick={() => addOutfit()}>
-          <CardImage src={'Images/PurpleStar.png'} />
+          <CardImage src={'assets/PurpleStar.png'} />
           <div>Click to add this item to your outfit!</div>
         </div>
       )
     } else if (styles) {
       return (
         <div className={className}>
-          <CardImage src={styles.photos[0].thumbnail_url || 'Images/PurpleStar.png'} onClick={() => {setCurrentProd(product)}}/>
+          <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} onClick={() => {setCurrentProd(product)}}/>
           <ButtonIcon onClick={() => handleClick(id)}>{action}</ButtonIcon>
           {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>

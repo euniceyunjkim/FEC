@@ -3,6 +3,7 @@ import currentProducts from '../../Contexts/CurProdContext';
 import Box from './css/container';
 import RenderRating from '../renderRating.jsx';
 import RenderLeft from './renderLeft.jsx';
+import RenderRight from './renderRight.jsx';
 
 // const AxiosHelper = require('./AxiosHelper');
 
@@ -19,7 +20,15 @@ const Reviews = function Reviews() {
           </Box.ReviewSum>
         </Box.InnerCol>
         <Box.InnerCol>
-          <h2>amount of reviews and how you want to sort</h2>
+        <RenderRight />
+        </Box.InnerCol>
+      </Box.Container>
+    </div>
+
+  );
+};
+/*
+<h2>amount of reviews and how you want to sort</h2>
           <div>
             <h1>big boi box for reviews</h1>
             <p>Container for each review</p>
@@ -30,12 +39,5 @@ const Reviews = function Reviews() {
             <button onClick={() => alert('shtoop it its not ready yet')}>more reviews</button>
             <button onClick={() => alert('shtoop it its not ready yet')}>add reviews +</button>
           </Box.InnerCol>
-
-        </Box.InnerCol>
-      </Box.Container>
-    </div>
-
-  );
-};
-
+          */
 export default Reviews;

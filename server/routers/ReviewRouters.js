@@ -5,15 +5,21 @@ const config = require('../../config.js')
 const path = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews';
 
 ReviewRouters.get('/', (req, res) => {
-  axios.get(path, {headers: {Authorization: config.TOKEN},
-  params: {product_id: req.query.product_id}
-})
+  axios.get(path, {
+    headers: { Authorization: config.TOKEN },
+    params: {
+      product_id: req.query.product_id,
+      page: req.query.page,
+      count: req.query.count,
+      sort: req.query.sort,
+    },
+  })
     .then((data) => res.send(data.data))
-    .catch((err) => res.send(err))
-})
+    .catch((err) => res.send(err));
+});
 
 ReviewRouters.get('/meta', (req, res) => {
-  axios.get(`${path}/meta`, { headers: { Authorization: config.TOKEN }, params: {product_id: req.query.product_id}})
+  axios.get(`${path}/meta`, { headers: { Authorization: config.TOKEN }, params: { product_id: req.query.product_id }})
     .then((data) => res.send(data.data))
     .catch((err) => res.send(err));
 })

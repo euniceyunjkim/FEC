@@ -10,15 +10,15 @@ const Star = function ({ rating }) {
   const renderStars = function (i) {
     const remainder = i % rating;
     if (i * 4 <= rating * 4) {
-      return <Box.Star src="./Images/fullStar.png" alt="full star" />;
+      return <Box.Star src="./assets/fullStar.png" alt="full star" />;
     } else if (remainder === 0.5) {
-      return <Box.Star src="./Images/halfStar.png" alt="half star" />;
+      return <Box.Star src="./assets/halfStar.png" alt="half star" />;
     } else if (remainder === 0.25) {
-      return <Box.Star src="./Images/3-4Star.png" alt="three quarters star" />;
+      return <Box.Star src="./assets/3-4Star.png" alt="three quarters star" />;
     } else if (remainder === 0.75) {
-      return <Box.Star src="./Images/1-4Star.png" alt="quarter star" />;
+      return <Box.Star src="./assets/1-4Star.png" alt="quarter star" />;
     } else {
-      return <Box.Star src="./Images/emptyStar.png" alt="empty star" />;
+      return <Box.Star src="./assets/emptyStar.png" alt="empty star" />;
     }
   };
   return (

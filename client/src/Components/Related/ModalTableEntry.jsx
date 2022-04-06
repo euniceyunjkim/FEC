@@ -1,4 +1,5 @@
 import React from 'react';
+import { ModalIcon } from './StyledComps/NoFeatureIconStyle.js'
 
 const ModalTableEntry = ({ feature, compareData }) => {
   let first = {};
@@ -14,7 +15,7 @@ const ModalTableEntry = ({ feature, compareData }) => {
 
   return (
     <tr>
-      <td>{first[feature] || 'None'}</td>
+      <td>{first[feature] || <ModalIcon src='assets/PurpleX.png' />}</td>
       <td>{feature}</td>
       <td>{second[feature] || 'None'}</td>
     </tr>

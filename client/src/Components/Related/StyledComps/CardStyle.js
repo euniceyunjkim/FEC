@@ -11,6 +11,7 @@ export const Card = styled(ProductCard)`
   margin: 5px;
   padding: 2px;
   text-align: center;
+  object-fit: cover;
   };
 `;
   // & button {

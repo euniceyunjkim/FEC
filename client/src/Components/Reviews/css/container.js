@@ -27,7 +27,7 @@ const Box = {
   `,
   Bar: styled.div`
   width: 210px;
-  background-image: url(./Images/bar.png);
+  background-image: url(./assets/bar.png);
   background-repeat: no-repeat;
   `,
   Triangle: styled.img`
@@ -40,6 +40,21 @@ const Box = {
   width: 210px;
   padding-bottom: 15px;
   margin: 0px;
+  `,
+  Review: styled.div`
+  flexDirection: column;
+  border-bottom: double;
+  width: 500px;
+  `,
+  ReviewHeader: styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  `,
+  BottomButton: styled.div`
+  width: 50px;
+  height: 10px;
+  border: 2px;
   `,
 };
 
