@@ -4,7 +4,11 @@ function Answers({ answer }) {
   return (
     <div>
       <div>A: {answer.body}</div>
-      <div>by user, data | Helpful? Yes (2) | Report</div>
+      <div>
+        <span>by user, date |</span>
+        <span> Helpful? Yes (2) |</span>
+        <span> Report</span>
+      </div>
     </div>
   );
 }
