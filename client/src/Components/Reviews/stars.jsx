@@ -6,12 +6,17 @@ import Box from './css/container';
 // import halfStar from './assets/halfStar.png';
 // import emptyStar from './assets/emptyStar.png';
 
-const Star = function bob({ rating }) {
+const Star = function ({ rating }) {
   const renderStars = function (i) {
-    if (i <= rating) {
+    const remainder = i % rating;
+    if (i * 4 <= rating * 4) {
       return <Box.Star src="./assets/fullStar.png" alt="full star" />;
-    } else if (i % rating === 0.5) {
+    } else if (remainder === 0.5) {
       return <Box.Star src="./assets/halfStar.png" alt="half star" />;
+    } else if (remainder === 0.25) {
+      return <Box.Star src="./assets/3-4Star.png" alt="three quarters star" />;
+    } else if (remainder === 0.75) {
+      return <Box.Star src="./assets/1-4Star.png" alt="quarter star" />;
     } else {
       return <Box.Star src="./assets/emptyStar.png" alt="empty star" />;
     }

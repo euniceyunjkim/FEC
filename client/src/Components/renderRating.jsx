@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 // import currentProducts from '../../Contexts/CurProdContext';
 import Star from './Reviews/stars.jsx';
-import Box from './Reviews/css/container';
 
 const axios = require('axios');
 
@@ -21,7 +20,7 @@ const RenderRating = function RenderRating({ prodID }) {
       }
     }
     // this is async
-    setRating((Math.round((totalStarts / totalVotes) * 2)) / 2);
+    setRating((Math.round((totalStarts / totalVotes) * 4)) / 4);
   };
 
   // a function to get the and create the ratings of any given ID
@@ -40,11 +39,9 @@ const RenderRating = function RenderRating({ prodID }) {
   }, [prodID]);
   // renders the rating in number form if a value is passed in for loadRating
   return (
-    <Box.InnerCol>
-      <Box.Container>
-        <Star rating={rating} />
-      </Box.Container>
-    </Box.InnerCol>
+    <div>
+      <Star rating={rating} />
+    </div>
   );
 };
 

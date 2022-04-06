@@ -14,7 +14,7 @@ function App({ }) {
   const [curStyle, setCurStyle] = useState({});
 
   function defaultGrabber(items) {
-    for (var i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i += 1) {
       if (items[i]['default?'] === true) {
         setCurStyle(items[i]);
         return;
