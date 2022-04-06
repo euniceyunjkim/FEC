@@ -3,7 +3,6 @@ import Box from './css/container';
 import Star from './stars.jsx';
 
 const Reviews = function ({ obj }) {
-  console.log(obj);
   if (obj) {
     return (
       <Box.Review>
