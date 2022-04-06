@@ -51,7 +51,7 @@ let OutfitList = ({}) => {
       {current === 0 ? null : <PreviousIcon src="overview_imgs/DarkLArrow.png" onClick={previous} />}
       <Card newOutfit={'newOutfit'} addOutfit={addOutfit} />
     {Object.keys(outfits).map((key, index) => {
-      if (index < current + 2 && index > current - 1) {
+      if (index < current + 2 && index > current - 1) {x``
         return <Card key={index} action={'Remove'} handleClick={removeOutfit} id={key} product={outfits[key][0]} styles={outfits[key][1]}/>
       }
     })}
