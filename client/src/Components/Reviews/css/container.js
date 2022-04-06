@@ -27,7 +27,7 @@ const Box = {
   `,
   Bar: styled.div`
   width: 210px;
-  background-image: url(./assets/bar.png);
+  background-image: url(./Images/bar.png);
   background-repeat: no-repeat;
   `,
   Triangle: styled.img`
