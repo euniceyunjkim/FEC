@@ -8,8 +8,10 @@ import { SalePrice } from './StyledComps/SalePriceStyle.js';
 import Modal from './Modal.jsx';
 import RenderRating from '../renderRating.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
+import { useNavigate } from 'react-router-dom';
 
 let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id, handleClick, showModal, setShowModal, compareData}) => {
+  let navigate = useNavigate();
 
   const {setCurrentProd} = useContext(currentProducts);
 
@@ -24,7 +26,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
     } else if (styles) {
       return (
         <div className={className}>
-          <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} onClick={() => {setCurrentProd(product)}}/>
+          <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} onClick={() => {navigate(`/${product.id}`)}}/>
           <ButtonIcon onClick={() => handleClick(id)}>{action}</ButtonIcon>
           {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>
