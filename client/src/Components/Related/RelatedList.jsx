@@ -43,25 +43,24 @@ let RelatedList = ({related}) => {
   }, [related])
 
   let next = () => {
-    setCurrent(current === length - 3 ? 0 : current + 1);
+    setCurrent(current === length - 4 ? 0 : current + 1);
   };
 
   let previous = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   }
 
-
   return (
     <List>
       {current === 0 ? null : <PreviousIcon src="overview_imgs/DarkLArrow.png" onClick={previous} />}
     {related.map((product, index) => {
-      if (index < current + 3 && index > current - 1) {
+      if (index < current + 4 && index > current - 1) {
         return <Card key={index} action={'Compare'} compareData={compareData} showModal={showModal}
         setShowModal={setShowModal} handleClick={() => showCompare(product, relatedStyles[index])}
         product={product} styles={relatedStyles[index]}/>
       }
     })}
-      {current < length - 3 ? <NextIcon src="overview_imgs/DarkRArrow.png" onClick={next} /> : null}
+      {current < length - 4 ? <NextIcon src="overview_imgs/DarkRArrow.png" onClick={next} /> : null}
     </List>
   )
 }

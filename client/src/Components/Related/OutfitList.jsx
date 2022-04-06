@@ -39,7 +39,7 @@ let OutfitList = ({}) => {
   }, [])
 
   let next = () => {
-    setCurrent(current === length - 2 ? 0 : current + 1);
+    setCurrent(current === length - 3 ? 0 : current + 1);
   };
 
   let previous = () => {
@@ -51,11 +51,11 @@ let OutfitList = ({}) => {
       {current === 0 ? null : <PreviousIcon src="overview_imgs/DarkLArrow.png" onClick={previous} />}
       <Card newOutfit={'newOutfit'} addOutfit={addOutfit} />
     {Object.keys(outfits).map((key, index) => {
-      if (index < current + 2 && index > current - 1) {
+      if (index < current + 3 && index > current - 1) {
         return <Card key={index} action={'Remove'} handleClick={removeOutfit} id={key} product={outfits[key][0]} styles={outfits[key][1]}/>
       }
     })}
-      {current < length - 2 ? <NextIcon src="overview_imgs/DarkRArrow.png" onClick={next} /> : null}
+      {current < length - 3 ? <NextIcon src="overview_imgs/DarkRArrow.png" onClick={next} /> : null}
     </List>
   )
 
