@@ -25,14 +25,14 @@ const RenderLeft = function () {
   };
   const saveRecommended = function (rec) {
     const total = (rec.false * 1) + (rec.true * 1);
-    console.log((Math.round(100 * (rec.true / total))));
+    // console.log((Math.round(100 * (rec.true / total))));
     setRecommended(Math.round(100 * (rec.true / total)));
   };
   // a function to get the and create the ratings of any given ID
   const getRatings = function (id) {
     axios.get(`http://localhost:3000/reviews/meta?product_id=${id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         avreageRating(res.data.ratings);
         saveRecommended(res.data.recommended);
       })

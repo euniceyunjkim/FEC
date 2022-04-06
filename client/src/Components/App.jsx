@@ -24,7 +24,15 @@ function App({ }) {
   // const [loaded, setLoad] = useState(false);
   useEffect(() => {
     axios.get('/products')
-      .then((data) => {setCurrentProd(data.data[0]);})
+      .then((data) => {
+        setCurrentProd(data.data[0]);
+        axios.get(`products/:product_id/styles`, { params: { product_id: data.data[0].id } })
+          .then((res) => {
+            setStyles(res.data.results);
+            defaultGrabber(res.data.results);
+          })
+          .catch((err) => console.log('err fetching styles', err));
+      })
       .catch((err) => console.error(err));
   }, []);
 
