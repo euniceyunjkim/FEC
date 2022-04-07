@@ -103,6 +103,7 @@ function Selection({ }) {
   const [quant, setQuant] = useState(1);
   const [selSize, setSelSize] = useState(null);
   const [selQuant, setSelQuant] = useState(1);
+  const [bagged, setBagged] = useState([]);
   const skuKeys = Object.keys(skus);
   const [clicked, setClicked] = useState(-1);
 

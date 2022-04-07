@@ -78,12 +78,10 @@ function LogoCart({ styles }) {
         <Count>
           {cart.length}
         </Count>
-        {console.log(styles)}
         <CartModal
           cart={cart}
           show={show}
           hideModal={toggleShow}
-          styles={styles}
         />
       </Cart>
     </Container>

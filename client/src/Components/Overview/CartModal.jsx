@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
@@ -47,11 +47,22 @@ width: 100%;
 
 const Item = styled.div`
 display: flex;
+width: 100%;
+height: auto;
 `;
 
 const Pic = styled.div`
 order: 1;
-padding: 3px 5px;
+top: 2px;
+left: 3px;
+position: relative;
+padding: 3px 2px;
+width: 10px;
+height: 10px;
+background-image: ${({ src }) => `url(${src})`};
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;
 `;
 
 const Name = styled.div`
@@ -64,7 +75,20 @@ padding: 3px 5px;
 order: 3;
 `;
 
-function CartModal({ show, hideModal, cart, styles }) {
+const Delete = styled.button`
+order: 4;
+padding: 3px 5px;
+background-color: transparent;
+border: none;
+&:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #4b15a3;
+}
+`;
+
+function CartModal({ show, hideModal, cart }) {
+
   return show
     ? createPortal(
       <div>
@@ -73,10 +97,11 @@ function CartModal({ show, hideModal, cart, styles }) {
           <Modall>
             <Cart>
               {cart.map((item) => (
-                <Item>
-                  <Pic>Picture</Pic>
+                <Item key={item.sku_id}>
+                  <Pic src="assets/fullStar.png" />
                   <Name>{item.sku_id}</Name>
                   <Count>QTY {item.count}</Count>
+                  <Delete>X</Delete>
                 </Item>
               ))}
             </Cart>
