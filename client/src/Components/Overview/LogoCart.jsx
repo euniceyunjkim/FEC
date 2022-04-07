@@ -15,6 +15,9 @@ height: 90px;
 background-image: ${({ src }) => `url(${src})`};
 background-repeat: no-repeat;
 text-align: center;
+&:hover {
+  cursor: pointer;
+}
 `;
 
 export const Cart = styled.div`
@@ -75,6 +78,7 @@ function LogoCart({ styles }) {
         <Count>
           {cart.length}
         </Count>
+        {console.log(styles)}
         <CartModal
           cart={cart}
           show={show}

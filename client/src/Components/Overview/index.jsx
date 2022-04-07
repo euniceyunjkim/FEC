@@ -75,19 +75,28 @@ z-index: 1;
 `
 const Price = styled.div`
 padding: 15px 0px;
+display: flex;
+`
+const OnSale = styled.div`
+color: black;
+font-size: 20px;
+text-decoration: line-through;
+float: left;
+order: 1;
+padding-right: 10px;
 `
 
-const Sale = styled.div`
-color: red
-font-size: 20 px;
-`
-const onSale = styled.div`
-font-size: 15 px;
-text-decoration: line-through;
-`
 const Og = styled.div`
 color: black;
 font-size: 20px;
+order: 1;
+`
+
+const Sale = styled.div`
+color: red;
+font-size: 20px;
+float: left;
+order: 2;
 `
 const Stylesdesc = styled.div`
 padding-top: 10px;
@@ -138,7 +147,7 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
               <Reviews onClick={() => autoScroll()}><i>Read All Reviews</i></Reviews>
             </ReviewSumm>
             <Price>
-              {curStyle.sale_price ? <div><onSale>${curStyle.original_price}</onSale><Sale>${curStyle.sale_price}</Sale></div> : <Og>${curStyle.original_price}</Og>}
+              {curStyle.sale_price ? <div><OnSale>${curStyle.original_price}</OnSale><Sale>${curStyle.sale_price}</Sale></div> : <Og>${curStyle.original_price}</Og>}
             </Price>
             <Stylesdesc> Selected Style >&nbsp;
               <b>{curStyle.name}</b>
