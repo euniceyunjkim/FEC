@@ -6,6 +6,8 @@
 config.js
 
 # User-specific files
+client/dist/bundle.js
+config.js
 *.rsuser
 *.suo
 *.user
@@ -354,3 +356,5 @@ MigrationBackup/
 config.js
 
 /client/dist/bundle.js
+package-lock.json
+coverage/
