@@ -6,7 +6,7 @@ display: flex;
 justify-content: space-between;
 `;
 
-const Logo = styled.div`
+export const Logo = styled.div`
 background-size: contain;
 width: 90px;
 height: 90px;
@@ -15,7 +15,7 @@ background-repeat: no-repeat;
 text-align: center;
 `;
 
-const Cart = styled.div`
+export const Cart = styled.div`
 background-size: contain;
 width: 90px;
 height: 90px;

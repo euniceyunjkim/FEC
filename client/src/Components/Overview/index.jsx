@@ -3,6 +3,7 @@ import axios from 'axios';
 import Styles from './Styles.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import ProductGallery from './ProductGallery.jsx';
+import ThumbnailCarousel from './ThumbnailCarousel.jsx';
 import LogoCart from './LogoCart.jsx';
 import Selection from './Selection.jsx';
 import RenderRating from '../renderRating.jsx';
@@ -83,6 +84,9 @@ function Overview({ styles, setCurStyle }) {
       <SpaceII />
       <Product>
         <Left>
+          <div>
+            <ThumbnailCarousel/ >
+          </div>
           <div>
             <ProductGallery />
           </div>
