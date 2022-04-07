@@ -5,17 +5,25 @@ import Related from './Related/index.jsx';
 import Reviews from './Reviews/index.jsx';
 import currentProducts from '../Contexts/CurProdContext.js';
 import currentStyle from '../Contexts/CurStyleContext.js';
+import { useParams } from 'react-router-dom';
+
+
 
 const axios = require('axios');
 
-function App({ }) {
+function App({}) {
+
   const [currentProd, setCurrentProd] = useState({});
   const [styles, setStyles] = useState([]);
   const [curStyle, setCurStyle] = useState({});
+<<<<<<< HEAD
   const ReviewsRef = useRef(null);
+=======
+  let { prodID } = useParams();
+>>>>>>> main
 
   function defaultGrabber(items) {
-    for (var i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i += 1) {
       if (items[i]['default?'] === true) {
         setCurStyle(items[i]);
         return;
@@ -24,10 +32,10 @@ function App({ }) {
   }
   // const [loaded, setLoad] = useState(false);
   useEffect(() => {
-    axios.get('/products')
+    axios.get(`/products/${prodID}`)
       .then((data) => {
-        setCurrentProd(data.data[0]);
-        axios.get(`products/:product_id/styles`, { params: { product_id: data.data[0].id } })
+        setCurrentProd(data.data);
+        axios.get(`products/:product_id/styles`, { params: { product_id: data.data.id } })
           .then((res) => {
             setStyles(res.data.results);
             defaultGrabber(res.data.results);
@@ -35,7 +43,7 @@ function App({ }) {
           .catch((err) => console.log('err fetching styles', err));
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [prodID]);
 
   useEffect(() => {
     if (currentProd.id) {
@@ -47,6 +55,7 @@ function App({ }) {
         .catch((err) => console.log('err fetching styles', err));
     }
   }, [currentProd]);
+
 
   return (
     <currentProducts.Provider value={{ currentProd, setCurrentProd }}>
