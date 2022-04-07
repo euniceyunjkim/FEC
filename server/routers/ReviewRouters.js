@@ -25,6 +25,7 @@ ReviewRouters.get('/meta', (req, res) => {
 })
 
 ReviewRouters.put('/:review_id/helpful', (req, res) => {
+  console.log('here');
   axios.put(`${path}/${req.params.review_id}/helpful`, {}, {headers: {Authorization: config.TOKEN}})
   .then((data) => res.status(data.status))
   .catch((err) => res.send(err))

@@ -2,7 +2,15 @@ import React from 'react';
 import Box from './css/container';
 import Star from './stars.jsx';
 
+const axios = require('axios');
+
 const Reviews = function ({ obj }) {
+  const wasHelpful = function () {
+    console.log(obj);
+    axios.get(`http://localhost:3000/reviews/:review_id/helpful?review_id=${obj.review_id}`)
+      .then((res) => console.log(res))
+      .catch(() => console.log('error in axios (reviews.jsx)'));
+  }
   if (obj) {
     return (
       <Box.Review>
