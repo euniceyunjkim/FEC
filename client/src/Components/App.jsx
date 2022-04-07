@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Overview from './Overview/index.jsx';
 import QA from './QA/index.jsx';
 import Related from './Related/index.jsx';
@@ -16,11 +16,7 @@ function App({}) {
   const [currentProd, setCurrentProd] = useState({});
   const [styles, setStyles] = useState([]);
   const [curStyle, setCurStyle] = useState({});
-<<<<<<< HEAD
-  const ReviewsRef = useRef(null);
-=======
   let { prodID } = useParams();
->>>>>>> main
 
   function defaultGrabber(items) {
     for (let i = 0; i < items.length; i += 1) {
@@ -60,7 +56,7 @@ function App({}) {
   return (
     <currentProducts.Provider value={{ currentProd, setCurrentProd }}>
       <currentStyle.Provider value={{ curStyle, setCurStyle }}>
-        <Overview styles={styles} setCurStyle={setCurStyle} ReviewsRef={ReviewsRef} />
+        <Overview styles={styles} setCurStyle={setCurStyle} />
         <Related />
       </currentStyle.Provider>
       <QA />
