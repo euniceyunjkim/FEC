@@ -1,4 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
+import Reviewss from '../Reviews/index.jsx';
+
 import axios from 'axios';
 import Styles from './Styles.jsx';
 import ProductOverview from './ProductOverview.jsx';
@@ -47,11 +49,11 @@ width: 90%;
 const Left = styled.div`
 width: auto;
 `
-
 const Right = styled.div`
 width: auto;
 `
 const ReviewSumm = styled.div`
+display: flex;
 padding-bottom: 10px;
 `
 
@@ -91,10 +93,22 @@ const Stylesdesc = styled.div`
 padding-top: 10px;
 padding-bottom: 10px;
 `
+const Reviews = styled.div`
+text-decoration: underline;
+padding-left: 10px;
+&:hover {
+  cursor: pointer;
+  color: #280f54;
+}
+`
 
-function Overview({ styles, setCurStyle }) {
+function Overview({ styles, setCurStyle, ReviewsRef }) {
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
+
+  function autoScroll(){
+    document.getElementById('ReviewsRef').scrollIntoView({behavior: "auto"});
+  }
 
   return (
     <div id="overview">
@@ -121,6 +135,7 @@ function Overview({ styles, setCurStyle }) {
             <h2>{currentProd.name}</h2>
             <ReviewSumm>
               <RenderRating prodID={currentProd.id} />
+              <Reviews onClick={() => autoScroll()}><i>Read All Reviews</i></Reviews>
             </ReviewSumm>
             <Price>
               {curStyle.sale_price ? <div><onSale>${curStyle.original_price}</onSale><Sale>${curStyle.sale_price}</Sale></div> : <Og>${curStyle.original_price}</Og>}
