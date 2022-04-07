@@ -52,7 +52,6 @@ function App({}) {
     }
   }, [currentProd]);
 
-
   return (
     <currentProducts.Provider value={{ currentProd, setCurrentProd }}>
       <currentStyle.Provider value={{ curStyle, setCurStyle }}>

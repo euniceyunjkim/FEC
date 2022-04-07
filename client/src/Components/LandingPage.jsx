@@ -96,7 +96,7 @@ let LandingPage = ({ }) => {
           <AnimLogo src="overview_imgs/AnimLogo.gif" />
           {clicked ? <Joestar onClick={() => { navigate("/40346") }}>START YOUR ADVENTURE
           </Joestar> : <Ready onClick={playMusic}>READY?</Ready>}
-          <audio id="bgmusic" src='https://youtu.be/EP62gl-sj2I' type="audio/mpeg" />
+          <audio id="bgmusic" src='overview_imgs/audio.mp3' type="audio/mp3" />
         </Background>
       </BgContainer>
     </Page>

@@ -23,32 +23,15 @@ z-index: 1;
 
 const SizeButton = styled.button`
 border: 1px solid;
-// color: ${styling => styling.color};
-// background-color: ${styling => styling.background};
-color: black;
-background-color: white;
 font-align: center;
 font-size: 15px;
 margin: 8px;
 padding:10px 20px;
-
+${({styles}) => `${styles}`};
 &:hover {
   cursor: pointer;
-  color: white;
   background-color: #4b15a3;
-};
-
-&:active {
   color: white;
-  background-color: #4b15a3;
-}
-&:focus {
-  color: white;
-  background-color: #4b15a3;
-}
-
-// ${({ selSize }) => selSize && `background-color: #4b15a3;
-// color: white; `}
 `;
 
 const QuantDrop = styled.div`
@@ -111,11 +94,6 @@ const PlusBut = styled.button`
   margin: 8px;
   padding:10px 30px;
   float: right;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #4b15a3;
-    color: white;
   };
 `;
 
@@ -126,8 +104,14 @@ function Selection({ }) {
   const [selSize, setSelSize] = useState(null);
   const [selQuant, setSelQuant] = useState(1);
   const skuKeys = Object.keys(skus);
+  const [clicked, setClicked] = useState(-1);
 
   const [shown, setToggle] = useState(false);
+
+  const styles = {
+    button: 'color: black; background-color: white',
+    clicked: 'color: white; background-color: #4b15a3',
+  };
 
   useEffect(() => {
     if (curStyle.style_id) {
@@ -139,10 +123,11 @@ function Selection({ }) {
     setToggle(!shown);
   }
 
-  function sizeSelect(e) {
+  function sizeSelect(e, index) {
     setQuant(skus[e.target.value].quantity);
     setSelSize(e.target.value);
     setSelQuant(1);
+    setClicked(index);
     // setClick({ ...clicked, [e.target.value]: { color: 'white', background: '#4b15a3' } });
   }
 
@@ -182,10 +167,11 @@ function Selection({ }) {
         <DropdownContainer>
           <div id="size">
             <SizeContainer>
-              {skuKeys.map((sku) => (
+              {skuKeys.map((sku, index) => (
                 <SizeButton type="button"
-                  onClick={(e) => sizeSelect(e)}
-                  key={sku} value={sku}>
+                  onClick={(e) => sizeSelect(e, index)}
+                  key={sku} value={sku}
+                  styles={ clicked === index ? styles.clicked : styles.button }>
                   {skus[sku].size}
                 </SizeButton>
               ))}
