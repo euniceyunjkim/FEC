@@ -6,7 +6,6 @@ const Carouselcontainer = styled.div`
   overflow: hidden;
   width: 600px;
   height: 725px;
-  background-color: green;
 `;
 const Carouselinner = styled.div`
   background-repeat: no-repeat;
@@ -73,7 +72,7 @@ function ProductGallery({ }) {
   return (
     <Carouselcontainer>
       {photos.length > 0 && (
-        <Carouselinner src={photos[index].thumbnail_url}>
+        <Carouselinner src={photos[index].url}>
           <InnerLeft onClick={() => flipper(-1)}>
             <img alt="" src="overview_imgs/LightLArrow.png" />
           </InnerLeft>
