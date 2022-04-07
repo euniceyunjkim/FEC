@@ -1,4 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+import Modal from './Modal.jsx';
+
 import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
 
@@ -30,7 +33,9 @@ margin: 8px;
 padding:10px 20px;
 
 &:hover {
-  cursor: pointer
+  cursor: pointer;
+  color: white;
+  background-color: #4b15a3;
 };
 
 &:active {
@@ -118,13 +123,11 @@ function Selection({ }) {
   const [skus, setSkus] = useState({});
   const { curStyle } = useContext(currentStyle);
   const [quant, setQuant] = useState(1);
-  const [showQuant, setShowQ] = useState(false);
-  // const [clicked, setClick] = useState({[skuKeys]: {color: 'black', background: 'white'}});
-
   const [selSize, setSelSize] = useState(null);
-  const [selQuant, setSelQuant] = useState(null);
+  const [selQuant, setSelQuant] = useState(1);
   const skuKeys = Object.keys(skus);
-  const count = 1;
+
+  const [shown, setToggle] = useState(false);
 
   useEffect(() => {
     if (curStyle.style_id) {
@@ -132,14 +135,45 @@ function Selection({ }) {
     }
   }, [curStyle]);
 
-  function quantityArr(num) {
-    return Array.from({ length: num }, (_, i) => i + 1);
+  function toggleModal() {
+    setToggle(!shown);
   }
 
   function sizeSelect(e) {
     setQuant(skus[e.target.value].quantity);
-    setSelSize(skus[e.target.value].size);
+    setSelSize(e.target.value);
+    setSelQuant(1);
     // setClick({ ...clicked, [e.target.value]: { color: 'white', background: '#4b15a3' } });
+  }
+
+  function updateQuant(num) {
+    if (selSize) {
+      if (num > 0) {
+        if (selQuant < quant) {
+          setSelQuant(selQuant + num);
+        } else if (selQuant === quant) {
+          setSelQuant(quant);
+        }
+      } else if (num < 0) {
+        if (selQuant > 1) {
+          setSelQuant(selQuant + num);
+        } else if (selQuant === 1) {
+          setSelQuant(1);
+        }
+      }
+    } else {
+      toggleModal();
+    }
+  }
+
+  function addToBag(size, quantity) {
+    if (size && quantity) {
+      const item = { sku_id: size, count: quantity };
+      axios.post('/cart', item)
+        .catch((err) => console.error(err));
+    } else {
+      toggleModal();
+    }
   }
 
   return (
@@ -159,21 +193,23 @@ function Selection({ }) {
           </div>
           <div id="quantity">
             <QuantDrop>
-              <MinusBut>
+              <MinusBut onClick={() => updateQuant(-1)}>
                 -
               </MinusBut>
               <Count>
-                {quant}
+                {selQuant}
               </Count>
-              <PlusBut>
+              <PlusBut onClick={() => updateQuant(1)}>
                 +
               </PlusBut>
             </QuantDrop>
           </div>
         </DropdownContainer>
-        <AddButton type="button" value="Add to bag">
+        <AddButton type="button" value="Add to bag"
+          onClick={() => addToBag(selSize, selQuant)}>
           Add to bag
         </AddButton>
+        <Modal shown={shown} hideModal={toggleModal} />
       </SelectionContainer>
     </div>
   );

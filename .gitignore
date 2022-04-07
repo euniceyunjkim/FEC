@@ -354,3 +354,5 @@ MigrationBackup/
 config.js
 
 /client/dist/bundle.js
+
+coverage/

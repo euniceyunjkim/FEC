@@ -19,8 +19,8 @@ display: grid;
 grid-template-columns: repeat(4, 1fr);
 width: 500px;
 height: 250px;
-padding-bottom: 50px;
-padding-top: 50px;
+padding-bottom: 20px;
+padding-top: 30px;
 `
 const Header = styled.div`
 width: 100%;
@@ -52,8 +52,7 @@ const Right = styled.div`
 width: auto;
 `
 const ReviewSumm = styled.div`
-padding-bottom: 20px;
-justify-content: left;
+padding-bottom: 10px;
 `
 
 const Bottom = styled.div`
@@ -72,6 +71,26 @@ const Social = styled.div`
 padding-top: 25px;
 z-index: 1;
 `
+const Price = styled.div`
+padding: 15px 0px;
+`
+
+const Sale = styled.div`
+color: red
+font-size: 20 px;
+`
+const onSale = styled.div`
+font-size: 15 px;
+text-decoration: line-through;
+`
+const Og = styled.div`
+color: black;
+font-size: 20px;
+`
+const Stylesdesc = styled.div`
+padding-top: 10px;
+padding-bottom: 10px;
+`
 
 function Overview({ styles, setCurStyle }) {
   const { currentProd } = useContext(currentProducts);
@@ -79,7 +98,9 @@ function Overview({ styles, setCurStyle }) {
 
   return (
     <div id="overview">
-      <Header><LogoCart /></Header>
+      <Header>
+        <LogoCart styles={styles}/>
+      </Header>
       <Space />
       <SpaceII />
       <Product>
@@ -94,16 +115,19 @@ function Overview({ styles, setCurStyle }) {
         <Right>
           <div id="product details">
             <div id="product-category">
-              <b>Category:&nbsp;</b>
-              {currentProd.category}
+              <i><b>CATEGORY&nbsp;//&nbsp;</b>
+              {currentProd.category && currentProd.category.toUpperCase()}</i>
             </div>
-            <h3>{currentProd.name}</h3>
+            <h2>{currentProd.name}</h2>
             <ReviewSumm>
               <RenderRating prodID={currentProd.id} />
             </ReviewSumm>
-            <div>Styles > Selected Style >&nbsp;
+            <Price>
+              {curStyle.sale_price ? <div><onSale>${curStyle.original_price}</onSale><Sale>${curStyle.sale_price}</Sale></div> : <Og>${curStyle.original_price}</Og>}
+            </Price>
+            <Stylesdesc> Selected Style >&nbsp;
               <b>{curStyle.name}</b>
-            </div>
+            </Stylesdesc>
             <StyleContainer>
               {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle} />)}
             </StyleContainer>

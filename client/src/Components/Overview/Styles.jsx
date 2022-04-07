@@ -2,13 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StylesContainer = styled.div`
-
-`;
-
-const StyleName = styled.div`
-padding-top: 10px;
-visibility: hidden;
-font-size: 15px;
+width: 100%;
+height: 112px;
 `;
 
 const StyleIcon = styled.div`
@@ -30,11 +25,9 @@ function Styles({ style, setCurStyle }) {
   }
 
   return (
-    <div>
       <StylesContainer>
         <StyleIcon src={style.photos[0].thumbnail_url} onClick={() => handleClick(style)} />
       </StylesContainer>
-    </div>
   );
 }
 
