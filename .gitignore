@@ -356,3 +356,5 @@ MigrationBackup/
 config.js
 
 /client/dist/bundle.js
+package-lock.json
+coverage/
