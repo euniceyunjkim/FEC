@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
 
 function ThumbnailCarousel({ }) {
-  const [photos, setPhotos] = useState([]);
+  const [thumbnails, setThumbnails] = useState([]);
   const { curStyle } = useContext(currentStyle);
-  const [index, setIndex] = useState(0);
 
   return (
     <div>
