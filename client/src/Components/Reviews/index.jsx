@@ -20,7 +20,7 @@ const Reviews = function Reviews() {
           </Box.ReviewSum>
         </Box.InnerCol>
         <Box.InnerCol>
-        <RenderRight />
+          <RenderRight />
         </Box.InnerCol>
       </Box.Container>
     </div>
