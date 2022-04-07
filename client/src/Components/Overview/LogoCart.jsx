@@ -59,9 +59,15 @@ function LogoCart({ styles }) {
     getCart();
   }, []);
 
+  function home(e){
+    e.preventDefault();
+    window.location.href= 'http://localhost:3000/';
+  }
+
   return (
     <Container>
-      <Logo src="overview_imgs/DarkLogo.png" />
+      <Logo src="overview_imgs/DarkLogo.png"
+      onClick={(e) => home(e)}/>
       <Cart
         src="overview_imgs/DarkCart.png"
         onClick={() => toggleShow()}
