@@ -10,7 +10,7 @@ outline: 0;
 overflow-x: hidden;
 overflow-y: auto;
 position: fixed;
-top: 15%;
+top: 8.5%;
 width: 100%;
 z-index: 1000;
 `;

@@ -94,6 +94,10 @@ const PlusBut = styled.button`
   margin: 8px;
   padding:10px 30px;
   float: right;
+  &:hover {
+    cursor: pointer;
+    background-color: #4b15a3;
+    color: white;
   };
 `;
 
@@ -103,7 +107,6 @@ function Selection({ }) {
   const [quant, setQuant] = useState(1);
   const [selSize, setSelSize] = useState(null);
   const [selQuant, setSelQuant] = useState(1);
-  const [bagged, setBagged] = useState([]);
   const skuKeys = Object.keys(skus);
   const [clicked, setClicked] = useState(-1);
 
@@ -172,7 +175,7 @@ function Selection({ }) {
                 <SizeButton type="button"
                   onClick={(e) => sizeSelect(e, index)}
                   key={sku} value={sku}
-                  styles={ clicked === index ? styles.clicked : styles.button }>
+                  styles={clicked === index ? styles.clicked : styles.button}>
                   {skus[sku].size}
                 </SizeButton>
               ))}
