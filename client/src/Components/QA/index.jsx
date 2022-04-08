@@ -10,12 +10,6 @@ const GetData = require('./Helpers');
 let localStorage = [];
 
 function QA({ }) {
-  // function test() {
-  //   GetData.getQuestions(40344)
-  //     .then((data) => { localStorage = data.data.results; })
-  //     .then(() => { displayedQ = localStorage.slice(0, 2); })
-  //     .catch((err) => console.error(err));
-  // }
   const { currentProd } = useContext(currentProducts);
   const [questions, setQuestions] = useState([]);
 
@@ -23,6 +17,12 @@ function QA({ }) {
     if (currentProd.id) {
       GetData.getQuestions(currentProd.id)
         .then((data) => { localStorage = data.data.results; })
+        .then(() => localStorage.sort((a, b) => b.helpfulness - a.helpfulness))
+        .then(() => console.log(localStorage))
+        .then(() => localStorage.forEach((question) => {
+          let test = Object.entries(question.answers).sort((a, b) => b[1].helpfulness - a[1].helpfulness);
+          question['answers'] = test;
+        }))
         .then(() => { setQuestions(localStorage.slice(0, 4)); })
         .catch((err) => console.error(err));
     }
@@ -31,7 +31,7 @@ function QA({ }) {
   return (
     <div>
       QUESTIONS & ANSWERS
-      <Search />
+      <Search questions={questions} setQuestions={setQuestions} allQuestions={localStorage} />
       {questions.map((question) => <QAList question={question} />)}
       <MoreQuestions />
       <AddQuestion />
