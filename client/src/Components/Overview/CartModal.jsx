@@ -10,9 +10,9 @@ outline: 0;
 overflow-x: hidden;
 overflow-y: auto;
 position: fixed;
-top: 8.5%;
 width: 100%;
 z-index: 1000;
+top: 105px;
 `;
 
 const Space = styled.div`

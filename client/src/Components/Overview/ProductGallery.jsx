@@ -15,22 +15,35 @@ const Carouselinner = styled.div`
   height: 100%;
   width: 100%;
   background-image: ${({ src }) => `url(${src})`};
+  position: relative;
 `;
 
 const InnerLeft = styled.div`
+top: 300px;
 flex: 5%;
-height: 100%;
-&:hover { background-color: rgb(75,21,163,0.6);}
+position: absolute;
+height: 90px;
+width: 90px;
+&:hover {
+  background-color: rgb(75,21,163,0.6);
+  border-radius: 60%;
+}
 display: grid;
 place-items: center;
 cursor: pointer;
 `;
 
 const InnerRight = styled.div`
+right: -1px;
+position: absolute;
+top: 300px;
 flex: 5%;
-height: 100%;
-&:hover { background-color: rgb(75,21,163,0.6);
-  }
+height: 90px;
+width: 90px;
+&:hover {
+  background-color: rgb(75,21,163,0.6);
+  border-radius: 60%;
+}
 display: grid;
 place-items: center;
 cursor: pointer;
@@ -39,6 +52,23 @@ cursor: pointer;
 const InnerCenter = styled.div`
 flex: 90%;
 height: 100%;
+`;
+
+const Expand = styled.div`
+  top: -1px;
+  right: -1px;
+  margin: 3px;
+  z-index: 9;
+  height: 30px;
+  width: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('overview_imgs/WExpand.png');
+  &:hover {
+    cursor: pointer;
+    background-image: url('overview_imgs/WWExpand.png');
+  }
+  position: absolute;
 `;
 
 function ProductGallery({ }) {
@@ -80,8 +110,11 @@ function ProductGallery({ }) {
           <InnerRight onClick={() => flipper(1)}>
             <img alt="" src="overview_imgs/LightRArrow.png" />
           </InnerRight>
+          <Expand
+            onClick={() => console.log('hi')}/>
         </Carouselinner>
       )}
+
     </Carouselcontainer>
   );
 }
