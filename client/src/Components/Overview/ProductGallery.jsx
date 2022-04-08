@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
+import EModal from './EModal.jsx';
 
 const Carouselcontainer = styled.div`
   overflow: hidden;
@@ -57,7 +58,7 @@ height: 100%;
 const Expand = styled.div`
   top: -1px;
   right: -1px;
-  margin: 3px;
+  margin: 5px;
   z-index: 9;
   height: 30px;
   width: 30px;
@@ -75,6 +76,7 @@ function ProductGallery({ }) {
   const [photos, setPhotos] = useState([]);
   const { curStyle } = useContext(currentStyle);
   const [index, setIndex] = useState(0);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (curStyle.photos) {
@@ -82,6 +84,10 @@ function ProductGallery({ }) {
       setIndex(0);
     }
   }, [curStyle]);
+
+  function toggleShow() {
+    setShow(!show);
+  }
 
   function flipper(num) {
     if (num > 0) {
@@ -111,7 +117,8 @@ function ProductGallery({ }) {
             <img alt="" src="overview_imgs/LightRArrow.png" />
           </InnerRight>
           <Expand
-            onClick={() => console.log('hi')}/>
+            onClick={() => toggleShow()}/>
+          <EModal expand={photos[index].url} show={show} hideModal={toggleShow} />
         </Carouselinner>
       )}
 

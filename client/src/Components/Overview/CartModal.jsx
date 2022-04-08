@@ -53,16 +53,7 @@ height: auto;
 
 const Pic = styled.div`
 order: 1;
-top: 2px;
-left: 3px;
-position: relative;
-padding: 3px 2px;
-width: 10px;
-height: 10px;
-background-image: ${({ src }) => `url(${src})`};
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
+padding: 3px 5px;
 `;
 
 const Name = styled.div`
