@@ -7,8 +7,6 @@ import currentProducts from '../Contexts/CurProdContext.js';
 import currentStyle from '../Contexts/CurStyleContext.js';
 import { useParams } from 'react-router-dom';
 
-
-
 const axios = require('axios');
 
 function App({}) {
@@ -19,12 +17,7 @@ function App({}) {
   let { prodID } = useParams();
 
   function defaultGrabber(items) {
-    for (let i = 0; i < items.length; i += 1) {
-      if (items[i]['default?'] === true) {
-        setCurStyle(items[i]);
-        return;
-      }
-    }
+    setCurStyle(items[0]);
   }
   // const [loaded, setLoad] = useState(false);
   useEffect(() => {

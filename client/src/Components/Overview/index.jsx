@@ -41,20 +41,37 @@ const Space = styled.div`
  background-color: #ffffff
 `
 const Product = styled.div`
-padding-top: 100px;
+padding-top: 70px;
 display: flex;
 justify-content: space-evenly;
-width: 90%;
+height: 90%;
+width: 100%;
 `
 const Left = styled.div`
 width: auto;
+height: auto;
+order: 1;
 `
 const Right = styled.div`
 width: auto;
+height: auto%;
+order: 2;
 `
 const ReviewSumm = styled.div`
 display: flex;
 padding-bottom: 10px;
+`
+const GalleryContainer = styled.div`
+display: flex;
+`
+const ThumbnailContainer = styled.div`
+flex: 15%;
+height: 100%;
+padding-right: 15px;
+`
+const ProductGalleryContainer = styled.div`
+flex: 85%;
+height: 100%;
 `
 
 const Bottom = styled.div`
@@ -114,6 +131,7 @@ padding-left: 10px;
 function Overview({ styles, setCurStyle, ReviewsRef }) {
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
+  const [index, setIndex] = useState(0);
 
   function autoScroll(){
     document.getElementById('ReviewsRef').scrollIntoView({behavior: "auto"});
@@ -128,12 +146,14 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
       <SpaceII />
       <Product>
         <Left>
-          <div>
-            <ThumbnailCarousel/ >
-          </div>
-          <div>
-            <ProductGallery />
-          </div>
+          <GalleryContainer>
+            <ThumbnailContainer>
+            <ThumbnailCarousel index={index} setIndex={setIndex} />
+            </ThumbnailContainer>
+            <ProductGalleryContainer>
+            <ProductGallery index={index} setIndex={setIndex}/>
+            </ProductGalleryContainer>
+          </GalleryContainer>
         </Left>
         <Right>
           <div id="product details">

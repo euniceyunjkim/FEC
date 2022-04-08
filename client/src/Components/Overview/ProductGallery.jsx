@@ -26,12 +26,11 @@ position: absolute;
 height: 90px;
 width: 90px;
 &:hover {
-  background-color: rgb(75,21,163,0.6);
-  border-radius: 60%;
+  ${({ styles }) => `${styles}`};
 }
 display: grid;
 place-items: center;
-cursor: pointer;
+
 `;
 
 const InnerRight = styled.div`
@@ -41,13 +40,11 @@ top: 300px;
 flex: 5%;
 height: 90px;
 width: 90px;
-&:hover {
-  background-color: rgb(75,21,163,0.6);
-  border-radius: 60%;
-}
 display: grid;
 place-items: center;
-cursor: pointer;
+&:hover {
+  ${({ styles }) => `${styles}`};
+}
 `;
 
 const InnerCenter = styled.div`
@@ -72,10 +69,9 @@ const Expand = styled.div`
   position: absolute;
 `;
 
-function ProductGallery({ }) {
+function ProductGallery({ index, setIndex }) {
   const [photos, setPhotos] = useState([]);
   const { curStyle } = useContext(currentStyle);
-  const [index, setIndex] = useState(0);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -84,6 +80,13 @@ function ProductGallery({ }) {
       setIndex(0);
     }
   }, [curStyle]);
+
+  useEffect(() => {
+    if (curStyle.photos) {
+      setPhotos(curStyle.photos);
+      setIndex(0);
+    }
+  }, []);
 
   function toggleShow() {
     setShow(!show);
@@ -105,23 +108,29 @@ function ProductGallery({ }) {
     }
   }
 
+  const styles = {
+    show: 'background-color: rgb(75,21,163,0.6); border-radius: 60%; cursor: pointer;',
+  };
+
   return (
     <Carouselcontainer>
       {photos.length > 0 && (
-        <Carouselinner src={photos[index].url}>
-          <InnerLeft onClick={() => flipper(-1)}>
-            <img alt="" src="overview_imgs/LightLArrow.png" />
+        <Carouselinner src={photos[index].url ? photos[index].url : 'assets/NoImage.png'}>
+          <InnerLeft onClick={() => flipper(-1)} styles={ index === 0 ? null : styles.show}>
+            {index === 0 ? null : <img alt="" src="overview_imgs/LightLArrow.png" />}
           </InnerLeft>
           <InnerCenter />
-          <InnerRight onClick={() => flipper(1)}>
-            <img alt="" src="overview_imgs/LightRArrow.png" />
+          <InnerRight
+            onClick={() => flipper(1)}
+            styles={index === photos.length - 1 ? null : styles.show}
+          >
+            {index === photos.length - 1 ? null : <img alt="" src="overview_imgs/LightRArrow.png" />}
           </InnerRight>
           <Expand
-            onClick={() => toggleShow()}/>
-          <EModal expand={photos[index].url} show={show} hideModal={toggleShow} />
+            onClick={() => toggleShow()} />
+          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.png'} show={show} hideModal={toggleShow} />
         </Carouselinner>
       )}
-
     </Carouselcontainer>
   );
 }

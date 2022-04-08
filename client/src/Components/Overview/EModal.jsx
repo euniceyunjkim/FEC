@@ -26,8 +26,8 @@ animation: fadeIn 0.2s ease-in-out;
 background: rgb(75, 21, 163, 0.8);
 border-radius: 0.25rem;
 display: flex;
-width: 95vw;
-height: 80vh;
+width: 95%;
+height: 80%;
 position: relative;
 z-index: 100;
 align-items: center;
@@ -36,7 +36,7 @@ justify-content: center;
 
 const Area = styled.div`
 width: 800px;
-height: 950px;
+height: 900px;
 overflow: hidden;
 position: relative;
 `;

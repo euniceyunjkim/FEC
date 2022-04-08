@@ -19,9 +19,12 @@ place-items: center;
 
 const SizeContainer = styled.div`
 z-index: 1;
+display: grid;
+grid-template-columns: repeat(6, 1fr);
 `;
 
 const SizeButton = styled.button`
+display: grid;
 border: 1px solid;
 font-align: center;
 font-size: 15px;
