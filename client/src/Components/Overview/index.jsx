@@ -15,15 +15,6 @@ import currentProducts from '../../Contexts/CurProdContext.js';
 import currentStyle from '../../Contexts/CurStyleContext.js';
 
 import styled from 'styled-components';
-
-const StyleContainer = styled.div`
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-width: 500px;
-height: 250px;
-padding-bottom: 20px;
-padding-top: 30px;
-`
 const Header = styled.div`
 width: 100%;
 height: 90px;
@@ -31,14 +22,14 @@ background-color: #4b15a3;
 text-align: center;
 `
 const SpaceII = styled.div`
- width:100%;
- height: 10px;
- background-color: #280f54
+width:100%;
+height: 10px;
+background-color: #280f54
 `
 const Space = styled.div`
- width:100%;
- height: 10px;
- background-color: #ffffff
+width:100%;
+height: 10px;
+background-color: #ffffff
 `
 const Product = styled.div`
 padding-top: 70px;
@@ -128,19 +119,46 @@ padding-left: 10px;
 }
 `
 
+const MoreContainer = styled.div`
+display: grid;
+grid-template: 1fr/1fr;
+place-items: center;
+`;
+
+const StyleContainer = styled.div`
+z-index: 1;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+width: 500px;
+height: 250px;
+padding-bottom: 20px;
+padding-top: 30px;
+`
+
+const SelectionContainer = styled.div`
+z-index: 2;
+`;
 function Overview({ styles, setCurStyle, ReviewsRef }) {
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
   const [index, setIndex] = useState(0);
+  const [cart, setCart] = useState([]);
 
   function autoScroll(){
     document.getElementById('ReviewsRef').scrollIntoView({behavior: "auto"});
   }
 
+  function getCart() {
+    axios.get('/cart')
+      .then((res) => setCart(res.data))
+      .catch((err) => console.error(err));
+  }
+
+
   return (
     <div id="overview">
       <Header>
-        <LogoCart styles={styles}/>
+        <LogoCart cart={cart} setCart={setCart} getCart={getCart}/>
       </Header>
       <Space />
       <SpaceII />
@@ -172,10 +190,14 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
             <Stylesdesc> Selected Style >&nbsp;
               <b>{curStyle.name}</b>
             </Stylesdesc>
+            <MoreContainer>
             <StyleContainer>
               {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle} />)}
             </StyleContainer>
-            <Selection />
+            <SelectionContainer>
+            <Selection getCart={getCart}/>
+            </SelectionContainer>
+            </MoreContainer>
           </div>
         </Right>
       </Product>

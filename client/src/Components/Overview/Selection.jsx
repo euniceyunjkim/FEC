@@ -10,12 +10,6 @@ width: 100%;
 display: flex;
 `;
 
-const DropdownContainer = styled.div`
-float: left;
-display: grid;
-grid-template: 1fr/ 1fr;
-place-items: center;
-`;
 
 const SizeContainer = styled.div`
 z-index: 1;
@@ -35,17 +29,25 @@ ${({ styles }) => `${styles}`};
   cursor: pointer;
   background-color: #4b15a3;
   color: white;
-`;
+  `;
 
-const QuantDrop = styled.div`
-z-index: 2;
-place-items: center;
-justify-content: space-around;
-padding: 10px 0px;
-`;
+  const QuantDrop = styled.div`
+  z-index: 2;
+  place-items: center;
+  justify-content: space-around;
+  padding: 10px 0px;
+  `;
 
-const AddButton = styled.button`
-float: right;
+  const DropdownContainer = styled.div`
+  z-index: 3;
+  float: left;
+  display: grid;
+  grid-template: 1fr/ 1fr;
+  place-items: center;
+  `;
+
+  const AddButton = styled.button`
+  float: right;
 color: black;
 border: 1px solid;
 background: white;
@@ -116,7 +118,7 @@ margin: 8px;
 padding:10px 20px;
 `;
 
-function Selection({ }) {
+function Selection({ getCart }) {
   const [skus, setSkus] = useState({});
   const { curStyle } = useContext(currentStyle);
   const [selSize, setSelSize] = useState(null);
@@ -173,6 +175,7 @@ function Selection({ }) {
     if (size && quantity) {
       const item = { sku_id: size, count: quantity };
       axios.post('/cart', item)
+        .then(() => getCart())
         .catch((err) => console.error(err));
     } else {
       toggleModal();

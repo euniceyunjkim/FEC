@@ -44,19 +44,13 @@ left: 0;
 text-align: center;
 `;
 
-function LogoCart({ styles }) {
-  const [cart, setCart] = useState([]);
+function LogoCart({ cart, setCart, getCart }) {
   const [show, setShow] = useState(false);
 
   function toggleShow() {
     setShow(!show);
   }
 
-  function getCart() {
-    axios.get('/cart')
-      .then((res) => setCart(res.data))
-      .catch((err) => console.error(err));
-  }
 
   useEffect(() => {
     getCart();

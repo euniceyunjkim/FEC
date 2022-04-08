@@ -5,7 +5,6 @@ import currentStyle from '../../Contexts/CurStyleContext.js';
 const StylesContainer = styled.div`
 width: 100%;
 height: 112px;
-position: relative;
 `;
 
 const StyleIcon = styled.div`
