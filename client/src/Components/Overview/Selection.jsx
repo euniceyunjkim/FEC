@@ -27,7 +27,7 @@ font-align: center;
 font-size: 15px;
 margin: 8px;
 padding:10px 20px;
-${({styles}) => `${styles}`};
+${({ styles }) => `${styles}`};
 &:hover {
   cursor: pointer;
   background-color: #4b15a3;
@@ -50,6 +50,7 @@ font-align: center;
 font-size: 15px;
 margin: 8px;
 padding:10px 20px;
+z-index:3;
 
 &:hover {
   cursor: pointer;
@@ -101,14 +102,25 @@ const PlusBut = styled.button`
   };
 `;
 
+const NoBut = styled.button`
+float: right;
+color: white;
+border: 1px solid;
+background: #4b15a3;
+font-align: center;
+font-size: 15px;
+margin: 8px;
+padding:10px 20px;
+`;
+
 function Selection({ }) {
   const [skus, setSkus] = useState({});
   const { curStyle } = useContext(currentStyle);
-  const [quant, setQuant] = useState(1);
   const [selSize, setSelSize] = useState(null);
   const [selQuant, setSelQuant] = useState(1);
   const skuKeys = Object.keys(skus);
   const [clicked, setClicked] = useState(-1);
+  const [quant, setQuant] = useState('--');
 
   const [shown, setToggle] = useState(false);
 
@@ -132,7 +144,6 @@ function Selection({ }) {
     setSelSize(e.target.value);
     setSelQuant(1);
     setClicked(index);
-    // setClick({ ...clicked, [e.target.value]: { color: 'white', background: '#4b15a3' } });
   }
 
   function updateQuant(num) {
@@ -181,25 +192,36 @@ function Selection({ }) {
               ))}
             </SizeContainer>
           </div>
-          <div id="quantity">
-            <QuantDrop>
-              <MinusBut onClick={() => updateQuant(-1)}>
-                -
-              </MinusBut>
-              <Count>
-                {selQuant}
-              </Count>
-              <PlusBut onClick={() => updateQuant(1)}>
-                +
-              </PlusBut>
-            </QuantDrop>
-          </div>
+          <QuantDrop>
+            <MinusBut onClick={() => updateQuant(-1)}>
+              -
+            </MinusBut>
+            <Count>
+              { quant > 0 ? selQuant : '--' }
+            </Count>
+            <PlusBut onClick={() => updateQuant(1)}>
+              +
+            </PlusBut>
+          </QuantDrop>
+          { quant > 0 || !selSize ? (
+            <div id="quantity">
+              <AddButton
+                type="button"
+                value="Add to bag"
+                onClick={() => addToBag(selSize, selQuant)}>
+                Add to bag
+              </AddButton>
+              <Modal
+                shown={shown}
+                hideModal={toggleModal}
+              />
+            </div>
+          ) : (
+            <NoBut type="button">
+              Out of Stock
+            </NoBut>
+          )}
         </DropdownContainer>
-        <AddButton type="button" value="Add to bag"
-          onClick={() => addToBag(selSize, selQuant)}>
-          Add to bag
-        </AddButton>
-        <Modal shown={shown} hideModal={toggleModal} />
       </SelectionContainer>
     </div>
   );

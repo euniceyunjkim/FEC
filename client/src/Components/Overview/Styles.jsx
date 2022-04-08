@@ -35,7 +35,7 @@ function Styles({ style, setCurStyle }) {
   const { curStyle } = useContext(currentStyle);
 
   const styled = {
-    selected: 'background-image: url("overview_imgs/Checkmark.png");',
+    selected: 'background-image: url("overview_imgs/PCheckmark.png");',
   };
 
   function handleClick(item) {
