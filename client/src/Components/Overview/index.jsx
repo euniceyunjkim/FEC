@@ -34,7 +34,7 @@ background-color: #ffffff
 const Product = styled.div`
 padding-top: 70px;
 display: flex;
-justify-content: center;
+justify-content: space-evenly;
 height: 90%;
 width: 100%;
 `
@@ -134,20 +134,20 @@ width: 500px;
 height: 250px;
 margin-top: 30px;
 margin-bottom: 30px;
-
 `
 
 const SelectionContainer = styled.div`
 z-index: 2;
 `;
 function Overview({ styles, setCurStyle, ReviewsRef }) {
+  const [photos, setPhotos] = useState([]);
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
   const [index, setIndex] = useState(0);
   const [cart, setCart] = useState([]);
 
-  function autoScroll(){
-    document.getElementById('ReviewsRef').scrollIntoView({behavior: "auto"});
+  function autoScroll() {
+    document.getElementById('ReviewsRef').scrollIntoView({ behavior: "auto" });
   }
 
   function getCart() {
@@ -156,11 +156,24 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
       .catch((err) => console.error(err));
   }
 
+  useEffect(() => {
+    if (curStyle.photos) {
+      setPhotos(curStyle.photos);
+      setIndex(0);
+    }
+  }, [curStyle]);
+
+  useEffect(() => {
+    if (curStyle.photos) {
+      setPhotos(curStyle.photos);
+      setIndex(0);
+    }
+  }, []);
 
   return (
     <div id="overview">
       <Header>
-        <LogoCart cart={cart} setCart={setCart} getCart={getCart}/>
+        <LogoCart cart={cart} getCart={getCart} />
       </Header>
       <Space />
       <SpaceII />
@@ -168,10 +181,10 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
         <Left>
           <GalleryContainer>
             <ThumbnailContainer>
-            <ThumbnailCarousel index={index} setIndex={setIndex} />
+              <ThumbnailCarousel index={index} setIndex={setIndex} photos={photos}/>
             </ThumbnailContainer>
             <ProductGalleryContainer>
-            <ProductGallery index={index} setIndex={setIndex}/>
+              <ProductGallery index={index} setIndex={setIndex} photos={photos}/>
             </ProductGalleryContainer>
           </GalleryContainer>
         </Left>
@@ -179,7 +192,7 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
           <div id="product details">
             <div id="product-category">
               <i><b>CATEGORY&nbsp;//&nbsp;</b>
-              {currentProd.category && currentProd.category.toUpperCase()}</i>
+                {currentProd.category && currentProd.category.toUpperCase()}</i>
             </div>
             <h2>{currentProd.name}</h2>
             <ReviewSumm>
@@ -193,22 +206,22 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
               <b>{curStyle.name}</b>
             </Stylesdesc>
             <MoreContainer>
-            <StyleContainer>
-              {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle} />)}
-            </StyleContainer>
-            <SelectionContainer>
-            <Selection getCart={getCart}/>
-            </SelectionContainer>
+              <StyleContainer>
+                {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle} />)}
+              </StyleContainer>
+              <SelectionContainer>
+                <Selection getCart={getCart} />
+              </SelectionContainer>
             </MoreContainer>
           </div>
         </Right>
       </Product>
-      <br/>
+      <br />
       <Bottom>
         <POverview>
           <ProductOverview />
         </POverview>
-        <br/>
+        <br />
         <Social>
           <Socials />
         </Social>

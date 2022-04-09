@@ -106,7 +106,7 @@ const Search = styled.button`
   }
 `;
 
-function LogoCart({ cart, setCart, getCart }) {
+function LogoCart({ cart, getCart }) {
   const [show, setShow] = useState(false);
   const [barOpen, setBarOpen] = useState(false);
   const [light, setLight] = useState(true);

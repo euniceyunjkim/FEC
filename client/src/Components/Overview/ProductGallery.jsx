@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import currentStyle from '../../Contexts/CurStyleContext.js';
 import EModal from './EModal.jsx';
 
 const Carouselcontainer = styled.div`
@@ -30,7 +29,6 @@ width: 90px;
 }
 display: grid;
 place-items: center;
-
 `;
 
 const InnerRight = styled.div`
@@ -69,24 +67,8 @@ const Expand = styled.div`
   position: absolute;
 `;
 
-function ProductGallery({ index, setIndex }) {
-  const [photos, setPhotos] = useState([]);
-  const { curStyle } = useContext(currentStyle);
+function ProductGallery({ index, setIndex, photos }) {
   const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    if (curStyle.photos) {
-      setPhotos(curStyle.photos);
-      setIndex(0);
-    }
-  }, [curStyle]);
-
-  useEffect(() => {
-    if (curStyle.photos) {
-      setPhotos(curStyle.photos);
-      setIndex(0);
-    }
-  }, []);
 
   function toggleShow() {
     setShow(!show);
