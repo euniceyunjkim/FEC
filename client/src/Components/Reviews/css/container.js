@@ -69,17 +69,18 @@ const Box = {
   position: fixed;
   background: white;
   width: 50vw;
-  height: 100vh;
+  height: 80vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 1%;
   z-index: 100;
+  overflow-y: scroll
   `,
   Close: styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 50vw;
+  width: 48vw;
   `,
   CenterInfo: styled.div`
   display: flex;
@@ -88,8 +89,8 @@ const Box = {
   `,
   Info: styled.div`
     flexDirection: column;
-    max-height: 100vh
-    overflow-y: auto
+    height: 40vh
+    overflow-y: scroll
   `,
   StarRating: styled.img`
   height: 30px;

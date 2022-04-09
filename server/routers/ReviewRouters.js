@@ -38,10 +38,8 @@ ReviewRouters.put('/:review_id/report', (req, res) => {
     .then(() => res.end());
 });
 
-ReviewRouters.post('/', (req, res) => {
-  console.log('here');
-  console.log(req);
-  axios.post(`${path}/reviews/${req.params.review_id}`, req.body, { headers: { Authorization: config.TOKEN } })
+ReviewRouters.post('/post', (req, res) => {
+  axios.post(`${path}/reviews`, req.query, { headers: { Authorization: config.TOKEN } })
     .then((data) => res.status(data.status))
     .catch((err) => res.send(err))
     .then(() => res.end());

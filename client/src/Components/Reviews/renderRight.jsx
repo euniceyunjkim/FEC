@@ -3,7 +3,6 @@ import currentProducts from '../../Contexts/CurProdContext';
 import Box from './css/container';
 import Review from './reviews.jsx';
 import WriteReview from './writeReview.jsx';
-import PickCharacteristics from './pickCharacteristics.jsx';
 
 const axios = require('axios');
 

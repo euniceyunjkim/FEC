@@ -40,16 +40,7 @@ const WriteReview = function ({ setRender, characteristics }) {
     } else if (Object.keys(characteristics).length !== Object.keys(char).length) {
       alert('characteristics has not been filed');
     } else {
-      axios.post('http://localhost:3000/reviews', {
-        product_id: currentProd.id,
-        rating,
-        summary,
-        body,
-        recommend,
-        name,
-        email,
-        characteristics,
-      })
+      axios.post(`http://localhost:3000/reviews/post?product_id=${currentProd}&rating=${rating}&summary=${summary}&body=${body}&recommend=${recommend}&name=${name}&email=${email}&characteristics=${characteristics}`)
         .then((res) => console.log(res))
         .catch(() => console.log('error in axios'));
     }
@@ -89,22 +80,25 @@ const WriteReview = function ({ setRender, characteristics }) {
                 <br />
                 Review summary
               </div>
-              <input type="text" name="sum" required maxLength="60" size="60" onChange={(e) => setSummary(e)} />
+              <input type="text" name="sum" required maxLength="60" size="60" value={summary} onChange={(e) => setSummary(e.target.value)} />
               <div>
                 <br />
                 *Review Body
               </div>
-              <input type="text" name="sum" required minLenth="50" maxLength="1000" size="60" onChange={(e) => setBody(e)} />
+              <input type="text" name="sum" required maxLength="1000" size="60" value={body} onChange={(e) => setBody(e.target.value)} />
+              <br />
+              {body.length}
+              /50 minimum of 50 characters to submit.
               <br />
               Upload photo
               <br />
               <br />
               *Nickname
-              <input type="text" name="sum" required maxLength="60" size="30" onChange={(e) => setName(e)} />
+              <input type="text" name="sum" required maxLength="60" size="30" value={name} onChange={(e) => setName(e.target.value)} />
               <br />
               <br />
               *Email
-              <input type="text" name="sum" required maxLength="60" size="30" onChange={(e) => setEmail(e)} />
+              <input type="text" name="sum" required maxLength="60" size="30" value={email} onChange={(e) => setEmail(e.target.value)} />
               <br />
               <br />
               <button onClick={() => submitHandler()}>
