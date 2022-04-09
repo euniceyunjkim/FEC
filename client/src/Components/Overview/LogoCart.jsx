@@ -52,7 +52,6 @@ const LDSContainer = styled.div`
 top: -1px;
 display: grid;
 grid-template: 1fr/1fr;
-place-items: right;
 height: 55px;
 `;
 
@@ -65,9 +64,11 @@ background-size: contain;
 background-repeat: no-repeat;
 background-position: center;
 border-radius: 10rem;
+justify-self: end;
 `;
 
 const SearchContainer = styled.div`
+  justify-self: end;
   z-indez: 2;
   position: relative;
   display: flex;
@@ -78,6 +79,7 @@ const SearchContainer = styled.div`
   color: #4b15a3;
   height: 25px;
   border-radius: 10rem;
+  transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 `;
 
 const Bar = styled.input`
