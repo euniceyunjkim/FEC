@@ -18,6 +18,9 @@ background-image: ${({ arrow }) => `url(${arrow})`};
 background-repeat: no-repeat;
 background-position: center;
 background-size: contain;
+&:hover {
+  ${({ styles }) => `${styles}`};
+}
 `;
 
 const Carousel = styled.div`
@@ -48,6 +51,9 @@ background-image: ${({ arrow }) => `url(${arrow})`};
 background-repeat: no-repeat;
 background-position: center;
 background-size: contain;
+&:hover {
+  ${({ styles }) => `${styles}`};
+}
 `;
 
 function ThumbnailCarousel({ index, setIndex, photos }) {
@@ -67,6 +73,7 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
     <CarouselContainer>
       <Prev
         arrow={index === 0 ? null : 'overview_imgs/Up.png'}
+        styles={index === 0 ? null : 'cursor: pointer;'}
         onClick={() => prev()}
       />
       <Carousel>
@@ -74,6 +81,7 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
       </Carousel>
       <Next
         arrow={length <= 7 ? null : 'overview_imgs/Down.png'}
+        styles={length <= 7 ? null : 'cursor: pointer;'}
         onClick={() => next()}
       />
     </CarouselContainer>

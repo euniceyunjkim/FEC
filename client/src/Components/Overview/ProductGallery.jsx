@@ -8,7 +8,6 @@ const Carouselcontainer = styled.div`
   height: 725px;
 `;
 const Carouselinner = styled.div`
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;

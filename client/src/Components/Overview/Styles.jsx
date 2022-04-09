@@ -12,8 +12,8 @@ width:70px;
 height:70px;
 background-image: ${({ src }) => `url(${src})`};
 border-radius: 50%;
-background-repeat: no-repeat;
 background-position: center;
+background-size: cover;
 &:hover {
   cursor: pointer;
 }
