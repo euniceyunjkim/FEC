@@ -34,7 +34,7 @@ background-color: #ffffff
 const Product = styled.div`
 padding-top: 70px;
 display: flex;
-justify-content: space-evenly;
+justify-content: center;
 height: 90%;
 width: 100%;
 `
@@ -54,6 +54,7 @@ padding-bottom: 10px;
 `
 const GalleryContainer = styled.div`
 display: flex;
+justify-content: space-evenly;
 `
 const ThumbnailContainer = styled.div`
 flex: 15%;
@@ -131,8 +132,9 @@ display: grid;
 grid-template-columns: repeat(4, 1fr);
 width: 500px;
 height: 250px;
-padding-bottom: 20px;
-padding-top: 30px;
+margin-top: 30px;
+margin-bottom: 30px;
+
 `
 
 const SelectionContainer = styled.div`

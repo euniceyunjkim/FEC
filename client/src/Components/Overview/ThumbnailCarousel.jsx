@@ -33,21 +33,7 @@ function ThumbnailCarousel({ index, setIndex }) {
   const [thumbnails, setThumbnails] = useState([]);
   const { curStyle } = useContext(currentStyle);
 
-  function flipper(num) {
-    if (num > 0) {
-      if (index < (photos.length - 1)) {
-        setIndex(index + num);
-      } else if (index === (photos.length - 1)) {
-        setIndex(photos.length - 1);
-      }
-    } else if (num < 0) {
-      if (index > 0) {
-        setIndex(index + num);
-      } else if (index === 0) {
-        setIndex(0);
-      }
-    }
-  }
+  //function to change photos shown
 
   return (
     <CarouselContainer>

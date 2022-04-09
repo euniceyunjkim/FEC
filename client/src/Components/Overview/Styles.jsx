@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
 
 const StylesContainer = styled.div`
-width: 100%;
-height: 112px;
+width: auto%;
+height: auto;
 `;
 
 const StyleIcon = styled.div`
@@ -14,7 +14,6 @@ background-image: ${({ src }) => `url(${src})`};
 border-radius: 50%;
 background-repeat: no-repeat;
 background-position: center;
-justify-content: center;
 &:hover {
   cursor: pointer;
 }
