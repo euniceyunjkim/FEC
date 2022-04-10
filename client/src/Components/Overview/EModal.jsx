@@ -188,7 +188,7 @@ function EModal({ show, hideModal, expand, photos, index, flipper }) {
               </ArrowR>
             </Area>
             <ThumbContainer>
-              {photos.map((photo, i) => <Thumbs key={i} src={photo.thumbnail_url} styles={index === i ? 'border: 4px solid white;' : null} />)}
+              {photos.map((photo, i) => <Thumbs key={i} src={photo.thumbnail_url ? photo.thumbnail_url : 'assets/NoImage.png'} styles={index === i ? 'border: 4px solid white;' : null} />)}
             </ThumbContainer>
           </Modall>
         </Wrapper>

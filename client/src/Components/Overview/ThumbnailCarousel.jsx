@@ -97,7 +97,7 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
       <Carousel>
         {photos.map((photo, i) => ((i >= first && i <= last ? (
           <Thumbnails key={i}
-            src={photos[i].thumbnail_url}
+            src={photos[i].thumbnail_url ? photos[i].thumbnail_url : 'assets/NoImage.png'}
             onClick={() => setIndex(i)}
             styles={index === i ? 'border: 4px solid #4b15a3;' : null} />
         ) : null)))}
