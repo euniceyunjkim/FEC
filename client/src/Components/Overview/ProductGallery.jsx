@@ -25,7 +25,7 @@ position: relative;
 const ThumbnailContainer = styled.div`
 flex: 15%;
 height: 100%;
-padding-right: 15px;
+width: 100%;
 left: -1px;
 `;
 
