@@ -29,39 +29,39 @@ ${({ styles }) => `${styles}`};
   cursor: pointer;
   background-color: #4b15a3;
   color: white;
-  `;
+`;
 
-  const QuantDrop = styled.div`
+const QuantDrop = styled.div`
   z-index: 2;
   place-items: center;
   justify-content: space-around;
   padding: 10px 0px;
-  `;
+`;
 
-  const DropdownContainer = styled.div`
+const DropdownContainer = styled.div`
   z-index: 3;
   float: left;
   display: grid;
   grid-template: 1fr/ 1fr;
   place-items: center;
-  `;
+`;
 
-  const AddButton = styled.button`
+const AddButton = styled.button`
   float: right;
-color: black;
-border: 1px solid;
-background: white;
-font-align: center;
-font-size: 15px;
-margin: 8px;
-padding:10px 20px;
-z-index:3;
+  color: black;
+  border: 1px solid;
+  background: white;
+  font-align: center;
+  font-size: 15px;
+  margin: 8px;
+  padding:10px 20px;
+  z-index:3;
 
-&:hover {
-  cursor: pointer;
-  background-color: #4b15a3;
-  color: white;
-};
+  &:hover {
+    cursor: pointer;
+    background-color: #4b15a3;
+    color: white;
+  };
 `;
 
 const MinusBut = styled.button`
@@ -203,13 +203,13 @@ function Selection({ getCart }) {
               -
             </MinusBut>
             <Count>
-              { quant > 0 ? selQuant : '--' }
+              {quant > 0 ? selQuant : '--'}
             </Count>
             <PlusBut onClick={() => updateQuant(1)}>
               +
             </PlusBut>
           </QuantDrop>
-          { quant > 0 || !selSize ? (
+          {quant > 0 || !selSize ? (
             <div id="quantity">
               <AddButton
                 type="button"

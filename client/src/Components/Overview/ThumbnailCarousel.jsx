@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const CarouselContainer = styled.div`
 display: grid;
 grid-template: 1fr/1fr;
-width: 90px;
+width: 125px;
 height: 725px;
 place-items: center;
 `;
@@ -25,21 +25,26 @@ background-size: contain;
 
 const Carousel = styled.div`
 z-index: 2;
-width: 90px;
-height: 645px;
+width: 95px;
+height: 640px;
 overflow: hidden;
+place-items: center;
 `;
 
 const Thumbnails = styled.div`
-margin: 2px auto;
+margin: 5px auto;
 display: block;
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
 background-image: ${({ src }) => `url(${src})`};
-height: 90px;
-width: 90px;
+height: 85px;
+width: 85px;
 border-radius: 50%;
+&:hover {
+  cursor: pointer;
+}
+${({ styles }) => `${styles}`};
 `;
 
 const Next = styled.div`
@@ -57,31 +62,51 @@ background-size: contain;
 `;
 
 function ThumbnailCarousel({ index, setIndex, photos }) {
-  const [images, setImage] = useState([]);
-  const length = photos.length;
-  const [cur, setCur] = useState(0);
+  const pLength = photos.length;
+  const [first, setFirst] = useState(0);
+  const [last, setLast] = useState(6);
 
   function prev() {
-    setCur(cur === length - 7 ? 0 : cur + 1);
+    if ((first - 7) >= 0) {
+      setFirst(first - 7);
+      setLast(first - 1);
+    } else {
+      setFirst(0);
+      setLast(6);
+    }
   }
 
   function next() {
-    setCur(cur === 0 ? length - 7 : cur - 1);
+    if ((first + 7) < (pLength)) {
+      setFirst(first + 7);
+      if ((last + 7) < (pLength)) {
+        setLast(last + 7);
+      } else {
+        setLast(pLength - 1);
+      }
+    }
   }
 
   return (
     <CarouselContainer>
       <Prev
-        arrow={index === 0 ? null : 'overview_imgs/Up.png'}
-        styles={index === 0 ? null : 'cursor: pointer;'}
+        arrow={first === 0 ? null : 'overview_imgs/Up.png'}
+        styles={first === 0 ? null : 'cursor: pointer;'}
         onClick={() => prev()}
       />
+        {console.log(first)}
+        {console.log(last)}
       <Carousel>
-        {photos.map((photo, i) => (<Thumbnails key={i} src={photo.thumbnail_url} />))}
+        {photos.map((photo, i) => ((i >= first && i <= last ? (
+          <Thumbnails key={i}
+            src={photos[i].thumbnail_url}
+            onClick={() => setIndex(i)}
+            styles={index === i ? 'border: 4px solid #4b15a3;' : null} />
+        ) : null)))}
       </Carousel>
       <Next
-        arrow={length <= 7 ? null : 'overview_imgs/Down.png'}
-        styles={length <= 7 ? null : 'cursor: pointer;'}
+        arrow={pLength < 8 || last === pLength - 1 ? null : 'overview_imgs/Down.png'}
+        styles={pLength < 8 || last === pLength - 1 ? null : 'cursor: pointer;'}
         onClick={() => next()}
       />
     </CarouselContainer>

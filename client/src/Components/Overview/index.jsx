@@ -159,7 +159,7 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
   useEffect(() => {
     if (curStyle.photos) {
       setPhotos(curStyle.photos);
-      setIndex(0);
+      // setIndex(0);
     }
   }, [curStyle]);
 
