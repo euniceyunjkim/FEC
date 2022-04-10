@@ -5,7 +5,6 @@ import axios from 'axios';
 import Styles from './Styles.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import ProductGallery from './ProductGallery.jsx';
-import ThumbnailCarousel from './ThumbnailCarousel.jsx';
 import LogoCart from './LogoCart.jsx';
 import Selection from './Selection.jsx';
 import RenderRating from '../renderRating.jsx';
@@ -13,8 +12,8 @@ import RenderRating from '../renderRating.jsx';
 import Socials from './Socials.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
 import currentStyle from '../../Contexts/CurStyleContext.js';
-
 import styled from 'styled-components';
+
 const Header = styled.div`
 width: 100%;
 height: 90px;
@@ -51,19 +50,6 @@ order: 2;
 const ReviewSumm = styled.div`
 display: flex;
 padding-bottom: 10px;
-`
-const GalleryContainer = styled.div`
-display: flex;
-justify-content: space-evenly;
-`
-const ThumbnailContainer = styled.div`
-flex: 15%;
-height: 100%;
-padding-right: 15px;
-`
-const ProductGalleryContainer = styled.div`
-flex: 85%;
-height: 100%;
 `
 
 const Bottom = styled.div`
@@ -106,11 +92,13 @@ color: red;
 font-size: 20px;
 float: left;
 order: 2;
-`
+`;
+
 const Stylesdesc = styled.div`
 padding-top: 10px;
 padding-bottom: 10px;
-`
+`;
+
 const Reviews = styled.div`
 text-decoration: underline;
 padding-left: 10px;
@@ -118,7 +106,7 @@ padding-left: 10px;
   cursor: pointer;
   color: #280f54;
 }
-`
+`;
 
 const MoreContainer = styled.div`
 display: grid;
@@ -134,11 +122,12 @@ width: 500px;
 height: 250px;
 margin-top: 30px;
 margin-bottom: 30px;
-`
+`;
 
 const SelectionContainer = styled.div`
 z-index: 2;
 `;
+
 function Overview({ styles, setCurStyle, ReviewsRef }) {
   const [photos, setPhotos] = useState([]);
   const { currentProd } = useContext(currentProducts);
@@ -179,14 +168,9 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
       <SpaceII />
       <Product>
         <Left>
-          <GalleryContainer>
-            <ThumbnailContainer>
-              <ThumbnailCarousel index={index} setIndex={setIndex} photos={photos}/>
-            </ThumbnailContainer>
-            <ProductGalleryContainer>
+            {/* <ProductGalleryContainer> */}
               <ProductGallery index={index} setIndex={setIndex} photos={photos}/>
-            </ProductGalleryContainer>
-          </GalleryContainer>
+            {/* </ProductGalleryContainer> */}
         </Left>
         <Right>
           <div id="product details">

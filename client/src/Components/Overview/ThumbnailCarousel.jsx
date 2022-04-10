@@ -67,7 +67,7 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
   const [last, setLast] = useState(6);
 
   function prev() {
-    if ((first - 7) >= 0) {
+    if ((first - 7) > 0) {
       setFirst(first - 7);
       setLast(first - 1);
     } else {
@@ -94,8 +94,6 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
         styles={first === 0 ? null : 'cursor: pointer;'}
         onClick={() => prev()}
       />
-        {console.log(first)}
-        {console.log(last)}
       <Carousel>
         {photos.map((photo, i) => ((i >= first && i <= last ? (
           <Thumbnails key={i}

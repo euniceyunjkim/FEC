@@ -1,25 +1,37 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import EModal from './EModal.jsx';
+import ThumbnailCarousel from './ThumbnailCarousel.jsx';
 
 const Carouselcontainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
   overflow: hidden;
-  width: 600px;
+  width: 100%;
   height: 725px;
 `;
+
 const Carouselinner = styled.div`
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  background-image: ${({ src }) => `url(${src})`};
-  position: relative;
+flex: 80%;
+background-size: cover;
+background-position: center;
+display: flex;
+height: 100%;
+width: 850px;
+background-image: ${({ src }) => `url(${src})`};
+position: relative;
+`;
+
+const ThumbnailContainer = styled.div`
+flex: 15%;
+height: 100%;
+padding-right: 15px;
+left: -1px;
 `;
 
 const InnerLeft = styled.div`
 top: 300px;
-flex: 5%;
+flex: 10%;
 position: absolute;
 height: 90px;
 width: 90px;
@@ -34,7 +46,7 @@ const InnerRight = styled.div`
 right: -1px;
 position: absolute;
 top: 300px;
-flex: 5%;
+flex: 10%;
 height: 90px;
 width: 90px;
 display: grid;
@@ -45,7 +57,7 @@ place-items: center;
 `;
 
 const InnerCenter = styled.div`
-flex: 90%;
+flex: 86%;
 height: 100%;
 `;
 
@@ -95,9 +107,12 @@ function ProductGallery({ index, setIndex, photos }) {
 
   return (
     <Carouselcontainer>
+      <ThumbnailContainer>
+        <ThumbnailCarousel index={index} setIndex={setIndex} photos={photos} />
+      </ThumbnailContainer>
       {photos.length > 0 && (
         <Carouselinner src={photos[index].url ? photos[index].url : 'assets/NoImage.png'}>
-          <InnerLeft onClick={() => flipper(-1)} styles={ index === 0 ? null : styles.show}>
+          <InnerLeft onClick={() => flipper(-1)} styles={index === 0 ? null : styles.show}>
             {index === 0 ? null : <img alt="" src="overview_imgs/LightLArrow.png" />}
           </InnerLeft>
           <InnerCenter />
@@ -108,8 +123,9 @@ function ProductGallery({ index, setIndex, photos }) {
             {index === photos.length - 1 ? null : <img alt="" src="overview_imgs/LightRArrow.png" />}
           </InnerRight>
           <Expand
-            onClick={() => toggleShow()} />
-          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.png'} show={show} hideModal={toggleShow} />
+            onClick={() => toggleShow()}
+          />
+          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.png'} show={show} hideModal={toggleShow} photos={photos} flipper={flipper} index={index} setIndex={setIndex}/>
         </Carouselinner>
       )}
     </Carouselcontainer>
