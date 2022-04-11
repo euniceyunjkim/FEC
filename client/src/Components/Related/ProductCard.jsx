@@ -28,7 +28,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
         <div className={className}>
           <CardImageContainer>
             <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} onClick={() => {navigate(`/${product.id}`)}}/>
-            <ButtonIcon src ={"assets/RedX.png"} onClick={() => handleClick(id)}></ButtonIcon>
+            <ButtonIcon src ={"assets/PurpleX.png"} onClick={() => handleClick(id)}></ButtonIcon>
           </CardImageContainer>
           {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>

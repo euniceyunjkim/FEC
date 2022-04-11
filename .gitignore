@@ -358,3 +358,4 @@ config.js
 /client/dist/bundle.js
 package-lock.json
 coverage/
+/client/dist/bundle.js.gz
