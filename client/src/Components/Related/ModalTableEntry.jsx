@@ -15,7 +15,7 @@ const ModalTableEntry = ({ feature, compareData }) => {
 
   return (
     <tr>
-      <td>{first[feature] || <ModalIcon src='assets/PurpleX.png' />}</td>
+      <td>{first[feature] || <ModalIcon src='assets/PurpleX.webp' />}</td>
       <td>{feature}</td>
       <td>{second[feature] || 'None'}</td>
     </tr>

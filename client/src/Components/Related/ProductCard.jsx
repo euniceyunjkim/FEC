@@ -19,7 +19,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
     if (newOutfit === 'newOutfit') {
       return (
         <div className={className} onClick={() => addOutfit()}>
-          <CardImage src={'assets/PurpleStar.png'} />
+          <CardImage src={'assets/PurpleStar.webp'} />
           <div>Click to add this item to your outfit!</div>
         </div>
       )
@@ -27,8 +27,8 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
       return (
         <div className={className}>
           <CardImageContainer>
-            <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} onClick={() => {navigate(`/${product.id}`)}}/>
-            <ButtonIcon src ={"assets/PurpleX.png"} onClick={() => handleClick(id)}></ButtonIcon>
+            <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.webp'} onClick={() => {navigate(`/${product.id}`)}}/>
+            <ButtonIcon src ={"assets/PurpleX.webp"} onClick={() => handleClick(id)}></ButtonIcon>
           </CardImageContainer>
           {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>
