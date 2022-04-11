@@ -46,7 +46,7 @@ const RenderRight = function ({ratingCount, characteristics}) {
         <button onClick={() => setCount(count + 2)}>more reviews</button>
         <button onClick={() => setRenderModal(true)}>add reviews +</button>
         {renderModal === true
-          ? <WriteReview setRender={setRenderModal} characteristics={characteristics} />
+          ? <WriteReview setRenderModal={setRenderModal} setRender={setRenderModal} characteristics={characteristics} />
           : <div />}
       </div>
 

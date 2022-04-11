@@ -6,7 +6,7 @@ import currentProducts from '../../Contexts/CurProdContext';
 
 const axios = require('axios');
 
-const WriteReview = function ({ setRender, characteristics }) {
+const WriteReview = function ({ setRenderModal, setRender, characteristics }) {
   const [rating, setRating] = useState(0);
   const [recommend, setRecommend] = useState(null);
   const [char, setChar] = useState({});
@@ -41,7 +41,7 @@ const WriteReview = function ({ setRender, characteristics }) {
       alert('characteristics has not been filed');
     } else {
       axios.post(`http://localhost:3000/reviews/post?product_id=${currentProd}&rating=${rating}&summary=${summary}&body=${body}&recommend=${recommend}&name=${name}&email=${email}&characteristics=${characteristics}`)
-        .then((res) => console.log(res))
+        .then(() => setRenderModal(false))
         .catch(() => console.log('error in axios'));
     }
   };
