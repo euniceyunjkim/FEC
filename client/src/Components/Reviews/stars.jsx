@@ -2,23 +2,23 @@ import React, { useState, useEffect, useContext } from 'react';
 // import currentProducts from '../../Contexts/CurProdContext';
 import Box from './css/container';
 
-// import fullStar from './assets/fullStar.png';
-// import halfStar from './assets/halfStar.png';
-// import emptyStar from './assets/emptyStar.png';
+// import fullStar from './assets/fullStar.webp';
+// import halfStar from './assets/halfStar.webp';
+// import emptyStar from './assets/emptyStar.webp';
 
 const Star = function ({ rating }) {
   const renderStars = function (i) {
     const remainder = i % rating;
     if (i * 4 <= rating * 4) {
-      return <Box.Star src="./assets/fullStar.png" alt="full star" />;
+      return <Box.Star src="./assets/fullStar.webp" alt="full star" />;
     } else if (remainder === 0.5) {
-      return <Box.Star src="./assets/halfStar.png" alt="half star" />;
+      return <Box.Star src="./assets/halfStar.webp" alt="half star" />;
     } else if (remainder === 0.25) {
-      return <Box.Star src="./assets/3-4Star.png" alt="three quarters star" />;
+      return <Box.Star src="./assets/3-4Star.webp" alt="three quarters star" />;
     } else if (remainder === 0.75) {
-      return <Box.Star src="./assets/1-4Star.png" alt="quarter star" />;
+      return <Box.Star src="./assets/1-4Star.webp" alt="quarter star" />;
     } else {
-      return <Box.Star src="./assets/emptyStar.png" alt="empty star" />;
+      return <Box.Star src="./assets/emptyStar.webp" alt="empty star" />;
     }
   };
   return (
