@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CardImage } from './StyledComps/ImageStyle.js';
+import { CardImage, CardImageContainer } from './StyledComps/ImageStyle.js';
 import { ButtonIcon } from './StyledComps/ButtonStyle.js';
 import { Category } from './StyledComps/CategoryStyle.js';
 import { Price } from './StyledComps/PriceStyle.js';
@@ -19,15 +19,17 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
     if (newOutfit === 'newOutfit') {
       return (
         <div className={className} onClick={() => addOutfit()}>
-          <CardImage src={'assets/PurpleStar.png'} />
+          <CardImage src={'assets/PurpleStar.webp'} />
           <div>Click to add this item to your outfit!</div>
         </div>
       )
     } else if (styles) {
       return (
         <div className={className}>
-          <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} onClick={() => {navigate(`/${product.id}`)}}/>
-          <ButtonIcon onClick={() => handleClick(id)}>{action}</ButtonIcon>
+          <CardImageContainer>
+            <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.webp'} onClick={() => {navigate(`/${product.id}`)}}/>
+            <ButtonIcon src ={"assets/PurpleX.webp"} onClick={() => handleClick(id)}></ButtonIcon>
+          </CardImageContainer>
           {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>
           <ProdName>{styles.name} {product.name}</ProdName>

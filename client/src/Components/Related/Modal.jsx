@@ -35,7 +35,7 @@ const Modal = ({ setShowModal, showModal, compareData}) => {
             </thead>
             <tbody>
               <tr>
-                <td><CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} /></td>
+                <td><CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.webp'} /></td>
                 <td></td>
                 <td><CardImage src={curStyle.photos[0].thumbnail_url} /></td>
               </tr>
@@ -44,7 +44,7 @@ const Modal = ({ setShowModal, showModal, compareData}) => {
               })}
             </tbody>
           </ModalTable>
-          <ModalIcon onClick={() => setShowModal()} src={'assets/RedX.png'}/>
+          <ModalIcon onClick={() => setShowModal()} src={'assets/RedX.webp'}/>
         </ModalContent>
       </ModalStyle>)
       : null}

@@ -23,6 +23,7 @@ export const ModalTable = styled.table`
   }
   & th {
     font-size: 1.25em;
+    border-radius: 5px;
   }
   & tr:nth-child(2n) {
     background: rgba(235, 183, 204, 0.25);
