@@ -359,3 +359,5 @@ config.js
 package-lock.json
 coverage/
 /client/dist/bundle.js.gz
+/client/dist/bundle.js.LICENSE.txt
+/client/dist/bundle.js.LICENSE.txt.gz
