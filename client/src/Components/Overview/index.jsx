@@ -80,7 +80,6 @@ float: left;
 order: 1;
 padding-right: 10px;
 `
-
 const Og = styled.div`
 color: black;
 font-size: 20px;
@@ -118,8 +117,8 @@ const StyleContainer = styled.div`
 z-index: 1;
 display: grid;
 grid-template-columns: repeat(4, 1fr);
-width: 500px;
-height: 250px;
+width: 100%;
+height: 100%;
 margin-top: 30px;
 margin-bottom: 30px;
 `;
@@ -148,9 +147,14 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
   useEffect(() => {
     if (curStyle.photos) {
       setPhotos(curStyle.photos);
-      // setIndex(0);
     }
   }, [curStyle]);
+
+  useEffect(() => {
+    if (curStyle.photos) {
+      setIndex(0);
+    }
+  }, [currentProd.id]);
 
   useEffect(() => {
     if (curStyle.photos) {
@@ -158,6 +162,7 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
       setIndex(0);
     }
   }, []);
+
 
   return (
     <div id="overview">
@@ -175,19 +180,19 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
         <Right>
           <div id="product details">
             <div id="product-category">
-              <i><b>CATEGORY&nbsp;//&nbsp;</b>
-                {currentProd.category && currentProd.category.toUpperCase()}</i>
+              <i>CATEGORY&nbsp;//&nbsp;
+                <b>{currentProd.category && currentProd.category.toUpperCase()}</b></i>
             </div>
             <h2>{currentProd.name}</h2>
             <ReviewSumm>
               <RenderRating prodID={currentProd.id} />
-              <Reviews onClick={() => autoScroll()}><i>Read All Reviews</i></Reviews>
+              <Reviews onClick={() => autoScroll()}><i>READ ALL REVIEWS</i></Reviews>
             </ReviewSumm>
             <Price>
               {curStyle.sale_price ? <div><OnSale>${curStyle.original_price}</OnSale><Sale>${curStyle.sale_price}</Sale></div> : <Og>${curStyle.original_price}</Og>}
             </Price>
-            <Stylesdesc> Selected Style >&nbsp;
-              <b>{curStyle.name}</b>
+            <Stylesdesc> <i>SELECTED STYLE</i>&nbsp;//&nbsp;
+              <b><i>{curStyle.name && curStyle.name.toUpperCase()}</i></b>
             </Stylesdesc>
             <MoreContainer>
               <StyleContainer>

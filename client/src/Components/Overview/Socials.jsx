@@ -42,7 +42,7 @@ padding-top: 15px;
 function Socials() {
   return (
     <div>
-      <i>Share on your socials!&nbsp;</i>
+      {/* <i>Share on your socials!&nbsp;</i> */}
       <SocialContainer>
         <Facebook src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-512.png" />
         <Twitter src="https://diamondfountainmedia.com/wp-content/uploads/2021/06/Twitter-logo.png" />

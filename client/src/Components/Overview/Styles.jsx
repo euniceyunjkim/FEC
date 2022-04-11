@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
 
 const StylesContainer = styled.div`
-width: auto%;
-height: auto;
+width: 100%;
+height: 100%;
+margin-top: 15px;
+margin-left: 10px;
 `;
 
 const StyleIcon = styled.div`

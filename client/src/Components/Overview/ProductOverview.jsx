@@ -5,7 +5,7 @@ function ProductOverview() {
   const { currentProd } = useContext(currentProducts);
   return (
     <div id="description">
-      <h3>{currentProd.slogan}</h3>
+      <i><h3>{currentProd.slogan && currentProd.slogan}</h3></i>
       <div>{currentProd.description}</div>
     </div>
   );

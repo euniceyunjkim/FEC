@@ -8,7 +8,7 @@ const Carouselcontainer = styled.div`
   justify-content: space-evenly;
   overflow: hidden;
   width: 100%;
-  height: 725px;
+  height: 100%;
 `;
 
 const Carouselinner = styled.div`
