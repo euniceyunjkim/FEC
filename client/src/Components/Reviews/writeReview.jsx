@@ -58,12 +58,12 @@ const WriteReview = function ({ setRender, characteristics }) {
               *Recommend:
               <form>
                 {recommend === true
-                  ? <Box.StarCheck src="./assets/fullStar.png" alt="full star" onClick={() => setRecommend(true)} />
-                  : <Box.StarCheck src="./assets/emptyStar.png" alt="empty star" onClick={() => setRecommend(true)} />}
+                  ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setRecommend(true)} />
+                  : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setRecommend(true)} />}
                 Yes
                 {recommend === false
-                  ? <Box.StarCheck src="./assets/fullStar.png" alt="full star" onClick={() => setRecommend(false)} />
-                  : <Box.StarCheck src="./assets/emptyStar.png" alt="empty star" onClick={() => setRecommend(false)} />}
+                  ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setRecommend(false)} />
+                  : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setRecommend(false)} />}
                 No
               </form>
               <br />
@@ -89,8 +89,6 @@ const WriteReview = function ({ setRender, characteristics }) {
               <br />
               {body.length}
               /50 minimum of 50 characters to submit.
-              <br />
-              Upload photo
               <br />
               <br />
               *Nickname

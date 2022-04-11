@@ -27,24 +27,24 @@ const PickCharacteristics = function ({ charKey, lable, char}) {
       {lable}
       <div style={{ fontSize: '70%' }}>
         {check === 1
-          ? <Box.StarCheck src="./assets/fullStar.png" alt="full star" onClick={() => setChar(1)} />
-          : <Box.StarCheck src="./assets/emptyStar.png" alt="empty star" onClick={() => setChar(1)} />}
+          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(1)} />
+          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(1)} />}
         {feedBack[0]}
         {check === 2
-          ? <Box.StarCheck src="./assets/fullStar.png" alt="full star" onClick={() => setChar(2)} />
-          : <Box.StarCheck src="./assets/emptyStar.png" alt="empty star" onClick={() => setChar(2)} />}
+          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(2)} />
+          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(2)} />}
         {feedBack[1]}
         {check === 3
-          ? <Box.StarCheck src="./assets/fullStar.png" alt="full star" onClick={() => setChar(3)} />
-          : <Box.StarCheck src="./assets/emptyStar.png" alt="empty star" onClick={() => setChar(3)} />}
+          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(3)} />
+          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(3)} />}
         {feedBack[2]}
         {check === 4
-          ? <Box.StarCheck src="./assets/fullStar.png" alt="full star" onClick={() => setChar(4)} />
-          : <Box.StarCheck src="./assets/emptyStar.png" alt="empty star" onClick={() => setChar(4)} />}
+          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(4)} />
+          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(4)} />}
         {feedBack[3]}
         {check === 5
-          ? <Box.StarCheck src="./assets/fullStar.png" alt="full star" onClick={() => setChar(5)} />
-          : <Box.StarCheck src="./assets/emptyStar.png" alt="empty star" onClick={() => setChar(5)} />}
+          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(5)} />
+          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(5)} />}
         {feedBack[4]}
       </div>
     </div>
