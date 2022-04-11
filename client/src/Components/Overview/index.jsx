@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import Reviewss from '../Reviews/index.jsx';
 
@@ -19,38 +20,44 @@ width: 100%;
 height: 90px;
 background-color: #4b15a3;
 text-align: center;
-`
+`;
+
 const SpaceII = styled.div`
 width:100%;
 height: 10px;
 background-color: #280f54
-`
+`;
+
 const Space = styled.div`
 width:100%;
 height: 10px;
 background-color: #ffffff
-`
+`;
+
 const Product = styled.div`
 padding-top: 70px;
 display: flex;
 justify-content: space-evenly;
 height: 90%;
 width: 100%;
-`
+`;
+
 const Left = styled.div`
 width: auto;
 height: auto;
 order: 1;
-`
+`;
+
 const Right = styled.div`
 width: auto;
 height: auto%;
 order: 2;
-`
+`;
+
 const ReviewSumm = styled.div`
 display: flex;
 padding-bottom: 10px;
-`
+`;
 
 const Bottom = styled.div`
 width: 90%
@@ -60,18 +67,22 @@ text-align: center;
 display: grid;
 gird-template: 1fr/ 1fr;
 place-items: center;
-`
+`;
+
 const POverview = styled.div`
 z-index: 2;
-`
+`;
+
 const Social = styled.div`
 padding-top: 25px;
 z-index: 1;
-`
+`;
+
 const Price = styled.div`
 padding: 15px 0px;
 display: flex;
-`
+`;
+
 const OnSale = styled.div`
 color: black;
 font-size: 20px;
@@ -79,12 +90,13 @@ text-decoration: line-through;
 float: left;
 order: 1;
 padding-right: 10px;
-`
+`;
+
 const Og = styled.div`
 color: black;
 font-size: 20px;
 order: 1;
-`
+`;
 
 const Sale = styled.div`
 color: red;
@@ -127,7 +139,7 @@ const SelectionContainer = styled.div`
 z-index: 2;
 `;
 
-function Overview({ styles, setCurStyle, ReviewsRef }) {
+function Overview({ styles, setCurStyle }) {
   const [photos, setPhotos] = useState([]);
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
@@ -135,7 +147,7 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
   const [cart, setCart] = useState([]);
 
   function autoScroll() {
-    document.getElementById('ReviewsRef').scrollIntoView({ behavior: "auto" });
+    document.getElementById('ReviewsRef').scrollIntoView({ behavior: 'auto' });
   }
 
   function getCart() {
@@ -163,7 +175,6 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
     }
   }, []);
 
-
   return (
     <div id="overview">
       <Header>
@@ -173,15 +184,18 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
       <SpaceII />
       <Product>
         <Left>
-            {/* <ProductGalleryContainer> */}
-              <ProductGallery index={index} setIndex={setIndex} photos={photos}/>
-            {/* </ProductGalleryContainer> */}
+          <ProductGallery index={index} setIndex={setIndex} photos={photos} />
         </Left>
         <Right>
           <div id="product details">
             <div id="product-category">
-              <i>CATEGORY&nbsp;//&nbsp;
-                <b>{currentProd.category && currentProd.category.toUpperCase()}</b></i>
+              <i>
+                CATEGORY&nbsp;//&nbsp;
+                <b>
+                  {currentProd.category &&
+                    currentProd.category.toUpperCase()}
+                </b>
+              </i>
             </div>
             <h2>{currentProd.name}</h2>
             <ReviewSumm>
@@ -189,14 +203,38 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
               <Reviews onClick={() => autoScroll()}><i>READ ALL REVIEWS</i></Reviews>
             </ReviewSumm>
             <Price>
-              {curStyle.sale_price ? <div><OnSale>${curStyle.original_price}</OnSale><Sale>${curStyle.sale_price}</Sale></div> : <Og>${curStyle.original_price}</Og>}
+              {curStyle.sale_price
+                ? (
+                  <div>
+                    <OnSale>
+                      $
+                      {curStyle.original_price}
+                    </OnSale>
+                    <Sale>
+                      $
+                      {curStyle.sale_price}
+                    </Sale>
+                  </div>
+                ) : (
+                  <Og>
+                    $
+                    {curStyle.original_price}
+                  </Og>)}
             </Price>
-            <Stylesdesc> <i>SELECTED STYLE</i>&nbsp;//&nbsp;
+            <Stylesdesc>
+              <i>
+                SELECTED STYLE
+              </i>
+              &nbsp;//&nbsp;
               <b><i>{curStyle.name && curStyle.name.toUpperCase()}</i></b>
             </Stylesdesc>
             <MoreContainer>
               <StyleContainer>
-                {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle} />)}
+                {styles.map((style) => <Styles
+                  key={style.style_id}
+                  style={style}
+                  setCurStyle={setCurStyle}
+                />)}
               </StyleContainer>
               <SelectionContainer>
                 <Selection getCart={getCart} />
@@ -215,7 +253,7 @@ function Overview({ styles, setCurStyle, ReviewsRef }) {
           <Socials />
         </Social>
       </Bottom>
-    </div >
+    </div>
   );
 }
 

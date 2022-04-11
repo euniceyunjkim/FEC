@@ -90,20 +90,21 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
   return (
     <CarouselContainer>
       <Prev
-        arrow={first === 0 ? null : 'overview_imgs/Up.png'}
+        arrow={first === 0 ? null : 'overview_imgs/Up.webp'}
         styles={first === 0 ? null : 'cursor: pointer;'}
         onClick={() => prev()}
       />
       <Carousel>
         {photos.map((photo, i) => ((i >= first && i <= last ? (
           <Thumbnails key={i}
-            src={photos[i].thumbnail_url ? photos[i].thumbnail_url : 'assets/NoImage.png'}
+            src={photos[i].thumbnail_url ? photos[i].thumbnail_url : 'assets/NoImage.webp'}
             onClick={() => setIndex(i)}
-            styles={index === i ? 'border: 4px solid #4b15a3;' : null} />
+            styles={index === i ? 'border: 4px solid #4b15a3;' : null}
+          />
         ) : null)))}
       </Carousel>
       <Next
-        arrow={pLength < 8 || last === pLength - 1 ? null : 'overview_imgs/Down.png'}
+        arrow={pLength < 8 || last === pLength - 1 ? null : 'overview_imgs/Down.webp'}
         styles={pLength < 8 || last === pLength - 1 ? null : 'cursor: pointer;'}
         onClick={() => next()}
       />

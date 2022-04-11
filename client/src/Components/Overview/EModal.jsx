@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
@@ -98,13 +98,13 @@ right: -1px;
 position: absolute;
 width: 30px;
 height: 30px;
-background-image: url('overview_imgs/WMin.png');
+background-image: url('overview_imgs/WMin.webp');
 background-repeat: no-repeat;
 background-size: contain;
 background-position: center;
 
 &:hover {
-  background-image: url('overview_imgs/WWMin.png');
+  background-image: url('overview_imgs/WWMin.webp');
   cursor: pointer;
 }
 `;
@@ -134,37 +134,39 @@ ${({ styles }) => `${styles}`};
 function EModal({ show, hideModal, expand, photos, index, flipper }) {
   const [click, setClick] = useState(false);
 
-  const styles = {
-    unclicked: 'cursor: zoom-in;',
-    clicked: 'cursor: zoom-out;',
-    show: 'background-color: rgb(255, 255, 255, 0.6); border-radius: 60%; cursor: pointer;',
-  };
+  const magArea = document.getElementById('zoomarea');
+  const magPic = document.getElementById('zoompic');
 
   function clicker() {
     setClick(!click);
   }
 
-  if (click) {
-    let magArea = document.getElementById('zoomarea');
-    let magPic = document.getElementById('zoompic');
+  function zoom(event) {
+    let clientX = event.clientX - magArea.offsetLeft;
+    let clientY = event.clientY - magArea.offsetTop;
 
-    magArea.addEventListener("mousemove", function (event) {
-      let clientX = event.clientX - magArea.offsetLeft;
-      let clientY = event.clientY - magArea.offsetTop;
+    let mWidth = magArea.offsetWidth;
+    let mHeight = magArea.offsetHeight;
 
-      let mWidth = magArea.offsetWidth;
-      let mHeight = magArea.offsetHeight;
+    clientX = clientX / mWidth * 100;
+    clientY = clientY / mHeight * 100;
 
-      clientX = clientX / mWidth * 100;
-      clientY = clientY / mHeight * 100;
-
-      magPic.style.transform = 'translate(-' + clientX + '%, -' + clientY + '%) scale(2.5)'
-    });
-
-    magArea.addEventListener("mouseleave", function () {
-      magPic.style.transform = 'translate(-50%,-50%) scale(1)'
-    })
+    if (magPic) {
+      magPic.style.transform = 'translate(-' + clientX + '%, -' + clientY + '%) scale(2.5)';
+    }
   }
+
+  function norm() {
+    if (magPic) {
+      magPic.style.transform = 'translate(-50%,-50%) scale(1)';
+    }
+  }
+
+  const styles = {
+    unclicked: 'cursor: zoom-in;',
+    clicked: 'cursor: zoom-out;',
+    show: 'background-color: rgb(255, 255, 255, 0.6); border-radius: 60%; cursor: pointer;',
+  };
 
   return show
     ? createPortal(
@@ -174,21 +176,23 @@ function EModal({ show, hideModal, expand, photos, index, flipper }) {
           <Modall>
             <Area id="zoomarea">
               <ArrowL onClick={() => flipper(-1)} styles={index === 0 ? null : styles.show}>
-                {index === 0 || click ? null : <img alt="" src="overview_imgs/LightLArrow.png" />}
+                {index === 0 || click ? null : <img alt="" src="overview_imgs/LightLArrow.webp" />}
               </ArrowL>
               <PicContainer>
                 <Pic id="zoompic" src={expand} styles={click ? styles.clicked : styles.unclicked}
-                onClick={() => clicker()}
+                  onClick={() => clicker()}
+                  onMouseMove={click ? (e) => zoom(e) : () => norm()}
+                  onMouseLeave={click ? () => norm() : null}
                 />
               </PicContainer>
               {click ? null : <Minimize onClick={hideModal} />}
               <ArrowR onClick={() => flipper(1)}
                 styles={index === photos.length - 1 ? null : styles.show}>
-                {index === photos.length - 1 || click ? null : <img alt="" src="overview_imgs/LightRArrow.png" />}
+                {index === photos.length - 1 || click ? null : <img alt="" src="overview_imgs/LightRArrow.webp" />}
               </ArrowR>
             </Area>
             <ThumbContainer>
-              {photos.map((photo, i) => <Thumbs key={i} src={photo.thumbnail_url ? photo.thumbnail_url : 'assets/NoImage.png'} styles={index === i ? 'border: 4px solid white;' : null} />)}
+              {photos.map((photo, i) => <Thumbs key={i} src={photo.thumbnail_url ? photo.thumbnail_url : 'assets/NoImage.webp'} styles={index === i ? 'border: 4px solid white;' : null} />)}
             </ThumbContainer>
           </Modall>
         </Wrapper>

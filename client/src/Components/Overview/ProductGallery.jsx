@@ -70,10 +70,10 @@ const Expand = styled.div`
   width: 30px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url('overview_imgs/WExpand.png');
+  background-image: url('overview_imgs/WExpand.webp');
   &:hover {
     cursor: pointer;
-    background-image: url('overview_imgs/WWExpand.png');
+    background-image: url('overview_imgs/WWExpand.webp');
   }
   position: absolute;
 `;
@@ -111,21 +111,21 @@ function ProductGallery({ index, setIndex, photos }) {
         <ThumbnailCarousel index={index} setIndex={setIndex} photos={photos} />
       </ThumbnailContainer>
       {photos.length > 0 && (
-        <Carouselinner src={photos[index].url ? photos[index].url : 'assets/NoImage.png'}>
+        <Carouselinner src={photos[index].url ? photos[index].url : 'assets/NoImage.webp'}>
           <InnerLeft onClick={() => flipper(-1)} styles={index === 0 ? null : styles.show}>
-            {index === 0 ? null : <img alt="" src="overview_imgs/LightLArrow.png" />}
+            {index === 0 ? null : <img alt="" src="overview_imgs/LightLArrow.webp" />}
           </InnerLeft>
           <InnerCenter />
           <InnerRight
             onClick={() => flipper(1)}
             styles={index === photos.length - 1 ? null : styles.show}
           >
-            {index === photos.length - 1 ? null : <img alt="" src="overview_imgs/LightRArrow.png" />}
+            {index === photos.length - 1 ? null : <img alt="" src="overview_imgs/LightRArrow.webp" />}
           </InnerRight>
           <Expand
             onClick={() => toggleShow()}
           />
-          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.png'} show={show} hideModal={toggleShow} photos={photos} flipper={flipper} index={index} setIndex={setIndex}/>
+          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.webp'} show={show} hideModal={toggleShow} photos={photos} flipper={flipper} index={index} setIndex={setIndex}/>
         </Carouselinner>
       )}
     </Carouselcontainer>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
@@ -89,7 +89,7 @@ function CartModal({ show, hideModal, cart }) {
             <Cart>
               {cart.map((item) => (
                 <Item key={item.sku_id}>
-                  <Pic src="assets/fullStar.png" />
+                  <Pic src="assets/fullStar.webp" />
                   <Name>{item.sku_id}</Name>
                   <Count>QTY {item.count}</Count>
                   <Delete>X</Delete>

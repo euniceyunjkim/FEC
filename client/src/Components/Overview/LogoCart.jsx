@@ -121,8 +121,8 @@ function LogoCart({ cart, getCart }) {
   };
 
   const mode = {
-    jojo: 'overview_imgs/jojo.png',
-    dio: 'overview_imgs/dio.png',
+    jojo: 'overview_imgs/jojo.webp',
+    dio: 'overview_imgs/dio.webp',
   };
 
   useEffect(() => {
@@ -136,7 +136,7 @@ function LogoCart({ cart, getCart }) {
 
   return (
     <Container>
-      <Logo src="overview_imgs/DarkLogo.png"
+      <Logo src="overview_imgs/DarkLogo.webp"
         onClick={(e) => home(e)}
       />
       <SearchCartContainer>
@@ -145,12 +145,12 @@ function LogoCart({ cart, getCart }) {
         <SearchContainer>
           <Bar styles={barOpen ? styles.open : styles.closed} />
           <Search type="button" onClick={() => setBarOpen(!barOpen)}>
-            <img alt="" src="overview_imgs/Search.png" height="20px" width="20px" />
+            <img alt="" src="overview_imgs/Search.webp" height="20px" width="20px" />
           </Search>
         </SearchContainer>
         </LDSContainer>
         <Cart
-          src="overview_imgs/DarkCart.png"
+          src="overview_imgs/DarkCart.webp"
           onClick={() => toggleShow()}
         >
           <Count>

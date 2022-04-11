@@ -35,7 +35,7 @@ function Styles({ style, setCurStyle }) {
   const { curStyle } = useContext(currentStyle);
 
   const styled = {
-    selected: 'background-image: url("overview_imgs/PCheckmark.png");',
+    selected: 'background-image: url("overview_imgs/PCheckmark.webp");',
   };
 
   function handleClick(item) {
@@ -52,7 +52,7 @@ function Styles({ style, setCurStyle }) {
   return (
     <StylesContainer>
       <Checkmark styled={selected === style.style_id ? styled.selected : null} />
-      <StyleIcon src={style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'assets/NoImage.png'} onClick={() => handleClick(style)} />
+      <StyleIcon src={style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'assets/NoImage.webp'} onClick={() => handleClick(style)} />
     </StylesContainer>
   );
 }
