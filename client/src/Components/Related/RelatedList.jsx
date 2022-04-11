@@ -52,7 +52,7 @@ let RelatedList = ({related}) => {
 
   return (
     <List>
-      {<PreviousIcon className={current === 0 ? "hidden" : ""} src="overview_imgs/DarkLArrow.png" onClick={current === 0 ? null : previous} />}
+      {<PreviousIcon className={current === 0 ? "hidden" : ""} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />}
     {related.map((product, index) => {
       if (index < current + 4 && index > current - 1) {
         return <Card key={index} action={'Compare'} compareData={compareData} showModal={showModal}
@@ -60,7 +60,7 @@ let RelatedList = ({related}) => {
         product={product} styles={relatedStyles[index]}/>
       }
     })}
-      {<NextIcon className={current >= length - 4 ? "hidden" : ""} src={"overview_imgs/DarkRArrow.png"} onClick={current < length - 4 ? next : null} />}
+      {<NextIcon className={current >= length - 4 ? "hidden" : ""} src={"overview_imgs/DarkRArrow.webp"} onClick={current < length - 4 ? next : null} />}
     </List>
   )
 }
