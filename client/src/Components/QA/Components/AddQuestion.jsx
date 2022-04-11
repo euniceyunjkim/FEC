@@ -1,9 +1,9 @@
 import React from 'react';
 
-function AddQuestion({}) {
+function AddQuestion({ currentProd, allQuestions }) {
   return (
     <div>
-      <button type="submit">ADD A QUESTION  +</button>
+      { allQuestions.length > 0 ? <button className="add_question" type="submit">Add a Question +</button> : <button className="add_first_question" type="submit">Add a Question +</button> }
       <form>
         <label htmlFor="newQuestion">
           Your Question

@@ -5,13 +5,13 @@ const config = require('../../config.js');
 const path = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa';
 
 QARouters.get('/questions', (req, res) => {
-  axios.get(`${path}/questions`, { headers: { Authorization: config.TOKEN }, params: { product_id: req.query.product_id } })
+  axios.get(`${path}/questions`, { headers: { Authorization: config.TOKEN }, params: { product_id: req.query.product_id, count: req.query.count, page: req.query.page } })
     .then((data) => res.send(data.data))
     .catch((err) => res.send(err));
 });
 
 QARouters.get('/questions/:question_id/answers', (req, res) => {
-  axios.get(`${path}/questions/${req.params.question_id}/answers`, { headers: { Authorization: config.TOKEN } })
+  axios.get(`${path}/questions/${req.params.question_id}/answers`, { headers: { Authorization: config.TOKEN }, params: { count: req.query.count, page: req.query.page } })
     .then((data) => res.send(data.data))
     .catch((err) => res.send(err));
 });

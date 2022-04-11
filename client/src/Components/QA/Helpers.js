@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-function getQuestions(prodId) {
-  return axios.get('qa/questions', { params: { product_id: prodId } });
+function getQuestions(prodId, page, count) {
+  return axios.get('qa/questions', { params: { product_id: prodId, page, count } });
 }
 
 // function postQuestion(data) {

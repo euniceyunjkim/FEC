@@ -7,23 +7,39 @@ import currentProducts from '../../Contexts/CurProdContext.js';
 
 const GetData = require('./Helpers');
 
-let localStorage = [];
+let localQuestions = [];
+let helpfulAndReport = {};
 
 function QA({ }) {
   const { currentProd } = useContext(currentProducts);
   const [questions, setQuestions] = useState([]);
+  const [matchingQ, setMatchingQ] = useState([]);
 
   useEffect(() => {
     if (currentProd.id) {
-      GetData.getQuestions(currentProd.id)
-        .then((data) => { localStorage = data.data.results; })
-        .then(() => localStorage.sort((a, b) => b.helpfulness - a.helpfulness))
-        .then(() => console.log(localStorage))
-        .then(() => localStorage.forEach((question) => {
-          let test = Object.entries(question.answers).sort((a, b) => b[1].helpfulness - a[1].helpfulness);
-          question['answers'] = test;
+      GetData.getQuestions(currentProd.id, 1, 9999)
+        .then((data) => { localQuestions = data.data.results; })
+        .then(() => localQuestions.forEach((question) => {
+          if (helpfulAndReport[question.question_id]) {
+            question.helpfulQ = helpfulAndReport[question.question_id].helpful;
+            question.helpfulAnswers = helpfulAndReport[question.question_id].answers;
+            question.reportedAnswers = helpfulAndReport[question.question_id].reported;
+          }
+          const test = Object.entries(question.answers).sort((a, b) => {
+            const userA = a[1].answerer_name.toLowerCase();
+            const userB = b[1].answerer_name.toLowerCase();
+
+            if (userA === 'seller' && userB !== 'seller') {
+              return -1;
+            }
+            if (userB === 'seller' && userA !== 'seller') {
+              return 1;
+            }
+            return b[1].helpfulness - a[1].helpfulness;
+          });
+          question.answers = test;
         }))
-        .then(() => { setQuestions(localStorage.slice(0, 4)); })
+        .then(() => { setQuestions(localQuestions.slice(0, 4)); })
         .catch((err) => console.error(err));
     }
   }, [currentProd]);
@@ -31,10 +47,11 @@ function QA({ }) {
   return (
     <div>
       QUESTIONS & ANSWERS
-      <Search questions={questions} setQuestions={setQuestions} allQuestions={localStorage} />
-      {questions.map((question) => <QAList question={question} />)}
-      <MoreQuestions />
-      <AddQuestion />
+      <Search matching={matchingQ} allQuestions={localQuestions} setMatching={setMatchingQ} />
+      {questions.length > 0 && matchingQ.length === 0 ? <QAList questions={questions} allQuestions={localQuestions} setQuestions={setQuestions} helpfulAndReport={helpfulAndReport}/> : null}
+      {questions.length > 0 && matchingQ.length > 0 ? <QAList questions={matchingQ} allQuestions={localQuestions} setQuestions={setQuestions} helpfulAndReport={helpfulAndReport} /> : null}
+      <MoreQuestions questions={questions} allQuestions={localQuestions} setQuestions={setQuestions} />
+      <AddQuestion product={currentProd} allQuestions={localQuestions} />
     </div>
   );
 }
