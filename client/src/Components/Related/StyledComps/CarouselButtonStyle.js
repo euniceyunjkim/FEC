@@ -8,6 +8,9 @@ export const PreviousIcon = styled.img`
   position: relative;
   top: 50%;
   left: 0;
+  &.hidden {
+    visibility: hidden;
+  }
 `
 export const NextIcon = styled.img`
   width: 30px;
@@ -17,4 +20,7 @@ export const NextIcon = styled.img`
   position: relative;
   top: 50%;
   right: 0;
+  &.hidden {
+    visibility: hidden;
+  }
 `
