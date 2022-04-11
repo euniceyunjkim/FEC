@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CardImage } from './StyledComps/ImageStyle.js';
+import { CardImage, CardImageContainer } from './StyledComps/ImageStyle.js';
 import { ButtonIcon } from './StyledComps/ButtonStyle.js';
 import { Category } from './StyledComps/CategoryStyle.js';
 import { Price } from './StyledComps/PriceStyle.js';
@@ -26,8 +26,10 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
     } else if (styles) {
       return (
         <div className={className}>
-          <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} onClick={() => {navigate(`/${product.id}`)}}/>
-          <ButtonIcon onClick={() => handleClick(id)}>{action}</ButtonIcon>
+          <CardImageContainer>
+            <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.png'} onClick={() => {navigate(`/${product.id}`)}}/>
+            <ButtonIcon src ={"assets/RedX.png"} onClick={() => handleClick(id)}></ButtonIcon>
+          </CardImageContainer>
           {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>
           <ProdName>{styles.name} {product.name}</ProdName>
