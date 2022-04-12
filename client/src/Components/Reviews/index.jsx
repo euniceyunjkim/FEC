@@ -9,18 +9,26 @@ import RenderRight from './renderRight.jsx';
 
 const Reviews = function Reviews() {
   const { currentProd } = useContext(currentProducts);
-
+  const [characteristics, setCharacteristics] = useState({});
+  const [ratingCount, setRatingCount] = useState(0);
   return (
     <div>
       <Box.Container>
         <Box.InnerCol>
           Ratings And Reviews
           <Box.ReviewSum>
-            <RenderLeft />
+            <RenderLeft
+              setRatingCount={(e) => setRatingCount(e)}
+              characteristics={characteristics}
+              setCharacteristics={(e) => setCharacteristics(e)}
+            />
           </Box.ReviewSum>
         </Box.InnerCol>
         <Box.InnerCol>
-        <RenderRight />
+          <RenderRight
+            ratingCount={ratingCount}
+            characteristics={characteristics}
+          />
         </Box.InnerCol>
       </Box.Container>
     </div>

@@ -1,41 +1,40 @@
-import React from 'react';
-import styled from 'styled-components';
-
-const StylesContainer = styled.div`
-
-`;
-
-const StyleName = styled.div`
-padding-top: 10px;
-visibility: hidden;
-font-size: 15px;
-`;
-
-const StyleIcon = styled.div`
-width:70px;
-height:70px;
-background-image: ${({ src }) => `url(${src})`};
-border-radius: 50%;
-background-repeat: no-repeat;
-background-position: center;
-justify-content: center;
-&:hover {
-  cursor: pointer;
-}
-`;
+import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
+import currentStyle from '../../Contexts/CurStyleContext';
+import {
+  StylesContainer, StyleIcon, Checkmark,
+} from './StyledComps/StylesStyle';
 
 function Styles({ style, setCurStyle }) {
+  const [selected, setSelect] = useState(0);
+  const { curStyle } = useContext(currentStyle);
+
+  const styled = {
+    selected: 'background-image: url("overview_imgs/PCheckmark.webp");',
+  };
+
   function handleClick(item) {
     setCurStyle(item);
+    setSelect(item.style_id);
   }
 
+  useEffect(() => {
+    if (curStyle.style_id) {
+      setSelect(curStyle.style_id);
+    }
+  }, [curStyle]);
+
   return (
-    <div>
-      <StylesContainer>
-        <StyleIcon src={style.photos[0].thumbnail_url} onClick={() => handleClick(style)} />
-      </StylesContainer>
-    </div>
+    <StylesContainer>
+      <Checkmark styled={selected === style.style_id ? styled.selected : null} />
+      <StyleIcon src={style && style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'assets/NoImage.webp'} onClick={() => handleClick(style)} />
+    </StylesContainer>
   );
 }
+
+Styles.propTypes = {
+  style: PropTypes.objectOf(PropTypes.styles).isRequired,
+  setCurStyle: PropTypes.func.isRequired,
+};
 
 export default Styles;

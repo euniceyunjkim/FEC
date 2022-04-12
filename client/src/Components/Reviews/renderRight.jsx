@@ -2,14 +2,16 @@ import React, { useState, useEffect, useContext } from 'react';
 import currentProducts from '../../Contexts/CurProdContext';
 import Box from './css/container';
 import Review from './reviews.jsx';
+import WriteReview from './writeReview.jsx';
 
 const axios = require('axios');
 
-const RenderRight = function () {
+const RenderRight = function ({ratingCount, characteristics}) {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState([]);
   const [count, setCount] = useState(2);
   const { currentProd } = useContext(currentProducts);
+  const [renderModal, setRenderModal] = useState(false);
   const getReviews = function () {
     axios.get(`http://localhost:3000/reviews?product_id=${currentProd.id}&sort=${sort}&count=${count}`)
       .then((res) => {
@@ -22,12 +24,11 @@ const RenderRight = function () {
       getReviews();
     }
   }, [currentProd, sort, count]);
-
   return (
     <Box.InnerCol>
       <form onSubmit={(e) => setSort(e.target.value)}>
         <label>
-          Sort reviews by:
+          {ratingCount} reviews. Sort by:
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>
@@ -43,7 +44,10 @@ const RenderRight = function () {
 
       <div>
         <button onClick={() => setCount(count + 2)}>more reviews</button>
-        <button onClick={() => alert('shtoop it its not ready yet')}>add reviews +</button>
+        <button onClick={() => setRenderModal(true)}>add reviews +</button>
+        {renderModal === true
+          ? <WriteReview setRenderModal={setRenderModal} setRender={setRenderModal} characteristics={characteristics} />
+          : <div />}
       </div>
 
     </Box.InnerCol>

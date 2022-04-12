@@ -29,7 +29,7 @@ const Characteristics = function ({ lable, value }) {
     <div>
       {lable}
       <Box.Bar>
-        <Box.Triangle src="./assets/triangle.png" alt="triangle" style={{ paddingLeft: `${value * 40}px` }} />
+        <Box.Triangle src="./assets/triangle.webp" alt="triangle" style={{ paddingLeft: `${value * 40}px` }} />
       </Box.Bar>
       {renderLable()}
     </div>
