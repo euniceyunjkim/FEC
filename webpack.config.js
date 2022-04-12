@@ -1,4 +1,5 @@
 const path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -13,6 +14,9 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
   },
+  plugins: [new CompressionPlugin({
+    algorithm: "gzip",
+  })],
   module: {
     rules: [
       {
