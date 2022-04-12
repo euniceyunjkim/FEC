@@ -1,128 +1,146 @@
-import React, { useState, useContext, useEffect } from 'react';
+/* eslint-disable react/jsx-wrap-multilines */
+import React, {
+  useState, useContext, useEffect, useCallback,
+} from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import Styles from './Styles.jsx';
-import ProductOverview from './ProductOverview.jsx';
-import ProductGallery from './ProductGallery.jsx';
-import ThumbnailCarousel from './ThumbnailCarousel.jsx';
-import LogoCart from './LogoCart.jsx';
-import Selection from './Selection.jsx';
-import RenderRating from '../renderRating.jsx';
-
-import Socials from './Socials.jsx';
-import currentProducts from '../../Contexts/CurProdContext.js';
-import currentStyle from '../../Contexts/CurStyleContext.js';
-
-import styled from 'styled-components';
-
-const StyleContainer = styled.div`
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-width: 500px;
-height: 250px;
-padding-bottom: 50px;
-padding-top: 50px;
-`
-const Header = styled.div`
-width: 100%;
-height: 90px;
-background-color: #4b15a3;
-text-align: center;
-`
-const SpaceII = styled.div`
- width:100%;
- height: 10px;
- background-color: #280f54
-`
-const Space = styled.div`
- width:100%;
- height: 10px;
- background-color: #ffffff
-`
-const Product = styled.div`
-padding-top: 100px;
-display: flex;
-justify-content: space-evenly;
-width: 90%;
-`
-const Left = styled.div`
-width: auto;
-`
-
-const Right = styled.div`
-width: auto;
-`
-const ReviewSumm = styled.div`
-padding-bottom: 20px;
-justify-content: left;
-`
-
-const Bottom = styled.div`
-width: 90%
-padding-top: 100px;
-padding-bottom: 100px;
-text-align: center;
-display: grid;
-gird-template: 1fr/ 1fr;
-place-items: center;
-`
-const POverview = styled.div`
-z-index: 2;
-`
-const Social = styled.div`
-padding-top: 25px;
-z-index: 1;
-`
+import Styles from './Styles';
+import ProductOverview from './ProductOverview';
+import ProductGallery from './ProductGallery';
+import LogoCart from './LogoCart';
+import Selection from './Selection';
+import RenderRating from '../renderRating';
+import Socials from './Socials';
+import currentProducts from '../../Contexts/CurProdContext';
+import currentStyle from '../../Contexts/CurStyleContext';
+import {
+  Header, SpaceII, Space, Product, Left, Right, ReviewSumm, Bottom,
+  POverview, Social, Price, OnSale, Og, Sale, Stylesdesc, Reviews,
+  MoreContainer, StyleContainer, SelectionContainer,
+} from './StyledComps/indexStyle';
 
 function Overview({ styles, setCurStyle }) {
+  const [photos, setPhotos] = useState([]);
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
+  const [index, setIndex] = useState(0);
+  const [cart, setCart] = useState([]);
+
+  function autoScroll() {
+    document.getElementById('ReviewsRef').scrollIntoView({ behavior: 'auto' });
+  }
+
+  function getCart() {
+    axios.get('/cart')
+      .then((res) => setCart(res.data))
+      .catch((err) => new Error(err));
+  }
+
+  const getCartCB = useCallback(() => getCart(), []);
+
+  useEffect(() => {
+    if (curStyle.photos) {
+      setPhotos(curStyle.photos);
+    }
+  }, [curStyle]);
+
+  useEffect(() => {
+    if (curStyle.photos) {
+      setIndex(0);
+    }
+  }, [currentProd.id]);
+
+  useEffect(() => {
+    if (curStyle.photos) {
+      setPhotos(curStyle.photos);
+      setIndex(0);
+    }
+  }, []);
 
   return (
     <div id="overview">
-      <Header><LogoCart /></Header>
+      <Header>
+        <LogoCart cart={cart} getCart={getCartCB} />
+      </Header>
       <Space />
       <SpaceII />
       <Product>
         <Left>
-          <div>
-            <ThumbnailCarousel/ >
-          </div>
-          <div>
-            <ProductGallery />
-          </div>
+          <ProductGallery index={index} setIndex={setIndex} photos={photos} />
         </Left>
         <Right>
           <div id="product details">
             <div id="product-category">
-              <b>Category:&nbsp;</b>
-              {currentProd.category}
+              <i>
+                CATEGORY&nbsp;//&nbsp;
+                <b>
+                  {currentProd.category
+                  && currentProd.category.toUpperCase()}
+                </b>
+              </i>
             </div>
-            <h3>{currentProd.name}</h3>
+            <h2>{currentProd.name && currentProd.name}</h2>
             <ReviewSumm>
-              <RenderRating prodID={currentProd.id} />
+              <RenderRating prodID={currentProd.id && currentProd.id} />
+              <Reviews onClick={() => autoScroll()}><i>READ ALL REVIEWS</i></Reviews>
             </ReviewSumm>
-            <div>Styles > Selected Style >&nbsp;
-              <b>{curStyle.name}</b>
-            </div>
-            <StyleContainer>
-              {styles.map((style) => <Styles key={style.style_id} style={style} setCurStyle={setCurStyle} />)}
-            </StyleContainer>
-            <Selection />
+            <Price>
+              {curStyle.sale_price
+                ? (
+                  <div>
+                    <OnSale>
+                      $
+                      {curStyle.original_price}
+                    </OnSale>
+                    <Sale>
+                      $
+                      {curStyle.sale_price}
+                    </Sale>
+                  </div>
+                ) : (
+                  <Og>
+                    $
+                    {curStyle.original_price}
+                  </Og>)}
+            </Price>
+            <Stylesdesc>
+              <i>
+                SELECTED STYLE
+              </i>
+              &nbsp;//&nbsp;
+              <b><i>{curStyle.name && curStyle.name.toUpperCase()}</i></b>
+            </Stylesdesc>
+            <MoreContainer>
+              <StyleContainer>
+                {styles && styles.map((style) => <Styles
+                  key={style.style_id}
+                  style={style}
+                  setCurStyle={setCurStyle}
+                />)}
+              </StyleContainer>
+              <SelectionContainer>
+                <Selection getCart={getCartCB} />
+              </SelectionContainer>
+            </MoreContainer>
           </div>
         </Right>
       </Product>
-      <br/>
+      <br />
       <Bottom>
         <POverview>
           <ProductOverview />
         </POverview>
-        <br/>
+        <br />
         <Social>
           <Socials />
         </Social>
       </Bottom>
-    </div >
+    </div>
   );
 }
 
+Overview.propTypes = {
+  styles: PropTypes.arrayOf(PropTypes.curStyle).isRequired,
+  setCurStyle: PropTypes.func.isRequired,
+};
 export default Overview;

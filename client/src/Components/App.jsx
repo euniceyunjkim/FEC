@@ -1,57 +1,48 @@
-import React, { useState, useEffect, useContext } from 'react';
-import Overview from './Overview/index.jsx';
-import QA from './QA/index.jsx';
-import Related from './Related/index.jsx';
-import Reviews from './Reviews/index.jsx';
-import currentProducts from '../Contexts/CurProdContext.js';
-import currentStyle from '../Contexts/CurStyleContext.js';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
-
+import Overview from './Overview/index';
+import QA from './QA/index';
+import Related from './Related/index';
+import Reviews from './Reviews/index';
+import currentProducts from '../Contexts/CurProdContext';
+import currentStyle from '../Contexts/CurStyleContext';
 
 const axios = require('axios');
 
-function App({}) {
-
+function App() {
   const [currentProd, setCurrentProd] = useState({});
   const [styles, setStyles] = useState([]);
   const [curStyle, setCurStyle] = useState({});
-  let { prodID } = useParams();
+  const { prodID } = useParams();
 
   function defaultGrabber(items) {
-    for (let i = 0; i < items.length; i += 1) {
-      if (items[i]['default?'] === true) {
-        setCurStyle(items[i]);
-        return;
-      }
-    }
+    setCurStyle(items[0]);
   }
-  // const [loaded, setLoad] = useState(false);
+
   useEffect(() => {
     axios.get(`/products/${prodID}`)
       .then((data) => {
         setCurrentProd(data.data);
-        axios.get(`products/:product_id/styles`, { params: { product_id: data.data.id } })
+        axios.get('products/:product_id/styles', { params: { product_id: data.data.id } })
           .then((res) => {
             setStyles(res.data.results);
             defaultGrabber(res.data.results);
           })
-          .catch((err) => console.log('err fetching styles', err));
+          .catch((err) => new Error('err fetching styles', err));
       })
-      .catch((err) => console.error(err));
+      .catch((err) => new Error(err));
   }, [prodID]);
 
   useEffect(() => {
     if (currentProd.id) {
-      axios.get(`products/:product_id/styles`, { params: { product_id: currentProd.id } })
+      axios.get('products/:product_id/styles', { params: { product_id: currentProd.id } })
         .then((res) => {
           setStyles(res.data.results);
           defaultGrabber(res.data.results);
         })
-        .catch((err) => console.log('err fetching styles', err));
+        .catch((err) => new Error('err fetching styles', err));
     }
   }, [currentProd]);
-
 
   return (
     <currentProducts.Provider value={{ currentProd, setCurrentProd }}>
@@ -60,6 +51,7 @@ function App({}) {
         <Related />
       </currentStyle.Provider>
       <QA />
+      <div id="ReviewsRef" />
       <Reviews />
     </currentProducts.Provider>
   );
