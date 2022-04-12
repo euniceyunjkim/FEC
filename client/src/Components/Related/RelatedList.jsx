@@ -7,7 +7,7 @@ import { Modal } from './StyledComps/ModalStyle.js';
 import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle.js';
 const AxiosHelper = require('./AxiosHelper');
 
-let RelatedList = ({related}) => {
+const RelatedList = ({related}) => {
 
   let [relatedStyles, setRelatedStyles] = useState([]);
   let [showModal, setShowModal] = useState(false);
@@ -57,7 +57,7 @@ let RelatedList = ({related}) => {
       if (index < current + 4 && index > current - 1) {
         return <Card key={index} action={'Compare'} compareData={compareData} showModal={showModal}
         setShowModal={setShowModal} handleClick={() => showCompare(product, relatedStyles[index])}
-        product={product} styles={relatedStyles[index]}/>
+        product={product} styles={relatedStyles[index]} image={"assets/CompareButtonWhite.webp"}/>
       }
     })}
       {<NextIcon className={current >= length - 4 ? "hidden" : ""} src={"overview_imgs/DarkRArrow.webp"} onClick={current < length - 4 ? next : null} />}

@@ -10,7 +10,8 @@ import RenderRating from '../renderRating.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
 import { useNavigate } from 'react-router-dom';
 
-let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id, handleClick, showModal, setShowModal, compareData}) => {
+let ProductCard = ({className, product, styles, newOutfit, image,
+  action, addOutfit, id, handleClick, showModal, setShowModal, compareData}) => {
   let navigate = useNavigate();
 
   const {setCurrentProd} = useContext(currentProducts);
@@ -28,7 +29,7 @@ let ProductCard = ({className, product, styles, newOutfit, action, addOutfit, id
         <div className={className}>
           <CardImageContainer>
             <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.webp'} onClick={() => {navigate(`/${product.id}`)}}/>
-            <ButtonIcon src ={"assets/PurpleX.webp"} onClick={() => handleClick(id)}></ButtonIcon>
+            <ButtonIcon src ={image} onClick={() => handleClick(id)}></ButtonIcon>
           </CardImageContainer>
           {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>
