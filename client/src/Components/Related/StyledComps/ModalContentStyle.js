@@ -10,6 +10,8 @@ export const ModalContent = styled.div`
 	transform: translate(-50%, -50%);
 	border-radius: 1%;
 	z-index: 100;
-	/* display: flex;
-	justify-content: center; */
+	display: flex;
+	/* justify-content: center; */
+	align-items: center;
+	flex-direction: column;
 `;
