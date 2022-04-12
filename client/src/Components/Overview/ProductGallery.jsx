@@ -1,82 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import EModal from './EModal.jsx';
 import ThumbnailCarousel from './ThumbnailCarousel.jsx';
-
-const Carouselcontainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-`;
-
-const Carouselinner = styled.div`
-flex: 80%;
-background-size: cover;
-background-position: center;
-display: flex;
-height: 100%;
-width: 850px;
-background-image: ${({ src }) => `url(${src})`};
-position: relative;
-`;
-
-const ThumbnailContainer = styled.div`
-flex: 15%;
-height: 100%;
-width: 100%;
-left: -1px;
-`;
-
-const InnerLeft = styled.div`
-top: 300px;
-flex: 10%;
-position: absolute;
-height: 90px;
-width: 90px;
-&:hover {
-  ${({ styles }) => `${styles}`};
-}
-display: grid;
-place-items: center;
-`;
-
-const InnerRight = styled.div`
-right: -1px;
-position: absolute;
-top: 300px;
-flex: 10%;
-height: 90px;
-width: 90px;
-display: grid;
-place-items: center;
-&:hover {
-  ${({ styles }) => `${styles}`};
-}
-`;
-
-const InnerCenter = styled.div`
-flex: 86%;
-height: 100%;
-`;
-
-const Expand = styled.div`
-  top: -1px;
-  right: -1px;
-  margin: 5px;
-  z-index: 9;
-  height: 30px;
-  width: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url('overview_imgs/WExpand.webp');
-  &:hover {
-    cursor: pointer;
-    background-image: url('overview_imgs/WWExpand.webp');
-  }
-  position: absolute;
-`;
+import {
+  Carouselcontainer, Carouselinner, ThumbnailContainer, InnerLeft, InnerRight, InnerCenter, Expand,
+} from './StyledComps/ProductGalleryStyle.js';
 
 function ProductGallery({ index, setIndex, photos }) {
   const [show, setShow] = useState(false);

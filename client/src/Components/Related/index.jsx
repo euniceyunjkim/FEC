@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import currentProducts from '../../Contexts/CurProdContext.js';
 import RelatedList from './RelatedList.jsx';
 import OutfitList from './OutfitList.jsx';
-import { RelatedRectangle } from './StyledComps/RelatedStyle.js';
+import { RelatedRectangle, RelatedContainer } from './StyledComps/RelatedStyle.js';
 const AxiosHelper = require('./AxiosHelper');
 
 const Related = ({ }) => {
@@ -19,12 +19,14 @@ const Related = ({ }) => {
   }, [currentProd])
 
   return (
-    <RelatedRectangle>
-      <h2>Customers Also Liked:</h2>
-      <RelatedList related={related} />
-      <h2>Your Outfit</h2>
-      <OutfitList />
-    </RelatedRectangle>
+    <RelatedContainer>
+      <RelatedRectangle>
+        <h2>Customers Also Liked:</h2>
+        <RelatedList related={related} />
+        <h2>Your Outfit</h2>
+        <OutfitList />
+      </RelatedRectangle>
+    </RelatedContainer>
   )
 }
 

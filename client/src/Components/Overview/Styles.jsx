@@ -1,34 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import styled from 'styled-components';
 import currentStyle from '../../Contexts/CurStyleContext.js';
-
-const StylesContainer = styled.div`
-width: 100%;
-height: 100%;
-margin-top: 15px;
-margin-left: 10px;
-`;
-
-const StyleIcon = styled.div`
-width:70px;
-height:70px;
-background-image: ${({ src }) => `url(${src})`};
-border-radius: 50%;
-background-position: center;
-background-size: cover;
-&:hover {
-  cursor: pointer;
-}
-`;
-
-const Checkmark = styled.div`
-width: 25px;
-height: 25px;
-background-repeat: no-repeat;
-background-size: contain;
-position: absolute;
-${({ styled }) => `${styled}`};
-`;
+import {
+  StylesContainer, StyleIcon, Checkmark,
+} from './StyledComps/StylesStyle.js';
 
 function Styles({ style, setCurStyle }) {
   const [selected, setSelect] = useState(0);

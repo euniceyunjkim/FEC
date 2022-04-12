@@ -1,7 +1,5 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useState, useContext, useEffect, useRef } from 'react';
-import Reviewss from '../Reviews/index.jsx';
-
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import Styles from './Styles.jsx';
 import ProductOverview from './ProductOverview.jsx';
@@ -9,135 +7,14 @@ import ProductGallery from './ProductGallery.jsx';
 import LogoCart from './LogoCart.jsx';
 import Selection from './Selection.jsx';
 import RenderRating from '../renderRating.jsx';
-
 import Socials from './Socials.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
 import currentStyle from '../../Contexts/CurStyleContext.js';
-import styled from 'styled-components';
-
-const Header = styled.div`
-width: 100%;
-height: 90px;
-background-color: #4b15a3;
-text-align: center;
-`;
-
-const SpaceII = styled.div`
-width:100%;
-height: 10px;
-background-color: #280f54
-`;
-
-const Space = styled.div`
-width:100%;
-height: 10px;
-background-color: #ffffff
-`;
-
-const Product = styled.div`
-padding-top: 70px;
-display: flex;
-justify-content: space-evenly;
-height: 90%;
-width: 100%;
-`;
-
-const Left = styled.div`
-width: auto;
-height: auto;
-order: 1;
-`;
-
-const Right = styled.div`
-width: auto;
-height: auto%;
-order: 2;
-`;
-
-const ReviewSumm = styled.div`
-display: flex;
-padding-bottom: 10px;
-`;
-
-const Bottom = styled.div`
-width: 90%
-padding-top: 100px;
-padding-bottom: 100px;
-text-align: center;
-display: grid;
-gird-template: 1fr/ 1fr;
-place-items: center;
-`;
-
-const POverview = styled.div`
-z-index: 2;
-`;
-
-const Social = styled.div`
-padding-top: 25px;
-z-index: 1;
-`;
-
-const Price = styled.div`
-padding: 15px 0px;
-display: flex;
-`;
-
-const OnSale = styled.div`
-color: black;
-font-size: 20px;
-text-decoration: line-through;
-float: left;
-order: 1;
-padding-right: 10px;
-`;
-
-const Og = styled.div`
-color: black;
-font-size: 20px;
-order: 1;
-`;
-
-const Sale = styled.div`
-color: red;
-font-size: 20px;
-float: left;
-order: 2;
-`;
-
-const Stylesdesc = styled.div`
-padding-top: 10px;
-padding-bottom: 10px;
-`;
-
-const Reviews = styled.div`
-text-decoration: underline;
-padding-left: 10px;
-&:hover {
-  cursor: pointer;
-  color: #280f54;
-}
-`;
-
-const MoreContainer = styled.div`
-display: grid;
-grid-template: 1fr/1fr;
-place-items: center;
-`;
-
-const StyleContainer = styled.div`
-z-index: 1;
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-width: 100%;
-height: 100%;
-margin-top: 30px;
-margin-bottom: 30px;
-`;
-
-const SelectionContainer = styled.div`
-z-index: 2;
-`;
+import {
+  Header, SpaceII, Space, Product, Left, Right, ReviewSumm, Bottom,
+  POverview, Social, Price, OnSale, Og, Sale, Stylesdesc, Reviews,
+  MoreContainer, StyleContainer, SelectionContainer,
+} from './StyledComps/indexStyle.js';
 
 function Overview({ styles, setCurStyle }) {
   const [photos, setPhotos] = useState([]);

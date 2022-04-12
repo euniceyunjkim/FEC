@@ -1,57 +1,8 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import styled from 'styled-components';
-
-const Overlay = styled.div`
-background-color: #999999;
-height: 100vh;
-left: 0;
-opacity: 0.5;
-position: fixed;
-top: 0;
-width: 100vw;
-z-index: 500;
-`;
-
-const Wrapper = styled.div`
-display: flex;
-justify-content: center;
-left: 0;
-outline: 0;
-overflow-x: hidden;
-overflow-y: auto;
-position: fixed;
-top: 25%;
-width: 100%;
-z-index: 1000;
-`;
-
-const Modall = styled.div`
-align-items: center;
-background: white;
-border-radius: 0.25rem;
-display: flex;
-flex-direction: column;
-margin: 1.875rem;
-max-width: 500px;
-position: relative;
-z-index: 100;
-`;
-
-const Warning = styled.div`
-align-items: center;
-display: flex;
-flex-direction: column;
-padding: 10px; 5px;
-`;
-
-const ConfirmButton = styled.button`
-  color: white;
-  background-color: #4b15a3;
-  cursor: pointer;
-  font-weight: bold;
-  width: 100%;
-`;
+import {
+  Overlay, Wrapper, Modall, Warning, ConfirmButton,
+} from './StyledComps/ModalStyle.js';
 
 function Modal({ shown, hideModal }) {
   return shown
