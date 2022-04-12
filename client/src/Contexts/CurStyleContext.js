@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-let currentStyle = createContext({});
+const currentStyle = createContext({});
 
 export default currentStyle;

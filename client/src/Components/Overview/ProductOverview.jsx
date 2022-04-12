@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import currentProducts from '../../Contexts/CurProdContext.js';
+import currentProducts from '../../Contexts/CurProdContext';
 
 function ProductOverview() {
   const { currentProd } = useContext(currentProducts);
   return (
     <div id="description">
-      <h3>{currentProd.slogan}</h3>
-      <div>{currentProd.description}</div>
+      <i><h3>{currentProd.slogan && currentProd.slogan}</h3></i>
+      <div>{currentProd.description && currentProd.description}</div>
     </div>
   );
 }

@@ -7,15 +7,17 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'client/dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
-
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   devServer: {
     port: 3000,
     historyApiFallback: true,
   },
   plugins: [new CompressionPlugin({
-    algorithm: "gzip",
+    algorithm: 'gzip',
   })],
   module: {
     rules: [
