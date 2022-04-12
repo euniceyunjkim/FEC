@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import {
   Overlay, Wrapper, Modall, Warning, ConfirmButton,
-} from './StyledComps/ModalStyle.js';
+} from './StyledComps/ModalStyle';
 
 function Modal({ shown, hideModal }) {
   return shown
@@ -24,5 +25,10 @@ function Modal({ shown, hideModal }) {
     )
     : null;
 }
+
+Modal.propTypes = {
+  shown: PropTypes.boolean,
+  hideModal: PropTypes.func,
+};
 
 export default Modal;

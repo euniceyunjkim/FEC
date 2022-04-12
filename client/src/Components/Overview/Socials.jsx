@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Facebook, Twitter, Pinterest, SocialContainer,
-} from './StyledComps/SocialsStyle.js';
+} from './StyledComps/SocialsStyle';
 
 function Socials() {
   return (

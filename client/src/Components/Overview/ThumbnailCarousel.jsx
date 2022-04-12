@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   CarouselContainer, Prev, Next, Carousel, Thumbnails,
-} from './StyledComps/ThumbnailCarouselStyle.js';
+} from './StyledComps/ThumbnailCarouselStyle';
 
 function ThumbnailCarousel({ index, setIndex, photos }) {
   const pLength = photos.length;
@@ -38,7 +39,8 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
       />
       <Carousel>
         {photos && photos.map((photo, i) => ((i >= first && i <= last ? (
-          <Thumbnails key={i}
+          <Thumbnails
+            key={photos.url}
             src={photos[i].thumbnail_url ? photos[i].thumbnail_url : 'assets/NoImage.webp'}
             onClick={() => setIndex(i)}
             styles={index === i ? 'border: 4px solid #4b15a3;' : null}
@@ -53,5 +55,11 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
     </CarouselContainer>
   );
 }
+
+ThumbnailCarousel.propTypes = {
+  index: PropTypes.number.isRequired,
+  setIndex: PropTypes.func.isRequired,
+  photos: PropTypes.arrayOf.isRequired,
+};
 
 export default ThumbnailCarousel;

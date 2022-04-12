@@ -1,20 +1,23 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useState, useContext, useEffect } from 'react';
+import React, {
+  useState, useContext, useEffect, useCallback,
+} from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import Styles from './Styles.jsx';
-import ProductOverview from './ProductOverview.jsx';
-import ProductGallery from './ProductGallery.jsx';
-import LogoCart from './LogoCart.jsx';
-import Selection from './Selection.jsx';
-import RenderRating from '../renderRating.jsx';
-import Socials from './Socials.jsx';
-import currentProducts from '../../Contexts/CurProdContext.js';
-import currentStyle from '../../Contexts/CurStyleContext.js';
+import Styles from './Styles';
+import ProductOverview from './ProductOverview';
+import ProductGallery from './ProductGallery';
+import LogoCart from './LogoCart';
+import Selection from './Selection';
+import RenderRating from '../renderRating';
+import Socials from './Socials';
+import currentProducts from '../../Contexts/CurProdContext';
+import currentStyle from '../../Contexts/CurStyleContext';
 import {
   Header, SpaceII, Space, Product, Left, Right, ReviewSumm, Bottom,
   POverview, Social, Price, OnSale, Og, Sale, Stylesdesc, Reviews,
   MoreContainer, StyleContainer, SelectionContainer,
-} from './StyledComps/indexStyle.js';
+} from './StyledComps/indexStyle';
 
 function Overview({ styles, setCurStyle }) {
   const [photos, setPhotos] = useState([]);
@@ -30,8 +33,10 @@ function Overview({ styles, setCurStyle }) {
   function getCart() {
     axios.get('/cart')
       .then((res) => setCart(res.data))
-      .catch((err) => console.error(err));
+      .catch((err) => new Error(err));
   }
+
+  const getCartCB = useCallback(() => getCart(), []);
 
   useEffect(() => {
     if (curStyle.photos) {
@@ -55,7 +60,7 @@ function Overview({ styles, setCurStyle }) {
   return (
     <div id="overview">
       <Header>
-        <LogoCart cart={cart} getCart={getCart} />
+        <LogoCart cart={cart} getCart={getCartCB} />
       </Header>
       <Space />
       <SpaceII />
@@ -114,7 +119,7 @@ function Overview({ styles, setCurStyle }) {
                 />)}
               </StyleContainer>
               <SelectionContainer>
-                <Selection getCart={getCart} />
+                <Selection getCart={getCartCB} />
               </SelectionContainer>
             </MoreContainer>
           </div>
@@ -134,4 +139,8 @@ function Overview({ styles, setCurStyle }) {
   );
 }
 
+Overview.propTypes = {
+  styles: PropTypes.arrayOf(PropTypes.curStyle).isRequired,
+  setCurStyle: PropTypes.func.isRequired,
+};
 export default Overview;

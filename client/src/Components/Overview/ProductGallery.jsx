@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import EModal from './EModal.jsx';
-import ThumbnailCarousel from './ThumbnailCarousel.jsx';
+import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import EModal from './EModal';
+import ThumbnailCarousel from './ThumbnailCarousel';
 import {
   Carouselcontainer, Carouselinner, ThumbnailContainer, InnerLeft, InnerRight, InnerCenter, Expand,
-} from './StyledComps/ProductGalleryStyle.js';
+} from './StyledComps/ProductGalleryStyle';
 
 function ProductGallery({ index, setIndex, photos }) {
   const [show, setShow] = useState(false);
 
   function toggleShow() {
-    setShow(!show);
+    setShow((prev) => !prev);
   }
+
+  const toggleShowCB = useCallback(() => toggleShow(), []);
 
   function flipper(num) {
     if (num > 0) {
@@ -27,6 +30,8 @@ function ProductGallery({ index, setIndex, photos }) {
       }
     }
   }
+
+  const flipperCB = useCallback((num) => flipper(num), []);
 
   const styles = {
     show: 'background-color: rgb(75,21,163,0.6); border-radius: 60%; cursor: pointer;',
@@ -52,11 +57,17 @@ function ProductGallery({ index, setIndex, photos }) {
           <Expand
             onClick={() => toggleShow()}
           />
-          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.webp'} show={show} hideModal={toggleShow} photos={photos} flipper={flipper} index={index} setIndex={setIndex}/>
+          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.webp'} show={show} hideModal={toggleShowCB} photos={photos} flipper={flipperCB} index={index} setIndex={setIndex} />
         </Carouselinner>
       )}
     </Carouselcontainer>
   );
 }
+
+ProductGallery.propTypes = {
+  index: PropTypes.number.isRequired,
+  setIndex: PropTypes.func.isRequired,
+  photos: PropTypes.arrayOf.isRequired,
+};
 
 export default ProductGallery;

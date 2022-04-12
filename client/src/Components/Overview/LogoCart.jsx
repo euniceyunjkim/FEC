@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import CartModal from './CartModal.jsx';
+import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import CartModal from './CartModal';
 import {
   Container, Logo, SearchCartContainer, Cart, Count,
   LDSContainer, LightDark, SearchContainer, Bar, Search,
-} from './StyledComps/LogoCartStyle.js';
+} from './StyledComps/LogoCartStyle';
 
 function LogoCart({ cart, getCart }) {
   const [show, setShow] = useState(false);
@@ -11,8 +12,10 @@ function LogoCart({ cart, getCart }) {
   const [light, setLight] = useState(true);
 
   function toggleShow() {
-    setShow(!show);
+    setShow((prev) => !prev);
   }
+
+  const toggleShowCB = useCallback(() => toggleShow(), []);
 
   const styles = {
     open: 'width: 250px; cursor: text;',
@@ -35,18 +38,19 @@ function LogoCart({ cart, getCart }) {
 
   return (
     <Container>
-      <Logo src="overview_imgs/DarkLogo.webp"
+      <Logo
+        src="overview_imgs/DarkLogo.webp"
         onClick={(e) => home(e)}
       />
       <SearchCartContainer>
         <LDSContainer>
-        <LightDark onClick={() => setLight(!light)} src={light ? mode.jojo : mode.dio}/>
-        <SearchContainer>
-          <Bar styles={barOpen ? styles.open : styles.closed} />
-          <Search type="button" onClick={() => setBarOpen(!barOpen)}>
-            <img alt="" src="overview_imgs/Search.webp" height="20px" width="20px" />
-          </Search>
-        </SearchContainer>
+          <LightDark onClick={() => setLight(!light)} src={light ? mode.jojo : mode.dio} />
+          <SearchContainer>
+            <Bar styles={barOpen ? styles.open : styles.closed} />
+            <Search type="button" onClick={() => setBarOpen(!barOpen)}>
+              <img alt="" src="overview_imgs/Search.webp" height="20px" width="20px" />
+            </Search>
+          </SearchContainer>
         </LDSContainer>
         <Cart
           src="overview_imgs/DarkCart.webp"
@@ -58,12 +62,17 @@ function LogoCart({ cart, getCart }) {
           <CartModal
             cart={cart}
             show={show}
-            hideModal={toggleShow}
+            hideModal={toggleShowCB}
           />
         </Cart>
       </SearchCartContainer>
     </Container>
   );
 }
+
+LogoCart.propTypes = {
+  cart: PropTypes.arrayOf.isRequired,
+  getCart: PropTypes.func.isRequired,
+};
 
 export default LogoCart;

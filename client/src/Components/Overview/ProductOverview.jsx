@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import currentProducts from '../../Contexts/CurProdContext.js';
+import currentProducts from '../../Contexts/CurProdContext';
 
 function ProductOverview() {
   const { currentProd } = useContext(currentProducts);

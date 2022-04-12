@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import currentStyle from '../../Contexts/CurStyleContext.js';
+import PropTypes from 'prop-types';
+import currentStyle from '../../Contexts/CurStyleContext';
 import {
   StylesContainer, StyleIcon, Checkmark,
-} from './StyledComps/StylesStyle.js';
+} from './StyledComps/StylesStyle';
 
 function Styles({ style, setCurStyle }) {
   const [selected, setSelect] = useState(0);
@@ -30,5 +31,10 @@ function Styles({ style, setCurStyle }) {
     </StylesContainer>
   );
 }
+
+Styles.propTypes = {
+  style: PropTypes.objectOf(PropTypes.styles).isRequired,
+  setCurStyle: PropTypes.func.isRequired,
+};
 
 export default Styles;

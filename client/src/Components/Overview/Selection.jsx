@@ -1,11 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, {
+  useState, useContext, useEffect, useCallback,
+} from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import Modal from './Modal.jsx';
-import currentStyle from '../../Contexts/CurStyleContext.js';
+import Modal from './Modal';
+import currentStyle from '../../Contexts/CurStyleContext';
 import {
   SelectionContainer, SizeContainer, SizeButton, QuantDrop,
   DropdownContainer, AddButton, MinusBut, Count, PlusBut, NoBut,
-} from './StyledComps/SelectionStyle.js';
+} from './StyledComps/SelectionStyle';
 
 function Selection({ getCart }) {
   const [skus, setSkus] = useState({});
@@ -30,8 +33,10 @@ function Selection({ getCart }) {
   }, [curStyle]);
 
   function toggleModal() {
-    setToggle(!shown);
+    setToggle((prev) => !prev);
   }
+
+  const toggleModalCB = useCallback(() => toggleModal(), []);
 
   function sizeSelect(e, index) {
     setQuant(skus[e.target.value].quantity);
@@ -65,7 +70,7 @@ function Selection({ getCart }) {
       const item = { sku_id: size, count: quantity };
       axios.post('/cart', item)
         .then(() => getCart())
-        .catch((err) => console.error(err));
+        .catch((err) => new Error(err));
     } else {
       toggleModal();
     }
@@ -78,9 +83,11 @@ function Selection({ getCart }) {
           <div id="size">
             <SizeContainer>
               {skuKeys && skuKeys.map((sku, index) => (
-                <SizeButton type="button"
+                <SizeButton
+                  type="button"
                   onClick={(e) => sizeSelect(e, index)}
-                  key={sku} value={sku}
+                  key={sku}
+                  value={sku}
                   styles={clicked === index ? styles.clicked : styles.button}
                 >
                   {skus[sku].size}
@@ -104,12 +111,13 @@ function Selection({ getCart }) {
               <AddButton
                 type="button"
                 value="Add to bag"
-                onClick={() => addToBag(selSize, selQuant)}>
+                onClick={() => addToBag(selSize, selQuant)}
+              >
                 Add to bag
               </AddButton>
               <Modal
                 shown={shown}
-                hideModal={toggleModal}
+                hideModal={toggleModalCB}
               />
             </div>
           ) : (
@@ -123,4 +131,7 @@ function Selection({ getCart }) {
   );
 }
 
+Selection.propTypes = {
+  getCart: PropTypes.func.isRequired,
+};
 export default Selection;

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import {
   Wrapper, Space, Modall, Area, ArrowL, ArrowR, PicContainer, Pic,
   Minimize, ThumbContainer, Thumbs,
-} from './StyledComps/EModalStyle.js';
+} from './StyledComps/EModalStyle';
 
-function EModal({ show, hideModal, expand, photos, index, flipper }) {
+function EModal({
+  show, hideModal, expand, photos, index, flipper,
+}) {
   const [click, setClick] = useState(false);
 
   const magArea = document.getElementById('zoomarea');
@@ -19,15 +22,14 @@ function EModal({ show, hideModal, expand, photos, index, flipper }) {
     let clientX = event.clientX - magArea.offsetLeft;
     let clientY = event.clientY - magArea.offsetTop;
 
-    let mWidth = magArea.offsetWidth;
-    let mHeight = magArea.offsetHeight;
+    const mWidth = magArea.offsetWidth;
+    const mHeight = magArea.offsetHeight;
 
-    clientX = clientX / mWidth * 100;
-    clientY = clientY / mHeight * 100;
+    clientX = (clientX / mWidth) * 100;
+    clientY = (clientY / mHeight) * 100;
 
     if (magPic) {
-      magPic.style.transform = 'translate(-' + clientX + '%, -'
-      + clientY + '%) scale(2.5)';
+      magPic.style.transform = `translate(-${clientX}%, -${clientY}%) scale(2.5)`;
     }
   }
 
@@ -54,21 +56,25 @@ function EModal({ show, hideModal, expand, photos, index, flipper }) {
                 {index === 0 || click ? null : <img alt="" src="overview_imgs/LightLArrow.webp" />}
               </ArrowL>
               <PicContainer>
-                <Pic id="zoompic" src={expand} styles={click ? styles.clicked : styles.unclicked}
+                <Pic
+                  id="zoompic"
+                  src={expand}
+                  styles={click ? styles.clicked : styles.unclicked}
                   onClick={() => clicker()}
                   onMouseMove={click ? (e) => zoom(e) : () => norm()}
                   onMouseLeave={click ? () => norm() : null}
                 />
               </PicContainer>
               {click ? null : <Minimize onClick={hideModal} />}
-              <ArrowR onClick={() => flipper(1)}
+              <ArrowR
+                onClick={() => flipper(1)}
                 styles={index === photos.length - 1 ? null : styles.show}
               >
                 {index === photos.length - 1 || click ? null : <img alt="" src="overview_imgs/LightRArrow.webp" />}
               </ArrowR>
             </Area>
             <ThumbContainer>
-              {photos && photos.map((photo, i) => <Thumbs key={i} src={photo.thumbnail_url ? photo.thumbnail_url : 'assets/NoImage.webp'} styles={index === i ? 'border: 4px solid white;' : null} />)}
+              {photos && photos.map((photo, i) => <Thumbs key={photo.url} src={photo.thumbnail_url ? photo.thumbnail_url : 'assets/NoImage.webp'} styles={index === i ? 'border: 4px solid white;' : null} />)}
             </ThumbContainer>
           </Modall>
         </Wrapper>
@@ -77,5 +83,9 @@ function EModal({ show, hideModal, expand, photos, index, flipper }) {
     )
     : null;
 }
+
+EModal.propTypes = {
+  photos: PropTypes.isArrayOf,
+};
 
 export default EModal;

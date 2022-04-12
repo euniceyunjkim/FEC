@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import {
   Wrapper, Space, Modall, ConfirmButton, Cart, Item, Pic, Name, Count,
   Delete,
-} from './StyledComps/CartModalStyle.js';
+} from './StyledComps/CartModalStyle';
 
 function CartModal({ show, hideModal, cart }) {
   return show
@@ -35,5 +36,9 @@ function CartModal({ show, hideModal, cart }) {
     )
     : null;
 }
+
+CartModal.propTypes = {
+  cart: PropTypes.arrayOf.isRequired,
+};
 
 export default CartModal;
