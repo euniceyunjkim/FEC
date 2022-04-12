@@ -3,10 +3,11 @@ import styled from 'styled-components';
 const Box = {
   Container: styled.div`
   display: flex;
+  justify-content: center
   `,
   InnerCol: styled.div`
   flexDirection: column;
-  padding-left: 30px;
+  padding-right: 30px;
   `,
   ReviewSum: styled.div`
   display: flex;

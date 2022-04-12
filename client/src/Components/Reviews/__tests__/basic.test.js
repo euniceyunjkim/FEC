@@ -4,7 +4,7 @@ const should = require('chai').should();
 
 describe('Review component', () => {
   it('Gets review from API', () => {
-    let Star = document.getElementsByClassName('Star');
+    const Star = document.getElementsByClassName('Star');
     should.exist(Star);
   });
 });

@@ -17,30 +17,34 @@ const WriteReview = function ({ setRenderModal, setRender, characteristics }) {
   const { currentProd } = useContext(currentProducts);
 
   const submitHandler = function () {
-    let failed = false;
+
     if (rating === 0) {
       alert('rating has not been filed');
-      failed = true;
     } else if (recommend === null) {
       alert('recommend has not been filed');
-      failed = true;
     } else if (summary === '') {
       //take this one out and put in char
       alert('summary has not been filed');
-      failed = true;
     } else if (body.length < 50) {
       alert('body has not been filed');
-      failed = true;
     } else if (name === '') {
       alert('name has not been filed');
-      failed = true;
-    } else if (email === '') {
-      alert('email has not been filed');
-      failed = true;
+    } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+      alert('email is not valid');
     } else if (Object.keys(characteristics).length !== Object.keys(char).length) {
       alert('characteristics has not been filed');
     } else {
-      axios.post(`http://localhost:3000/reviews/post?product_id=${currentProd}&rating=${rating}&summary=${summary}&body=${body}&recommend=${recommend}&name=${name}&email=${email}&characteristics=${characteristics}`)
+      axios.post('reviews/post', {
+        product_id: currentProd.id,
+        rating,
+        summary,
+        body,
+        recommend,
+        name,
+        email,
+        photos: [],
+        characteristics: char,
+      })
         .then(() => setRenderModal(false))
         .catch(() => console.log('error in axios'));
     }

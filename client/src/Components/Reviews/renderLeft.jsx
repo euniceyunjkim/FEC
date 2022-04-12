@@ -7,7 +7,7 @@ import Characteristics from './characteristics.jsx';
 
 const axios = require('axios');
 
-const RenderLeft = function ({setRatingCount, characteristics, setCharacteristics}) {
+const RenderLeft = function ({ratingCount, setRatingCount, characteristics, setCharacteristics}) {
   // used to keep track of ratings
   const [rating, setRating] = useState(0);
   // used for rendering the percent of people that recomend the product
@@ -44,10 +44,11 @@ const RenderLeft = function ({setRatingCount, characteristics, setCharacteristic
   };
   // a function to get the and create the ratings of any given ID
   const getRatings = function (id) {
-    axios.get(`http://localhost:3000/reviews/meta?product_id=${id}`)
+    axios.get(`reviews/meta?product_id=${id}`)
       .then((res) => {
         avreageRating(res.data.ratings);
         saveRecommended(res.data.recommended);
+        console.log(res.data.characteristics);
         setCharacteristics(res.data.characteristics);
       })
       .catch((err) => console.log(err));
@@ -81,7 +82,7 @@ const RenderLeft = function ({setRatingCount, characteristics, setCharacteristic
         <Star rating={rating} />
       </Box.Container>
       {renderRec()}
-      <RatingSpread stars={starSpread} max={max} />
+      <RatingSpread ratingCount={ratingCount} stars={starSpread} max={max} />
       <h3>Characteristics</h3>
       {Object.keys(characteristics).map((e) => (
         <Characteristics key={characteristics[e].id} lable={e} value={characteristics[e].value} />

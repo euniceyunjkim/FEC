@@ -8,12 +8,12 @@ const Reviews = function ({ obj }) {
   const [helpful, setHelpful] = useState(false);
   const [report, setReport] = useState(false);
   const wasHelpful = function () {
-    axios.get(`http://localhost:3000/reviews/${obj.review_id}/helpful`)
+    axios.put(`http://localhost:3000/reviews/${obj.review_id}/helpful`)
       .then(() => setHelpful(true))
       .catch((err) => console.log(err));
   };
   const wasReported = function () {
-    axios.get(`http://localhost:3000/reviews/${obj.review_id}/report`)
+    axios.put(`http://localhost:3000/reviews/${obj.review_id}/report`)
       .then(() => setReport(true))
       .catch((err) => console.log(err));
   };

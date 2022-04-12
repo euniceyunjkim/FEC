@@ -8,7 +8,7 @@ import RenderRight from './renderRight.jsx';
 // const AxiosHelper = require('./AxiosHelper');
 
 const Reviews = function Reviews() {
-  const { currentProd } = useContext(currentProducts);
+  // const { currentProd } = useContext(currentProducts);
   const [characteristics, setCharacteristics] = useState({});
   const [ratingCount, setRatingCount] = useState(0);
   return (
@@ -18,6 +18,7 @@ const Reviews = function Reviews() {
           Ratings And Reviews
           <Box.ReviewSum>
             <RenderLeft
+              ratingCount={ratingCount}
               setRatingCount={(e) => setRatingCount(e)}
               characteristics={characteristics}
               setCharacteristics={(e) => setCharacteristics(e)}
