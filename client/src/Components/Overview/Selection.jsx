@@ -77,11 +77,12 @@ function Selection({ getCart }) {
         <DropdownContainer>
           <div id="size">
             <SizeContainer>
-              {skuKeys.map((sku, index) => (
+              {skuKeys && skuKeys.map((sku, index) => (
                 <SizeButton type="button"
                   onClick={(e) => sizeSelect(e, index)}
                   key={sku} value={sku}
-                  styles={clicked === index ? styles.clicked : styles.button}>
+                  styles={clicked === index ? styles.clicked : styles.button}
+                >
                   {skus[sku].size}
                 </SizeButton>
               ))}
@@ -92,7 +93,7 @@ function Selection({ getCart }) {
               -
             </MinusBut>
             <Count>
-              {quant > 0 ? selQuant : '--'}
+              {quant && quant > 0 ? selQuant : '--'}
             </Count>
             <PlusBut onClick={() => updateQuant(1)}>
               +

@@ -13,7 +13,7 @@ function CartModal({ show, hideModal, cart }) {
           <Space />
           <Modall>
             <Cart>
-              {cart.map((item) => (
+              {cart && cart.map((item) => (
                 <Item key={item.sku_id}>
                   <Pic src="assets/fullStar.webp" />
                   <Name>{item.sku_id}</Name>

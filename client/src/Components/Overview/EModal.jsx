@@ -62,12 +62,13 @@ function EModal({ show, hideModal, expand, photos, index, flipper }) {
               </PicContainer>
               {click ? null : <Minimize onClick={hideModal} />}
               <ArrowR onClick={() => flipper(1)}
-                styles={index === photos.length - 1 ? null : styles.show}>
+                styles={index === photos.length - 1 ? null : styles.show}
+              >
                 {index === photos.length - 1 || click ? null : <img alt="" src="overview_imgs/LightRArrow.webp" />}
               </ArrowR>
             </Area>
             <ThumbContainer>
-              {photos.map((photo, i) => <Thumbs key={i} src={photo.thumbnail_url ? photo.thumbnail_url : 'assets/NoImage.webp'} styles={index === i ? 'border: 4px solid white;' : null} />)}
+              {photos && photos.map((photo, i) => <Thumbs key={i} src={photo.thumbnail_url ? photo.thumbnail_url : 'assets/NoImage.webp'} styles={index === i ? 'border: 4px solid white;' : null} />)}
             </ThumbContainer>
           </Modall>
         </Wrapper>

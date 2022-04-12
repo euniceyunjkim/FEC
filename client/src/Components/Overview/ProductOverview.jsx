@@ -6,7 +6,7 @@ function ProductOverview() {
   return (
     <div id="description">
       <i><h3>{currentProd.slogan && currentProd.slogan}</h3></i>
-      <div>{currentProd.description}</div>
+      <div>{currentProd.description && currentProd.description}</div>
     </div>
   );
 }

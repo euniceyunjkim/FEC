@@ -37,7 +37,7 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
         onClick={() => prev()}
       />
       <Carousel>
-        {photos.map((photo, i) => ((i >= first && i <= last ? (
+        {photos && photos.map((photo, i) => ((i >= first && i <= last ? (
           <Thumbnails key={i}
             src={photos[i].thumbnail_url ? photos[i].thumbnail_url : 'assets/NoImage.webp'}
             onClick={() => setIndex(i)}

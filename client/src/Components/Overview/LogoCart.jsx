@@ -53,7 +53,7 @@ function LogoCart({ cart, getCart }) {
           onClick={() => toggleShow()}
         >
           <Count>
-            {cart.length}
+            {cart && cart.length}
           </Count>
           <CartModal
             cart={cart}

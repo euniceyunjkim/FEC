@@ -69,14 +69,14 @@ function Overview({ styles, setCurStyle }) {
               <i>
                 CATEGORY&nbsp;//&nbsp;
                 <b>
-                  {currentProd.category &&
-                    currentProd.category.toUpperCase()}
+                  {currentProd.category
+                  && currentProd.category.toUpperCase()}
                 </b>
               </i>
             </div>
-            <h2>{currentProd.name}</h2>
+            <h2>{currentProd.name && currentProd.name}</h2>
             <ReviewSumm>
-              <RenderRating prodID={currentProd.id} />
+              <RenderRating prodID={currentProd.id && currentProd.id} />
               <Reviews onClick={() => autoScroll()}><i>READ ALL REVIEWS</i></Reviews>
             </ReviewSumm>
             <Price>
@@ -107,7 +107,7 @@ function Overview({ styles, setCurStyle }) {
             </Stylesdesc>
             <MoreContainer>
               <StyleContainer>
-                {styles.map((style) => <Styles
+                {styles && styles.map((style) => <Styles
                   key={style.style_id}
                   style={style}
                   setCurStyle={setCurStyle}

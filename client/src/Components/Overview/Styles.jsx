@@ -26,7 +26,7 @@ function Styles({ style, setCurStyle }) {
   return (
     <StylesContainer>
       <Checkmark styled={selected === style.style_id ? styled.selected : null} />
-      <StyleIcon src={style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'assets/NoImage.webp'} onClick={() => handleClick(style)} />
+      <StyleIcon src={style && style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'assets/NoImage.webp'} onClick={() => handleClick(style)} />
     </StylesContainer>
   );
 }

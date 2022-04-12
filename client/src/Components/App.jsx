@@ -51,9 +51,9 @@ function App({}) {
         <Overview styles={styles} setCurStyle={setCurStyle} />
         <Related />
       </currentStyle.Provider>
-      <QA />
+      {/* <QA />
       <div id="ReviewsRef" />
-      <Reviews />
+      <Reviews /> */}
     </currentProducts.Provider>
   );
 }
