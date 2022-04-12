@@ -7,8 +7,8 @@ import Characteristics from './characteristics.jsx';
 
 const axios = require('axios');
 
-const RenderLeft = function () {
-  // used to render the avreage star rating and stars
+const RenderLeft = function ({setRatingCount, characteristics, setCharacteristics}) {
+  // used to keep track of ratings
   const [rating, setRating] = useState(0);
   // used for rendering the percent of people that recomend the product
   const [recommended, setRecommended] = useState(0);
@@ -17,8 +17,6 @@ const RenderLeft = function () {
   // used for rendering the star spread section
   const [starSpread, setStarSpread] = useState({});
   const [max, setMax] = useState(100);
-  // for characteristics
-  const [characteristics, setCharacteristics] = useState({});
   // calculate ratings of givin id data
   const avreageRating = function sum(ratings) {
     let totalVotes = 0;
@@ -35,6 +33,7 @@ const RenderLeft = function () {
         totalStarts += ratings[i] * i;
       }
     }
+    setRatingCount(totalVotes);
     setMax(tempMax);
     // this is async
     setRating((Math.round((totalStarts / totalVotes) * 4)) / 4);
@@ -51,7 +50,7 @@ const RenderLeft = function () {
         saveRecommended(res.data.recommended);
         setCharacteristics(res.data.characteristics);
       })
-      .catch(() => console.log('error in axios'));
+      .catch((err) => console.log(err));
   };
   // loads in and get the rating of the first product
   useEffect(() => {

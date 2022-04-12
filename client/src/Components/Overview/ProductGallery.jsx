@@ -1,57 +1,19 @@
-import React, { useState, useEffect, useContext } from 'react';
-import styled from 'styled-components';
-import currentStyle from '../../Contexts/CurStyleContext.js';
+import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import EModal from './EModal';
+import ThumbnailCarousel from './ThumbnailCarousel';
+import {
+  Carouselcontainer, Carouselinner, ThumbnailContainer, InnerLeft, InnerRight, InnerCenter, Expand,
+} from './StyledComps/ProductGalleryStyle';
 
-const Carouselcontainer = styled.div`
-  overflow: hidden;
-  width: 600px;
-  height: 725px;
-`;
-const Carouselinner = styled.div`
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  background-image: ${({ src }) => `url(${src})`};
-`;
+function ProductGallery({ index, setIndex, photos }) {
+  const [show, setShow] = useState(false);
 
-const InnerLeft = styled.div`
-flex: 5%;
-height: 100%;
-&:hover { background-color: rgb(75,21,163,0.6);}
-display: grid;
-place-items: center;
-cursor: pointer;
-`;
-
-const InnerRight = styled.div`
-flex: 5%;
-height: 100%;
-&:hover { background-color: rgb(75,21,163,0.6);
+  function toggleShow() {
+    setShow((prev) => !prev);
   }
-display: grid;
-place-items: center;
-cursor: pointer;
-`;
 
-const InnerCenter = styled.div`
-flex: 90%;
-height: 100%;
-`;
-
-function ProductGallery({ }) {
-  const [photos, setPhotos] = useState([]);
-  const { curStyle } = useContext(currentStyle);
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (curStyle.photos) {
-      setPhotos(curStyle.photos);
-      setIndex(0);
-    }
-  }, [curStyle]);
+  const toggleShowCB = useCallback(() => toggleShow(), []);
 
   function flipper(num) {
     if (num > 0) {
@@ -69,21 +31,43 @@ function ProductGallery({ }) {
     }
   }
 
+  const flipperCB = useCallback((num) => flipper(num), []);
+
+  const styles = {
+    show: 'background-color: rgb(75,21,163,0.6); border-radius: 60%; cursor: pointer;',
+  };
+
   return (
     <Carouselcontainer>
+      <ThumbnailContainer>
+        <ThumbnailCarousel index={index} setIndex={setIndex} photos={photos} />
+      </ThumbnailContainer>
       {photos.length > 0 && (
-        <Carouselinner src={photos[index].url}>
-          <InnerLeft onClick={() => flipper(-1)}>
-            <img alt="" src="overview_imgs/LightLArrow.png" />
+        <Carouselinner src={photos[index].url ? photos[index].url : 'assets/NoImage.webp'}>
+          <InnerLeft onClick={() => flipper(-1)} styles={index === 0 ? null : styles.show}>
+            {index === 0 ? null : <img alt="" src="overview_imgs/LightLArrow.webp" />}
           </InnerLeft>
           <InnerCenter />
-          <InnerRight onClick={() => flipper(1)}>
-            <img alt="" src="overview_imgs/LightRArrow.png" />
+          <InnerRight
+            onClick={() => flipper(1)}
+            styles={index === photos.length - 1 ? null : styles.show}
+          >
+            {index === photos.length - 1 ? null : <img alt="" src="overview_imgs/LightRArrow.webp" />}
           </InnerRight>
+          <Expand
+            onClick={() => toggleShow()}
+          />
+          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.webp'} show={show} hideModal={toggleShowCB} photos={photos} flipper={flipperCB} index={index} setIndex={setIndex} />
         </Carouselinner>
       )}
     </Carouselcontainer>
   );
 }
+
+ProductGallery.propTypes = {
+  index: PropTypes.number.isRequired,
+  setIndex: PropTypes.func.isRequired,
+  photos: PropTypes.arrayOf.isRequired,
+};
 
 export default ProductGallery;

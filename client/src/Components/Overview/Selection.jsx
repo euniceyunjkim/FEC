@@ -1,130 +1,30 @@
-import React, { useState, useContext, useEffect } from 'react';
-import styled from 'styled-components';
-import currentStyle from '../../Contexts/CurStyleContext.js';
+import React, {
+  useState, useContext, useEffect, useCallback,
+} from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import Modal from './Modal';
+import currentStyle from '../../Contexts/CurStyleContext';
+import {
+  SelectionContainer, SizeContainer, SizeButton, QuantDrop,
+  DropdownContainer, AddButton, MinusBut, Count, PlusBut, NoBut,
+} from './StyledComps/SelectionStyle';
 
-const SelectionContainer = styled.div`
-width: 100%;
-display: flex;
-`;
-
-const DropdownContainer = styled.div`
-float: left;
-display: grid;
-grid-template: 1fr/ 1fr;
-place-items: center;
-`;
-
-const SizeContainer = styled.div`
-z-index: 1;
-`;
-
-const SizeButton = styled.button`
-border: 1px solid;
-// color: ${styling => styling.color};
-// background-color: ${styling => styling.background};
-color: black;
-background-color: white;
-font-align: center;
-font-size: 15px;
-margin: 8px;
-padding:10px 20px;
-
-&:hover {
-  cursor: pointer
-};
-
-&:active {
-  color: white;
-  background-color: #4b15a3;
-}
-&:focus {
-  color: white;
-  background-color: #4b15a3;
-}
-
-// ${({ selSize }) => selSize && `background-color: #4b15a3;
-// color: white; `}
-`;
-
-const QuantDrop = styled.div`
-z-index: 2;
-place-items: center;
-justify-content: space-around;
-padding: 10px 0px;
-`;
-
-const AddButton = styled.button`
-float: right;
-color: black;
-border: 1px solid;
-background: white;
-font-align: center;
-font-size: 15px;
-margin: 8px;
-padding:10px 20px;
-
-&:hover {
-  cursor: pointer;
-  background-color: #4b15a3;
-  color: white;
-};
-`;
-
-const MinusBut = styled.button`
-color: black;
-border: 1px solid;
-background: white;
-font-align: center;
-font-size: 15px;
-margin: 8px;
-padding:10px 30px;
-float: left;
-&:hover {
-  cursor: pointer;
-  background-color: #4b15a3;
-  color: white;
-};
-`;
-
-const Count = styled.div`
-color: black;
-  border: 1px solid;
-  background: white;
-  font-align: center;
-  font-size: 15px;
-  margin: 8px;
-  padding:10px 50px;
-  float: left;
-`;
-
-const PlusBut = styled.button`
-  color: black;
-  border: 1px solid;
-  background: white;
-  font-align: center;
-  font-size: 15px;
-  margin: 8px;
-  padding:10px 30px;
-  float: right;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #4b15a3;
-    color: white;
-  };
-`;
-
-function Selection({ }) {
+function Selection({ getCart }) {
   const [skus, setSkus] = useState({});
   const { curStyle } = useContext(currentStyle);
-  const [quant, setQuant] = useState(1);
-  const [showQuant, setShowQ] = useState(false);
-  // const [clicked, setClick] = useState({[skuKeys]: {color: 'black', background: 'white'}});
-
   const [selSize, setSelSize] = useState(null);
-  const [selQuant, setSelQuant] = useState(null);
+  const [selQuant, setSelQuant] = useState(1);
   const skuKeys = Object.keys(skus);
-  const count = 1;
+  const [clicked, setClicked] = useState(-1);
+  const [quant, setQuant] = useState('--');
+
+  const [shown, setToggle] = useState(false);
+
+  const styles = {
+    button: 'color: black; background-color: white',
+    clicked: 'color: white; background-color: #4b15a3',
+  };
 
   useEffect(() => {
     if (curStyle.style_id) {
@@ -132,14 +32,48 @@ function Selection({ }) {
     }
   }, [curStyle]);
 
-  function quantityArr(num) {
-    return Array.from({ length: num }, (_, i) => i + 1);
+  function toggleModal() {
+    setToggle((prev) => !prev);
   }
 
-  function sizeSelect(e) {
+  const toggleModalCB = useCallback(() => toggleModal(), []);
+
+  function sizeSelect(e, index) {
     setQuant(skus[e.target.value].quantity);
-    setSelSize(skus[e.target.value].size);
-    // setClick({ ...clicked, [e.target.value]: { color: 'white', background: '#4b15a3' } });
+    setSelSize(e.target.value);
+    setSelQuant(1);
+    setClicked(index);
+  }
+
+  function updateQuant(num) {
+    if (selSize) {
+      if (num > 0) {
+        if (selQuant < quant) {
+          setSelQuant(selQuant + num);
+        } else if (selQuant === quant) {
+          setSelQuant(quant);
+        }
+      } else if (num < 0) {
+        if (selQuant > 1) {
+          setSelQuant(selQuant + num);
+        } else if (selQuant === 1) {
+          setSelQuant(1);
+        }
+      }
+    } else {
+      toggleModal();
+    }
+  }
+
+  function addToBag(size, quantity) {
+    if (size && quantity) {
+      const item = { sku_id: size, count: quantity };
+      axios.post('/cart', item)
+        .then(() => getCart())
+        .catch((err) => new Error(err));
+    } else {
+      toggleModal();
+    }
   }
 
   return (
@@ -148,35 +82,56 @@ function Selection({ }) {
         <DropdownContainer>
           <div id="size">
             <SizeContainer>
-              {skuKeys.map((sku) => (
-                <SizeButton type="button"
-                  onClick={(e) => sizeSelect(e)}
-                  key={sku} value={sku}>
+              {skuKeys && skuKeys.map((sku, index) => (
+                <SizeButton
+                  type="button"
+                  onClick={(e) => sizeSelect(e, index)}
+                  key={sku}
+                  value={sku}
+                  styles={clicked === index ? styles.clicked : styles.button}
+                >
                   {skus[sku].size}
                 </SizeButton>
               ))}
             </SizeContainer>
           </div>
-          <div id="quantity">
-            <QuantDrop>
-              <MinusBut>
-                -
-              </MinusBut>
-              <Count>
-                {quant}
-              </Count>
-              <PlusBut>
-                +
-              </PlusBut>
-            </QuantDrop>
-          </div>
+          <QuantDrop>
+            <MinusBut onClick={() => updateQuant(-1)}>
+              -
+            </MinusBut>
+            <Count>
+              {quant && quant > 0 ? selQuant : '--'}
+            </Count>
+            <PlusBut onClick={() => updateQuant(1)}>
+              +
+            </PlusBut>
+          </QuantDrop>
+          {quant > 0 || !selSize ? (
+            <div id="quantity">
+              <AddButton
+                type="button"
+                value="Add to bag"
+                onClick={() => addToBag(selSize, selQuant)}
+              >
+                Add to bag
+              </AddButton>
+              <Modal
+                shown={shown}
+                hideModal={toggleModalCB}
+              />
+            </div>
+          ) : (
+            <NoBut type="button">
+              Out of Stock
+            </NoBut>
+          )}
         </DropdownContainer>
-        <AddButton type="button" value="Add to bag">
-          Add to bag
-        </AddButton>
       </SelectionContainer>
     </div>
   );
 }
 
+Selection.propTypes = {
+  getCart: PropTypes.func.isRequired,
+};
 export default Selection;

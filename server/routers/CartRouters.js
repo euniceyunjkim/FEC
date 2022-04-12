@@ -10,10 +10,9 @@ CartRouters.get('/', (req, res) => {
     .catch((err) => res.send(err));
 });
 
-//double check how to pass body in
 CartRouters.post('/', (req, res) => {
   axios.post(path, req.body, { headers: { Authorization: config.TOKEN } })
-    .then((data) => res.send(data.data))
+    .then(() => res.status(201).end())
     .catch((err) => res.send(err));
 });
 
