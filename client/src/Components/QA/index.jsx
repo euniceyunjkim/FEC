@@ -8,12 +8,14 @@ import currentProducts from '../../Contexts/CurProdContext.js';
 const GetData = require('./Helpers');
 
 let localQuestions = [];
-let helpfulAndReport = {};
+const helpfulAndReport = {};
 
-function QA({ }) {
+function QA() {
   const { currentProd } = useContext(currentProducts);
+  const [showModal, setShowModal] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [matchingQ, setMatchingQ] = useState([]);
+  const [searching, setSearching] = useState(false);
 
   useEffect(() => {
     if (currentProd.id) {
@@ -39,7 +41,7 @@ function QA({ }) {
           });
           question.answers = test;
         }))
-        .then(() => { setQuestions(localQuestions.slice(0, 4)); })
+        .then(() => { setQuestions([...localQuestions].slice(0, 4)); })
         .catch((err) => console.error(err));
     }
   }, [currentProd]);
@@ -47,11 +49,40 @@ function QA({ }) {
   return (
     <div>
       QUESTIONS & ANSWERS
-      <Search matching={matchingQ} allQuestions={localQuestions} setMatching={setMatchingQ} />
-      {questions.length > 0 && matchingQ.length === 0 ? <QAList questions={questions} allQuestions={localQuestions} setQuestions={setQuestions} helpfulAndReport={helpfulAndReport}/> : null}
-      {questions.length > 0 && matchingQ.length > 0 ? <QAList questions={matchingQ} allQuestions={localQuestions} setQuestions={setQuestions} helpfulAndReport={helpfulAndReport} /> : null}
-      <MoreQuestions questions={questions} allQuestions={localQuestions} setQuestions={setQuestions} />
-      <AddQuestion product={currentProd} allQuestions={localQuestions} />
+      <Search
+        allQuestions={localQuestions}
+        setMatching={setMatchingQ}
+        setSearching={setSearching}
+      />
+      {questions.length > 0 && !searching
+        ? (
+          <QAList
+            questions={questions}
+            allQuestions={localQuestions}
+            setQuestions={setQuestions}
+            helpfulAndReport={helpfulAndReport}
+          />
+        ) : null}
+      {questions.length > 0 && matchingQ.length > 0
+        ? (
+          <QAList
+            questions={matchingQ}
+            allQuestions={localQuestions}
+            setQuestions={setQuestions}
+            helpfulAndReport={helpfulAndReport}
+          />
+        ) : null}
+      <MoreQuestions
+        questions={questions}
+        allQuestions={localQuestions}
+        setQuestions={setQuestions}
+      />
+      <AddQuestion
+        product={currentProd}
+        allQuestions={localQuestions}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   );
 }
