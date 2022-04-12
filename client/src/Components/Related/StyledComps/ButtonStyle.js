@@ -11,11 +11,13 @@ export const CardButtonIcon = styled.img`
     -moz-box-shadow: 0 0 10px #4b15a3;
     -webkit-box-shadow: 0 0 10px #4b15a3;
     box-shadow: 0 0 10px #4b15a3;
+    transform: scale(1.05);
   }
   &.Remove {
     -moz-box-shadow: 0 0 10px #b10f0f;
     -webkit-box-shadow: 0 0 10px #b10f0f;
     box-shadow: 0 0 10px #b10f0f;
+    transform: scale(1.05);
   }
 `;
 

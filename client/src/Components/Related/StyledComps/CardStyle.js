@@ -4,7 +4,8 @@ import ProductCard from '../ProductCard.jsx';
 export const Card = styled(ProductCard)`
   width: 225px;
   height: 390px;
-  border: 1px solid;
+  border: 1px solid #4B15A3;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
