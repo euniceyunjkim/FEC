@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { CardImage, CardImageContainer } from './StyledComps/ImageStyle.js';
-import { ButtonIcon } from './StyledComps/ButtonStyle.js';
+import { CardButtonIcon } from './StyledComps/ButtonStyle.js';
 import { Category } from './StyledComps/CategoryStyle.js';
 import { Price } from './StyledComps/PriceStyle.js';
 import { ProdName } from './StyledComps/NameStyle.js';
@@ -15,13 +15,18 @@ let ProductCard = ({className, product, styles, newOutfit, image,
   let navigate = useNavigate();
 
   const {setCurrentProd} = useContext(currentProducts);
+  let [hovered, setHovered] = useState(false);
+
+  let handleHover = ()  => {
+    setHovered(!hovered);
+  }
 
   let router = () => {
     if (newOutfit === 'newOutfit') {
       return (
         <div className={className} onClick={() => addOutfit()}>
           <CardImage src={'assets/PurpleStar.webp'} />
-          <div>Click to add this item to your outfit!</div>
+          <ProdName>Click to add this item to your outfit!</ProdName>
         </div>
       )
     } else if (styles) {
@@ -29,7 +34,8 @@ let ProductCard = ({className, product, styles, newOutfit, image,
         <div className={className}>
           <CardImageContainer>
             <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.webp'} onClick={() => {navigate(`/${product.id}`)}}/>
-            <ButtonIcon src ={image} onClick={() => handleClick(id)}></ButtonIcon>
+            <CardButtonIcon src ={image} className={hovered ? action : ""}
+            onClick={() => handleClick(id)} onMouseEnter={handleHover} onMouseLeave={handleHover}/>
           </CardImageContainer>
           {showModal ? <Modal styles={styles} product={product} showModal={showModal} setShowModal={setShowModal} compareData={compareData}></Modal> : null}
           <Category><i>{product.category}</i></Category>
