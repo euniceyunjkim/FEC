@@ -77,7 +77,7 @@ function RelatedList({ related }) {
 }
 
 RelatedList.propTypes = {
-  related: PropTypes.array.isRequired,
+  related: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default RelatedList;

@@ -95,8 +95,8 @@ ProductCard.defaultProps = {
 
 ProductCard.propTypes = {
   className: PropTypes.string.isRequired,
-  product: PropTypes.object,
-  styles: PropTypes.object,
+  product: PropTypes.instanceOf(object),
+  styles: PropTypes.instanceOf(object),
   newOutfit: PropTypes.string,
   image: PropTypes.string,
   action: PropTypes.string,
@@ -105,6 +105,6 @@ ProductCard.propTypes = {
   handleClick: PropTypes.func,
   showModal: PropTypes.bool,
   setShowModal: PropTypes.func.isRequired,
-  compareData: PropTypes.array,
+  compareData: PropTypes.instanceOf(object),
 };
 export default ProductCard;

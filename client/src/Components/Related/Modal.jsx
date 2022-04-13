@@ -73,7 +73,7 @@ Modal.defaultProps = {
 Modal.propTypes = {
   setShowModal: PropTypes.func,
   showModal: PropTypes.bool,
-  compareData: PropTypes.array,
+  compareData: PropTypes.instanceOf(array),
 };
 
 export default Modal;
