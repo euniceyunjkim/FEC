@@ -11,6 +11,12 @@ export const PreviousIcon = styled.img`
   &.hidden {
     visibility: hidden;
   }
+  &:hover {
+    -moz-box-shadow: 0 0 10px #4b15a3;
+    -webkit-box-shadow: 0 0 10px #4b15a3;
+    box-shadow: 0 0 10px #4b15a3;
+    transform: scale(1.02);
+  }
 `
 export const NextIcon = styled.img`
   width: 30px;
@@ -22,5 +28,11 @@ export const NextIcon = styled.img`
   right: 0;
   &.hidden {
     visibility: hidden;
+  }
+  &:hover {
+    -moz-box-shadow: 0 0 10px #4b15a3;
+    -webkit-box-shadow: 0 0 10px #4b15a3;
+    box-shadow: 0 0 10px #4b15a3;
+    transform: scale(1.02);
   }
 `

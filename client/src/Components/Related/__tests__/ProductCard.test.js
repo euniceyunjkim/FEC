@@ -6,3 +6,4 @@ it('renders a card successfully', () => {
   const div = document.createElement("div");
   ReactDom.render(<Card />, div)
 })
+
