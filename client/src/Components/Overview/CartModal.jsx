@@ -38,7 +38,7 @@ function CartModal({ show, hideModal, cart }) {
 }
 
 CartModal.propTypes = {
-  cart: PropTypes.arrayOf.isRequired,
+  cart: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default CartModal;
