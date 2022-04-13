@@ -7,7 +7,6 @@ export const RelatedRectangle = styled.div`
   align-self: center;
   flex-direction: column;
   justify-content: start;
-  border: 1px solid;
   width: 80%;
 `;
 
