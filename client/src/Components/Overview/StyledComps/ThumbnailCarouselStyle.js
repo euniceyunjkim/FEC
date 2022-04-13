@@ -38,8 +38,8 @@ background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
 background-image: ${({ src }) => `url(${src})`};
-height: 85px;
-width: 85px;
+height: 80px;
+width: 80px;
 border-radius: 50%;
 &:hover {
   cursor: pointer;
