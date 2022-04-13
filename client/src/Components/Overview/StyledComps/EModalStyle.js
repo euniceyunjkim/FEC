@@ -13,7 +13,10 @@ height: 900px;
 z-index: 1000;
 top: 125px;
 justify-content: center;
-
+@media (max-width: 500px) {
+  width: 500px;
+  left: -0.5%;
+}
 `;
 
 export const Space = styled.div`
@@ -27,11 +30,14 @@ animation: fadeIn 0.2s ease-in-out;
 background: rgb(75, 21, 163, 0.8);
 border-radius: 0.25rem;
 display: flex;
-width: 95%;
+width: 100%;
 height: 100%;
 z-index: 100;
 flex-direction: column;
 position: relative;
+@media (max-width: 500px) {
+  height: 500px;
+}
 `;
 
 export const Area = styled.div`
@@ -60,6 +66,9 @@ overflow: hidden;
 position: relative;
 width: 800px;
 height: 80%;
+@media (max-width: 500px) {
+  width: 500px;
+}
 `;
 
 export const Pic = styled.div`
@@ -128,4 +137,9 @@ height: 85px;
 width: 85px;
 border-radius: 50%;
 ${({ styles }) => `${styles}`};
+@media (max-width: 500px) {
+  height: 55x;
+  width: 55px;
+  border-radius: 0%;
+}
 `;
