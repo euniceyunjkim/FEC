@@ -12,7 +12,7 @@ function OutfitList() {
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
   const [current, setCurrent] = useState(0);
-  const { length } = Object.keys(outfits).length;
+  const { length } = Object.keys(outfits);
 
   const getAllOutfits = () => {
     AxiosHelper.getOutfits()
@@ -58,13 +58,13 @@ function OutfitList() {
               id={key}
               product={outfits[key][0]}
               styles={outfits[key][1]}
-              image="assets/DeconsteButton.webp"
+              image="assets/DeleteButton.webp"
             />
           );
         }
         return null;
       })}
-      <NextIcon className={current >= length - 3 ? 'hidden' : ''} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 3 ? next : null} />
+      <NextIcon className={current < length - 3 ? '' : 'hidden'} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 3 ? next : null} />
     </List>
   );
 }

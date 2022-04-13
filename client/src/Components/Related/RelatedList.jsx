@@ -12,7 +12,7 @@ function RelatedList({ related }) {
   const [showModal, setShowModal] = useState(false);
   const [compareData, setCompareData] = useState([]);
   const [current, setCurrent] = useState(0);
-  const { length } = related.length;
+  const { length } = related;
 
   const { currentProd } = useContext(currentProducts);
 
@@ -71,13 +71,13 @@ function RelatedList({ related }) {
         }
         return null;
       })}
-      <NextIcon className={current >= length - 4 ? 'hidden' : ''} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 4 ? next : null} />
+      <NextIcon className={current < length - 4 ? '' : 'hidden'} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 4 ? next : null} />
     </List>
   );
 }
 
 RelatedList.propTypes = {
-  related: PropTypes.arrayOf.isRequired,
+  related: PropTypes.array.isRequired,
 };
 
 export default RelatedList;

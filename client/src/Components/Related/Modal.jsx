@@ -64,11 +64,16 @@ function Modal({ setShowModal, showModal, compareData }) {
     </div>
   );
 }
+Modal.defaultProps = {
+  setShowModal: () => {},
+  showModal: false,
+  compareData: [],
+}
 
 Modal.propTypes = {
-  setShowModal: PropTypes.func.isRequired,
-  showModal: PropTypes.bool.isRequired,
-  compareData: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func,
+  showModal: PropTypes.bool,
+  compareData: PropTypes.array,
 };
 
 export default Modal;

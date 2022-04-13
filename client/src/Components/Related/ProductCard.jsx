@@ -79,18 +79,32 @@ function ProductCard({
   );
 }
 
+ProductCard.defaultProps = {
+  addOutfit: () => {},
+  newOutfit: '',
+  compareData: [],
+  action: '',
+  id: '',
+  image: '',
+  handleClick: () => {},
+  showModal: false,
+  setShowModal: () => {},
+  product: null,
+  styles: null,
+}
+
 ProductCard.propTypes = {
-  className: PropTypes.arrayOf.isRequired,
-  product: PropTypes.objectOf.isRequired,
-  styles: PropTypes.objectOf.isRequired,
-  newOutfit: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  action: PropTypes.string.isRequired,
-  addOutfit: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  showModal: PropTypes.bool.isRequired,
+  className: PropTypes.string.isRequired,
+  product: PropTypes.object,
+  styles: PropTypes.object,
+  newOutfit: PropTypes.string,
+  image: PropTypes.string,
+  action: PropTypes.string,
+  addOutfit: PropTypes.func,
+  id: PropTypes.string,
+  handleClick: PropTypes.func,
+  showModal: PropTypes.bool,
   setShowModal: PropTypes.func.isRequired,
-  compareData: PropTypes.func.isRequired,
+  compareData: PropTypes.array,
 };
 export default ProductCard;
