@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import ProductCard from '../ProductCard.jsx';
+import ProductCard from '../ProductCard';
 
-export const Card = styled(ProductCard)`
+const Card = styled(ProductCard)`
   width: 225px;
   height: 390px;
   border: 1px solid #4B15A3;
@@ -17,5 +17,8 @@ export const Card = styled(ProductCard)`
     -moz-box-shadow: 0 0 10px #ccc;
     -webkit-box-shadow: 0 0 10px #ccc;
     box-shadow: 0 0 10px #ccc;
+    cursor: pointer;
   };
 `;
+
+export default Card;

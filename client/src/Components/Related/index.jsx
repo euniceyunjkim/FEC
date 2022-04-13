@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
-import currentProducts from '../../Contexts/CurProdContext.js';
-import RelatedList from './RelatedList.jsx';
-import OutfitList from './OutfitList.jsx';
-import { RelatedRectangle, RelatedContainer } from './StyledComps/RelatedStyle.js';
+import currentProducts from '../../Contexts/CurProdContext';
+import RelatedList from './RelatedList';
+import OutfitList from './OutfitList';
+import { RelatedRectangle, RelatedContainer } from './StyledComps/RelatedStyle';
+
 const AxiosHelper = require('./AxiosHelper');
 
-const Related = ({ }) => {
+function Related() {
+  const { currentProd } = useContext(currentProducts);
 
-  const {currentProd} = useContext(currentProducts);
-
-  let [related, setRelated] = useState([]);
+  const [related, setRelated] = useState([]);
   useEffect(() => {
     if (currentProd.id) {
       AxiosHelper.getRelated(currentProd.id)
-      .then((data) => setRelated(data.data))
-      .catch((err) => console.error(err));
+        .then((data) => setRelated(data.data))
+        .catch((err) => new Error(err));
     }
-  }, [currentProd])
+  }, [currentProd]);
 
   return (
     <RelatedContainer>
@@ -27,7 +27,7 @@ const Related = ({ }) => {
         <OutfitList />
       </RelatedRectangle>
     </RelatedContainer>
-  )
+  );
 }
 
 export default Related;

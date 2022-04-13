@@ -1,68 +1,83 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ProductCard from './ProductCard.jsx';
-import { Card } from './StyledComps/CardStyle.js';
-import { List } from './StyledComps/ListStyle.js';
-import currentProducts from '../../Contexts/CurProdContext.js';
-import { Modal } from './StyledComps/ModalStyle.js';
-import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle.js';
+import PropTypes from 'prop-types';
+import Card from './StyledComps/CardStyle';
+import List from './StyledComps/ListStyle';
+import currentProducts from '../../Contexts/CurProdContext';
+import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle';
+
 const AxiosHelper = require('./AxiosHelper');
 
-const RelatedList = ({related}) => {
+function RelatedList({ related }) {
+  const [relatedStyles, setRelatedStyles] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [compareData, setCompareData] = useState([]);
+  const [current, setCurrent] = useState(0);
+  const { length } = related.length;
 
-  let [relatedStyles, setRelatedStyles] = useState([]);
-  let [showModal, setShowModal] = useState(false);
-  let [compareData, setCompareData] = useState([]);
-  let [current, setCurrent] = useState(0);
-  var length = related.length;
+  const { currentProd } = useContext(currentProducts);
 
-  const {currentProd} = useContext(currentProducts);
-
-  let showCompare = (product, style) => {
+  const showCompare = (product, style) => {
     Promise.all([
       AxiosHelper.getInfo(currentProd.id).then((data) => data.data.features),
-      AxiosHelper.getInfo(product.id).then((data) => data.data.features)
+      AxiosHelper.getInfo(product.id).then((data) => data.data.features),
     ])
-    .then((data) => setCompareData([...data, product, style]))
-    .then(() => setShowModal(previous => !previous))
-    .catch((err) => console.log(err))
-  }
+      .then((data) => setCompareData([...data, product, style]))
+      .then(() => setShowModal((previous) => !previous))
+      .catch((err) => new Error(err));
+  };
 
   useEffect(() => {
     Promise.all(
       related.map((relProd) => {
         if (relProd.id) {
-          return AxiosHelper.getStyle(relProd.id).then(data => data.data.results[0])
+          return AxiosHelper.getStyle(relProd.id).then((data) => data.data.results[0]);
         }
-      })
+        return null;
+      }),
     )
-    .then((data) => {
-      setRelatedStyles(data)
-    })
-    .then(() => setCurrent(0))
-    .catch((err) => console.error(err))
-  }, [related])
+      .then((data) => {
+        setRelatedStyles(data);
+      })
+      .then(() => setCurrent(0))
+      .catch((err) => new Error(err));
+  }, [related]);
 
-  let next = () => {
+  const next = () => {
     setCurrent(current + 1);
   };
 
-  let previous = () => {
+  const previous = () => {
     setCurrent(current - 1);
-  }
+  };
 
   return (
     <List>
-      {<PreviousIcon className={current === 0 ? "hidden" : ""} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />}
-    {related.map((product, index) => {
-      if (index < current + 4 && index > current - 1) {
-        return <Card key={index} action={'Compare'} compareData={compareData} showModal={showModal}
-        setShowModal={setShowModal} handleClick={() => showCompare(product, relatedStyles[index])}
-        product={product} styles={relatedStyles[index]} image={"assets/CompareButtonWhite.webp"}/>
-      }
-    })}
-      {<NextIcon className={current >= length - 4 ? "hidden" : ""} src={"overview_imgs/DarkRArrow.webp"} onClick={current < length - 4 ? next : null} />}
+      <PreviousIcon className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
+      {related.map((product, index) => {
+        if (index < current + 4 && index > current - 1) {
+          return (
+            <Card
+              key={product.id}
+              action="Compare"
+              compareData={compareData}
+              showModal={showModal}
+              setShowModal={setShowModal}
+              handleClick={() => showCompare(product, relatedStyles[index])}
+              product={product}
+              styles={relatedStyles[index]}
+              image="assets/CompareButtonWhite.webp"
+            />
+          );
+        }
+        return null;
+      })}
+      <NextIcon className={current >= length - 4 ? 'hidden' : ''} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 4 ? next : null} />
     </List>
-  )
+  );
 }
+
+RelatedList.propTypes = {
+  related: PropTypes.arrayOf.isRequired,
+};
 
 export default RelatedList;

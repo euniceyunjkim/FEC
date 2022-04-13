@@ -14,4 +14,4 @@ export const RelatedContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;

@@ -1,28 +1,16 @@
 const axios = require('axios');
 
-let getRelated = (prodID) => {
-  return axios.get(`/products/${prodID}/related`, )
-}
+const getRelated = (prodID) => axios.get(`/products/${prodID}/related`);
 
-let getStyle = (prodID) => {
-  return axios.get(`products/:product_id/styles`, { params: { product_id: prodID }})
-}
+const getStyle = (prodID) => axios.get('products/:product_id/styles', { params: { product_id: prodID } });
 
-let postOutfit = (tuple) => {
-  return axios.post('/newoutfit', tuple);
-}
+const postOutfit = (tuple) => axios.post('/newoutfit', tuple);
 
-let getOutfits = () => {
-  return axios.get('/newoutfit');
-}
+const getOutfits = () => axios.get('/newoutfit');
 
-let removeOutfit = (id) => {
-  return axios.delete(`/newoutfit/${id}`);
-}
+const removeOutfit = (id) => axios.deconste(`/newoutfit/${id}`);
 
-let getInfo = (id) => {
-  return axios.get(`/products/${id}`);
-}
+const getInfo = (id) => axios.get(`/products/${id}`);
 
 module.exports = {
   getRelated,
@@ -30,5 +18,5 @@ module.exports = {
   postOutfit,
   getOutfits,
   removeOutfit,
-  getInfo
-}
+  getInfo,
+};

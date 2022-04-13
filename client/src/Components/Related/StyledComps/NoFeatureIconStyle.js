@@ -5,7 +5,7 @@ export const ModalIcon = styled.img`
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
-`
+`;
 
 export const ModalExit = styled.img`
   width: 30px;
@@ -18,4 +18,4 @@ export const ModalExit = styled.img`
     box-shadow: 0 0 10px #b10f0f;
     transform: scale(1.02);
   }
-`
+`;
