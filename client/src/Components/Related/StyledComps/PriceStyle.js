@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
-export const Price = styled.div`
-
+const Price = styled.div`
 `;
+
+export default Price;

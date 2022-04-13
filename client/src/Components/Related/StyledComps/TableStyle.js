@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalTable = styled.table`
+const ModalTable = styled.table`
   overflow-wrap: normal;
   display: block;
   overflow-y: scroll;
@@ -37,3 +37,5 @@ export const ModalTable = styled.table`
     border-top: 3px solid rgba(235, 183, 204);
   }
 `;
+
+export default ModalTable;

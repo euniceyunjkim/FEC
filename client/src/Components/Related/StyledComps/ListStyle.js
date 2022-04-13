@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const List = styled.div`
+const List = styled.div`
   width: 90%;
   padding: 5px;
   margin: 5px;
@@ -10,3 +10,5 @@ export const List = styled.div`
   align-items: center;
   position: relative;
 `;
+
+export default List;

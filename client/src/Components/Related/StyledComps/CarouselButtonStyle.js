@@ -16,8 +16,10 @@ export const PreviousIcon = styled.img`
     -webkit-box-shadow: 0 0 10px #4b15a3;
     box-shadow: 0 0 10px #4b15a3;
     transform: scale(1.02);
+    cursor: pointer;
   }
-`
+`;
+
 export const NextIcon = styled.img`
   width: 30px;
   height: 30px;
@@ -34,5 +36,6 @@ export const NextIcon = styled.img`
     -webkit-box-shadow: 0 0 10px #4b15a3;
     box-shadow: 0 0 10px #4b15a3;
     transform: scale(1.02);
+    cursor: pointer;
   }
-`
+`;

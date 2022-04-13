@@ -5,11 +5,12 @@ export const CardImage = styled.img`
   min-height: 225px;
   max-height: 225px;
   object-fit: cover;
-`
+  cursor: pointer;
+`;
 
 export const CardImageContainer = styled.div`
   width: 200px;
   min-height: 225px;
   max-height: 225px;
   position: relative;
-`
+`;
