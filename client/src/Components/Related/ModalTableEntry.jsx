@@ -24,7 +24,7 @@ function ModalTableEntry({ feature, compareData }) {
 }
 
 ModalTableEntry.propTypes = {
-  feature: PropTypes.objectOf.isRequired,
+  feature: PropTypes.instanceOf(object).isRequired,
   compareData: PropTypes.func.isRequired,
 };
 export default ModalTableEntry;
