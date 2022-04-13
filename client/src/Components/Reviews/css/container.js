@@ -7,7 +7,7 @@ const Box = {
   `,
   InnerCol: styled.div`
   flexDirection: column;
-  padding-right: 30px;
+  padding-right: 2%;
   `,
   ReviewSum: styled.div`
   display: flex;
@@ -50,7 +50,7 @@ const Box = {
   ReviewHeader: styled.div`
   display: flex;
   justify-content: space-between;
-  width: 500px;
+  width: 100%;
   `,
   BottomButton: styled.div`
   width: 50px;
@@ -100,6 +100,9 @@ const Box = {
   StarCheck: styled.img`
   height: 15px;
   width: 15px
+  `,
+  Progress: styled.progress`
+  background-color: #ECECEC;
   `,
 };
 

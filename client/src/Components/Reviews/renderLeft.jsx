@@ -48,7 +48,6 @@ const RenderLeft = function ({ratingCount, setRatingCount, characteristics, setC
       .then((res) => {
         avreageRating(res.data.ratings);
         saveRecommended(res.data.recommended);
-        console.log(res.data.characteristics);
         setCharacteristics(res.data.characteristics);
       })
       .catch((err) => console.log(err));
