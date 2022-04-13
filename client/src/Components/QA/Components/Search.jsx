@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Input } from './Styles/Search.js'
 
 function Search({ allQuestions, setMatching, setSearching }) {
   const [searching, updateSearching] = useState('');
@@ -16,12 +17,8 @@ function Search({ allQuestions, setMatching, setSearching }) {
     }
   }
 
-  // question.question_body.toLowerCase().contains(e.target.value)
-
   return (
-    <form>
-      <input type="text" value={searching} placeholder="Have a question? Search for answers..." onChange={updateSearch} />
-    </form>
+    <Input type="text" value={searching} placeholder="Have a question? Search for answers..." onChange={updateSearch} />
   );
 }
 

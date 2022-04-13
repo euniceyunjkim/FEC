@@ -19,7 +19,7 @@ QARouters.get('/questions/:question_id/answers', (req, res) => {
 QARouters.post('/questions', (req, res) => {
   axios.post(`${path}/questions`, req.body, { headers: { Authorization: config.TOKEN } })
     .then((data) => res.send(data.data))
-    .catch((err) => res.send(err));
+    .catch((err) => { console.log(err); res.send(err); });
 });
 
 QARouters.post('/questions/:question_id/answers', (req, res) => {

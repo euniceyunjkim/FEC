@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import currentProducts from '../../../Contexts/CurProdContext.js';
 
 function MoreQuestions({ questions, allQuestions, setQuestions }) {
   const [upTo, setUpTo] = useState(6);
+  const { currentProd } = useContext(currentProducts);
+
+  useEffect(() => {
+    setUpTo(6);
+  }, [currentProd]);
 
   function addQuestions() {
     setQuestions(allQuestions.slice(0, upTo));
@@ -10,7 +16,7 @@ function MoreQuestions({ questions, allQuestions, setQuestions }) {
   return (
     <div>
       { questions.length < allQuestions.length ?
-        <button type="submit" onClick={addQuestions}>More Answered Questions</button>
+        <button type="submit" onClick={addQuestions}>More Questions</button>
         : null }
     </div>
   );

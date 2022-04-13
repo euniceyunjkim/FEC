@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
 import AddAnswer from './AddAnswer.jsx';
+import { QStyle, ParentQ, QFeatures, QFeat } from './Styles/QA.js';
 
 function Questions({ question, questions, index, allQuestions, setQuestions, helpfulAndReport }) {
   const [answers, setAnswers] = useState(question.answers.slice(0, 2));
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    setAnswers(question.answers.slice(0, 2));
+  }, [question]);
 
   function addAnswers() {
     setAnswers(question.answers);
@@ -28,36 +33,40 @@ function Questions({ question, questions, index, allQuestions, setQuestions, hel
       });
   }
 
-  // helpfulAndReport[question.question_id].helpful
-
   return (
-    <div className="question_answers">
-      <div className="question">
-        <span>Q: </span>
-        <span>{question.question_body}</span>
-        <span>Helpful?</span>
-        { !question.helpfulQ
-          ? (
-            <span
-              onClick={() => addHelpful(question.question_id)}
-              onKeyUp={() => addHelpful(question.question_id)}
-              role="button"
-              tabIndex={0}
-            >
-              Yes (
-              {question.question_helpfulness}
-              ) |
-            </span>
-          )
-          : (
-            <span>
-              Yes but clicked (
-              {question.question_helpfulness}
-              ) |
-            </span>
-          )}
-        <AddAnswer showModal={showModal} setShowModal={setShowModal} />
-      </div>
+    <div>
+      <ParentQ>
+        <QStyle>Q: </QStyle>
+        <QStyle>{question.question_body}</QStyle>
+        <QFeatures>
+          <QFeat>Helpful?</QFeat>
+          { !question.helpfulQ
+            ? (
+              <QFeat
+                onClick={() => addHelpful(question.question_id)}
+                onKeyUp={() => addHelpful(question.question_id)}
+                role="button"
+                tabIndex={0}
+              >
+                Yes (
+                {question.question_helpfulness}
+                ) |
+              </QFeat>
+            )
+            : (
+              <QFeat>
+                Yes but clicked (
+                {question.question_helpfulness}
+                ) |
+              </QFeat>
+            )}
+          <AddAnswer
+            showModal={showModal}
+            setShowModal={setShowModal}
+            question={question}
+          />
+        </QFeatures>
+      </ParentQ>
       {question.answers.length > 0
         ? (
           <div>

@@ -4,6 +4,7 @@ import QAList from './Components/QAList.jsx';
 import MoreQuestions from './Components/MoreQuestions.jsx';
 import AddQuestion from './Components/AddQuestion.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
+import { QAStyle } from './Components/Styles/QA.js';
 
 const GetData = require('./Helpers');
 
@@ -47,7 +48,7 @@ function QA() {
   }, [currentProd]);
 
   return (
-    <div>
+    <QAStyle>
       QUESTIONS & ANSWERS
       <Search
         allQuestions={localQuestions}
@@ -78,12 +79,11 @@ function QA() {
         setQuestions={setQuestions}
       />
       <AddQuestion
-        product={currentProd}
         allQuestions={localQuestions}
         showModal={showModal}
         setShowModal={setShowModal}
       />
-    </div>
+    </QAStyle>
   );
 }
 
