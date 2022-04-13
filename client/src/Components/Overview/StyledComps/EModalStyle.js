@@ -13,6 +13,7 @@ height: 900px;
 z-index: 1000;
 top: 125px;
 justify-content: center;
+
 `;
 
 export const Space = styled.div`

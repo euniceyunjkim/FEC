@@ -75,7 +75,7 @@ function Overview({ styles, setCurStyle }) {
                 CATEGORY&nbsp;//&nbsp;
                 <b>
                   {currentProd.category
-                  && currentProd.category.toUpperCase()}
+                    && currentProd.category.toUpperCase()}
                 </b>
               </i>
             </div>

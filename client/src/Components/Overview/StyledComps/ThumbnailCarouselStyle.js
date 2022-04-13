@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const CarouselContainer = styled.div`
 display: grid;
-grid-template: 1fr/1fr;
-width: 125px;
-height: 725px;
+// grid template was causing issues with mobile
+// grid-template: 1fr/1fr;
+width: 100%;
+height: 100%;
 place-items: center;
 `;
 
@@ -24,8 +25,8 @@ background-size: contain;
 
 export const Carousel = styled.div`
 z-index: 2;
-width: 95px;
-height: 640px;
+width: 100%;
+height: 100%;
 overflow: hidden;
 place-items: center;
 `;
@@ -44,6 +45,10 @@ border-radius: 50%;
   cursor: pointer;
 }
 ${({ styles }) => `${styles}`};
+@media (max-width: 500px) {
+  height: 50px;
+  width: 50px;
+}
 `;
 
 export const Next = styled.div`
