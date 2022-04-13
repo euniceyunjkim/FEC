@@ -27,7 +27,7 @@ function Overview({ styles, setCurStyle }) {
   const [cart, setCart] = useState([]);
 
   function autoScroll() {
-    document.getElementById('ReviewsRef').scrollIntoView({ behavior: 'auto' });
+    document.getElementById('ReviewsRef').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   function getCart() {
@@ -75,7 +75,7 @@ function Overview({ styles, setCurStyle }) {
                 CATEGORY&nbsp;//&nbsp;
                 <b>
                   {currentProd.category
-                  && currentProd.category.toUpperCase()}
+                    && currentProd.category.toUpperCase()}
                 </b>
               </i>
             </div>

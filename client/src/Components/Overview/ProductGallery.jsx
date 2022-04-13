@@ -31,8 +31,6 @@ function ProductGallery({ index, setIndex, photos }) {
     }
   }
 
-  const flipperCB = useCallback((num) => flipper(num), []);
-
   const styles = {
     show: 'background-color: rgb(75,21,163,0.6); border-radius: 60%; cursor: pointer;',
   };
@@ -44,7 +42,10 @@ function ProductGallery({ index, setIndex, photos }) {
       </ThumbnailContainer>
       {photos.length > 0 && (
         <Carouselinner src={photos[index].url ? photos[index].url : 'assets/NoImage.webp'}>
-          <InnerLeft onClick={() => flipper(-1)} styles={index === 0 ? null : styles.show}>
+          <InnerLeft
+            onClick={() => flipper(-1)}
+            styles={index === 0 ? null : styles.show}
+          >
             {index === 0 ? null : <img alt="" src="overview_imgs/LightLArrow.webp" />}
           </InnerLeft>
           <InnerCenter />
@@ -57,7 +58,16 @@ function ProductGallery({ index, setIndex, photos }) {
           <Expand
             onClick={() => toggleShow()}
           />
-          <EModal expand={photos[index].url ? photos[index].url : 'assets/NoImage.webp'} show={show} hideModal={toggleShowCB} photos={photos} flipper={flipperCB} index={index} setIndex={setIndex} />
+          <EModal
+            expand={photos[index].url ? photos[index].url : 'assets/NoImage.webp'}
+            show={show}
+            hideModal={toggleShowCB}
+            photos={photos}
+             // eslint-disable-next-line react/jsx-no-bind
+            flipper={flipper}
+            index={index}
+            setIndex={setIndex}
+          />
         </Carouselinner>
       )}
     </Carouselcontainer>

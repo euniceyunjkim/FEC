@@ -2,13 +2,17 @@ import styled from 'styled-components';
 
 export const Overlay = styled.div`
 background-color: #999999;
-height: 100vh;
+height: 100%;
 left: 0;
 opacity: 0.5;
 position: fixed;
 top: 0;
-width: 100vw;
+width: 100%;
 z-index: 500;
+place-items: center;
+@media (max-width: 500px) {
+  top: 25%;
+}
 `;
 
 export const Wrapper = styled.div`
@@ -22,6 +26,10 @@ position: fixed;
 top: 25%;
 width: 100%;
 z-index: 1000;
+@media (max-width: 500px) {
+  top: 50%;
+  left: -20%;
+}
 `;
 
 export const Modall = styled.div`
