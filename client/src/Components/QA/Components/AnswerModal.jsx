@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import currentProducts from '../../../Contexts/CurProdContext.js';
-import { ModalView } from './Styles/modalView.js';
-import { ModalBackground } from './Styles/modalBackground.js';
+import { ModalView } from './Styles/ModalView.js';
+import { ModalBackground } from './Styles/ModalBackground.js';
 import PhotoUploadModal from './PhotoUploadModal.jsx';
 import axios from 'axios';
 

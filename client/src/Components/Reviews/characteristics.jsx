@@ -42,6 +42,6 @@ const Characteristics = function Characteristics({ lable, value }) {
 // prop validation
 Characteristics.propTypes = {
   lable: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
 };
 export default Characteristics;
