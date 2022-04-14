@@ -77,16 +77,16 @@ function Answers({
               <strong>{answer.answerer_name}</strong>
               , &nbsp;
               {moment(answer.date).format('MMMM Do YYYY')}
-              &nbsp; &nbsp;
+              &nbsp;&nbsp;
             </AFeat>
           )
           : (
             <AFeat>
-              by &nbsp;
+              by&nbsp;
               {answer.answerer_name}
               , &nbsp;
               {moment(answer.date).format('MMMM Do YYYY')}
-              &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp;&nbsp;
             </AFeat>
           )}
         <AFeat1> Helpful? </AFeat1>

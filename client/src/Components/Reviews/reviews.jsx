@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import Box from './css/container';
 import Star from './stars';
 
@@ -28,31 +29,37 @@ const Reviews = function Reviews({ obj }) {
           <Star rating={obj.rating || 0} />
           <div style={{ fontSize: '70%' }}>
             {obj.reviewer_name}
-            {obj.date}
+            ,&nbsp;
+            {moment(obj.date).format('MMMM Do YYYY')}
           </div>
         </Box.ReviewHeader>
         <h4>{obj.summary}</h4>
         <p>{obj.body}</p>
         <Box.Container>
           <br />
-          <div>helpful?</div>
+
+          <Box.Helpful>Helpful?</Box.Helpful>
           {helpful
             ? (
-              <b>
-                yes(
+              <Box.Clicked>
+                Yes (
                 {obj.helpfulness + 1}
                 )
-              </b>
+              </Box.Clicked>
             )
             : (
-              <u role="button" tabIndex={0} onClick={() => wasHelpful()} onKeyDown={() => wasHelpful()}>
-                yes(
-                {obj.helpfulness}
-                )
-              </u>
+              <Box.NotClicked>
+                <u role="button" tabIndex={0} onClick={() => wasHelpful()} onKeyDown={() => wasHelpful()}>
+                  Yes (
+                  {obj.helpfulness}
+                  )
+                </u>
+              </Box.NotClicked>
             )}
-          <div>   |   </div>
-          <u role="button" tabIndex={0} onClick={() => wasReported()} onKeyDown={() => wasReported()}>report</u>
+          <Box.NotClicked>   |   </Box.NotClicked>
+          <Box.NotClicked>
+            <u role="button" tabIndex={0} onClick={() => wasReported()} onKeyDown={() => wasReported()}>Report</u>
+          </Box.NotClicked>
         </Box.Container>
       </Box.Review>
     );
@@ -60,15 +67,15 @@ const Reviews = function Reviews({ obj }) {
   // if review exists and was reported
   if (obj && report) {
     return (
-      <Box.ReviewHeader>
+      <Box.Review>
         <h2>Thank you for reporting</h2>
-      </Box.ReviewHeader>
+      </Box.Review>
     );
   }
   // when no reviews have been passed in
   return <p>Loading...</p>;
 };
 Reviews.propTypes = {
-  obj: PropTypes.objectOf.isRequired,
+  obj: PropTypes.instanceOf(Object).isRequired,
 };
 export default Reviews;

@@ -37,11 +37,10 @@ position: relative;
 
 export const Count = styled.div`
 font-weight: bold;
-color: #4b15a3;
 position: absolute;
 width: 100%;
 height: 100%;
-top: 50px;
+top: 46px;
 left: 0;
 text-align: center;
 `;

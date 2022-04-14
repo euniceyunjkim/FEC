@@ -40,6 +40,6 @@ const RatingSpread = function RatingSpread({ ratingCount, stars }) {
 };
 RatingSpread.propTypes = {
   ratingCount: PropTypes.number.isRequired,
-  stars: PropTypes.objectOf.isRequired,
+  stars: PropTypes.instanceOf(Object).isRequired,
 };
 export default RatingSpread;

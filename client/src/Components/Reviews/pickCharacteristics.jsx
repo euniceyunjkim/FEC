@@ -57,6 +57,6 @@ const PickCharacteristics = function PickCharacteristics({ charKey, lable, char 
 PickCharacteristics.propTypes = {
   lable: PropTypes.string.isRequired,
   charKey: PropTypes.number.isRequired,
-  char: PropTypes.objectOf.isRequired,
+  char: PropTypes.instanceOf(Object).isRequired,
 };
 export default PickCharacteristics;

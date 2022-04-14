@@ -23,9 +23,9 @@ const Characteristics = function Characteristics({ lable, value }) {
     }
     return (
       <Box.CharText>
-        <div style={{ fontSize: '70%' }}>{feedBack[0]}</div>
-        <div style={{ fontSize: '70%' }}>{feedBack[1]}</div>
-        <div style={{ fontSize: '70%' }}>{feedBack[2]}</div>
+        <div style={{ fontSize: '50%' }}>{feedBack[0]}</div>
+        <div style={{ fontSize: '50%' }}>{feedBack[1]}</div>
+        <div style={{ fontSize: '50%' }}>{feedBack[2]}</div>
       </Box.CharText>
     );
   };
@@ -33,7 +33,7 @@ const Characteristics = function Characteristics({ lable, value }) {
     <div>
       {lable}
       <Box.Bar>
-        <Box.Triangle src="./assets/triangle.webp" alt="triangle" style={{ paddingLeft: `${value * 20}%` }} />
+        <Box.Triangle src="./assets/triangle.webp" alt="triangle" style={{ paddingLeft: `${(value * 20) - 2}%` }} />
       </Box.Bar>
       {renderLable()}
     </div>
@@ -42,6 +42,6 @@ const Characteristics = function Characteristics({ lable, value }) {
 // prop validation
 Characteristics.propTypes = {
   lable: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
 };
 export default Characteristics;
