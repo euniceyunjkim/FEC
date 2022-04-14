@@ -1,11 +1,4 @@
 import React, { useContext, useState } from 'react';
-<<<<<<< HEAD
-import currentProducts from '../../../Contexts/CurProdContext.js';
-import { ModalView } from './Styles/ModalView.js';
-import { ModalBackground } from './Styles/ModalBackground.js';
-import PhotoUploadModal from './PhotoUploadModal.jsx';
-=======
->>>>>>> main
 import axios from 'axios';
 import currentProducts from '../../../Contexts/CurProdContext';
 import ModalView from './Styles/ModalView';
