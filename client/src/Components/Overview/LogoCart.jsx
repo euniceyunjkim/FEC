@@ -6,7 +6,7 @@ import {
   LDSContainer, LightDark, SearchContainer, Bar, Search,
 } from './StyledComps/LogoCartStyle';
 
-function LogoCart({ cart, getCart, setMode, lightMode }) {
+function LogoCart({ cart, getCart, setLightMode, lightMode }) {
   const [show, setShow] = useState(false);
   const [barOpen, setBarOpen] = useState(false);
   const [light, setLight] = useState(true);
@@ -38,7 +38,7 @@ function LogoCart({ cart, getCart, setMode, lightMode }) {
 
   function toggle() {
     setLight((prev) => !prev);
-    setMode();
+    setLightMode();
   }
   return (
     <Container>

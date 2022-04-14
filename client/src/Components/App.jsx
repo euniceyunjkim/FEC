@@ -15,17 +15,17 @@ function App() {
   const [styles, setStyles] = useState([]);
   const [curStyle, setCurStyle] = useState({});
   const { prodID } = useParams();
-  const [lightMode, setLight] = useState(true);
+  const [lightMode, setLightMode] = useState(true);
 
   function defaultGrabber(items) {
     setCurStyle(items[0]);
   }
 
-  function setMode() {
-    setLight((prev) => !prev);
-  }
+  // function setMode() {
+  //   setLightMode((prev) => !prev);
+  // }
 
-  const setModeCB = useCallback(() => setMode(), []);
+  const setLightModeCB = useCallback(() => setLightMode((prev) => !prev, []));
 
   useEffect(() => {
     axios.get(`/products/${prodID}`)
@@ -59,7 +59,7 @@ function App() {
         <Overview
           styles={styles}
           setCurStyle={setCurStyle}
-          setMode={setModeCB}
+          setLightMode={setLightModeCB}
           lightMode={lightMode}
         />
         <Related />

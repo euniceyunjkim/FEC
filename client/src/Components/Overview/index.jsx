@@ -19,7 +19,7 @@ import {
   MoreContainer, StyleContainer, SelectionContainer,
 } from './StyledComps/indexStyle';
 
-function Overview({ styles, setCurStyle, setMode, lightMode }) {
+function Overview({ styles, setCurStyle, setLightMode, lightMode }) {
   const [photos, setPhotos] = useState([]);
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
@@ -60,7 +60,12 @@ function Overview({ styles, setCurStyle, setMode, lightMode }) {
   return (
     <div id="overview">
       <Header>
-        <LogoCart cart={cart} getCart={getCartCB} setMode={setMode} lightMode={lightMode} />
+        <LogoCart
+          cart={cart}
+          getCart={getCartCB}
+          setLightMode={setLightMode}
+          lightMode={lightMode}
+        />
       </Header>
       <Space />
       <SpaceII />
@@ -142,7 +147,7 @@ function Overview({ styles, setCurStyle, setMode, lightMode }) {
 Overview.propTypes = {
   styles: PropTypes.instanceOf(Array).isRequired,
   setCurStyle: PropTypes.func.isRequired,
-  setMode: PropTypes.func.isRequired,
+  setLightMode: PropTypes.func.isRequired,
   lightMode: PropTypes.bool.isRequired,
 };
 export default Overview;
