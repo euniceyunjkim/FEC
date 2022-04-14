@@ -40,7 +40,7 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
       <Carousel>
         {photos && photos.map((photo, i) => ((i >= first && i <= last ? (
           <Thumbnails
-            key={photos.url}
+            key={photo.url}
             src={photos[i].thumbnail_url ? photos[i].thumbnail_url : 'assets/NoImage.webp'}
             onClick={() => setIndex(i)}
             styles={index === i ? 'border: 4px solid #4b15a3;' : null}
@@ -59,7 +59,7 @@ function ThumbnailCarousel({ index, setIndex, photos }) {
 ThumbnailCarousel.propTypes = {
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
-  photos: PropTypes.arrayOf.isRequired,
+  photos: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default ThumbnailCarousel;

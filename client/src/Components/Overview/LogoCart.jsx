@@ -71,7 +71,7 @@ function LogoCart({ cart, getCart }) {
 }
 
 LogoCart.propTypes = {
-  cart: PropTypes.arrayOf.isRequired,
+  cart: PropTypes.instanceOf(Array).isRequired,
   getCart: PropTypes.func.isRequired,
 };
 

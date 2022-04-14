@@ -104,7 +104,7 @@ ProductCard.propTypes = {
   id: PropTypes.string,
   handleClick: PropTypes.func,
   showModal: PropTypes.bool,
-  setShowModal: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func,
   compareData: PropTypes.instanceOf(Object),
 };
 export default ProductCard;

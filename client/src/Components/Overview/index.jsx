@@ -140,7 +140,7 @@ function Overview({ styles, setCurStyle }) {
 }
 
 Overview.propTypes = {
-  styles: PropTypes.arrayOf(PropTypes.curStyle).isRequired,
+  styles: PropTypes.instanceOf(Array).isRequired,
   setCurStyle: PropTypes.func.isRequired,
 };
 export default Overview;
