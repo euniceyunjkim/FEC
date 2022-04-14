@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import currentProducts from '../../../Contexts/CurProdContext';
-import { ModalView } from './Styles/ModalView';
-import { ModalBackground } from './Styles/ModalBackground';
+import ModalView from './Styles/ModalView';
+import ModalBackground from './Styles/ModalBackground';
 
 function QuestionModal({ setShowModal }) {
   const { currentProd } = useContext(currentProducts);

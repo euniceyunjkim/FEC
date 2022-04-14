@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input } from './Styles/Search.js'
+import Input from './Styles/Search';
 
 function Search({ allQuestions, setMatching, setSearching }) {
   const [searching, updateSearching] = useState('');
@@ -18,7 +18,7 @@ function Search({ allQuestions, setMatching, setSearching }) {
   }
 
   return (
-    <Input type="text" value={searching} placeholder="Have a question? Search for answers..." onChange={updateSearch} />
+    <Input type="text" value={searching} placeholder="Have a question? Search for answers..." onChange={() => updateSearch()} />
   );
 }
 

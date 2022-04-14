@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import currentProducts from '../../../Contexts/CurProdContext.js';
-import { MainButtons } from './Styles/Buttons.js';
+import currentProducts from '../../../Contexts/CurProdContext';
+import { MainButtons } from './Styles/Buttons';
 
 function MoreQuestions({ questions, allQuestions, setQuestions }) {
   const [upTo, setUpTo] = useState(6);
@@ -16,8 +16,8 @@ function MoreQuestions({ questions, allQuestions, setQuestions }) {
   }
   return (
     <span>
-      { questions.length < allQuestions.length ?
-        <MainButtons type="submit" onClick={addQuestions}>More Questions</MainButtons>
+      { questions.length < allQuestions.length
+        ? <MainButtons onClick={() => addQuestions()}>More Questions</MainButtons>
         : null }
     </span>
   );

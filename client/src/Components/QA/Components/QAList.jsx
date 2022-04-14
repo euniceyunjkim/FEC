@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
-import Questions from './Questions.jsx';
-import { QAListStyle } from './Styles/QA.js';
+import React from 'react';
+import Questions from './Questions';
+import { QAListStyle } from './Styles/QA';
 
-function QAList({ questions, allQuestions, setQuestions, helpfulAndReport }) {
+function QAList({
+  questions,
+  allQuestions,
+  setQuestions,
+  helpfulAndReport
+}) {
   return (
     <QAListStyle>
-      {questions.map((question, index) => <Questions question={question} questions={questions} index={index} allQuestions={allQuestions} setQuestions={setQuestions} helpfulAndReport={helpfulAndReport} />)}
+      {questions.map(
+        (question, index) => (
+          <Questions
+            question={question}
+            questions={questions}
+            index={index}
+            allQuestions={allQuestions}
+            setQuestions={setQuestions}
+            helpfulAndReport={helpfulAndReport}
+          />
+        ),
+      )}
     </QAListStyle>
   );
 }
