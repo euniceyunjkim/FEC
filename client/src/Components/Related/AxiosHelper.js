@@ -8,7 +8,7 @@ const postOutfit = (tuple) => axios.post('/newoutfit', tuple);
 
 const getOutfits = () => axios.get('/newoutfit');
 
-const removeOutfit = (id) => axios.deconste(`/newoutfit/${id}`);
+const removeOutfit = (id) => axios.delete(`/newoutfit/${id}`);
 
 const getInfo = (id) => axios.get(`/products/${id}`);
 
