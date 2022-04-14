@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import currentProducts from '../../../Contexts/CurProdContext.js';
-import { ModalView } from './Styles/modalView.js';
-import { ModalBackground } from './Styles/modalBackground.js';
 import axios from 'axios';
+import currentProducts from '../../../Contexts/CurProdContext';
+import { ModalView } from './Styles/ModalView';
+import { ModalBackground } from './Styles/ModalBackground';
 
-function QuestionModal({ setShowModal, question }) {
+function QuestionModal({ setShowModal }) {
   const { currentProd } = useContext(currentProducts);
   const [body, setBody] = useState(null);
   const [nickname, setNickname] = useState(null);
@@ -55,7 +55,10 @@ function QuestionModal({ setShowModal, question }) {
       <ModalView>
         <div>
           <h2>Ask Your Question</h2>
-          <h3>About the {currentProd.name}</h3>
+          <h3>
+            About the
+            {currentProd.name}
+          </h3>
           <div>
             <form noValidate onSubmit={() => onSubmit(event)}>
               <label htmlFor="newQuestion">

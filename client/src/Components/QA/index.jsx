@@ -4,7 +4,8 @@ import QAList from './Components/QAList.jsx';
 import MoreQuestions from './Components/MoreQuestions.jsx';
 import AddQuestion from './Components/AddQuestion.jsx';
 import currentProducts from '../../Contexts/CurProdContext.js';
-import { QAStyle } from './Components/Styles/QA.js';
+import { QAStyle, StyledTitle } from './Components/Styles/QA.js';
+import { ButtonContainer } from './Components/Styles/Buttons.js';
 
 const GetData = require('./Helpers');
 
@@ -49,7 +50,9 @@ function QA() {
 
   return (
     <QAStyle>
-      QUESTIONS & ANSWERS
+      <StyledTitle>
+        QUESTIONS & ANSWERS
+      </StyledTitle>
       <Search
         allQuestions={localQuestions}
         setMatching={setMatchingQ}
@@ -73,16 +76,18 @@ function QA() {
             helpfulAndReport={helpfulAndReport}
           />
         ) : null}
-      <MoreQuestions
-        questions={questions}
-        allQuestions={localQuestions}
-        setQuestions={setQuestions}
-      />
-      <AddQuestion
-        allQuestions={localQuestions}
-        showModal={showModal}
-        setShowModal={setShowModal}
-      />
+      <ButtonContainer>
+        <MoreQuestions
+          questions={questions}
+          allQuestions={localQuestions}
+          setQuestions={setQuestions}
+        />
+        <AddQuestion
+          allQuestions={localQuestions}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      </ButtonContainer>
     </QAStyle>
   );
 }

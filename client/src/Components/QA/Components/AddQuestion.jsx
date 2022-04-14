@@ -1,12 +1,13 @@
 import React from 'react';
 import QuestionModal from './QuestionModal.jsx';
+import { MainButtons } from './Styles/Buttons.js';
 
 function AddQuestion({ allQuestions, showModal, setShowModal }) {
   return (
-    <div>
-      { allQuestions.length > 0 ? <button type="submit" className="add_question" onClick={() => setShowModal(true)}>Add a Question</button> : <button type="submit" className="add_first_question" onClick={() => setShowModal(true)}>Add a Question</button> }
+    <span>
+      { allQuestions.length > 0 ? <MainButtons type="submit" className="add_question" onClick={() => setShowModal(true)}>Add a Question</MainButtons> : <MainButtons type="submit" className="add_first_question" onClick={() => setShowModal(true)}>Add a Question</MainButtons> }
       {showModal ? <QuestionModal setShowModal={setShowModal} /> : null}
-    </div>
+    </span>
   );
 }
 

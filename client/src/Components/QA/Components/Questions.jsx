@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Answers from './Answers.jsx';
-import AddAnswer from './AddAnswer.jsx';
-import { QStyle, ParentQ, QFeatures, QFeat } from './Styles/QA.js';
+import Answers from './Answers';
+import AddAnswer from './AddAnswer';
+import { ParentQ, QStyle, QuestionStyle, QFeatures, QFeat, QFeat1, QFeat2, AStyle, AnswerList, AnswerStyle, QBody, AnswerBlock, ChangeAnswers, Separator } from './Styles/QA';
 
-function Questions({ question, questions, index, allQuestions, setQuestions, helpfulAndReport }) {
+function Questions(
+  {
+    question, questions, index, allQuestions, setQuestions, helpfulAndReport
+  },
+) {
   const [answers, setAnswers] = useState(question.answers.slice(0, 2));
   const [showModal, setShowModal] = useState(false);
 
@@ -37,61 +41,68 @@ function Questions({ question, questions, index, allQuestions, setQuestions, hel
     <div>
       <ParentQ>
         <QStyle>Q: </QStyle>
-        <QStyle>{question.question_body}</QStyle>
-        <QFeatures>
-          <QFeat>Helpful?</QFeat>
-          { !question.helpfulQ
-            ? (
-              <QFeat
-                onClick={() => addHelpful(question.question_id)}
-                onKeyUp={() => addHelpful(question.question_id)}
-                role="button"
-                tabIndex={0}
-              >
-                Yes (
-                {question.question_helpfulness}
-                ) |
-              </QFeat>
-            )
-            : (
-              <QFeat>
-                Yes but clicked (
-                {question.question_helpfulness}
-                ) |
-              </QFeat>
-            )}
-          <AddAnswer
-            showModal={showModal}
-            setShowModal={setShowModal}
-            question={question}
-          />
-        </QFeatures>
+        <QuestionStyle>
+          <QBody>{question.question_body}</QBody>
+          <QFeatures>
+            <QFeat>Helpful? &nbsp;</QFeat>
+            {!question.helpfulQ
+              ? (
+                <QFeat1
+                  onClick={() => addHelpful(question.question_id)}
+                  onKeyUp={() => addHelpful(question.question_id)}
+                  role="button"
+                  tabIndex={0}
+                >
+                  Yes (
+                  {question.question_helpfulness}
+                  )
+                </QFeat1>
+              )
+              : (
+                <QFeat12>
+                  Yes but clicked (
+                  {question.question_helpfulness}
+                  ) |
+                </QFeat12>
+              )}
+            <Separator> &nbsp; |  &nbsp; </Separator>
+            <QFeat2>
+              <AddAnswer
+                showModal={showModal}
+                setShowModal={setShowModal}
+                question={question}
+              />
+            </QFeat2>
+          </QFeatures>
+        </QuestionStyle>
       </ParentQ>
       {question.answers.length > 0
         ? (
-          <div>
-            <span>A: </span>
-            <div>
-              { answers.map((answer, answerIndex) => (
-                <Answers
-                  answerIndex={answerIndex}
-                  answer={answer[1]}
-                  allQuestions={allQuestions}
-                  setQuestions={setQuestions}
-                  helpfulAndReport={helpfulAndReport}
-                  question={question}
-                  index={index}
-                  questions={questions}
-                />
+          <AnswerBlock>
+            <AStyle>A: </AStyle>
+            <AnswerList>
+              {answers.map((answer, answerIndex) => (
+                <AnswerStyle>
+                  <Answers
+                    answerIndex={answerIndex}
+                    answer={answer[1]}
+                    allQuestions={allQuestions}
+                    setQuestions={setQuestions}
+                    helpfulAndReport={helpfulAndReport}
+                    question={question}
+                    index={index}
+                    questions={questions}
+                  />
+                </AnswerStyle>
               ))}
-              { answers.length < question.answers.length
-                ? <div onClick={addAnswers} onKeyUp={addAnswers} role="button" tabIndex={0}>See more answers</div>
+              {answers.length < question.answers.length
+                ? <ChangeAnswers onClick={addAnswers} onKeyUp={addAnswers} role="button" tabIndex={0}>See more answers</ChangeAnswers>
                 : null}
               {answers.length > 2
-                ? <div onClick={collapse} onKeyUp={collapse} role="button" tabIndex={0}>Collapse answers</div>
+                ? <ChangeAnswers onClick={collapse} onKeyUp={collapse} role="button" tabIndex={0}>Collapse answers</ChangeAnswers>
                 : null}
-            </div>
-          </div>
+            </AnswerList>
+          </AnswerBlock>
         ) : null}
     </div>
   );

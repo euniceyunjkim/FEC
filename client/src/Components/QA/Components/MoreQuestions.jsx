@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import currentProducts from '../../../Contexts/CurProdContext.js';
+import { MainButtons } from './Styles/Buttons.js';
 
 function MoreQuestions({ questions, allQuestions, setQuestions }) {
   const [upTo, setUpTo] = useState(6);
@@ -14,11 +15,11 @@ function MoreQuestions({ questions, allQuestions, setQuestions }) {
     setUpTo(upTo + 2);
   }
   return (
-    <div>
+    <span>
       { questions.length < allQuestions.length ?
-        <button type="submit" onClick={addQuestions}>More Questions</button>
+        <MainButtons type="submit" onClick={addQuestions}>More Questions</MainButtons>
         : null }
-    </div>
+    </span>
   );
 }
 
