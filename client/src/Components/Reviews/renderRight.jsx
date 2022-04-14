@@ -67,6 +67,6 @@ const RenderRight = function RenderRight({ ratingCount, characteristics }) {
 };
 RenderRight.propTypes = {
   ratingCount: PropTypes.number.isRequired,
-  characteristics: PropTypes.objectOf.isRequired,
+  characteristics: PropTypes.instanceOf(Object).isRequired,
 };
 export default RenderRight;

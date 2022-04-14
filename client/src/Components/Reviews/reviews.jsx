@@ -69,6 +69,6 @@ const Reviews = function Reviews({ obj }) {
   return <p>Loading...</p>;
 };
 Reviews.propTypes = {
-  obj: PropTypes.objectOf.isRequired,
+  obj: PropTypes.instanceOf(Object).isRequired,
 };
 export default Reviews;
