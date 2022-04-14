@@ -1,14 +1,12 @@
-import React from 'react';
-import Questions from "./Questions.jsx";
-import Answers from "./Answers.jsx";
+import React, { useState } from 'react';
+import Questions from './Questions.jsx';
+import { QAListStyle } from './Styles/QA.js';
 
-function QAList({ question }) {
+function QAList({ questions, allQuestions, setQuestions, helpfulAndReport }) {
   return (
-    <div>
-      <Questions question={question}/>
-      { Object.entries(question.answers).map(([key, value]) => <Answers answer={value} />)}
-      {/* {localStorage.length > questions.length ? <span onClick="something">LOAD MORE ANSWERS</span> : <></> } */}
-    </div>
+    <QAListStyle>
+      {questions.map((question, index) => <Questions question={question} questions={questions} index={index} allQuestions={allQuestions} setQuestions={setQuestions} helpfulAndReport={helpfulAndReport} />)}
+    </QAListStyle>
   );
 }
 
