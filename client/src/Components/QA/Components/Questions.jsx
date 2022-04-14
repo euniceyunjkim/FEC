@@ -2,13 +2,32 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answers from './Answers';
 import AddAnswer from './AddAnswer';
-import { ParentQ, QStyle, QuestionStyle, QFeatures, QFeat, QFeat1, QFeat2, AStyle, AnswerList, AnswerStyle, QBody, AnswerBlock, ChangeAnswers, Separator } from './Styles/QA';
+import {
+  ParentQ,
+  QStyle,
+  QuestionStyle,
+  QFeatures,
+  QFeat,
+  QFeat1,
+  QFeat2,
+  QFeat12,
+  AStyle,
+  AnswerList,
+  AnswerStyle,
+  QBody,
+  AnswerBlock,
+  ChangeAnswers,
+  Separator,
+} from './Styles/QA';
 
-function Questions(
-  {
-    question, questions, index, allQuestions, setQuestions, helpfulAndReport
-  },
-) {
+function Questions({
+  question,
+  questions,
+  index,
+  allQuestions,
+  setQuestions,
+  helpfulAndReport,
+}) {
   const [answers, setAnswers] = useState(question.answers.slice(0, 2));
   const [showModal, setShowModal] = useState(false);
 
@@ -60,9 +79,9 @@ function Questions(
               )
               : (
                 <QFeat12>
-                  Yes but clicked (
+                  Yes (
                   {question.question_helpfulness}
-                  ) |
+                  )
                 </QFeat12>
               )}
             <Separator> &nbsp; |  &nbsp; </Separator>
@@ -96,10 +115,10 @@ function Questions(
                 </AnswerStyle>
               ))}
               {answers.length < question.answers.length
-                ? <ChangeAnswers onClick={addAnswers} onKeyUp={addAnswers} role="button" tabIndex={0}>See more answers</ChangeAnswers>
+                ? <ChangeAnswers onClick={() => addAnswers()} onKeyUp={() => addAnswers()} role="button" tabIndex={0}>See more answers</ChangeAnswers>
                 : null}
               {answers.length > 2
-                ? <ChangeAnswers onClick={collapse} onKeyUp={collapse} role="button" tabIndex={0}>Collapse answers</ChangeAnswers>
+                ? <ChangeAnswers onClick={() => collapse()} onKeyUp={() => collapse()} role="button" tabIndex={0}>Collapse answers</ChangeAnswers>
                 : null}
             </AnswerList>
           </AnswerBlock>

@@ -153,6 +153,17 @@ export const AFeat21 = styled.div`
 
 export const AFeat3 = styled.div`
   order: 4;
+  text-decoration: underline;
+  &:hover {
+    color: #4b15a3;
+    cursor: pointer;
+    }
+`;
+
+export const AFeat31 = styled.div`
+  order: 4;
+  text-decoration: underline;
+  color: #4B15A3;
 `;
 
 export const AFeatures = styled.div`

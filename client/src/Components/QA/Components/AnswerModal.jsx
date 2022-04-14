@@ -1,9 +1,16 @@
 import React, { useContext, useState } from 'react';
+<<<<<<< HEAD
 import currentProducts from '../../../Contexts/CurProdContext.js';
 import { ModalView } from './Styles/ModalView.js';
 import { ModalBackground } from './Styles/ModalBackground.js';
 import PhotoUploadModal from './PhotoUploadModal.jsx';
+=======
+>>>>>>> main
 import axios from 'axios';
+import currentProducts from '../../../Contexts/CurProdContext';
+import ModalView from './Styles/ModalView';
+import ModalBackground from './Styles/ModalBackground';
+import PhotoUploadModal from './PhotoUploadModal';
 
 function AnswerModal({ setShowModal, question }) {
   const { currentProd } = useContext(currentProducts);
@@ -58,7 +65,11 @@ function AnswerModal({ setShowModal, question }) {
       <ModalView>
         <div>
           <h2>Submit your Answer</h2>
-          <h3>{currentProd.name}: {question.question_body}</h3>
+          <h3>
+            {currentProd.name}
+            :
+            {question.question_body}
+          </h3>
           <div>
             <form noValidate onSubmit={() => onSubmit(event)}>
               <label htmlFor="newAnswer">
@@ -85,7 +96,14 @@ function AnswerModal({ setShowModal, question }) {
             </form>
           </div>
           <button type="button" onClick={() => setShowModal(false)}>Cancel</button>
-          {addPhoto ? <PhotoUploadModal photos={photos} setPhoto={setPhoto} setAddPhoto={setAddPhoto}/> : null}
+          {addPhoto
+            ? (
+              <PhotoUploadModal
+                photos={photos}
+                setPhoto={setPhoto}
+                setAddPhoto={setAddPhoto}
+              />
+            ) : null}
         </div>
       </ModalView>
     </ModalBackground>

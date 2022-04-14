@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Search from './Components/Search.jsx';
-import QAList from './Components/QAList.jsx';
-import MoreQuestions from './Components/MoreQuestions.jsx';
-import AddQuestion from './Components/AddQuestion.jsx';
-import currentProducts from '../../Contexts/CurProdContext.js';
-import { QAStyle, StyledTitle } from './Components/Styles/QA.js';
-import { ButtonContainer } from './Components/Styles/Buttons.js';
-
-const GetData = require('./Helpers');
+import axios from 'axios';
+import Search from './Components/Search';
+import QAList from './Components/QAList';
+import MoreQuestions from './Components/MoreQuestions';
+import AddQuestion from './Components/AddQuestion';
+import currentProducts from '../../Contexts/CurProdContext';
+import { QAStyle, StyledTitle } from './Components/Styles/QA';
+import { ButtonContainer } from './Components/Styles/Buttons';
 
 let localQuestions = [];
 const helpfulAndReport = {};
@@ -21,7 +20,7 @@ function QA() {
 
   useEffect(() => {
     if (currentProd.id) {
-      GetData.getQuestions(currentProd.id, 1, 9999)
+      axios.get('qa/questions', { params: { product_id: currentProd.id, page: 1, count: 9999 } })
         .then((data) => { localQuestions = data.data.results; })
         .then(() => localQuestions.forEach((question) => {
           if (helpfulAndReport[question.question_id]) {

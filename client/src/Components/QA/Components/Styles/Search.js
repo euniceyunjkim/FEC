@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Input = styled.input`
+const Input = styled.input`
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -32,3 +32,5 @@ export const Input = styled.input`
   outline: none;
   border: 0;
   }`;
+
+export default Input;

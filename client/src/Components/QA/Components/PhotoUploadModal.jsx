@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { ModalView } from './Styles/ModalView';
 import { ModalBackground } from './Styles/ModalBackground';
+=======
+import ModalView from './Styles/ModalView';
+import ModalBackground from './Styles/ModalBackground';
+>>>>>>> main
 
 function UploadPhotoModal({ photos, setPhoto, setAddPhoto }) {
   const [url, setUrl] = useState('');
