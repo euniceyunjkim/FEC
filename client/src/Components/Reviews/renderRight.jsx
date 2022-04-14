@@ -27,7 +27,13 @@ const RenderRight = function RenderRight({ ratingCount, characteristics }) {
     if (currentProd.id) {
       getReviews();
     }
-  }, [currentProd, sort, count]);
+  }, [sort, count]);
+  useEffect(() => {
+    if (currentProd.id) {
+      getReviews();
+      setCount(2);
+    }
+  }, [currentProd]);
   return (
     <Box.InnerCol>
       <Box.ReviewSort>
@@ -49,8 +55,8 @@ const RenderRight = function RenderRight({ ratingCount, characteristics }) {
       </div>
 
       <div>
-        <button type="button" onClick={() => setCount(count + 2)}>more reviews</button>
-        <button type="button" onClick={() => setRenderModal(true)}>add reviews +</button>
+        <Box.MainButtons type="button" onClick={() => setCount(count + 2)}>more reviews</Box.MainButtons>
+        <Box.MainButtons type="button" onClick={() => setRenderModal(true)}>add reviews +</Box.MainButtons>
         {renderModal === true
           ? (
             <WriteReview

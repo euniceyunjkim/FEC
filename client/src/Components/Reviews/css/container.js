@@ -4,6 +4,7 @@ const Box = {
   Main: styled.div`
   display: flex;
   justify-content: center;
+  font-size: 150%;
   `,
   Container: styled.div`
   display: flex;
@@ -31,18 +32,19 @@ const Box = {
   color: rgb(75, 21, 163);
   `,
   Bar: styled.div`
-  width: 210px;
+  width: 90%;
   background-image: url(./assets/bar.webp);
   background-repeat: no-repeat;
+  background-size: 100% 50%;
   `,
   Triangle: styled.img`
   height: 15px;
-  width: 15px
+  width: 15px;
   `,
   CharText: styled.div`
   display: flex;
   justify-content: space-between;
-  width: 210px;
+  width: 90%;
   padding-bottom: 15px;
   margin: 0px;
   `,
@@ -95,13 +97,13 @@ const Box = {
   width: 50vw;
   `,
   Info: styled.div`
-    flexDirection: column;
-    height: 40vh
-    overflow-y: scroll
+  flexDirection: column;
+  height: 40vh
+  overflow-y: scroll
   `,
   StarRating: styled.img`
   height: 30px;
-  width: 30px
+  width: 30px;
   `,
   StarCheck: styled.img`
   height: 15px;
@@ -115,6 +117,41 @@ const Box = {
   ReviewSort: styled.div`
   padding-bottom: 4%;
   border-bottom: double;
+  `,
+  MainButtons: styled.button`
+  width: 40%;
+  margin-top: 5%;
+  margin-right: 30px;
+  border-radius: 4px;
+  justify-content: center;
+  padding: 18px;
+  box-shadow: 0 5px 5px rgba(17, 16, 62, 0.1);
+  font-size: 20px;
+  font-weight: 300;
+  color: black;
+  background-color: #fff;
+  border: 2px solid #4b15a3;
+  border-radius: 3px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+
+  &:hover {
+  box-shadow: 0 0 5px 5px rgba(17, 16, 62, 0.15);
+  background: #4b15a3;
+  color: white;
+  }
+
+  &:focus {
+  background: #fff;
+  color: #4b15a3;
+  }`,
+  Clicked: styled.b`
+  color: #9c82b2;
+  font-size: 80%;
+  `,
+  NotClicked: styled.div`
+  color: #595858;
+  font-size: 80%;
   `,
 };
 
