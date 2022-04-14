@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 export const CarouselContainer = styled.div`
 display: grid;
-// grid template was causing issues with mobile
-// grid-template: 1fr/1fr;
 width: 100%;
 height: 100%;
 place-items: center;
@@ -45,9 +43,17 @@ border-radius: 50%;
   cursor: pointer;
 }
 ${({ styles }) => `${styles}`};
-@media (max-width: 500px) {
+@media (max-width: 890px) {
   height: 50px;
   width: 50px;
+}
+@media (min-width: 1450px) {
+  height: 95px;
+  width: 95px;
+}
+@media (min-width: 1880px) {
+  height: 120px;
+  width: 120px;
 }
 `;
 

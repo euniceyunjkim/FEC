@@ -4,7 +4,7 @@ import Overview from './Overview/index';
 import QA from './QA/index';
 import Related from './Related/index';
 import Reviews from './Reviews/index';
-import currentProducts from '../Contexts/CurProdContext.js';
+import currentProducts from '../Contexts/CurProdContext';
 import currentStyle from '../Contexts/CurStyleContext';
 
 const axios = require('axios');

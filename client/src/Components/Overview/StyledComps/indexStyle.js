@@ -20,14 +20,15 @@ background-color: #ffffff
 `;
 
 export const Product = styled.div`
-padding-top: 70px;
+padding-top: 50px;
 display: flex;
 justify-content: space-evenly;
 height: 100%;
 width: 100%;
-@media (max-width: 500px) {
+@media (max-width: 890px) {
   flex-direction: column;
   padding-top: 30px;
+  align-items: center;
 }
 `;
 
@@ -35,9 +36,9 @@ export const Left = styled.div`
 width: 100%;
 height: 100%;
 margin-right: 5%;
-flex: 70%;
+flex: 60%;
 order: 1;
-@media (max-width: 500px) {
+@media (max-width: 890px) {
   margin-bottom: 30px;
   height: 500px;
   flex: 50%;
@@ -47,11 +48,14 @@ order: 1;
 export const Right = styled.div`
 width: 100%;
 height: 100%;
-flex: 30%;
+flex: 40%;
 order: 2;
-@media (max-width: 500px) {
+@media (max-width: 890px) {
   flex: 50%;
   width: 500px;
+  display: flex;
+  justify-content: center;
+  margin-left: 5%;
 }
 `;
 
@@ -63,7 +67,7 @@ padding-bottom: 10px;
 export const Bottom = styled.div`
 width: 100%
 padding-top: 100px;
-padding-bottom: 100px;
+padding-bottom: 50px;
 text-align: center;
 display: grid;
 grid-template: 1fr/ 1fr;
@@ -71,7 +75,7 @@ place-items: center;
 `;
 
 export const Social = styled.div`
-padding-top: 25px;
+padding-top: 5px;
 z-index: 1;
 `;
 
