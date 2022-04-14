@@ -53,8 +53,8 @@ ${({ styles }) => `${styles}`};
   width: 95px;
 }
 @media (min-width: 1880px) {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
 }
 `;
 
