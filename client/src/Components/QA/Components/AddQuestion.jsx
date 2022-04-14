@@ -1,6 +1,6 @@
 import React from 'react';
-import QuestionModal from './QuestionModal.jsx';
-import { MainButtons } from './Styles/Buttons.js';
+import QuestionModal from './QuestionModal';
+import { MainButtons } from './Styles/Buttons';
 
 function AddQuestion({ allQuestions, showModal, setShowModal }) {
   return (
