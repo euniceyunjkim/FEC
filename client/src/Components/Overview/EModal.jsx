@@ -85,7 +85,7 @@ function EModal({
 }
 
 EModal.propTypes = {
-  photos: PropTypes.isArrayOf,
+  photos: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default EModal;

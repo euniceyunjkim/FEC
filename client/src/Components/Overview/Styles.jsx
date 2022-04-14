@@ -33,7 +33,7 @@ function Styles({ style, setCurStyle }) {
 }
 
 Styles.propTypes = {
-  style: PropTypes.objectOf(PropTypes.styles).isRequired,
+  style: PropTypes.instanceOf(Object).isRequired,
   setCurStyle: PropTypes.func.isRequired,
 };
 

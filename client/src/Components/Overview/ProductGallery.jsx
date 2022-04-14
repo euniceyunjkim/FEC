@@ -77,7 +77,7 @@ function ProductGallery({ index, setIndex, photos }) {
 ProductGallery.propTypes = {
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
-  photos: PropTypes.arrayOf.isRequired,
+  photos: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default ProductGallery;
