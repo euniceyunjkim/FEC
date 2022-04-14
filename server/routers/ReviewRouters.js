@@ -27,21 +27,22 @@ ReviewRouters.get('/meta', (req, res) => {
 ReviewRouters.put('/:review_id/helpful', (req, res) => {
   axios.put(`${path}/${req.params.review_id}/helpful`, {}, { headers: { Authorization: config.TOKEN } })
     .then((data) => res.status(data.status))
-    .catch((err) => res.send(err))
+    .catch((err) => console.log(err))
     .then(() => res.end());
 });
 
 ReviewRouters.put('/:review_id/report', (req, res) => {
   axios.put(`${path}/${req.params.review_id}/report`, {}, { headers: { Authorization: config.TOKEN } })
     .then((data) => res.status(data.status))
-    .catch((err) => res.status(err))
+    .catch((err) => console.log(err))
     .then(() => res.end());
 });
 
 ReviewRouters.post('/post', (req, res) => {
-  axios.post(`${path}/reviews`, req.query, { headers: { Authorization: config.TOKEN } })
-    .then((data) => res.status(data.status))
-    .catch((err) => res.send(err))
+  console.log(req.body);
+  axios.post(`${path}`, req.body, { headers: { Authorization: config.TOKEN } })
+    .then((data) => console.log(data.status))
+    .catch((err) => console.log((err)))
     .then(() => res.end());
 });
 

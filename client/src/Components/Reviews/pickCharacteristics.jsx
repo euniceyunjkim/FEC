@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Box from './css/container';
 
-const PickCharacteristics = function ({ charKey, lable, char}) {
+const PickCharacteristics = function PickCharacteristics({ charKey, lable, char }) {
   const [check, setCheck] = useState(0);
-  const setChar = function (value) {
+  // saves value selected by user
+  const setChar = function setChar(value) {
+    // eslint-disable-next-line
     char[charKey] = value;
     setCheck(value);
   };
+  // load values for feed back based on prodect characteristics
   let feedBack = ['loading', 'loading', 'loading'];
   if (lable === 'Size') {
     feedBack = ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'];
@@ -27,28 +31,32 @@ const PickCharacteristics = function ({ charKey, lable, char}) {
       {lable}
       <div style={{ fontSize: '70%' }}>
         {check === 1
-          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(1)} />
-          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(1)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(1)} />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(1)} />}
         {feedBack[0]}
         {check === 2
-          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(2)} />
-          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(2)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(2)} />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(2)} />}
         {feedBack[1]}
         {check === 3
-          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(3)} />
-          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(3)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(3)} />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(3)} />}
         {feedBack[2]}
         {check === 4
-          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(4)} />
-          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(4)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(4)} />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(4)} />}
         {feedBack[3]}
         {check === 5
-          ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setChar(5)} />
-          : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setChar(5)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(5)} />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(5)} />}
         {feedBack[4]}
       </div>
     </div>
   );
 };
-
+PickCharacteristics.propTypes = {
+  lable: PropTypes.string.isRequired,
+  charKey: PropTypes.number.isRequired,
+  char: PropTypes.objectOf.isRequired,
+};
 export default PickCharacteristics;

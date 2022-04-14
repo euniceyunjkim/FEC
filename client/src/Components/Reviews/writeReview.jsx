@@ -1,48 +1,55 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import Box from './css/container';
-import PickRating from './pickRating.jsx'
-import PickCharacteristics from './pickCharacteristics.jsx';
+import PickRating from './pickRating';
+import PickCharacteristics from './pickCharacteristics';
 import currentProducts from '../../Contexts/CurProdContext';
 
 const axios = require('axios');
 
-const WriteReview = function ({ setRenderModal, setRender, characteristics }) {
+// creats modal that allows user to right review
+const WriteReview = function WriteReview({ setRenderModal, setRender, characteristics }) {
   const [rating, setRating] = useState(0);
   const [recommend, setRecommend] = useState(null);
-  const [char, setChar] = useState({});
+  const [char] = useState({});
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const { currentProd } = useContext(currentProducts);
-
-  const submitHandler = function () {
-    let failed = false;
+  // when the user clicks the submit button
+  const submitHandler = function submitHandler() {
+    const customAlert = alert;
     if (rating === 0) {
-      alert('rating has not been filed');
-      failed = true;
+      customAlert('rating has not been filed');
     } else if (recommend === null) {
-      alert('recommend has not been filed');
-      failed = true;
+      customAlert('recommend has not been filed');
     } else if (summary === '') {
-      //take this one out and put in char
-      alert('summary has not been filed');
-      failed = true;
+      // take this one out and put in char
+      customAlert('summary has not been filed');
     } else if (body.length < 50) {
-      alert('body has not been filed');
-      failed = true;
+      customAlert('body has not been filed');
     } else if (name === '') {
-      alert('name has not been filed');
-      failed = true;
-    } else if (email === '') {
-      alert('email has not been filed');
-      failed = true;
+      customAlert('name has not been filed');
+      // eslint-disable-next-line
+    } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+      customAlert('email is not valid');
     } else if (Object.keys(characteristics).length !== Object.keys(char).length) {
-      alert('characteristics has not been filed');
+      customAlert('characteristics has not been filed');
     } else {
-      axios.post(`http://localhost:3000/reviews/post?product_id=${currentProd}&rating=${rating}&summary=${summary}&body=${body}&recommend=${recommend}&name=${name}&email=${email}&characteristics=${characteristics}`)
+      axios.post('reviews/post', {
+        product_id: currentProd.id,
+        rating,
+        summary,
+        body,
+        recommend,
+        name,
+        email,
+        photos: [],
+        characteristics: char,
+      })
         .then(() => setRenderModal(false))
-        .catch(() => console.log('error in axios'));
+        .catch(() => new Error('error in axios'));
     }
   };
   return (
@@ -58,12 +65,12 @@ const WriteReview = function ({ setRenderModal, setRender, characteristics }) {
               *Recommend:
               <form>
                 {recommend === true
-                  ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setRecommend(true)} />
-                  : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setRecommend(true)} />}
+                  ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setRecommend(true)} />
+                  : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setRecommend(true)} />}
                 Yes
                 {recommend === false
-                  ? <Box.StarCheck src="./assets/fullStar.webp" alt="full star" onClick={() => setRecommend(false)} />
-                  : <Box.StarCheck src="./assets/emptyStar.webp" alt="empty star" onClick={() => setRecommend(false)} />}
+                  ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setRecommend(false)} />
+                  : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setRecommend(false)} />}
                 No
               </form>
               <br />
@@ -99,7 +106,7 @@ const WriteReview = function ({ setRenderModal, setRender, characteristics }) {
               <input type="text" name="sum" required maxLength="60" size="30" value={email} onChange={(e) => setEmail(e.target.value)} />
               <br />
               <br />
-              <button onClick={() => submitHandler()}>
+              <button type="button" onClick={() => submitHandler()}>
                 Submit
               </button>
             </Box.Info>
@@ -108,5 +115,10 @@ const WriteReview = function ({ setRenderModal, setRender, characteristics }) {
       </Box.Modal>
     </div>
   );
+};
+WriteReview.propTypes = {
+  setRenderModal: PropTypes.func.isRequired,
+  setRender: PropTypes.func.isRequired,
+  characteristics: PropTypes.objectOf.isRequired,
 };
 export default WriteReview;
