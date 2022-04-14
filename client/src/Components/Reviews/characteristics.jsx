@@ -1,8 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Box from './css/container';
 
-const Characteristics = function ({ lable, value }) {
-  const renderLable = function () {
+// this function taks and displays all of the Characteristics
+// of whatever product we are currently looking at
+const Characteristics = function Characteristics({ lable, value }) {
+  // renders smaller labels for how Characteristics are rated
+  const renderLable = function renderLable() {
     let feedBack = ['loading', 'loading', 'loading'];
     if (lable === 'Size') {
       feedBack = ['A size too small', 'Perfect', 'A size too wide'];
@@ -29,12 +33,15 @@ const Characteristics = function ({ lable, value }) {
     <div>
       {lable}
       <Box.Bar>
-        {console.log(value)}
         <Box.Triangle src="./assets/triangle.webp" alt="triangle" style={{ paddingLeft: `${value * 20}%` }} />
       </Box.Bar>
       {renderLable()}
     </div>
   );
 };
-
+// prop validation
+Characteristics.propTypes = {
+  lable: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+};
 export default Characteristics;

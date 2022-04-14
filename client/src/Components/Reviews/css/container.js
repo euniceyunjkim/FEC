@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
 const Box = {
+  Main: styled.div`
+  display: flex;
+  justify-content: center;
+  `,
   Container: styled.div`
   display: flex;
-  justify-content: center
+  justify-content: space-evenly;
+  width: 80%;
   `,
   InnerCol: styled.div`
   flexDirection: column;
-  padding-right: 2%;
   `,
   ReviewSum: styled.div`
   display: flex;
@@ -45,7 +49,9 @@ const Box = {
   Review: styled.div`
   flexDirection: column;
   border-bottom: double;
-  width: 500px;
+  padding-bottom: 2%;
+  padding-top: 1%;
+  width: 100%;
   `,
   ReviewHeader: styled.div`
   display: flex;
@@ -99,10 +105,16 @@ const Box = {
   `,
   StarCheck: styled.img`
   height: 15px;
-  width: 15px
+  width: 15px;
+  padding-left: 1%;
+  vertical-align: middle;
   `,
   Progress: styled.progress`
   background-color: #ECECEC;
+  `,
+  ReviewSort: styled.div`
+  padding-bottom: 4%;
+  border-bottom: double;
   `,
 };
 
