@@ -9,7 +9,7 @@ const Card = styled(ProductCard)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5px;
+  margin: 5px 15px;
   padding: 2px;
   text-align: center;
   object-fit: cover;

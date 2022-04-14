@@ -19,6 +19,8 @@ const Input = styled.input`
   border-image: initial;
   ::placeholder {
     color: #4B15A3;
+    font-family: 'Amatic SC', cursive;
+    font-family: 'Space Mono', monospace;
   }
   transition-duration: 0.4s;
 

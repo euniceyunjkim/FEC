@@ -4,7 +4,6 @@ export const LightMode = createGlobalStyle`
 body {
   font-family: 'Amatic SC', cursive;
   font-family: 'Space Mono', monospace;
-
 }
 `;
 
