@@ -18,7 +18,13 @@ function Search({ allQuestions, setMatching, setSearching }) {
   }
 
   return (
-    <Input type="text" value={searching} placeholder="Have a question? Search for answers..." onChange={() => updateSearch()} />
+    <Input
+      type="text"
+      value={searching}
+      placeholder="Have a question? Search for answers..."
+      // eslint-disable-next-line react/jsx-no-bind
+      onChange={updateSearch}
+    />
   );
 }
 

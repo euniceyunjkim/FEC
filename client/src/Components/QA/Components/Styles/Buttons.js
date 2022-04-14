@@ -20,12 +20,11 @@ export const MainButtons = styled.button`
   box-shadow: 0 0 5px 5px rgba(17, 16, 62, 0.15);
   background: #4b15a3;
   color: white;
-  }
 
-  &:focus {
-  background: #fff;
-  color: #4b15a3;
-  }`;
+  &:active {
+    color: #4b15a3;
+  };
+`;
 
 export const ButtonContainer = styled.div`
   width: 80%;

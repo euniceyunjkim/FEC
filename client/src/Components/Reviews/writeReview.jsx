@@ -119,6 +119,6 @@ const WriteReview = function WriteReview({ setRenderModal, setRender, characteri
 WriteReview.propTypes = {
   setRenderModal: PropTypes.func.isRequired,
   setRender: PropTypes.func.isRequired,
-  characteristics: PropTypes.objectOf.isRequired,
+  characteristics: PropTypes.instanceOf(Object).isRequired,
 };
 export default WriteReview;

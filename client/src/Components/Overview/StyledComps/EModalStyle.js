@@ -9,7 +9,7 @@ overflow-x: hidden;
 overflow-y: auto;
 position: fixed;
 width: 100%;
-height: 900px;
+height: 1000px;
 z-index: 1000;
 top: 125px;
 justify-content: center;
@@ -27,7 +27,7 @@ export const Modall = styled.div`
 order: 2;
 display: grid;
 animation: fadeIn 0.2s ease-in-out;
-background: rgb(75, 21, 163, 0.8);
+background: rgb(75, 45, 127, 0.8);
 border-radius: 0.25rem;
 display: flex;
 width: 100%;

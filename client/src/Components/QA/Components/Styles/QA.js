@@ -18,8 +18,8 @@ export const QAListStyle = styled.div`
   flex-direction: column;
   justify-content: start;
   width: 78%;
-  height: 50%;
-  overflow: auto;
+  max-height: 75vh;
+  overflow-y: scroll;
 `;
 
 export const QAStyle = styled.div`
@@ -44,13 +44,13 @@ export const QuestionStyle = styled.div`
 `;
 
 export const QBody = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   padding-left: 5px;
 `;
 
 export const QStyle = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   flex: 2%;
 `;
@@ -67,6 +67,7 @@ export const QFeat1 = styled.div`
   &:hover {
     color: #4b15a3;
     cursor: pointer;
+    text-shadow: 2px 2px 5px rgb(75, 21, 163);
     }
 `;
 
@@ -74,6 +75,7 @@ export const QFeat12 = styled.div`
   order: 2;
   text-decoration: underline;
   color: #4B15A3;
+  text-shadow: 2px 2px 5px rgb(75, 21, 163);
 `;
 
 export const Separator = styled.div`
@@ -86,20 +88,22 @@ export const QFeat2 = styled.div`
   &:hover {
     color: #4b15a3;
     cursor: pointer;
+    text-shadow: 2px 2px 5px rgb(75, 21, 163);
     }
 `;
 
 export const QFeatures = styled.div`
   display: flex;
   margin-left: auto;
-  color: #696767;
+  color: #310d70;
   padding-top: 13px;
+  padding-right: 10px;
   vertical-align: top;
   font-size: 19px;
 `;
 
 export const AStyle = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   flex: 2%;
 `;
@@ -108,7 +112,9 @@ export const AnswerBlock = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 5px;
-  margin-left: 45px
+  margin-left: 45px;
+  max-height: 50vh;
+  overflow-y: scroll;
 `;
 
 export const AnswerList = styled.div`
@@ -142,6 +148,7 @@ export const AFeat2 = styled.div`
   &:hover {
     color: #4b15a3;
     cursor: pointer;
+    text-shadow: 2px 2px 5px rgb(75, 21, 163);
     }
 `;
 
@@ -149,6 +156,7 @@ export const AFeat21 = styled.div`
   order: 3;
   text-decoration: underline;
   color: #4B15A3;
+  text-shadow: 2px 2px 5px rgb(75, 21, 163);
 `;
 
 export const AFeat3 = styled.div`
@@ -157,6 +165,7 @@ export const AFeat3 = styled.div`
   &:hover {
     color: #4b15a3;
     cursor: pointer;
+    text-shadow: 2px 2px 5px rgb(75, 21, 163);
     }
 `;
 
@@ -169,7 +178,7 @@ export const AFeat31 = styled.div`
 export const AFeatures = styled.div`
   display: flex;
   margin-left: auto;
-  color: #696767;
+  color: #310d70;
   padding-top: 4px;
   padding-left: 8px;
   vertical-align: top;
@@ -187,5 +196,6 @@ export const ChangeAnswers = styled.div`
   &:hover {
     color: #4b15a3;
     cursor: pointer;
+    text-shadow: 2px 2px 5px rgb(75, 21, 163);
     }
 `;

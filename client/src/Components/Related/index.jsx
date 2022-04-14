@@ -21,9 +21,9 @@ function Related() {
   return (
     <RelatedContainer>
       <RelatedRectangle>
-        <h2>Customers Also Liked:</h2>
+        <h2>CUSTOMERS ALSO LIKED</h2>
         <RelatedList related={related} />
-        <h2>Your Outfit</h2>
+        <h2>YOUR OUTFIT</h2>
         <OutfitList />
       </RelatedRectangle>
     </RelatedContainer>

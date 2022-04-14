@@ -100,20 +100,24 @@ function Questions({
           <AnswerBlock>
             <AStyle>A: </AStyle>
             <AnswerList>
-              {answers.map((answer, answerIndex) => (
-                <AnswerStyle>
-                  <Answers
-                    answerIndex={answerIndex}
-                    answer={answer[1]}
-                    allQuestions={allQuestions}
-                    setQuestions={setQuestions}
-                    helpfulAndReport={helpfulAndReport}
-                    question={question}
-                    index={index}
-                    questions={questions}
-                  />
-                </AnswerStyle>
-              ))}
+              <AnswerStyle>
+                {answers.map((answer, answerIndex) => (
+                  <>
+                    <Answers
+                      key={answer[1].id}
+                      answerIndex={answerIndex}
+                      answer={answer[1]}
+                      allQuestions={allQuestions}
+                      setQuestions={setQuestions}
+                      helpfulAndReport={helpfulAndReport}
+                      question={question}
+                      index={index}
+                      questions={questions}
+                    />
+                    <br />
+                  </>
+                ))}
+              </AnswerStyle>
               {answers.length < question.answers.length
                 ? <ChangeAnswers onClick={() => addAnswers()} onKeyUp={() => addAnswers()} role="button" tabIndex={0}>See more answers</ChangeAnswers>
                 : null}

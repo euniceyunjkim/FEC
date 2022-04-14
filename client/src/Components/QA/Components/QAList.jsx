@@ -13,6 +13,7 @@ function QAList({
       {questions.map(
         (question, index) => (
           <Questions
+            key={question.question_id}
             question={question}
             questions={questions}
             index={index}

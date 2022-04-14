@@ -98,6 +98,6 @@ RenderLeft.propTypes = {
   setCharacteristics: PropTypes.func.isRequired,
   ratingCount: PropTypes.number.isRequired,
   setRatingCount: PropTypes.func.isRequired,
-  characteristics: PropTypes.objectOf.isRequired,
+  characteristics: PropTypes.instanceOf(Object).isRequired,
 };
 export default RenderLeft;

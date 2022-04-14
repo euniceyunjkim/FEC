@@ -6,10 +6,9 @@ import {
   LDSContainer, LightDark, SearchContainer, Bar, Search,
 } from './StyledComps/LogoCartStyle';
 
-function LogoCart({ cart, getCart }) {
+function LogoCart({ cart, getCart, setLightMode, lightMode }) {
   const [show, setShow] = useState(false);
   const [barOpen, setBarOpen] = useState(false);
-  const [light, setLight] = useState(true);
 
   function toggleShow() {
     setShow((prev) => !prev);
@@ -36,15 +35,18 @@ function LogoCart({ cart, getCart }) {
     window.location.href = 'http://localhost:3000/';
   }
 
+  function toggle() {
+    setLightMode();
+  }
   return (
     <Container>
       <Logo
-        src="overview_imgs/DarkLogo.webp"
+        src={lightMode ? 'overview_imgs/DarkLogo.webp' : 'overview_imgs/LightLogo.webp'}
         onClick={(e) => home(e)}
       />
       <SearchCartContainer>
         <LDSContainer>
-          <LightDark onClick={() => setLight(!light)} src={light ? mode.jojo : mode.dio} />
+          <LightDark onClick={() => toggle()} src={lightMode ? mode.jojo : mode.dio} />
           <SearchContainer>
             <Bar styles={barOpen ? styles.open : styles.closed} />
             <Search type="button" onClick={() => setBarOpen(!barOpen)}>
@@ -53,7 +55,7 @@ function LogoCart({ cart, getCart }) {
           </SearchContainer>
         </LDSContainer>
         <Cart
-          src="overview_imgs/DarkCart.webp"
+          src={lightMode ? 'overview_imgs/DarkCart.webp' : 'overview_imgs/LightCart.webp'}
           onClick={() => toggleShow()}
         >
           <Count>
@@ -73,6 +75,8 @@ function LogoCart({ cart, getCart }) {
 LogoCart.propTypes = {
   cart: PropTypes.instanceOf(Array).isRequired,
   getCart: PropTypes.func.isRequired,
+  setLightMode: PropTypes.func.isRequired,
+  lightMode: PropTypes.bool.isRequired,
 };
 
 export default LogoCart;
