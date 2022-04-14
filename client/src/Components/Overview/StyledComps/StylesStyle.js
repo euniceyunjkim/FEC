@@ -17,6 +17,14 @@ background-size: cover;
 &:hover {
   cursor: pointer;
 }
+@media (min-width: 1450px) {
+  height: 90px;
+  width: 90px;
+}
+@media (min-width: 1880px) {
+  height: 105px;
+  width: 105px;
+}
 `;
 
 export const Checkmark = styled.div`

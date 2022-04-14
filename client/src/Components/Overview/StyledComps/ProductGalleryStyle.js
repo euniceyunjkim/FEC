@@ -6,8 +6,11 @@ export const Carouselcontainer = styled.div`
   overflow: hidden;
   width: 100%;
   height: 725px;
-  @media (max-width: 500px) {
+  @media (max-width: 890px) {
     height: 500px;
+  }
+  @media (min-width: 1450px) {
+    height: 950px;
   }
 `;
 
@@ -41,8 +44,11 @@ width: 90px;
 }
 display: grid;
 place-items: center;
-@media (max-width: 500px) {
+@media (max-width: 890px) {
   top: 200px;
+}
+@media (min-width: 1450px) {
+top: 425px;
 }
 `;
 
@@ -58,15 +64,18 @@ place-items: center;
 &:hover {
   ${({ styles }) => `${styles}`};
 }
-@media (max-width: 500px) {
+@media (max-width: 890px) {
   top: 200px;
+}
+@media (min-width: 1450px) {
+  top: 425px;
 }
 `;
 
 export const InnerCenter = styled.div`
 flex: 86%;
 height: 100%;
-@media (max-width: 500px) {
+@media (max-width: 890px) {
   top: 200px;
 }
 `;
