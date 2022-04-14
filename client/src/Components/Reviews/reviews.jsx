@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import Box from './css/container';
 import Star from './stars';
 
@@ -28,31 +29,37 @@ const Reviews = function Reviews({ obj }) {
           <Star rating={obj.rating || 0} />
           <div style={{ fontSize: '70%' }}>
             {obj.reviewer_name}
-            {obj.date}
+            ,&nbsp;
+            {moment(obj.date).startOf('hour').fromNow()}
           </div>
         </Box.ReviewHeader>
         <h4>{obj.summary}</h4>
         <p>{obj.body}</p>
         <Box.Container>
           <br />
-          <div>helpful?</div>
+
+          <Box.NotClicked>helpful?</Box.NotClicked>
           {helpful
             ? (
-              <b>
+              <Box.Clicked>
                 yes(
                 {obj.helpfulness + 1}
                 )
-              </b>
+              </Box.Clicked>
             )
             : (
-              <u role="button" tabIndex={0} onClick={() => wasHelpful()} onKeyDown={() => wasHelpful()}>
-                yes(
-                {obj.helpfulness}
-                )
-              </u>
+              <Box.NotClicked>
+                <u role="button" tabIndex={0} onClick={() => wasHelpful()} onKeyDown={() => wasHelpful()}>
+                  yes(
+                  {obj.helpfulness}
+                  )
+                </u>
+              </Box.NotClicked>
             )}
-          <div>   |   </div>
-          <u role="button" tabIndex={0} onClick={() => wasReported()} onKeyDown={() => wasReported()}>report</u>
+          <Box.NotClicked>   |   </Box.NotClicked>
+          <Box.NotClicked>
+            <u role="button" tabIndex={0} onClick={() => wasReported()} onKeyDown={() => wasReported()}>report</u>
+          </Box.NotClicked>
         </Box.Container>
       </Box.Review>
     );
@@ -60,9 +67,9 @@ const Reviews = function Reviews({ obj }) {
   // if review exists and was reported
   if (obj && report) {
     return (
-      <Box.ReviewHeader>
+      <Box.Review>
         <h2>Thank you for reporting</h2>
-      </Box.ReviewHeader>
+      </Box.Review>
     );
   }
   // when no reviews have been passed in
