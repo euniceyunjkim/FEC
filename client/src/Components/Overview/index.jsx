@@ -79,7 +79,7 @@ function Overview({ styles, setCurStyle, setMode, lightMode }) {
                 </b>
               </i>
             </div>
-            <h2>{currentProd.name && currentProd.name}</h2>
+            <h2>{currentProd.name && currentProd.name.toUpperCase()}</h2>
             <ReviewSumm>
               <RenderRating prodID={currentProd.id && currentProd.id} />
               <Reviews onClick={() => autoScroll()}><i>read all reviews</i></Reviews>
