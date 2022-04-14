@@ -1,23 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
-import currentProducts from '../../Contexts/CurProdContext';
+import React, { useState } from 'react';
 import Box from './css/container';
-import RenderRating from '../renderRating.jsx';
-import RenderLeft from './renderLeft.jsx';
-import RenderRight from './renderRight.jsx';
-
-// const AxiosHelper = require('./AxiosHelper');
+import RenderLeft from './renderLeft';
+import RenderRight from './renderRight';
 
 const Reviews = function Reviews() {
-  const { currentProd } = useContext(currentProducts);
+  // const { currentProd } = useContext(currentProducts);
+  // to know what chatacteristics are being used to judge the current product
   const [characteristics, setCharacteristics] = useState({});
+  // to know the amount of reviews
   const [ratingCount, setRatingCount] = useState(0);
   return (
-    <div>
+    <Box.Main>
       <Box.Container>
         <Box.InnerCol>
-          Ratings And Reviews
           <Box.ReviewSum>
             <RenderLeft
+              ratingCount={ratingCount}
               setRatingCount={(e) => setRatingCount(e)}
               characteristics={characteristics}
               setCharacteristics={(e) => setCharacteristics(e)}
@@ -31,21 +29,9 @@ const Reviews = function Reviews() {
           />
         </Box.InnerCol>
       </Box.Container>
-    </div>
+    </Box.Main>
 
   );
 };
-/*
-<h2>amount of reviews and how you want to sort</h2>
-          <div>
-            <h1>big boi box for reviews</h1>
-            <p>Container for each review</p>
-            <p>Container for each review</p>
-          </div>
 
-          <Box.InnerCol>
-            <button onClick={() => alert('shtoop it its not ready yet')}>more reviews</button>
-            <button onClick={() => alert('shtoop it its not ready yet')}>add reviews +</button>
-          </Box.InnerCol>
-          */
 export default Reviews;

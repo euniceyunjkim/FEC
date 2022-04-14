@@ -11,6 +11,9 @@ position: fixed;
 width: 100%;
 z-index: 1000;
 top: 105px;
+@media (max-width: 500px) {
+  left: -43%;
+}
 `;
 
 export const Space = styled.div`
@@ -21,7 +24,7 @@ export const Modall = styled.div`
 order: 2;
 animation: fadeIn 0.2s ease-in-out;
 align-items: center;
-background: rgb(75, 21, 163, 0.2);
+background: rgb(171, 132, 237);
 border-radius: 0.25rem;
 display: flex;
 flex-direction: column;

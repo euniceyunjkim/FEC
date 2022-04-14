@@ -20,23 +20,43 @@ background-color: #ffffff
 `;
 
 export const Product = styled.div`
-padding-top: 70px;
+padding-top: 50px;
 display: flex;
 justify-content: space-evenly;
-height: 90%;
+height: 100%;
 width: 100%;
+@media (max-width: 890px) {
+  flex-direction: column;
+  padding-top: 30px;
+  align-items: center;
+}
 `;
 
 export const Left = styled.div`
-width: auto;
-height: auto;
+width: 100%;
+height: 100%;
+margin-right: 5%;
+flex: 60%;
 order: 1;
+@media (max-width: 890px) {
+  margin-bottom: 30px;
+  height: 500px;
+  flex: 50%;
+}
 `;
 
 export const Right = styled.div`
-width: auto;
-height: auto%;
+width: 100%;
+height: 100%;
+flex: 40%;
 order: 2;
+@media (max-width: 890px) {
+  flex: 50%;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  margin-left: 5%;
+}
 `;
 
 export const ReviewSumm = styled.div`
@@ -45,22 +65,22 @@ padding-bottom: 10px;
 `;
 
 export const Bottom = styled.div`
-width: 90%
+width: 100%
 padding-top: 100px;
-padding-bottom: 100px;
+padding-bottom: 50px;
 text-align: center;
 display: grid;
-gird-template: 1fr/ 1fr;
+grid-template: 1fr/ 1fr;
 place-items: center;
+`;
+
+export const Social = styled.div`
+padding-top: 5px;
+z-index: 1;
 `;
 
 export const POverview = styled.div`
 z-index: 2;
-`;
-
-export const Social = styled.div`
-padding-top: 25px;
-z-index: 1;
 `;
 
 export const Price = styled.div`
@@ -115,7 +135,7 @@ z-index: 1;
 display: grid;
 grid-template-columns: repeat(4, 1fr);
 width: 100%;
-height: 100%;
+height: 80%;
 margin-top: 30px;
 margin-bottom: 30px;
 `;

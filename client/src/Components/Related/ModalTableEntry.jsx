@@ -1,25 +1,30 @@
 import React from 'react';
-import { ModalIcon } from './StyledComps/NoFeatureIconStyle.js'
+import PropTypes from 'prop-types';
+import { ModalIcon } from './StyledComps/NoFeatureIconStyle';
 
-const ModalTableEntry = ({ feature, compareData }) => {
-  let first = {};
-  compareData[0].forEach((feature) => {
-    let values = Object.values(feature);
-    first[values[0]] = values[1];
-  })
-  let second = {};
-  compareData[1].forEach((feature) => {
-    let values = Object.values(feature);
-    second[values[0]] = values[1];
-  })
+function ModalTableEntry({ feature, compareData }) {
+  const first = {};
+  compareData[0].forEach((feat) => {
+    const [category, value] = Object.values(feat);
+    first[category] = value;
+  });
+  const second = {};
+  compareData[1].forEach((feat) => {
+    const [category, value] = Object.values(feat);
+    second[category] = value;
+  });
 
   return (
     <tr>
-      <td>{first[feature] || <ModalIcon src='assets/PurpleX.webp' />}</td>
+      <td>{first[feature] || <ModalIcon src="assets/PurpleX.webp" />}</td>
       <td>{feature}</td>
       <td>{second[feature] || 'None'}</td>
     </tr>
-  )
+  );
 }
 
+ModalTableEntry.propTypes = {
+  feature: PropTypes.instanceOf(Object).isRequired,
+  compareData: PropTypes.func.isRequired,
+};
 export default ModalTableEntry;

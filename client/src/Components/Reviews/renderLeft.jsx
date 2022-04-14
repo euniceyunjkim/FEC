@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import currentProducts from '../../Contexts/CurProdContext';
 import Box from './css/container';
-import Star from './stars.jsx';
-import RatingSpread from './ratingSpread.jsx';
-import Characteristics from './characteristics.jsx';
+import Star from './stars';
+import RatingSpread from './ratingSpread';
+import Characteristics from './characteristics';
 
 const axios = require('axios');
 
-const RenderLeft = function ({setRatingCount, characteristics, setCharacteristics}) {
+const RenderLeft = function RenderLeft(
+  {
+    ratingCount, setRatingCount, characteristics, setCharacteristics,
+  },
+) {
   // used to keep track of ratings
   const [rating, setRating] = useState(0);
   // used for rendering the percent of people that recomend the product
@@ -38,19 +43,19 @@ const RenderLeft = function ({setRatingCount, characteristics, setCharacteristic
     // this is async
     setRating((Math.round((totalStarts / totalVotes) * 4)) / 4);
   };
-  const saveRecommended = function (rec) {
+  const saveRecommended = function saveRecommended(rec) {
     const total = (rec.false * 1) + (rec.true * 1);
     setRecommended(Math.round(100 * (rec.true / total)));
   };
   // a function to get the and create the ratings of any given ID
-  const getRatings = function (id) {
-    axios.get(`http://localhost:3000/reviews/meta?product_id=${id}`)
+  const getRatings = function getRatings(id) {
+    axios.get(`reviews/meta?product_id=${id}`)
       .then((res) => {
         avreageRating(res.data.ratings);
         saveRecommended(res.data.recommended);
         setCharacteristics(res.data.characteristics);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => new Error(err));
   };
   // loads in and get the rating of the first product
   useEffect(() => {
@@ -59,11 +64,11 @@ const RenderLeft = function ({setRatingCount, characteristics, setCharacteristic
     }
   }, [currentProd]);
   // renders the rating in number form if a value is passed in for loadRating
-  const renderNum = function () {
+  const renderNum = function renderNum() {
     return <Box.Rating>{rating}</Box.Rating>;
   };
   // renders the amount of people that recommend this product
-  const renderRec = function () {
+  const renderRec = function renderRec() {
     return (
       <div>
         <p>
@@ -81,12 +86,18 @@ const RenderLeft = function ({setRatingCount, characteristics, setCharacteristic
         <Star rating={rating} />
       </Box.Container>
       {renderRec()}
-      <RatingSpread stars={starSpread} max={max} />
+      <RatingSpread ratingCount={ratingCount} stars={starSpread} max={max} />
       <h3>Characteristics</h3>
       {Object.keys(characteristics).map((e) => (
         <Characteristics key={characteristics[e].id} lable={e} value={characteristics[e].value} />
       ))}
     </Box.InnerCol>
   );
+};
+RenderLeft.propTypes = {
+  setCharacteristics: PropTypes.func.isRequired,
+  ratingCount: PropTypes.number.isRequired,
+  setRatingCount: PropTypes.func.isRequired,
+  characteristics: PropTypes.objectOf.isRequired,
 };
 export default RenderLeft;

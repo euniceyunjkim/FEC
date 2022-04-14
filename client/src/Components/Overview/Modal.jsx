@@ -27,8 +27,8 @@ function Modal({ shown, hideModal }) {
 }
 
 Modal.propTypes = {
-  shown: PropTypes.boolean,
-  hideModal: PropTypes.func,
+  shown: PropTypes.bool,
+  hideModal: PropTypes.func.isRequired,
 };
 
 export default Modal;

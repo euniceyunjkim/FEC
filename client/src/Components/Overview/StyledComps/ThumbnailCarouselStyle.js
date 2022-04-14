@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 export const CarouselContainer = styled.div`
 display: grid;
-grid-template: 1fr/1fr;
-width: 125px;
-height: 725px;
+width: 100%;
+height: 100%;
 place-items: center;
 `;
 
@@ -24,8 +23,8 @@ background-size: contain;
 
 export const Carousel = styled.div`
 z-index: 2;
-width: 95px;
-height: 640px;
+width: 100%;
+height: 100%;
 overflow: hidden;
 place-items: center;
 `;
@@ -37,13 +36,25 @@ background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
 background-image: ${({ src }) => `url(${src})`};
-height: 85px;
-width: 85px;
+height: 80px;
+width: 80px;
 border-radius: 50%;
 &:hover {
   cursor: pointer;
 }
 ${({ styles }) => `${styles}`};
+@media (max-width: 890px) {
+  height: 50px;
+  width: 50px;
+}
+@media (min-width: 1450px) {
+  height: 95px;
+  width: 95px;
+}
+@media (min-width: 1880px) {
+  height: 120px;
+  width: 120px;
+}
 `;
 
 export const Next = styled.div`

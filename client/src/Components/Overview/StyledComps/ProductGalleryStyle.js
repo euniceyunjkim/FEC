@@ -5,16 +5,22 @@ export const Carouselcontainer = styled.div`
   justify-content: space-evenly;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: 725px;
+  @media (max-width: 890px) {
+    height: 500px;
+  }
+  @media (min-width: 1450px) {
+    height: 950px;
+  }
 `;
 
 export const Carouselinner = styled.div`
-flex: 80%;
+flex: 85%;
 background-size: cover;
 background-position: center;
 display: flex;
+width: 100%;
 height: 100%;
-width: 850px;
 background-image: ${({ src }) => `url(${src})`};
 position: relative;
 `;
@@ -24,6 +30,7 @@ flex: 15%;
 height: 100%;
 width: 100%;
 left: -1px;
+margin-right: 5%;
 `;
 
 export const InnerLeft = styled.div`
@@ -37,6 +44,12 @@ width: 90px;
 }
 display: grid;
 place-items: center;
+@media (max-width: 890px) {
+  top: 200px;
+}
+@media (min-width: 1450px) {
+top: 425px;
+}
 `;
 
 export const InnerRight = styled.div`
@@ -51,11 +64,20 @@ place-items: center;
 &:hover {
   ${({ styles }) => `${styles}`};
 }
+@media (max-width: 890px) {
+  top: 200px;
+}
+@media (min-width: 1450px) {
+  top: 425px;
+}
 `;
 
 export const InnerCenter = styled.div`
 flex: 86%;
 height: 100%;
+@media (max-width: 890px) {
+  top: 200px;
+}
 `;
 
 export const Expand = styled.div`

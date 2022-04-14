@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
-// import currentProducts from '../../Contexts/CurProdContext';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Box from './css/container';
 
-// import fullStar from './assets/fullStar.webp';
-// import halfStar from './assets/halfStar.webp';
-// import emptyStar from './assets/emptyStar.webp';
-
-const PickStar = function ({ rating, setRating }) {
+// creates interactive 5 star rating system
+const PickStar = function PickStar({ rating, setRating }) {
   return (
     <div>
       {rating > 0
@@ -27,5 +24,8 @@ const PickStar = function ({ rating, setRating }) {
     </div>
   );
 };
-
+PickStar.propTypes = {
+  rating: PropTypes.number.isRequired,
+  setRating: PropTypes.func.isRequired,
+};
 export default PickStar;
