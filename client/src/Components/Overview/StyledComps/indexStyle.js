@@ -89,7 +89,6 @@ display: flex;
 `;
 
 export const OnSale = styled.div`
-color: black;
 font-size: 20px;
 text-decoration: line-through;
 float: left;
@@ -98,13 +97,12 @@ padding-right: 10px;
 `;
 
 export const Og = styled.div`
-color: black;
 font-size: 20px;
 order: 1;
 `;
 
 export const Sale = styled.div`
-color: red;
+color: rgb(147, 14, 14);
 font-size: 20px;
 float: left;
 order: 2;

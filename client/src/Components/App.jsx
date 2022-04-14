@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { LightMode, DarkMode } from './StyledComps/GlobalStyles';
 import Overview from './Overview/index';
 import QA from './QA/index';
 import Related from './Related/index';
@@ -14,10 +15,17 @@ function App() {
   const [styles, setStyles] = useState([]);
   const [curStyle, setCurStyle] = useState({});
   const { prodID } = useParams();
+  const [lightMode, setLight] = useState(true);
 
   function defaultGrabber(items) {
     setCurStyle(items[0]);
   }
+
+  function setMode() {
+    setLight((prev) => !prev);
+  }
+
+  const setModeCB = useCallback(() => setMode(), []);
 
   useEffect(() => {
     axios.get(`/products/${prodID}`)
@@ -47,7 +55,13 @@ function App() {
   return (
     <currentProducts.Provider value={{ currentProd, setCurrentProd }}>
       <currentStyle.Provider value={{ curStyle, setCurStyle }}>
-        <Overview styles={styles} setCurStyle={setCurStyle} />
+        {lightMode ? <LightMode /> : <DarkMode />}
+        <Overview
+          styles={styles}
+          setCurStyle={setCurStyle}
+          setMode={setModeCB}
+          lightMode={lightMode}
+        />
         <Related />
       </currentStyle.Provider>
       <QA />

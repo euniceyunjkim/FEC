@@ -8,6 +8,10 @@ border-radius: 50%;
 background-size: contain;
 background-repeat: no-repeat;
 background-position: center;
+&:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgb(75, 21, 163);
+}
 `;
 
 export const Twitter = styled.div`
@@ -18,6 +22,10 @@ border-radius: 50%;
 background-size: contain;
 background-repeat: no-repeat;
 background-position: center;
+&:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgb(75, 21, 163);
+}
 `;
 
 export const Pinterest = styled.div`
@@ -28,6 +36,10 @@ border-radius: 50%;
 background-size: contain;
 background-repeat: no-repeat;
 background-position: center;
+&:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgb(75, 21, 163);
+}
 `;
 
 export const SocialContainer = styled.div`

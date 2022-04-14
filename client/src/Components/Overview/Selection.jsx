@@ -110,10 +110,10 @@ function Selection({ getCart }) {
             <div id="quantity">
               <AddButton
                 type="button"
-                value="Add to bag"
+                value="ADD TO BAG"
                 onClick={() => addToBag(selSize, selQuant)}
               >
-                Add to bag
+                ADD TO BAG
               </AddButton>
               <Modal
                 shown={shown}

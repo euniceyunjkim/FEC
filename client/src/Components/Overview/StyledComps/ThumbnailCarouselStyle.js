@@ -41,6 +41,7 @@ width: 80px;
 border-radius: 50%;
 &:hover {
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgb(75, 21, 163);
 }
 ${({ styles }) => `${styles}`};
 @media (max-width: 890px) {
