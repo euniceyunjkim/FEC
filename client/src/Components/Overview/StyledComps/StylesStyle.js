@@ -16,6 +16,7 @@ background-position: center;
 background-size: cover;
 &:hover {
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgb(75, 21, 163);
 }
 @media (min-width: 1450px) {
   height: 90px;

@@ -30,7 +30,7 @@ const Reviews = function Reviews({ obj }) {
           <div style={{ fontSize: '70%' }}>
             {obj.reviewer_name}
             ,&nbsp;
-            {moment(obj.date).startOf('hour').fromNow()}
+            {moment(obj.date).format('MMMM Do YYYY')}
           </div>
         </Box.ReviewHeader>
         <h4>{obj.summary}</h4>
@@ -38,11 +38,11 @@ const Reviews = function Reviews({ obj }) {
         <Box.Container>
           <br />
 
-          <Box.NotClicked>helpful?</Box.NotClicked>
+          <Box.Helpful>Helpful?</Box.Helpful>
           {helpful
             ? (
               <Box.Clicked>
-                yes(
+                Yes (
                 {obj.helpfulness + 1}
                 )
               </Box.Clicked>
@@ -50,7 +50,7 @@ const Reviews = function Reviews({ obj }) {
             : (
               <Box.NotClicked>
                 <u role="button" tabIndex={0} onClick={() => wasHelpful()} onKeyDown={() => wasHelpful()}>
-                  yes(
+                  Yes (
                   {obj.helpfulness}
                   )
                 </u>
@@ -58,7 +58,7 @@ const Reviews = function Reviews({ obj }) {
             )}
           <Box.NotClicked>   |   </Box.NotClicked>
           <Box.NotClicked>
-            <u role="button" tabIndex={0} onClick={() => wasReported()} onKeyDown={() => wasReported()}>report</u>
+            <u role="button" tabIndex={0} onClick={() => wasReported()} onKeyDown={() => wasReported()}>Report</u>
           </Box.NotClicked>
         </Box.Container>
       </Box.Review>
@@ -76,6 +76,6 @@ const Reviews = function Reviews({ obj }) {
   return <p>Loading...</p>;
 };
 Reviews.propTypes = {
-  obj: PropTypes.objectOf.isRequired,
+  obj: PropTypes.instanceOf(Object).isRequired,
 };
 export default Reviews;

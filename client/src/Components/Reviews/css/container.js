@@ -4,7 +4,7 @@ const Box = {
   Main: styled.div`
   display: flex;
   justify-content: center;
-  font-size: 150%;
+  font-size: 120%;
   `,
   Container: styled.div`
   display: flex;
@@ -120,7 +120,7 @@ const Box = {
   `,
   MainButtons: styled.button`
   width: 40%;
-  margin-top: 5%;
+  marin-top: 5%;
   margin-right: 30px;
   border-radius: 4px;
   justify-content: center;
@@ -139,18 +139,27 @@ const Box = {
   box-shadow: 0 0 5px 5px rgba(17, 16, 62, 0.15);
   background: #4b15a3;
   color: white;
-  }
 
-  &:focus {
-  background: #fff;
-  color: #4b15a3;
-  }`,
+  &:active {
+    color: #4b15a3;
+  };
+  `,
   Clicked: styled.b`
-  color: #9c82b2;
+  color: #310d70;
   font-size: 80%;
+  text-shadow: 2px 2px 5px rgb(75, 21, 163);
   `,
   NotClicked: styled.div`
-  color: #595858;
+  color: #310d70;
+  font-size: 80%;
+  &:hover {
+    cursor: pointer;
+    text-shadow: 2px 2px 5px rgb(75, 21, 163);
+  }
+ `,
+
+  Helpful: styled.div`
+  color: #310d70;
   font-size: 80%;
   `,
 };

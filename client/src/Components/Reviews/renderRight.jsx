@@ -40,7 +40,7 @@ const RenderRight = function RenderRight({ ratingCount, characteristics }) {
         <form onSubmit={(e) => setSort(e.target.value)}>
           {ratingCount}
           &nbsp;
-          reviews. Sort by:
+          Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sort by:&nbsp;
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>
@@ -55,8 +55,8 @@ const RenderRight = function RenderRight({ ratingCount, characteristics }) {
       </div>
 
       <div>
-        <Box.MainButtons type="button" onClick={() => setCount(count + 2)}>more reviews</Box.MainButtons>
-        <Box.MainButtons type="button" onClick={() => setRenderModal(true)}>add reviews +</Box.MainButtons>
+        <Box.MainButtons type="button" onClick={() => setCount(count + 2)}>More Reviews</Box.MainButtons>
+        <Box.MainButtons type="button" onClick={() => setRenderModal(true)}>Add Reviews +</Box.MainButtons>
         {renderModal === true
           ? (
             <WriteReview
@@ -73,6 +73,6 @@ const RenderRight = function RenderRight({ ratingCount, characteristics }) {
 };
 RenderRight.propTypes = {
   ratingCount: PropTypes.number.isRequired,
-  characteristics: PropTypes.objectOf.isRequired,
+  characteristics: PropTypes.instanceOf(Object).isRequired,
 };
 export default RenderRight;
