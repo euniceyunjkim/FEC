@@ -9,7 +9,6 @@ import {
 function LogoCart({ cart, getCart, setLightMode, lightMode }) {
   const [show, setShow] = useState(false);
   const [barOpen, setBarOpen] = useState(false);
-  const [light, setLight] = useState(true);
 
   function toggleShow() {
     setShow((prev) => !prev);
@@ -37,7 +36,6 @@ function LogoCart({ cart, getCart, setLightMode, lightMode }) {
   }
 
   function toggle() {
-    setLight((prev) => !prev);
     setLightMode();
   }
   return (
@@ -48,7 +46,7 @@ function LogoCart({ cart, getCart, setLightMode, lightMode }) {
       />
       <SearchCartContainer>
         <LDSContainer>
-          <LightDark onClick={() => toggle()} src={light ? mode.jojo : mode.dio} />
+          <LightDark onClick={() => toggle()} src={lightMode ? mode.jojo : mode.dio} />
           <SearchContainer>
             <Bar styles={barOpen ? styles.open : styles.closed} />
             <Search type="button" onClick={() => setBarOpen(!barOpen)}>
@@ -77,7 +75,7 @@ function LogoCart({ cart, getCart, setLightMode, lightMode }) {
 LogoCart.propTypes = {
   cart: PropTypes.instanceOf(Array).isRequired,
   getCart: PropTypes.func.isRequired,
-  setMode: PropTypes.func.isRequired,
+  setLightMode: PropTypes.func.isRequired,
   lightMode: PropTypes.bool.isRequired,
 };
 
