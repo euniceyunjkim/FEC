@@ -10,13 +10,13 @@ import { CardImage } from './StyledComps/ImageStyle';
 import { ModalExit } from './StyledComps/NoFeatureIconStyle';
 
 function Modal({ setShowModal, showModal, compareData }) {
-  const allFeatures = [];
+  const allFeatures = {};
   const product = compareData[2];
   const styles = compareData[3];
   for (let i = 0; i < 2; i += 1) {
     const features = Object.values(compareData[i]);
     features.forEach((feature) => {
-      allFeatures.push(feature.feature);
+      allFeatures[feature.feature] = true;
     });
   }
   const { currentProd } = useContext(currentProducts);
@@ -47,7 +47,7 @@ function Modal({ setShowModal, showModal, compareData }) {
                   <td />
                   <td><CardImage src={curStyle.photos[0].thumbnail_url} /></td>
                 </tr>
-                {allFeatures.map((feature) => (
+                {Object.keys(allFeatures).map((feature) => (
                   <ModalTableEntry
                     feature={feature}
                     key={feature}

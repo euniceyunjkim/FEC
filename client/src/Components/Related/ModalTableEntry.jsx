@@ -18,13 +18,13 @@ function ModalTableEntry({ feature, compareData }) {
     <tr>
       <td>{first[feature] || <ModalIcon src="assets/PurpleX.webp" />}</td>
       <td>{feature}</td>
-      <td>{second[feature] || 'None'}</td>
+      <td>{second[feature] || <ModalIcon src="assets/PurpleX.webp" />}</td>
     </tr>
   );
 }
 
 ModalTableEntry.propTypes = {
-  feature: PropTypes.instanceOf(Object).isRequired,
-  compareData: PropTypes.func.isRequired,
+  feature: PropTypes.string.isRequired,
+  compareData: PropTypes.instanceOf(Array).isRequired,
 };
 export default ModalTableEntry;
