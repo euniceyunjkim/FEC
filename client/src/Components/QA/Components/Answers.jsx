@@ -4,6 +4,9 @@ import moment from 'moment';
 import {
   AFeatures,
   AFeat,
+  AFeat01,
+  AFeat02,
+  AFeat03,
   AFeat1,
   AFeat2,
   AFeat21,
@@ -12,6 +15,7 @@ import {
   ABody,
   Separator,
   Div,
+  SeparatorA,
 } from './Styles/QA';
 
 function Answers({
@@ -70,45 +74,32 @@ function Answers({
     <Div>
       <ABody>{answer.body}</ABody>
       <AFeatures>
-        {answer.answerer_name.toLowerCase() === 'seller'
-          ? (
-            <AFeat>
-              by &nbsp;
-              <strong>{answer.answerer_name}</strong>
-              , &nbsp;
-              {moment(answer.date).format('MMMM Do YYYY')}
-              &nbsp;&nbsp;
-            </AFeat>
-          )
-          : (
-            <AFeat>
-              by&nbsp;
-              {answer.answerer_name}
-              , &nbsp;
-              {moment(answer.date).format('MMMM Do YYYY')}
-              &nbsp;&nbsp;
-            </AFeat>
-          )}
-        <AFeat1> Helpful? </AFeat1>
+        <AFeat>
+          by&nbsp;
+        </AFeat>
+        { answer.answerer_name.toLowerCase() === 'seller' ? <AFeat01>{answer.answerer_name}</AFeat01>
+          : <AFeat02>{answer.answerer_name}</AFeat02> }
+        <AFeat03>
+          ,&nbsp;
+          {moment(answer.date).format('MMMM Do YYYY')}
+          &nbsp;&nbsp;
+        </AFeat03>
+        <AFeat1>Helpful?&nbsp;</AFeat1>
         {question.helpfulAnswers && question.helpfulAnswers[answer.id]
-          ? (
-            <AFeat21>
-              Yes (
-              {answer.helpfulness}
-              )
-            </AFeat21>
-          )
+          ? <AFeat21>Yes</AFeat21>
           : (
             <AFeat2
               onClick={() => addHelpful(answer.id)}
               onKeyUp={() => addHelpful(answer.id)}
             >
-              Yes (
-              {answer.helpfulness}
-              )
+              Yes
             </AFeat2>
           )}
-        <Separator> &nbsp; | &nbsp; </Separator>
+        <SeparatorA>
+          &nbsp;
+          {answer.helpfulness}
+          &nbsp;|&nbsp;
+        </SeparatorA>
         {question.reportedAnswers && question.reportedAnswers[answer.id]
           ? <AFeat31>Reported</AFeat31>
           : (

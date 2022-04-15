@@ -120,7 +120,7 @@ const Box = {
   `,
   MainButtons: styled.button`
   width: 40%;
-  marin-top: 5%;
+  margin-top: 20px;
   margin-right: 30px;
   border-radius: 4px;
   justify-content: center;
