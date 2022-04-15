@@ -13,6 +13,17 @@ function RelatedList({ related }) {
   const [compareData, setCompareData] = useState([]);
   const [current, setCurrent] = useState(0);
   const { length } = related;
+  console.log(related);
+  const uniqRelated = {};
+  let i = 0;
+  while (i < related.length) {
+    if (!uniqRelated[related[i].id]) {
+      uniqRelated[related[i].id] = related[i];
+      i++;
+    } else {
+      related.splice(i, 1);
+    }
+  }
 
   const { currentProd } = useContext(currentProducts);
 
@@ -49,7 +60,6 @@ function RelatedList({ related }) {
   const previous = () => {
     setCurrent(current - 1);
   };
-
   return (
     <List>
       <PreviousIcon alt="prev" className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
