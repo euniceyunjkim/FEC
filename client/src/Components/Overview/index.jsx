@@ -16,7 +16,7 @@ import currentStyle from '../../Contexts/CurStyleContext';
 import {
   Header, SpaceII, Space, Product, Left, Right, ReviewSumm, Bottom,
   POverview, Social, Price, OnSale, Og, Sale, Stylesdesc, Reviews,
-  MoreContainer, StyleContainer, SelectionContainer,
+  MoreContainer, StyleContainer, SelectionContainer,ProductDetails,
 } from './StyledComps/indexStyle';
 
 function Overview({ styles, setCurStyle, setLightMode, lightMode }) {
@@ -74,7 +74,7 @@ function Overview({ styles, setCurStyle, setLightMode, lightMode }) {
           <ProductGallery index={index} setIndex={setIndex} photos={photos} />
         </Left>
         <Right>
-          <div id="product details">
+          <ProductDetails>
             <div id="product-category">
               <i>
                 CATEGORY&nbsp;//&nbsp;
@@ -127,7 +127,7 @@ function Overview({ styles, setCurStyle, setLightMode, lightMode }) {
                 <Selection getCart={getCartCB} />
               </SelectionContainer>
             </MoreContainer>
-          </div>
+          </ProductDetails>
         </Right>
       </Product>
       <br />
