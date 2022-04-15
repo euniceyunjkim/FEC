@@ -25,7 +25,7 @@ const RenderRating = function RenderRating({ prodID }) {
 
   // a function to get the and create the ratings of any given ID
   const getRatings = function getRatings(id) {
-    axios.get(`http://localhost:3000/reviews/meta?product_id=${id}`)
+    axios.get(`/reviews/meta?product_id=${id}`)
       .then((res) => {
         avreageRating(res.data.ratings);
       })
