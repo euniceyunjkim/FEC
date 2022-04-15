@@ -49,11 +49,13 @@ const Reviews = function Reviews({ obj }) {
             )
             : (
               <Box.NotClicked>
-                <u role="button" tabIndex={0} onClick={() => wasHelpful()} onKeyDown={() => wasHelpful()}>
-                  Yes (
-                  {obj.helpfulness}
-                  )
+                <u role="button" tabIndex={0} onClick={() => wasHelpful()} onKeyDown={() => wasHelpful()} aria-label="add helpful">
+                  Yes
                 </u>
+                <span>
+                  &nbsp;
+                  {obj.helpfulness}
+                </span>
               </Box.NotClicked>
             )}
           <Box.NotClicked>   |   </Box.NotClicked>

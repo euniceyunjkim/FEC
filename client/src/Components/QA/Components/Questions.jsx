@@ -17,6 +17,7 @@ import {
   QBody,
   AnswerBlock,
   ChangeAnswers,
+  ChangeAnswersBack,
   Separator,
 } from './Styles/QA';
 
@@ -63,7 +64,7 @@ function Questions({
         <QuestionStyle>
           <QBody>{question.question_body}</QBody>
           <QFeatures>
-            <QFeat>Helpful? &nbsp;</QFeat>
+            <QFeat>Helpful?&nbsp;</QFeat>
             {!question.helpfulQ
               ? (
                 <QFeat1
@@ -72,19 +73,15 @@ function Questions({
                   role="button"
                   tabIndex={0}
                 >
-                  Yes (
-                  {question.question_helpfulness}
-                  )
+                  Yes
                 </QFeat1>
               )
-              : (
-                <QFeat12>
-                  Yes (
-                  {question.question_helpfulness}
-                  )
-                </QFeat12>
-              )}
-            <Separator> &nbsp; |  &nbsp; </Separator>
+              : <QFeat12>Yes</QFeat12> }
+            <Separator>
+              &nbsp;
+              {question.question_helpfulness}
+              &nbsp;|&nbsp;
+            </Separator>
             <QFeat2>
               <AddAnswer
                 showModal={showModal}
@@ -102,31 +99,42 @@ function Questions({
             <AnswerList>
               <AnswerStyle>
                 {answers.map((answer, answerIndex) => (
-                  <>
-                    <Answers
-                      key={answer[1].id}
-                      answerIndex={answerIndex}
-                      answer={answer[1]}
-                      allQuestions={allQuestions}
-                      setQuestions={setQuestions}
-                      helpfulAndReport={helpfulAndReport}
-                      question={question}
-                      index={index}
-                      questions={questions}
-                    />
-                    <br />
-                  </>
+                  <Answers
+                    key={answer[1].id}
+                    answerIndex={answerIndex}
+                    answer={answer[1]}
+                    allQuestions={allQuestions}
+                    setQuestions={setQuestions}
+                    helpfulAndReport={helpfulAndReport}
+                    question={question}
+                    index={index}
+                    questions={questions}
+                  />
                 ))}
               </AnswerStyle>
-              {answers.length < question.answers.length
-                ? <ChangeAnswers onClick={() => addAnswers()} onKeyUp={() => addAnswers()} role="button" tabIndex={0}>See more answers</ChangeAnswers>
-                : null}
-              {answers.length > 2
-                ? <ChangeAnswers onClick={() => collapse()} onKeyUp={() => collapse()} role="button" tabIndex={0}>Collapse answers</ChangeAnswers>
-                : null}
             </AnswerList>
           </AnswerBlock>
         ) : null}
+      {answers.length < question.answers.length
+        ? (
+          <ChangeAnswers
+            onClick={() => addAnswers()}
+            onKeyUp={() => addAnswers()}
+            role="button" tabIndex={0}>
+            See More Answers
+          </ChangeAnswers>
+        )
+        : null}
+      {answers.length > 2
+        ? (
+          <ChangeAnswersBack onClick={() => collapse()}
+            onKeyUp={() => collapse()}
+            role="button"
+            tabIndex={0}>
+            Collapse Answers
+          </ChangeAnswersBack>
+        )
+        : null}
     </div>
   );
 }
