@@ -50,7 +50,11 @@ function LogoCart({
         <LDSContainer>
           <LightDark onClick={() => toggle()} src={lightMode ? mode.jojo : mode.dio} />
           <SearchContainer>
-            <label htmlFor="bar">&nbsp;Search:
+            <label htmlFor="bar">
+              &nbsp;
+              <div style={{ color: 'white' }}>
+                S
+              </div>
               <Bar id="bar" name="bar" type="text" styles={barOpen ? styles.open : styles.closed} />
             </label>
             <Search name="searchbar" type="button" onClick={() => setBarOpen(!barOpen)}>

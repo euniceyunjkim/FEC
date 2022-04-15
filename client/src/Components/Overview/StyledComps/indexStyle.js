@@ -29,6 +29,7 @@ width: 100%;
   flex-direction: column;
   padding-top: 30px;
   align-items: center;
+  justify-content: center;
 }
 `;
 
@@ -57,6 +58,20 @@ order: 2;
   justify-content: center;
   margin-left: 5%;
 }
+@media (max-width: 400px) {
+  flex: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+`;
+
+export const ProductDetails = styled.div`
+@media (max-width: 300px) {
+  display: flex;
+  flex-direction: column;
+}
 `;
 
 export const ReviewSumm = styled.div`
@@ -72,6 +87,9 @@ text-align: center;
 display: grid;
 grid-template: 1fr/ 1fr;
 place-items: center;
+@media (max-width: 400px) {
+  padding-bottom: 20px;
+ }
 `;
 
 export const Social = styled.div`
@@ -126,6 +144,7 @@ export const MoreContainer = styled.div`
 display: grid;
 grid-template: 1fr/1fr;
 place-items: center;
+
 `;
 
 export const StyleContainer = styled.div`
