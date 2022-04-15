@@ -62,6 +62,9 @@ background-repeat: no-repeat;
 background-position: center;
 border-radius: 10rem;
 justify-self: end;
+&:hover {
+  cursor: pointer;
+}
 `;
 
 export const SearchContainer = styled.div`
@@ -100,5 +103,8 @@ export const Search = styled.button`
   color: #4b15a3;
   &::placeholder {
     color: #4b15a3;
+  }
+  &:hover {
+    cursor: pointer;
   }
 `;

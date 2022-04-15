@@ -18,6 +18,9 @@ export const PreviousIcon = styled.img`
     transform: scale(1.02);
     cursor: pointer;
   }
+  @media (max-width: 1110px) {
+    margin-bottom: 25px;
+   }
 `;
 
 export const NextIcon = styled.img`
@@ -37,5 +40,8 @@ export const NextIcon = styled.img`
     box-shadow: 0 0 10px #4b15a3;
     transform: scale(1.02);
     cursor: pointer;
+  }
+  @media (max-width: 1110px) {
+   margin-top: 25px;
   }
 `;

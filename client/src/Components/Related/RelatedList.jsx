@@ -1,18 +1,28 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Card from './StyledComps/CardStyle';
-import List from './StyledComps/ListStyle';
+import { List, SmolList } from './StyledComps/ListStyle';
 import currentProducts from '../../Contexts/CurProdContext';
 import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle';
 
 const AxiosHelper = require('./AxiosHelper');
 
-function RelatedList({ related }) {
+function RelatedList({ related, lightMode }) {
   const [relatedStyles, setRelatedStyles] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [compareData, setCompareData] = useState([]);
   const [current, setCurrent] = useState(0);
   const { length } = related;
+  const uniqRelated = {};
+  let i = 0;
+  while (i < related.length) {
+    if (!uniqRelated[related[i].id]) {
+      uniqRelated[related[i].id] = related[i];
+      i++;
+    } else {
+      related.splice(i, 1);
+    }
+  }
 
   const { currentProd } = useContext(currentProducts);
 
@@ -49,28 +59,30 @@ function RelatedList({ related }) {
   const previous = () => {
     setCurrent(current - 1);
   };
-
   return (
     <List>
       <PreviousIcon alt="prev" className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
-      {related.map((product, index) => {
-        if (index < current + 4 && index > current - 1) {
-          return (
-            <Card
-              key={product.id}
-              action="Compare"
-              compareData={compareData}
-              showModal={showModal}
-              setShowModal={setShowModal}
-              handleClick={() => showCompare(product, relatedStyles[index])}
-              product={product}
-              styles={relatedStyles[index]}
-              image="assets/CompareButtonWhite.webp"
-            />
-          );
-        }
-        return null;
-      })}
+      <SmolList styles={Object.keys(related).length > 1 ? 'display: grid; grid-template-columns: repeat(2, 1fr);' : null}>
+        {related.map((product, index) => {
+          if (index < current + 4 && index > current - 1) {
+            return (
+              <Card
+                lightMode={lightMode}
+                key={product.id}
+                action="Compare"
+                compareData={compareData}
+                showModal={showModal}
+                setShowModal={setShowModal}
+                handleClick={() => showCompare(product, relatedStyles[index])}
+                product={product}
+                styles={relatedStyles[index]}
+                image="assets/CompareButtonWhite.webp"
+              />
+            );
+          }
+          return null;
+        })}
+      </SmolList>
       <NextIcon alt="next" className={current < length - 4 ? '' : 'hidden'} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 4 ? next : null} />
     </List>
   );
@@ -78,6 +90,7 @@ function RelatedList({ related }) {
 
 RelatedList.propTypes = {
   related: PropTypes.instanceOf(Array).isRequired,
+  lightMode: PropTypes.bool.isRequired,
 };
 
 export default RelatedList;

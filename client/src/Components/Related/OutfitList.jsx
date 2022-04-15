@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Card from './StyledComps/CardStyle';
-import List from './StyledComps/ListStyle';
+import { List, SmolList } from './StyledComps/ListStyle';
 import currentProducts from '../../Contexts/CurProdContext';
 import currentStyle from '../../Contexts/CurStyleContext';
 import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle';
@@ -47,23 +47,25 @@ function OutfitList() {
   return (
     <List>
       <PreviousIcon className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
-      <Card newOutfit="newOutfit" addOutfit={addOutfit} />
-      {Object.keys(outfits).map((key, index) => {
-        if (index < current + 3 && index > current - 1) {
-          return (
-            <Card
-              key={key}
-              action="Remove"
-              handleClick={removeOutfit}
-              id={key}
-              product={outfits[key][0]}
-              styles={outfits[key][1]}
-              image="assets/DeleteButton.webp"
-            />
-          );
-        }
-        return null;
-      })}
+      <SmolList styles={Object.keys(outfits).length > 1 ? 'display: grid; grid-template-columns: repeat(2, 1fr);' : null}>
+        <Card newOutfit="newOutfit" addOutfit={addOutfit} />
+        {Object.keys(outfits).map((key, index) => {
+          if (index < current + 3 && index > current - 1) {
+            return (
+              <Card
+                key={key}
+                action="Remove"
+                handleClick={removeOutfit}
+                id={key}
+                product={outfits[key][0]}
+                styles={outfits[key][1]}
+                image="assets/DeleteButton.webp"
+              />
+            );
+          }
+          return null;
+        })}
+      </SmolList>
       <NextIcon className={current < length - 3 ? '' : 'hidden'} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 3 ? next : null} />
     </List>
   );
