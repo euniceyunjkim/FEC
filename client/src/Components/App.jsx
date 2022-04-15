@@ -21,10 +21,6 @@ function App() {
     setCurStyle(items[0]);
   }
 
-  // function setMode() {
-  //   setLightMode((prev) => !prev);
-  // }
-
   const setLightModeCB = useCallback(() => setLightMode((prev) => !prev, []));
 
   useEffect(() => {

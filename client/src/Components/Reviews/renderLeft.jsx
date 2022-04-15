@@ -87,7 +87,8 @@ const RenderLeft = function RenderLeft(
       </Box.Container>
       {renderRec()}
       <RatingSpread ratingCount={ratingCount} stars={starSpread} max={max} />
-      <h3>Characteristics</h3>
+      <div style={{ fontSize: 'larger' }}>Characteristics</div>
+      <br />
       {Object.keys(characteristics).map((e) => (
         <Characteristics key={characteristics[e].id} lable={e} value={characteristics[e].value} />
       ))}

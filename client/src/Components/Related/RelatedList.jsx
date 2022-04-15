@@ -52,7 +52,7 @@ function RelatedList({ related }) {
 
   return (
     <List>
-      <PreviousIcon className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
+      <PreviousIcon alt="prev" className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
       {related.map((product, index) => {
         if (index < current + 4 && index > current - 1) {
           return (
@@ -71,7 +71,7 @@ function RelatedList({ related }) {
         }
         return null;
       })}
-      <NextIcon className={current < length - 4 ? '' : 'hidden'} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 4 ? next : null} />
+      <NextIcon alt="next" className={current < length - 4 ? '' : 'hidden'} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 4 ? next : null} />
     </List>
   );
 }
