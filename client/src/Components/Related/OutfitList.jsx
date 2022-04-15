@@ -47,7 +47,7 @@ function OutfitList() {
   return (
     <List>
       <PreviousIcon className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
-      <SmolList>
+      <SmolList styles={Object.keys(outfits).length > 1 ? 'display: grid; grid-template-columns: repeat(2, 1fr);' : null}>
         <Card newOutfit="newOutfit" addOutfit={addOutfit} />
         {Object.keys(outfits).map((key, index) => {
           if (index < current + 3 && index > current - 1) {

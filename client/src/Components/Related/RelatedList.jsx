@@ -7,7 +7,7 @@ import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle';
 
 const AxiosHelper = require('./AxiosHelper');
 
-function RelatedList({ related }) {
+function RelatedList({ related, lightMode }) {
   const [relatedStyles, setRelatedStyles] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [compareData, setCompareData] = useState([]);
@@ -62,11 +62,12 @@ function RelatedList({ related }) {
   return (
     <List>
       <PreviousIcon alt="prev" className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
-      <SmolList>
+      <SmolList styles={Object.keys(related).length > 1 ? 'display: grid; grid-template-columns: repeat(2, 1fr);' : null}>
         {related.map((product, index) => {
           if (index < current + 4 && index > current - 1) {
             return (
               <Card
+                lightMode={lightMode}
                 key={product.id}
                 action="Compare"
                 compareData={compareData}
@@ -89,6 +90,7 @@ function RelatedList({ related }) {
 
 RelatedList.propTypes = {
   related: PropTypes.instanceOf(Array).isRequired,
+  lightMode: PropTypes.bool.isRequired,
 };
 
 export default RelatedList;

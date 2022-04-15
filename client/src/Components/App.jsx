@@ -58,7 +58,7 @@ function App() {
           setLightMode={setLightModeCB}
           lightMode={lightMode}
         />
-        <Related />
+        <Related lightMode={lightMode} />
       </currentStyle.Provider>
       <QA />
       <div id="ReviewsRef" />

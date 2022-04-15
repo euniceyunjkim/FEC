@@ -24,7 +24,7 @@ export const Modall = styled.div`
 order: 2;
 animation: fadeIn 0.2s ease-in-out;
 align-items: center;
-background: rgb(171, 132, 237);
+background: rgb(146, 122, 191);
 border-radius: 0.25rem;
 display: flex;
 flex-direction: column;

@@ -34,7 +34,7 @@ z-index: 1000;
 
 export const Modall = styled.div`
 align-items: center;
-background: white;
+background: rgb(118, 97, 153);
 border-radius: 0.25rem;
 display: flex;
 flex-direction: column;
