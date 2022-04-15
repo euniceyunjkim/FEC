@@ -3,12 +3,18 @@ import styled from 'styled-components';
 export const SelectionContainer = styled.div`
 width: 100%;
 display: flex;
+@media (max-width: 400px) {
+  width: 300px;
+}
 `;
 
 export const SizeContainer = styled.div`
 z-index: 1;
 display: grid;
 grid-template-columns: repeat(6, 1fr);
+@media (max-width: 400px){
+  grid-template-columns: repeat(4, 1fr);
+}
 `;
 
 export const SizeButton = styled.button`
@@ -30,6 +36,9 @@ export const QuantDrop = styled.div`
   place-items: center;
   justify-content: space-around;
   padding: 10px 0px;
+  @media (max-width: 400px){
+    display:flex;
+  }
 `;
 
 export const DropdownContainer = styled.div`
@@ -38,6 +47,7 @@ export const DropdownContainer = styled.div`
   display: grid;
   grid-template: 1fr/ 1fr;
   place-items: center;
+
 `;
 
 export const AddButton = styled.button`
