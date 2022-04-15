@@ -20,7 +20,7 @@ app.use('/cart', CartRouters);
 app.use('/interactions', InteractionRouters);
 app.use('/newoutfit', NewOutfitRouters);
 app.get('/robots.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'robot.txt'));
+  res.sendFile(path.join(__dirname, 'robots.txt'));
 });
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
