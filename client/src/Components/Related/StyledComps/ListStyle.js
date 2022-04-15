@@ -9,7 +9,7 @@ export const List = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  @media (max-width: 800px) {
+  @media (max-width: 1110px) {
     flex-direction: column;
   }
 `;
@@ -17,7 +17,7 @@ export const List = styled.div`
 export const SmolList = styled.div`
 display: flex;
 flex-direction: row;
-@media (max-width: 800px) {
+@media (max-width: 1110px) {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
