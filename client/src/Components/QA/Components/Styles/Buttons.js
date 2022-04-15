@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const MainButtons = styled.button`
   width: 25%;
+  min-width: 150px;
   margin-right: 30px;
   border-radius: 4px;
   justify-content: center;

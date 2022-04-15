@@ -1,9 +1,17 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import currentProducts from '../../../Contexts/CurProdContext';
-import ModalView from './Styles/ModalView';
-import ModalBackground from './Styles/ModalBackground';
 import PhotoUploadModal from './PhotoUploadModal';
+import ModalBackground from './Styles/ModalBackground';
+import { MainButtons } from './Styles/Buttons';
+import {
+  ModalView,
+  FormContainer,
+  HeadersContainer,
+  Label,
+  Input2,
+  Input,
+} from './Styles/ModalView';
 
 function AnswerModal({ setShowModal, question }) {
   const { currentProd } = useContext(currentProducts);
@@ -56,39 +64,41 @@ function AnswerModal({ setShowModal, question }) {
   return (
     <ModalBackground>
       <ModalView>
-        <div>
-          <h2>Submit your Answer</h2>
-          <h3>
-            {currentProd.name}
-            :
-            {question.question_body}
-          </h3>
+        <FormContainer>
+          <HeadersContainer>
+            <h2>Submit your Answer</h2>
+            <h3>
+              {currentProd.name}
+              :
+              {question.question_body}
+            </h3>
+          </HeadersContainer>
           <div>
             <form noValidate onSubmit={() => onSubmit(event)}>
-              <label htmlFor="newAnswer">
+              <Label htmlFor="newAnswer">
                 Your Answer*
-                <input type="text" id="newAnswer" maxLength="1000" required onChange={() => setBody(event.target.value)} />
-              </label>
-              <label htmlFor="nickname">
+                <Input type="text" id="newAnswer" maxLength="1000" required onChange={() => setBody(event.target.value)} />
+              </Label>
+              <Label htmlFor="nickname">
                 What is your nickname*
-                <input type="text" id="nickname" maxLength="60" placeholder="Example: jack543!" onChange={() => setNickname(event.target.value)} />
-              </label>
+                <Input2 type="text" id="nickname" maxLength="60" placeholder="Example: jack543!" onChange={() => setNickname(event.target.value)} />
+              </Label>
               <div>For privacy reasons, do not use your full name or email address</div>
-              <label htmlFor="email">
+              <Label htmlFor="email">
                 Your email*
-                <input type="email" id="email" maxLength="60" placeholder="Example: Jack@email.com" onChange={() => setEmail(event.target.value)} />
-              </label>
+                <Input2 type="email" id="email" maxLength="60" placeholder="Example: Jack@email.com" onChange={() => setEmail(event.target.value)} />
+              </Label>
               <div>For authentication reasons, you will not be emailed</div>
               {photos.length > 0
                 ? photos.map((photo) => <img src={photo} alt="upload" />)
                 : null}
               {photos.length < 5
-                ? <button type="button" onClick={() => setAddPhoto(true)}>Upload your photos</button>
+                ? <MainButtons onClick={() => setAddPhoto(true)}>Upload your photos</MainButtons>
                 : <div>Maximum photos allowed</div>}
-              <input type="submit" value="Submit answer" />
+              <MainButtons>Submit answer</MainButtons>
             </form>
           </div>
-          <button type="button" onClick={() => setShowModal(false)}>Cancel</button>
+          <MainButtons onClick={() => setShowModal(false)}>Cancel</MainButtons>
           {addPhoto
             ? (
               <PhotoUploadModal
@@ -97,7 +107,7 @@ function AnswerModal({ setShowModal, question }) {
                 setAddPhoto={setAddPhoto}
               />
             ) : null}
-        </div>
+        </FormContainer>
       </ModalView>
     </ModalBackground>
   );
