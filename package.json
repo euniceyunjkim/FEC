@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest --coverage",
     "build": "webpack --config webpack.config.js -w",
-    "server-dev": "npx nodemon --watch server server/index.js"
+    "server-dev": "npx nodemon --watch server server/index.js",
+    "forever-server": "forever start server/index.js",
+    "stop-forever": "forever stop server/index.js"
   },
   "keywords": [],
   "author": "",

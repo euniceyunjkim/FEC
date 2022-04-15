@@ -18,12 +18,13 @@ export const QAListStyle = styled.div`
   flex-direction: column;
   justify-content: start;
   width: 78%;
-  max-height: 75vh;
-  overflow-y: scroll;
+  max-height: 80vh;
+  overflow: scroll;
 `;
 
 export const QAStyle = styled.div`
   height: 80%;
+  min-width: 1000px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,14 +97,13 @@ export const QFeatures = styled.div`
   display: flex;
   margin-left: auto;
   color: #310d70;
-  padding-top: 13px;
   padding-right: 10px;
   vertical-align: top;
-  font-size: 19px;
+  font-size: 16px;
 `;
 
 export const AStyle = styled.div`
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   flex: 2%;
 `;
@@ -111,10 +111,10 @@ export const AStyle = styled.div`
 export const AnswerBlock = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 5px;
-  margin-left: 45px;
+  margin-top: 10px;
+  margin-left: 30px;
   max-height: 50vh;
-  overflow-y: scroll;
+  overflow: scroll;
 `;
 
 export const AnswerList = styled.div`
@@ -128,7 +128,8 @@ export const AnswerStyle = styled.div`
 `;
 
 export const ABody = styled.div`
-  font-size: 21px;
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 export const AFeat = styled.div`
@@ -136,13 +137,29 @@ export const AFeat = styled.div`
   padding-right: 5px;
 `;
 
-export const AFeat1 = styled.div`
+export const AFeat01 = styled.div`
+  order: 2;
+  padding-right: 5px;
+  text-shadow: 0px 0px 1px rgb(116, 83, 166);
+`;
+
+export const AFeat02 = styled.div`
   order: 2;
   padding-right: 5px;
 `;
 
-export const AFeat2 = styled.div`
+export const AFeat03 = styled.div`
   order: 3;
+  padding-right: 5px;
+`;
+
+export const AFeat1 = styled.div`
+  order: 4;
+  padding-right: 5px;
+`;
+
+export const AFeat2 = styled.div`
+  order: 5;
   text-decoration: underline;
 
   &:hover {
@@ -153,14 +170,18 @@ export const AFeat2 = styled.div`
 `;
 
 export const AFeat21 = styled.div`
-  order: 3;
+  order: 5;
   text-decoration: underline;
   color: #4B15A3;
   text-shadow: 2px 2px 5px rgb(75, 21, 163);
 `;
 
+export const SeparatorA = styled.div`
+  order: 6;
+`;
+
 export const AFeat3 = styled.div`
-  order: 4;
+  order: 7;
   text-decoration: underline;
   &:hover {
     color: #4b15a3;
@@ -170,7 +191,7 @@ export const AFeat3 = styled.div`
 `;
 
 export const AFeat31 = styled.div`
-  order: 4;
+  order: 7;
   text-decoration: underline;
   color: #4B15A3;
 `;
@@ -182,20 +203,39 @@ export const AFeatures = styled.div`
   padding-top: 4px;
   padding-left: 8px;
   vertical-align: top;
-  font-size: 17px;
+  font-size: 14px;
 `;
 
 export const Div = styled.div`
-  padding-bottom: 10px;
+  padding-bottom: 17px;
 `;
 
-export const ChangeAnswers = styled.div`
+export const ChangeAnswers = styled.a`
   font-weight: 700;
-  font-size: 20px;
+  font-size: 16px;
+  padding-bottom: 15px;
+  padding-left: 30px;
 
   &:hover {
     color: #4b15a3;
     cursor: pointer;
     text-shadow: 2px 2px 5px rgb(75, 21, 163);
-    }
+  }
+
+  &&:active {
+    color: #4b15a3;
+  }
 `;
+
+export const ChangeAnswersBack = styled.a`
+  font-weight: 700;
+  font-size: 16px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  color: #4b15a3;
+
+  &:hover {
+    color: black;
+    cursor: pointer;
+    text-shadow: 2px 2px 5px rgb(75, 21, 163);
+  }`;

@@ -77,6 +77,7 @@ export const SearchContainer = styled.div`
   height: 25px;
   border-radius: 10rem;
   transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+
 `;
 
 export const Bar = styled.input`
