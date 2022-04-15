@@ -33,7 +33,7 @@ const Characteristics = function Characteristics({ lable, value }) {
     <div>
       {lable}
       <Box.Bar>
-        <Box.Triangle src="./assets/triangle.webp" alt="triangle" style={{ paddingLeft: `${(value * 20) - 2}%` }} />
+        <Box.Triangle src="./assets/triangle.webp" alt="triangle" style={{ paddingLeft: `${(value * 20) - 2}%` }} loading="lazy" />
       </Box.Bar>
       {renderLable()}
     </div>

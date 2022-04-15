@@ -33,7 +33,8 @@ const Reviews = function Reviews({ obj }) {
             {moment(obj.date).format('MMMM Do YYYY')}
           </div>
         </Box.ReviewHeader>
-        <h4>{obj.summary}</h4>
+        <br />
+        <div style={{ fontSize: 'large' }}>{obj.summary}</div>
         <p>{obj.body}</p>
         <Box.Container>
           <br />

@@ -46,14 +46,14 @@ function ProductGallery({ index, setIndex, photos }) {
             onClick={() => flipper(-1)}
             styles={index === 0 ? null : styles.show}
           >
-            {index === 0 ? null : <img alt="" src="overview_imgs/LightLArrow.webp" />}
+            {index === 0 ? null : <img alt="" src="overview_imgs/LightLArrow.webp" width="90" height="90" />}
           </InnerLeft>
           <InnerCenter />
           <InnerRight
             onClick={() => flipper(1)}
             styles={index === photos.length - 1 ? null : styles.show}
           >
-            {index === photos.length - 1 ? null : <img alt="" src="overview_imgs/LightRArrow.webp" />}
+            {index === photos.length - 1 ? null : <img alt="" src="overview_imgs/LightRArrow.webp" width="90" height="90" />}
           </InnerRight>
           <Expand
             onClick={() => toggleShow()}
