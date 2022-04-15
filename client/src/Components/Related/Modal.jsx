@@ -5,7 +5,7 @@ import ModalContent from './StyledComps/ModalContentStyle';
 import currentProducts from '../../Contexts/CurProdContext';
 import currentStyle from '../../Contexts/CurStyleContext';
 import ModalTableEntry from './ModalTableEntry';
-import ModalTable from './StyledComps/TableStyle';
+import { ModalTable, ModalTableDark } from './StyledComps/TableStyle';
 import { CardImage } from './StyledComps/ImageStyle';
 import { ModalExit } from './StyledComps/NoFeatureIconStyle';
 
