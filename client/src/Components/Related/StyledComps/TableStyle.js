@@ -35,6 +35,7 @@ const ModalTable = styled.table`
     position: sticky;
     top: 0;
     border-top: 3px solid rgba(235, 183, 204);
+    height: 100px;
   }
 `;
 
