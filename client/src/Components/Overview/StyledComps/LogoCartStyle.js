@@ -62,6 +62,9 @@ background-repeat: no-repeat;
 background-position: center;
 border-radius: 10rem;
 justify-self: end;
+&:hover {
+  cursor: pointer;
+}
 `;
 
 export const SearchContainer = styled.div`
@@ -77,7 +80,6 @@ export const SearchContainer = styled.div`
   height: 25px;
   border-radius: 10rem;
   transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-
 `;
 
 export const Bar = styled.input`
@@ -101,5 +103,8 @@ export const Search = styled.button`
   color: #4b15a3;
   &::placeholder {
     color: #4b15a3;
+  }
+  &:hover {
+    cursor: pointer;
   }
 `;

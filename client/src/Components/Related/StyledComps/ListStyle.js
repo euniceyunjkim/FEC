@@ -18,7 +18,6 @@ export const SmolList = styled.div`
 display: flex;
 flex-direction: row;
 @media (max-width: 1110px) {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  ${({ styles }) => `${styles}`};
 }
 `;
