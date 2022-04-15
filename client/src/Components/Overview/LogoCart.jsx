@@ -32,7 +32,7 @@ function LogoCart({ cart, getCart, setLightMode, lightMode }) {
 
   function home(e) {
     e.preventDefault();
-    window.location.href = 'http://localhost:3000/';
+    window.location.href = '/';
   }
 
   function toggle() {
