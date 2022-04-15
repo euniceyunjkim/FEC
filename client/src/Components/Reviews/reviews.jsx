@@ -11,13 +11,13 @@ const Reviews = function Reviews({ obj }) {
   const [report, setReport] = useState(false);
   // tells api the review was helpful
   const wasHelpful = function wasHelpful() {
-    axios.put(`http://localhost:3000/reviews/${obj.review_id}/helpful`)
+    axios.put(`/reviews/${obj.review_id}/helpful`)
       .then(() => setHelpful(true))
       .catch((err) => new Error(err));
   };
   // tells api the review was reported
   const wasReported = function wasReported() {
-    axios.put(`http://localhost:3000/reviews/${obj.review_id}/report`)
+    axios.put(`/reviews/${obj.review_id}/report`)
       .then(() => setReport(true))
       .catch((err) => new Error(err));
   };

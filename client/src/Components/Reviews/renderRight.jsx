@@ -16,7 +16,7 @@ const RenderRight = function RenderRight({ ratingCount, characteristics }) {
   const [renderModal, setRenderModal] = useState(false);
   // gets revies from api
   const getReviews = function getReviews() {
-    axios.get(`http://localhost:3000/reviews?product_id=${currentProd.id}&sort=${sort}&count=${count}`)
+    axios.get(`/reviews?product_id=${currentProd.id}&sort=${sort}&count=${count}`)
       .then((res) => {
         setReviews(res.data.results);
       })
