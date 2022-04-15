@@ -56,7 +56,9 @@ const WriteReview = function WriteReview({ setRenderModal, setRender, characteri
     <div>
       <Box.Modal>
         <Box.ModalContent>
-          <Box.Close onClick={() => setRender(false)}><div>X</div></Box.Close>
+          <Box.XPic>
+            <Box.Close src="./assets/DeleteButton.webp" alt="x button" onClick={() => setRender(false)} />
+          </Box.XPic>
           <Box.CenterInfo>
             <Box.Info>
               *Overall rating:

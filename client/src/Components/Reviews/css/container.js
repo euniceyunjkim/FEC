@@ -5,9 +5,11 @@ const Box = {
   display: flex;
   justify-content: center;
   font-size: 120%;
+  width: 80%;
   `,
   Container: styled.div`
   display: flex;
+  flexDirection: column;
   justify-content: space-evenly;
   width: 80%;
   `,
@@ -71,12 +73,12 @@ const Box = {
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(0,0,0,0.25);
+  background: rgb(0, 0, 0, .2);
   z-index: 90;
   `,
   ModalContent: styled.div`
   position: fixed;
-  background: white;
+  background: rgb(146, 122, 191);
   width: 50vw;
   height: 80vh;
   top: 50%;
@@ -86,10 +88,13 @@ const Box = {
   z-index: 100;
   overflow-y: scroll
   `,
-  Close: styled.div`
+  XPic: styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 48vw;
+  `,
+  Close: styled.img`
+  width: 30px;
+  right
   `,
   CenterInfo: styled.div`
   display: flex;
