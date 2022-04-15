@@ -43,5 +43,6 @@ export const NextIcon = styled.img`
   }
   @media (max-width: 1110px) {
    margin-top: 25px;
+   margin-bottom: 30px;
   }
 `;

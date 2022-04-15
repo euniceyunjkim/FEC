@@ -23,6 +23,7 @@ function Related() {
       <RelatedRectangle>
         <h2>CUSTOMERS ALSO LIKED</h2>
         <RelatedList related={related} />
+        <br />
         <h2>YOUR OUTFIT</h2>
         <OutfitList />
       </RelatedRectangle>
