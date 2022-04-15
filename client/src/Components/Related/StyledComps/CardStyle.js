@@ -19,6 +19,13 @@ const Card = styled(ProductCard)`
     box-shadow: 0 0 10px #ccc;
     cursor: pointer;
   };
+  @media (max-width: 400px) {
+    width: 125px;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    margin: 5px 10px;
+  }
 `;
 
 export default Card;

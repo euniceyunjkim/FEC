@@ -63,7 +63,7 @@ order: 2;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 `;
 
@@ -87,6 +87,9 @@ text-align: center;
 display: grid;
 grid-template: 1fr/ 1fr;
 place-items: center;
+@media (max-width: 400px) {
+  padding-bottom: 20px;
+ }
 `;
 
 export const Social = styled.div`

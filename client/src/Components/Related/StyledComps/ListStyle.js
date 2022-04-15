@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const List = styled.div`
+export const List = styled.div`
   width: 90%;
   padding: 5px;
   margin: 5px;
@@ -9,6 +9,16 @@ const List = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
 `;
 
-export default List;
+export const SmolList = styled.div`
+display: flex;
+flex-direction: row;
+@media (max-width: 400px) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+`;

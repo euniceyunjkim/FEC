@@ -47,7 +47,6 @@ export const DropdownContainer = styled.div`
   display: grid;
   grid-template: 1fr/ 1fr;
   place-items: center;
-
 `;
 
 export const AddButton = styled.button`
@@ -93,6 +92,9 @@ color: black;
   margin: 8px;
   padding:10px 50px;
   float: left;
+  @media (max-width: 400px) {
+    padding: 10px 30px;
+  }
 `;
 
 export const PlusBut = styled.button`

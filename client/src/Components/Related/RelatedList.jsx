@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Card from './StyledComps/CardStyle';
-import List from './StyledComps/ListStyle';
+import { List, SmolList } from './StyledComps/ListStyle';
 import currentProducts from '../../Contexts/CurProdContext';
 import { PreviousIcon, NextIcon } from './StyledComps/CarouselButtonStyle';
 
@@ -53,24 +53,26 @@ function RelatedList({ related }) {
   return (
     <List>
       <PreviousIcon alt="prev" className={current === 0 ? 'hidden' : ''} src="overview_imgs/DarkLArrow.webp" onClick={current === 0 ? null : previous} />
-      {related.map((product, index) => {
-        if (index < current + 4 && index > current - 1) {
-          return (
-            <Card
-              key={product.id}
-              action="Compare"
-              compareData={compareData}
-              showModal={showModal}
-              setShowModal={setShowModal}
-              handleClick={() => showCompare(product, relatedStyles[index])}
-              product={product}
-              styles={relatedStyles[index]}
-              image="assets/CompareButtonWhite.webp"
-            />
-          );
-        }
-        return null;
-      })}
+      <SmolList>
+        {related.map((product, index) => {
+          if (index < current + 4 && index > current - 1) {
+            return (
+              <Card
+                key={product.id}
+                action="Compare"
+                compareData={compareData}
+                showModal={showModal}
+                setShowModal={setShowModal}
+                handleClick={() => showCompare(product, relatedStyles[index])}
+                product={product}
+                styles={relatedStyles[index]}
+                image="assets/CompareButtonWhite.webp"
+              />
+            );
+          }
+          return null;
+        })}
+      </SmolList>
       <NextIcon alt="next" className={current < length - 4 ? '' : 'hidden'} src="overview_imgs/DarkRArrow.webp" onClick={current < length - 4 ? next : null} />
     </List>
   );
