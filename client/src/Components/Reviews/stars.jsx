@@ -7,18 +7,18 @@ const Star = function Star({ rating }) {
   const renderStars = function renderStars(i) {
     const remainder = i % rating;
     if (i * 4 <= rating * 4) {
-      return <Box.Star src="./assets/fullStar.webp" alt="full star" />;
+      return <Box.Star src="./assets/fullStar.webp" alt="full star" loading="lazy" />;
     }
     if (remainder === 0.5) {
-      return <Box.Star src="./assets/halfStar.webp" alt="half star" />;
+      return <Box.Star src="./assets/halfStar.webp" alt="half star" loading="lazy" />;
     }
     if (remainder === 0.25) {
-      return <Box.Star src="./assets/3-4Star.webp" alt="three quarters star" />;
+      return <Box.Star src="./assets/3-4Star.webp" alt="three quarters star" loading="lazy" />;
     }
     if (remainder === 0.75) {
-      return <Box.Star src="./assets/1-4Star.webp" alt="quarter star" />;
+      return <Box.Star src="./assets/1-4Star.webp" alt="quarter star" loading="lazy" />;
     }
-    return <Box.Star src="./assets/emptyStar.webp" alt="empty star" />;
+    return <Box.Star src="./assets/emptyStar.webp" alt="empty star" loading="lazy" />;
   };
   return (
     <div>

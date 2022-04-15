@@ -65,12 +65,12 @@ const WriteReview = function WriteReview({ setRenderModal, setRender, characteri
               *Recommend:
               <form>
                 {recommend === true
-                  ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setRecommend(true)} />
-                  : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setRecommend(true)} />}
+                  ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setRecommend(true)} loading="lazy" />
+                  : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setRecommend(true)} loading="lazy" />}
                 Yes
                 {recommend === false
-                  ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setRecommend(false)} />
-                  : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setRecommend(false)} />}
+                  ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setRecommend(false)} loading="lazy" />
+                  : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setRecommend(false)} loading="lazy" />}
                 No
               </form>
               <br />

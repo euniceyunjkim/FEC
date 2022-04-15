@@ -104,7 +104,7 @@ function Questions({
                 {answers.map((answer, answerIndex) => (
                   <>
                     <Answers
-                      key={answer[1].id}
+                      key={answer[0]}
                       answerIndex={answerIndex}
                       answer={answer[1]}
                       allQuestions={allQuestions}

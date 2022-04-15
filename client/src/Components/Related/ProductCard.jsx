@@ -35,8 +35,9 @@ function ProductCard({
       return (
         <div className={className}>
           <CardImageContainer>
-            <CardImage src={styles.photos[0].thumbnail_url || 'assets/NoImage.webp'} onClick={() => { navigate(`/${product.id}`); }} />
+            <CardImage alt="relateditems" src={styles.photos[0].thumbnail_url || 'assets/NoImage.webp'} onClick={() => { navigate(`/${product.id}`); }} />
             <CardButtonIcon
+              alt="compare"
               src={image}
               className={hovered ? action : ''}
               onClick={() => handleClick(id)}

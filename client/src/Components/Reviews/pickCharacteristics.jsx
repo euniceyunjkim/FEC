@@ -31,24 +31,24 @@ const PickCharacteristics = function PickCharacteristics({ charKey, lable, char 
       {lable}
       <div style={{ fontSize: '70%' }}>
         {check === 1
-          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(1)} />
-          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(1)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(1)} loading="lazy" />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(1)} loading="lazy" />}
         {feedBack[0]}
         {check === 2
-          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(2)} />
-          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(2)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(2)} loading="lazy" />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(2)} loading="lazy" />}
         {feedBack[1]}
         {check === 3
-          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(3)} />
-          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(3)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(3)} loading="lazy" />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(3)} loading="lazy" />}
         {feedBack[2]}
         {check === 4
-          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(4)} />
-          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(4)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(4)} loading="lazy" />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(4)} loading="lazy" />}
         {feedBack[3]}
         {check === 5
-          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(5)} />
-          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(5)} />}
+          ? <Box.StarCheck src="./assets/fullCircle.webp" alt="full circle" onClick={() => setChar(5)} loading="lazy" />
+          : <Box.StarCheck src="./assets/emptyCircle.webp" alt="empty circle" onClick={() => setChar(5)} loading="lazy" />}
         {feedBack[4]}
       </div>
     </div>

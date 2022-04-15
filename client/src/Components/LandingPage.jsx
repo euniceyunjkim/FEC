@@ -20,7 +20,7 @@ function LandingPage() {
   return (
     <Page>
       <BgContainer>
-        <Background src="overview_imgs/Jojoland.webp">
+        <Background src="overview_imgs/Jojoland.webp" width="1680" height="1050">
           <AnimLogo src="overview_imgs/AnimLogo.gif" />
           {clicked ? (
             <Joestar onClick={() => { navigate('/40346'); }}>

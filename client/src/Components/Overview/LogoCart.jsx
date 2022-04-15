@@ -6,7 +6,9 @@ import {
   LDSContainer, LightDark, SearchContainer, Bar, Search,
 } from './StyledComps/LogoCartStyle';
 
-function LogoCart({ cart, getCart, setLightMode, lightMode }) {
+function LogoCart({
+  cart, getCart, setLightMode, lightMode,
+}) {
   const [show, setShow] = useState(false);
   const [barOpen, setBarOpen] = useState(false);
 
@@ -48,9 +50,11 @@ function LogoCart({ cart, getCart, setLightMode, lightMode }) {
         <LDSContainer>
           <LightDark onClick={() => toggle()} src={lightMode ? mode.jojo : mode.dio} />
           <SearchContainer>
-            <Bar styles={barOpen ? styles.open : styles.closed} />
-            <Search type="button" onClick={() => setBarOpen(!barOpen)}>
-              <img alt="" src="overview_imgs/Search.webp" height="20px" width="20px" />
+            <label htmlFor="bar">
+              <Bar id="bar" name="bar" type="text" styles={barOpen ? styles.open : styles.closed} />
+            </label>
+            <Search name="searchbar" type="button" onClick={() => setBarOpen(!barOpen)}>
+              <img alt="searchbarimg" src="overview_imgs/Search.webp" height="20px" width="20px" />
             </Search>
           </SearchContainer>
         </LDSContainer>
