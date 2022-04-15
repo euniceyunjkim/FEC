@@ -13,7 +13,6 @@ function RelatedList({ related }) {
   const [compareData, setCompareData] = useState([]);
   const [current, setCurrent] = useState(0);
   const { length } = related;
-  console.log(related);
   const uniqRelated = {};
   let i = 0;
   while (i < related.length) {
