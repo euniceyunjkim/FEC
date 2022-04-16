@@ -16,9 +16,9 @@ export const MainButtons = styled.button`
   border-radius: 3px;
   cursor: pointer;
   transition-duration: 0.4s;
+  box-shadow: 0 0 5px 5px rgba(17, 16, 62, 0.15);
 
   &:hover {
-  box-shadow: 0 0 5px 5px rgba(17, 16, 62, 0.15);
   background: #4b15a3;
   color: white;
 
@@ -30,5 +30,4 @@ export const MainButtons = styled.button`
 export const ButtonContainer = styled.div`
   width: 80%;
   padding-bottom: 100px;
-  padding-top: 40px;
 `;

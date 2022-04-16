@@ -1,8 +1,20 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import currentProducts from '../../../Contexts/CurProdContext';
-import ModalView from './Styles/ModalView';
 import ModalBackground from './Styles/ModalBackground';
+import { MainButtons } from './Styles/Buttons';
+import {
+  ModalView,
+  FormContainer,
+  HeadersContainer,
+  Label,
+  Input,
+  Input2,
+  Disclaimer,
+  StyledTitle,
+  ButtonContainer,
+  CancelContainer,
+} from './Styles/ModalView';
 
 function QuestionModal({ setShowModal }) {
   const { currentProd } = useContext(currentProducts);
@@ -53,33 +65,41 @@ function QuestionModal({ setShowModal }) {
   return (
     <ModalBackground>
       <ModalView>
-        <div>
-          <h2>Ask Your Question</h2>
-          <h3>
-            About the
-            {currentProd.name}
-          </h3>
+        <FormContainer>
+          <HeadersContainer>
+            <StyledTitle>Ask Your Question</StyledTitle>
+            <h3>
+              About the
+              {currentProd.name}
+            </h3>
+          </HeadersContainer>
           <div>
             <form noValidate onSubmit={() => onSubmit(event)}>
-              <label htmlFor="newQuestion">
+              <Label htmlFor="newQuestion">
                 Your Question
-                <input type="text" id="newQuestion" maxLength="1000" onChange={() => setBody(event.target.value)} />
-              </label>
-              <label htmlFor="nickname">
+                <Input type="text" id="newQuestion" maxLength="1000" onChange={() => setBody(event.target.value)} />
+              </Label>
+              <Label htmlFor="nickname">
                 What is your nickname
-                <input type="text" id="nickname" maxLength="60" placeholder="Example: jackson11!" onChange={() => setNickname(event.target.value)} />
-              </label>
-              <div>For privacy reasons, do not use your full name or email address</div>
-              <label htmlFor="email">
+                <Input2 type="text" id="nickname" maxLength="60" placeholder="Example: jackson11!" onChange={() => setNickname(event.target.value)} />
+              </Label>
+              <Disclaimer>
+                For privacy reasons, do not use your full name or email address
+              </Disclaimer>
+              <Label htmlFor="email">
                 Your email
-                <input type="email" id="email" maxLength="60" placeholder="Example: Jack@email.com" onChange={() => setEmail(event.target.value)} />
-              </label>
-              <div>For authentication reasons, you will not be emailed</div>
-              <input type="submit" value="Submit question" />
+                <Input2 type="email" id="email" maxLength="60" placeholder="Example: Jack@email.com" onChange={() => setEmail(event.target.value)} />
+              </Label>
+              <Disclaimer>For authentication reasons, you will not be emailed</Disclaimer>
+              <ButtonContainer>
+                <MainButtons type="submit">Submit question</MainButtons>
+              </ButtonContainer>
             </form>
           </div>
-          <button type="submit" onClick={() => setShowModal(false)}>Cancel</button>
-        </div>
+          <CancelContainer>
+            <MainButtons type="submit" onClick={() => setShowModal(false)}>Cancel</MainButtons>
+          </CancelContainer>
+        </FormContainer>
       </ModalView>
     </ModalBackground>
   );

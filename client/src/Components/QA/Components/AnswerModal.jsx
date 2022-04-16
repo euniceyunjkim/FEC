@@ -9,8 +9,13 @@ import {
   FormContainer,
   HeadersContainer,
   Label,
-  Input2,
   Input,
+  Input2,
+  Disclaimer,
+  StyledTitle,
+  ButtonContainer,
+  CancelContainer,
+  Img,
 } from './Styles/ModalView';
 
 function AnswerModal({ setShowModal, question }) {
@@ -66,7 +71,7 @@ function AnswerModal({ setShowModal, question }) {
       <ModalView>
         <FormContainer>
           <HeadersContainer>
-            <h2>Submit your Answer</h2>
+            <StyledTitle>Submit your Answer</StyledTitle>
             <h3>
               {currentProd.name}
               :
@@ -77,28 +82,40 @@ function AnswerModal({ setShowModal, question }) {
             <form noValidate onSubmit={() => onSubmit(event)}>
               <Label htmlFor="newAnswer">
                 Your Answer*
-                <Input type="text" id="newAnswer" maxLength="1000" required onChange={() => setBody(event.target.value)} />
+                <Input
+                  type="text"
+                  id="newAnswer"
+                  maxLength="1000"
+                  required
+                  onChange={() => setBody(event.target.value)}
+                />
               </Label>
               <Label htmlFor="nickname">
                 What is your nickname*
                 <Input2 type="text" id="nickname" maxLength="60" placeholder="Example: jack543!" onChange={() => setNickname(event.target.value)} />
               </Label>
-              <div>For privacy reasons, do not use your full name or email address</div>
+              <Disclaimer>
+                For privacy reasons, do not use your full name or email address
+              </Disclaimer>
               <Label htmlFor="email">
                 Your email*
                 <Input2 type="email" id="email" maxLength="60" placeholder="Example: Jack@email.com" onChange={() => setEmail(event.target.value)} />
               </Label>
-              <div>For authentication reasons, you will not be emailed</div>
+              <Disclaimer>For authentication reasons, you will not be emailed</Disclaimer>
               {photos.length > 0
-                ? photos.map((photo) => <img src={photo} alt="upload" />)
+                ? photos.map((photo) => <Img src={photo} alt="upload" />)
                 : null}
-              {photos.length < 5
-                ? <MainButtons onClick={() => setAddPhoto(true)}>Upload your photos</MainButtons>
-                : <div>Maximum photos allowed</div>}
-              <MainButtons>Submit answer</MainButtons>
+              <ButtonContainer>
+                {photos.length < 5
+                  ? <MainButtons type="button" onClick={() => setAddPhoto(true)}>Upload your photos</MainButtons>
+                  : <div>Maximum photos allowed</div>}
+                <MainButtons>Submit answer</MainButtons>
+              </ButtonContainer>
             </form>
           </div>
-          <MainButtons onClick={() => setShowModal(false)}>Cancel</MainButtons>
+          <CancelContainer>
+            <MainButtons onClick={() => setShowModal(false)}>Cancel</MainButtons>
+          </CancelContainer>
           {addPhoto
             ? (
               <PhotoUploadModal

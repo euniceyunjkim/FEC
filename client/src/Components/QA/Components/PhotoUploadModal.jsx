@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
-import ModalView from './Styles/ModalView';
 import ModalBackground from './Styles/ModalBackground';
+import { MainButtons } from './Styles/Buttons';
+import {
+  PhotoModalView,
+  FormContainer,
+  HeadersContainer,
+  Label,
+  Input2,
+  StyledTitle,
+  ButtonContainer,
+  CancelContainer,
+} from './Styles/ModalView';
 
 function UploadPhotoModal({ photos, setPhoto, setAddPhoto }) {
   const [url, setUrl] = useState('');
@@ -13,18 +23,25 @@ function UploadPhotoModal({ photos, setPhoto, setAddPhoto }) {
 
   return (
     <ModalBackground>
-      <ModalView>
-        <div>
-          <h4>Add a photo url</h4>
+      <PhotoModalView>
+        <FormContainer>
+          <HeadersContainer>
+            <StyledTitle>Add a photo url</StyledTitle>
+          </HeadersContainer>
           <form noValidate onSubmit={onSubmit}>
-            <label htmlFor="newPhoto">
-              <input type="url" id="newAnswer" maxLength="60" onChange={() => setUrl} />
-            </label>
-            <input type="submit" value="Submit photo" />
+            <Label htmlFor="newPhoto">
+              Your Photos
+              <Input2 placeholder="https://website.com/photos/VwqecUsYKvs" type="url" id="newAnswer" maxLength="60" onChange={() => setUrl} />
+            </Label>
+            <ButtonContainer>
+              <MainButtons type="submit">Submit photo</MainButtons>
+            </ButtonContainer>
           </form>
-        </div>
-        <button type="submit" onClick={() => setAddPhoto(false)}>Cancel</button>
-      </ModalView>
+        </FormContainer>
+        <CancelContainer>
+          <MainButtons type="submit" onClick={() => setAddPhoto(false)}>Cancel</MainButtons>
+        </CancelContainer>
+      </PhotoModalView>
     </ModalBackground>
   );
 }

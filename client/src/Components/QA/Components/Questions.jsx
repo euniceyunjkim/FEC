@@ -17,7 +17,6 @@ import {
   QBody,
   AnswerBlock,
   ChangeAnswers,
-  ChangeAnswersBack,
   Separator,
 } from './Styles/QA';
 
@@ -127,12 +126,12 @@ function Questions({
         : null}
       {answers.length > 2
         ? (
-          <ChangeAnswersBack onClick={() => collapse()}
+          <ChangeAnswers onClick={() => collapse()}
             onKeyUp={() => collapse()}
             role="button"
             tabIndex={0}>
             Collapse Answers
-          </ChangeAnswersBack>
+          </ChangeAnswers>
         )
         : null}
     </div>
