@@ -12,7 +12,7 @@ import RenderRating from '../renderRating';
 
 function ProductCard({
   className, product, styles, newOutfit, image,
-  action, addOutfit, id, handleClick, showModal, setShowModal, compareData,
+  action, addOutfit, id, handleClick, showModal, setShowModal, compareData, lightMode,
 }) {
   const navigate = useNavigate();
 
@@ -48,6 +48,7 @@ function ProductCard({
           {showModal
             ? (
               <Modal
+                lightMode={lightMode}
                 styles={styles}
                 product={product}
                 showModal={showModal}
@@ -107,5 +108,6 @@ ProductCard.propTypes = {
   showModal: PropTypes.bool,
   setShowModal: PropTypes.func,
   compareData: PropTypes.instanceOf(Object),
+  lightMode: PropTypes.bool.isRequired,
 };
 export default ProductCard;

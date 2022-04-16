@@ -5,11 +5,11 @@ import ModalContent from './StyledComps/ModalContentStyle';
 import currentProducts from '../../Contexts/CurProdContext';
 import currentStyle from '../../Contexts/CurStyleContext';
 import ModalTableEntry from './ModalTableEntry';
-import { ModalTable, ModalTableDark } from './StyledComps/TableStyle';
+import ModalTable from './StyledComps/TableStyle';
 import { CardImage } from './StyledComps/ImageStyle';
 import { ModalExit } from './StyledComps/NoFeatureIconStyle';
 
-function Modal({ setShowModal, showModal, compareData }) {
+function Modal({ setShowModal, showModal, compareData, lightMode }) {
   const allFeatures = [];
   const product = compareData[2];
   const styles = compareData[3];
@@ -22,12 +22,17 @@ function Modal({ setShowModal, showModal, compareData }) {
   const { currentProd } = useContext(currentProducts);
   const { curStyle } = useContext(currentStyle);
 
+  const styled = {
+    light: '& tr:nth-child(2n) { background: rgb(111, 86, 165, 0.25); } & thead { background: rgb(111, 86, 165, 0.5); position: sticky; top: 0; border-top: 3px solid rrgb(111, 86, 165, 0.5);}',
+    dark: '& tr:nth-child(2n) { background: rgb(111, 86, 165, 0.5); } & thead { background: rgb(111, 86, 165, 0.5); position: sticky; top: 0; border-top: 3px solid rgb(111, 86, 165); }',
+  };
+
   return (
     <div>
       {showModal ? (
         <ModalStyle block={showModal ? 'block' : 'none'}>
-          <ModalContent>
-            <ModalTable>
+          <ModalContent styles={lightMode ? 'background: white' : 'background: rgb(135, 120, 160)'}>
+            <ModalTable styles={lightMode ? styled.light : styled.dark}>
               <thead>
                 <tr>
                   <th>
@@ -55,7 +60,7 @@ function Modal({ setShowModal, showModal, compareData }) {
                   />
                 ))}
               </tbody>
-            </ModalTable>
+              </ModalTable>
             <ModalExit onClick={() => setShowModal()} src="assets/RedX.webp" />
           </ModalContent>
         </ModalStyle>
@@ -65,7 +70,7 @@ function Modal({ setShowModal, showModal, compareData }) {
   );
 }
 Modal.defaultProps = {
-  setShowModal: () => {},
+  setShowModal: () => { },
   showModal: false,
   compareData: [],
 }
@@ -74,6 +79,7 @@ Modal.propTypes = {
   setShowModal: PropTypes.func,
   showModal: PropTypes.bool,
   compareData: PropTypes.instanceOf(Array),
+  lightMode: PropTypes.bool.isRequired,
 };
 
 export default Modal;

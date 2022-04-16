@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const ModalContent = styled.div`
   position: fixed;
   ${({ styles }) => `${styles}`};
-  background: white;
   width: 50vw;
   height: 75vh;
   top: 50%;
