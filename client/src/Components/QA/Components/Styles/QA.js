@@ -12,13 +12,14 @@ export const StyledTitle = styled.div`
 
 export const QAListStyle = styled.div`
   padding-top: 40px;
+  padding-bottom: 40px;
   display: flex;
   align-items: left;
   align-self: center;
   flex-direction: column;
   justify-content: start;
   width: 78%;
-  max-height: 80vh;
+  max-height: 75vh;
   overflow: scroll;
 `;
 
@@ -215,27 +216,15 @@ export const ChangeAnswers = styled.a`
   font-size: 16px;
   padding-bottom: 15px;
   padding-left: 30px;
+  text-decoration: underline;
 
   &:hover {
     color: #4b15a3;
     cursor: pointer;
-    text-shadow: 2px 2px 5px rgb(75, 21, 163);
+    text-shadow: 2px 2px 7px rgb(75, 21, 163);
   }
 
   &&:active {
     color: #4b15a3;
   }
 `;
-
-export const ChangeAnswersBack = styled.a`
-  font-weight: 700;
-  font-size: 16px;
-  padding-bottom: 15px;
-  padding-left: 30px;
-  color: #4b15a3;
-
-  &:hover {
-    color: black;
-    cursor: pointer;
-    text-shadow: 2px 2px 5px rgb(75, 21, 163);
-  }`;

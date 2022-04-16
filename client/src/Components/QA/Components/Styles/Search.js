@@ -14,6 +14,7 @@ const Input = styled.input`
   padding-top: 13px;
   vertical-align: top;
   border-width: 2px;
+  border-radius: 3px;
   border-style: inset;
   border-color: #4B15A3;
   border-image: initial;
@@ -27,12 +28,11 @@ const Input = styled.input`
   &:focus {
   outline: none;
   border: 0;
-  box-shadow: 0 0 5px 5px rgba(17, 16, 62, 0.15);
+
   }
 
   &:hover {
-  outline: none;
-  border: 0;
+  box-shadow: 0 0 5px 5px rgba(17, 16, 62, 0.15);
   }`;
 
 export default Input;
