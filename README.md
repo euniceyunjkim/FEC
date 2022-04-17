@@ -2,7 +2,7 @@
 ---
 ## Overview ##
 
-This is a multi widget web page that takes a [modern approach](https://xd.adobe.com/view/e600dc0f-454c-44e3-5075-7872d04189ff-9031/?fullscreen) to a retail website.
+This is a multi widget web page that takes a [modern approach](https://xd.adobe.com/view/e600dc0f-454c-44e3-5075-7872d04189ff-9031/?fullscreen) to a retail website. A requested overarching theme was taken into consideration for stylistic decisions.
 ---
 ## Getting started ##
 
@@ -34,18 +34,18 @@ To run this page you will need to:
 ---
 ## Contents ##
 
-This website is seperated into 4 major widgets:
+### This website is seperated into 4 major widgets: ###
 
-  * The Product Overview module, created by Eunice Kim, is the main visual representation of the selected product and its given styles
+  1. The **Product Overview** module, created by Eunice Kim, is the main visual representation of the selected product and its given styles
      - Functionality and display:
        - Image gallery offers a default collapsed view and expanded view that allows alternate views of the same style
        - Styles can be changed via the style selector to the right of the main image
        - Size and quantity is reflected dynamically based on the style selected and the current inventory
        - An "add to cart" feature allows for a product with its selected style, size, and quantity to be added to the cart
 
-  ![alt text](Overview.gif)
+  &emsp;  &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; ![alt text](Overview.gif)
        
-  * The Related Items & Comparison module, created by Alex Shiao, will display two carousels populated by product cards
+  2. The **Related Items & Comparison** module, created by Alex Shiao, will display two carousels populated by product cards
      - Considerations:
        - The outfits carousel only shows three items so that outfits can be added at any given location in the carousel
      - Functionality and display:
@@ -55,9 +55,9 @@ This website is seperated into 4 major widgets:
        - The outfit list persists through page navigation
        - Each card in the second carousel features a delete button that removes the undesired outfit from the list
    
-   ![alt text](Compare.gif)
+  &emsp;  &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; ![alt text](Compare.gif)
      
-  * The Questions & Answers module, created by Casey Eads, allows access to product specific information outside what's provided by the Overview
+  3. The **Questions & Answers** module, created by Casey Eads, allows access to product specific information outside what's provided by the Overview
      - Considerations:
        - Make the traversal of information and access to new information responive and intuitive
      - Functionality and display:
@@ -66,25 +66,25 @@ This website is seperated into 4 major widgets:
        - Ability to mark questions and answers as helpful or report answers
        - Modals to provide a new question or answer an existing one
    
-   ![alt text](Q&A.gif)
+  &emsp;  &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; ![alt text](Q&A.gif)
        
-  * The Ratings & Reviews module, created by Adarsh Ravindran, will allow viewing and submission of reviews for the product selected
+  4. The **Ratings & Reviews** module, created by Adarsh Ravindran, will allow viewing and submission of reviews for the product selected
      - functionality and display
        - Write new review - accessible by clicking the Write Review button towards the bottom of the page. allows a review to be written about a product 
        - Review List - displays reviews of the current product
        - Product review breakdown - gives the overall reviews of the product as well as breakdowns for individual stars and specific characteristics
   
-  ![alt text](R&R.gif)
+  &emsp;  &emsp;  &emsp; &emsp; &nbsp;&nbsp; ![alt text](R&R.gif)
 ---
 ## Contacts ##
 
-Alex Shiao &emsp; &emsp; &emsp; &nbsp;&nbsp; [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/alexander-shiao-958221162/) &emsp; [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/alexshiao99)
+Adarsh Ravindran &emsp; [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/adarshraj-ravindran-75832a183/) &emsp; [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/AdarshrajRav)
 
 Casey Eads &emsp; &emsp; &emsp;&nbsp; [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/casey-eads-1d618/) &emsp; [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/ceads1618)
 
 Eunice Kim &emsp; &emsp; &emsp; &nbsp; [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/euniceyunjkim/) &emsp; [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/euniceyunjkim)
 
-Adarsh Ravindran &emsp; [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/adarshraj-ravindran-75832a183/) &emsp; [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/AdarshrajRav)
+Alex Shiao &emsp; &emsp; &emsp; &nbsp;&nbsp; [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/caleb-kim0510/)](https://www.linkedin.com/in/alexander-shiao-958221162/) &emsp; [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/alexshiao99)
 
 ---
 ## Technologies ##
