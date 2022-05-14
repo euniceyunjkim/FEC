@@ -34,7 +34,7 @@ To run this page you will need to:
 ---
 ## Contents ##
 
-### This website is seperated into 4 major widgets: ###
+### This website is separated into 4 major widgets: ###
 
   1. The **Product Overview** module, created by Eunice Kim, is the main visual representation of the selected product and its given styles
      - Functionality and display:
